@@ -61,54 +61,48 @@
   "stale": false
  },
  "politica": {
-  "headline": "Ajuste fiscal vai a voto na Câmara enquanto Lula discute substituto de Barroso no STF",
-  "overview": "O ajuste fiscal do ministro do Planejamento, Bruno Moretti, deve ser votado nesta segunda-feira (23) na Câmara, e Lula exonerou temporariamente o ministro José Guimarães para a votação. No sábado (21), o presidente reuniu a cúpula do Congresso e ministros do STF para definir o substituto de Luís Roberto Barroso.",
+  "headline": "Ajuste fiscal, saúde de Bolsonaro e articulações no governo marcam a política",
+  "overview": "O cenário político desta segunda-feira é movimentado pela expectativa de votação do ajuste fiscal na Câmara e pelas articulações do governo em torno de pautas econômicas e institucionais. Enquanto isso, o ex-presidente Jair Bolsonaro segue internado em UTI com quadro estável.",
   "points": [
    {
-    "text": "Bruno Moretti afirmou às centrais sindicais que o ajuste fiscal que leva seu nome preserva direitos sociais; o texto deve ser votado nesta segunda (23) na Câmara, e Lula exonerou temporariamente o ministro da SRI, José Guimarães, para a votação.",
+    "text": "O ex-presidente Jair Bolsonaro segue internado em Unidade de Terapia Intensiva após receber diagnóstico de abdômen agudo obstrutivo, mantendo quadro estável e sem previsão de alta, segundo boletim médico.",
     "event_ids": [
-     "evt-9aed35ccc2202069",
-     "evt-1b1325ec4f4e1534"
+     "evt-ca656ba50c560d2a"
     ]
    },
    {
-    "text": "Segundo o g1, a equipe de Lula o alertou de que, mesmo com a aprovação do ajuste, o dólar pode seguir pressionado até que ele indique um nome \"forte\" para a Fazenda ou anuncie medidas fiscais mais profundas.",
+    "text": "O ministro do Planejamento, Bruno Moretti, garantiu às centrais sindicais que o ajuste fiscal preserva direitos sociais, com votação prevista para esta segunda-feira na Câmara dos Deputados.",
     "event_ids": [
-     "evt-a0863bce8a092cf4"
+     "evt-9aed35ccc2202069"
     ]
    },
    {
-    "text": "Lula se reuniu no sábado (21) com a cúpula do Congresso e ministros do STF para definir o nome do substituto de Luís Roberto Barroso no tribunal.",
+    "text": "A Advocacia-Geral da União pediu ao STF o reconhecimento de que a decisão provisória sobre a escala 5x2 não é mais necessária após a regulamentação do governo, enquanto o fim da escala 6x1 deve impactar mais de 100 mil trabalhadores domésticos.",
+    "event_ids": [
+     "evt-0fc8a6f114de98ad",
+     "evt-e3849dfcc23a0732"
+    ]
+   },
+   {
+    "text": "O presidente Luiz Inácio Lula da Silva reuniu-se com a cúpula do Congresso e ministros do STF para definir o substituto de Luís Roberto Barroso no tribunal.",
     "event_ids": [
      "evt-827af45842d63de9"
     ]
    },
    {
-    "text": "A AGU pediu ao STF que reconheça não ser mais necessária a liminar de Flávio Dino sobre a transição para a escala 5x2, após o decreto do governo que regulamentou a mudança; o fim da escala 6x1 deve afetar cerca de 102 mil trabalhadores domésticos, estima o Instituto Doméstica Legal.",
-    "event_ids": [
-     "evt-e3849dfcc23a0732",
-     "evt-0fc8a6f114de98ad"
-    ]
-   },
-   {
-    "text": "Davi Alcolumbre tem dito que facilitará a liberação de emendas de comissão se reeleito presidente do Senado, segundo aliados ouvidos pela Folha.",
+    "text": "Aliados relatam que o presidente do Senado, Davi Alcolumbre, tem vinculado a facilitação na liberação de emendas de comissão à sua reeleição para o cargo.",
     "event_ids": [
      "evt-80ace758a24acc58"
     ]
-   },
-   {
-    "text": "Os pedidos de refúgio de cubanos no Brasil chegaram a 4.885 em setembro, o maior número mensal de 2026, segundo o Observatório das Migrações Internacionais.",
-    "event_ids": [
-     "evt-3a0c475209dd0cb0"
-    ]
    }
   ],
-  "watch": "A votação do ajuste fiscal na Câmara estava prevista para esta segunda-feira (23).",
-  "generated_at": "2026-11-23T16:37:18Z",
-  "model": null,
-  "author": "Claude (VS Code)",
-  "signature": "a6451faf73b0",
+  "watch": "O ajuste fiscal deve ser votado na Câmara dos Deputados, enquanto o mercado aguarda novas definições econômicas e ministeriais do governo.",
+  "generated_at": "2026-11-23T17:21:03Z",
+  "model": "gemini-flash-lite-latest",
+  "author": "IA",
+  "signature": "896e250a4a7b",
   "event_ids": [
+   "evt-ca656ba50c560d2a",
    "evt-9aed35ccc2202069",
    "evt-80ace758a24acc58",
    "evt-827af45842d63de9",
@@ -117,8 +111,7 @@
    "evt-6bfc655842ed286f",
    "evt-3a0c475209dd0cb0",
    "evt-5c75e94d168b26c8",
-   "evt-a0863bce8a092cf4",
-   "evt-1b1325ec4f4e1534"
+   "evt-a0863bce8a092cf4"
   ],
   "stale": false
  },
@@ -181,7 +174,7 @@
    "evt-70e098f309ea7998",
    "evt-2af2b8ac52b2d998"
   ],
-  "stale": false
+  "stale": true
  },
  "mundo": {
   "headline": "COP31 termina sem acordo; Ucrânia afunda navio russo e ameaças de bomba atingem escolas na Europa",
@@ -304,6 +297,6 @@
    "evt-1793f4fe05b13a1c",
    "evt-101f21e0f146d377"
   ],
-  "stale": false
+  "stale": true
  }
 }

@@ -159,5 +159,34 @@
    "calls_today": 3
   },
   "retention_removed": 0
+ },
+ {
+  "started_at": "2026-11-23T17:21:03+00:00",
+  "finished_at": "2026-11-23T17:28:48+00:00",
+  "status": "partial",
+  "trigger": "workflow_dispatch",
+  "edition_id": "2026-11-23-1721",
+  "sources_ok": 31,
+  "sources_failed": 1,
+  "failed_sources": {
+   "hacker-news": "HTTP 419"
+  },
+  "new_articles": 75,
+  "highlights": 8,
+  "events": 110,
+  "ai": {
+   "state": "unavailable",
+   "processed": 6,
+   "failed": 0,
+   "calls": 1,
+   "events_merged": 0,
+   "translated": 13,
+   "briefs": 1,
+   "errors": [
+    "todos os modelos indisponíveis: gemini-flash-lite-latest: sobrecarregado após 3 tentativas (HTTP 503 UNAVAILABLE); gemini-3.5-flash-lite: sobrecarregado após 3 tentativas (HTTP 503 UNAVAILABLE)"
+   ],
+   "calls_today": 4
+  },
+  "retention_removed": 0
  }
 ]
