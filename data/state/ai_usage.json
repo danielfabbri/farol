@@ -2,7 +2,7 @@
  "day": "2026-11-23",
  "calls": 11,
  "quota_exhausted": false,
- "translation_calls": 3,
+ "translation_calls": 4,
  "exhausted_models": [
   "gemini-3.5-flash",
   "gemini-flash-latest"

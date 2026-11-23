@@ -60,7 +60,7 @@
    "evt-269205119e188e4c",
    "evt-5191dee90cecc4bb"
   ],
-  "stale": false
+  "stale": true
  },
  "politica": {
   "headline": "Bolsonaro segue na UTI sem previsão de alta e Câmara analisa pacote fiscal",
@@ -122,7 +122,7 @@
    "evt-13b8121c0f55f78c",
    "evt-742bdda9b7183909"
   ],
-  "stale": false
+  "stale": true
  },
  "economia": {
   "headline": "Retorno de CEO impulsiona Nvidia e Fazenda revisa PIB e inflação",
@@ -186,7 +186,7 @@
    "evt-9c25ae3614eec119",
    "evt-1f549dee155f3884"
   ],
-  "stale": false
+  "stale": true
  },
  "mundo": {
   "headline": "Supremo da Espanha anistia líder separatista e Europa registra alertas de bomba",
@@ -247,7 +247,7 @@
    "evt-d148bd4729ad4430",
    "evt-e28d5bfd95e51328"
   ],
-  "stale": false
+  "stale": true
  },
  "technology_ai": {
   "headline": "Jensen Huang retorna à liderança da Nvidia e avanços em inteligência artificial marcam o setor",
@@ -308,7 +308,7 @@
    "evt-66cc673a6baaba00",
    "evt-77ab3d65a27896e8"
   ],
-  "stale": false
+  "stale": true
  },
  "ciencia_saude": {
   "headline": "Avanços em inteligência artificial na saúde e impactos climáticos",
