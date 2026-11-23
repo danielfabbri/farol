@@ -12,8 +12,8 @@
   "last_modified": "Mon, 23 Nov 2026 20:41:04 GMT"
  },
  "microsoft-research": {
-  "etag": "\"1d7f56c9c4746ce6c64cf4ac90ad3578\"",
-  "last_modified": "Mon, 23 Nov 2026 21:35:13 GMT"
+  "etag": "\"6d272f24ab8009eae1e34249200fc3aa\"",
+  "last_modified": "Mon, 23 Nov 2026 22:05:41 GMT"
  },
  "openai-news": {
   "etag": null,
@@ -44,39 +44,63 @@
   "last_modified": "Mon, 23 Nov 2026 20:47:40 GMT"
  },
  "ars-technica-ai": {
-  "etag": "\"aa10e0ced43cd56bfbc170cd8f6ac9b5\"",
-  "last_modified": "Mon, 23 Nov 2026 21:32:57 GMT"
+  "etag": "\"e92e911956084cf4ed64dacacbcdd350\"",
+  "last_modified": "Mon, 23 Nov 2026 21:58:34 GMT"
  },
  "ars-technica-tech": {
-  "etag": "\"aa10e0ced43cd56bfbc170cd8f6ac9b5\"",
-  "last_modified": "Mon, 23 Nov 2026 21:32:57 GMT"
+  "etag": "\"e92e911956084cf4ed64dacacbcdd350\"",
+  "last_modified": "Mon, 23 Nov 2026 21:58:34 GMT"
  },
  "techcrunch-ai": {
-  "etag": "W/\"2a59703930c0c07caf4a748c375b87d3\"",
-  "last_modified": "Mon, 23 Nov 2026 21:47:41 GMT"
+  "etag": "W/\"66b566c27b9cfed16c73c612e1cc493d\"",
+  "last_modified": "Mon, 23 Nov 2026 22:05:50 GMT"
  },
  "agenciabrasil-geral": {
-  "etag": "\"1795470780-1\"",
-  "last_modified": "Mon, 23 Nov 2026 21:53:00 GMT"
+  "etag": "\"1795471255-1\"",
+  "last_modified": "Mon, 23 Nov 2026 22:00:55 GMT"
  },
  "agenciabrasil-politica": {
-  "etag": "\"1795470760-1\"",
-  "last_modified": "Mon, 23 Nov 2026 21:52:40 GMT"
+  "etag": "\"1795471226-1\"",
+  "last_modified": "Mon, 23 Nov 2026 22:00:26 GMT"
  },
  "poder360": {
-  "etag": "\"5e65842a1e0384bb68dcb391ea194ae5-gzip\"",
-  "last_modified": "Mon, 23 Nov 2026 16:28:54 GMT"
+  "etag": "\"6da1332b05b33a8cde627312e4f79671-gzip\"",
+  "last_modified": "Mon, 23 Nov 2026 21:50:12 GMT"
  },
  "agenciabrasil-economia": {
-  "etag": "\"1795470755-1\"",
-  "last_modified": "Mon, 23 Nov 2026 21:52:35 GMT"
+  "etag": "\"1795471235-1\"",
+  "last_modified": "Mon, 23 Nov 2026 22:00:35 GMT"
  },
  "infomoney": {
-  "etag": "W/\"167b23b6d3033c42c84af0d76f08c04b\"",
-  "last_modified": "Mon, 23 Nov 2026 16:33:11 GMT"
+  "etag": "W/\"7fa7a6642c0edda7d0ebb2ab919b3086\"",
+  "last_modified": "Mon, 23 Nov 2026 22:01:11 GMT"
  },
  "agenciabrasil-internacional": {
-  "etag": "\"1795470604-1\"",
-  "last_modified": "Mon, 23 Nov 2026 21:50:04 GMT"
+  "etag": "\"1795471305-1\"",
+  "last_modified": "Mon, 23 Nov 2026 22:01:45 GMT"
+ },
+ "cartacapital": {
+  "etag": "\"a983fa7414c2afbeaf02ebe848616f43-gzip\"",
+  "last_modified": "Mon, 23 Nov 2026 21:14:12 GMT"
+ },
+ "moneytimes": {
+  "etag": "\"ec09f114f49e1d9b4ab0ebf9bc0ac1e3\"",
+  "last_modified": "Mon, 23 Nov 2026 21:42:46 GMT"
+ },
+ "g1-educacao": {
+  "etag": "W/\"d7577823ef7eb391c5c3de7ed4511a02bfcb1548\"",
+  "last_modified": null
+ },
+ "folha-ciencia": {
+  "etag": "W/\"fb7d67-1b6cc-660f5a671e500\"",
+  "last_modified": "Mon, 23 Nov 2026 18:20:36 GMT"
+ },
+ "the-verge": {
+  "etag": "W/\"a23cdf6b5bfcdaff777a59bd81265011\"",
+  "last_modified": null
+ },
+ "wired-ai": {
+  "etag": null,
+  "last_modified": null
  }
 }

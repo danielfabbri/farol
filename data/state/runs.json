@@ -247,5 +247,32 @@
    "calls_today": 5
   },
   "retention_removed": 0
+ },
+ {
+  "started_at": "2026-11-23T22:06:36+00:00",
+  "finished_at": "2026-11-23T22:15:23+00:00",
+  "status": "partial",
+  "trigger": "workflow_dispatch",
+  "edition_id": "2026-11-23-2206",
+  "sources_ok": 48,
+  "sources_failed": 1,
+  "failed_sources": {
+   "hacker-news": "HTTP 419"
+  },
+  "new_articles": 148,
+  "highlights": 8,
+  "events": 111,
+  "ai": {
+   "state": "budget_reached",
+   "processed": 36,
+   "failed": 0,
+   "calls": 6,
+   "events_merged": 1,
+   "translated": 12,
+   "briefs": 6,
+   "errors": [],
+   "calls_today": 11
+  },
+  "retention_removed": 0
  }
 ]

@@ -1,356 +1,374 @@
 {
  "brasil": {
-  "headline": "Noticias do Brasil englobam seguranca, chuvas e novos projetos estrategicos",
-  "overview": "O cenario nacional traz registros de incidentes violentos, impactos severos de tempestades em diferentes estados e iniciativas institucionais de longo prazo. Destacam-se investigacoes policiais, o trágico falecimento de uma crianca e desdobramentos climaticos.",
+  "headline": "Relatório aponta déficit na PM do Rio, enquanto chuvas causam estragos em São Paulo",
+  "overview": "O cenário nacional registra problemas na segurança pública do Rio de Janeiro, impactos de fortes chuvas em São Paulo e episódios de violência em diferentes estados. A Abin também apresentou diretrizes para a segurança cibernética diante da computação quântica.",
   "points": [
    {
-    "text": "Um menino de 3 anos morreu baleado durante um conflito entre grupos indigenas na Terra Indigena Ligeiro, no Rio Grande do Sul, em caso investigado pela Policia Federal.",
+    "text": "Um relatório de transição da Polícia Militar do Rio de Janeiro aponta que mais da metade da frota de veículos está fora de operação e há um déficit de cerca de 17 mil agentes em relação à previsão legal.",
+    "event_ids": [
+     "evt-4c8f79ab1ff8007e"
+    ]
+   },
+   {
+    "text": "Fortes chuvas em São Paulo deixaram 34 pessoas desalojadas, uma desaparecida e levaram a Defesa Civil a emitir alertas severos para tempestades na capital.",
+    "event_ids": [
+     "evt-a75b92adae5ef8b7",
+     "evt-5191dee90cecc4bb"
+    ]
+   },
+   {
+    "text": "Um menino de 3 anos morreu após ser baleado durante um conflito entre grupos indígenas rivais no norte do Rio Grande do Sul, em caso investigado pela Polícia Federal.",
     "event_ids": [
      "evt-33d322728fe534d0"
     ]
    },
    {
-    "text": "Fortes chuvas em Sao Paulo deixaram 34 pessoas desalojadas e uma mulher desaparecida apos cair em um rio.",
-    "event_ids": [
-     "evt-a75b92adae5ef8b7"
-    ]
-   },
-   {
-    "text": "A Abin apresentou uma proposta de estrategia nacional de criptografia pós-quântica para proteger sistemas contra avancos computacionais ate 2035.",
+    "text": "A Agência Brasileira de Inteligência apresentou uma estratégia nacional de criptografia pós-quântica para proteger ativos críticos até 2029 e concluir a transição até 2035.",
     "event_ids": [
      "evt-7bba2a25b96f50e7"
     ]
    },
    {
-    "text": "Um casal foi resgatado apos ser mantido preso no porta-malas de um carro por suspeitos armados em Mogi das Cruzes, em Sao Paulo.",
+    "text": "Lideranças de movimentos de moradia em São Paulo são investigadas sob suspeita de cobrarem valores para acelerar o acesso a habitações populares da Cohab.",
     "event_ids": [
-     "evt-69fe9df4649ad4cf"
+     "evt-908c9df9af74b67d"
     ]
    },
    {
-    "text": "O motorista de uma caminhonete foi preso na BR-116, no Parana, com sinais de embriaguez apos acidente que deixou uma crianca em estado grave.",
+    "text": "Outros ocorridos incluem a morte de um torcedor do Palmeiras após empurrão de segurança, o resgate de um casal mantido em porta-malas em Mogi das Cruzes e a prisão de um motorista embriagado após acidente que deixou criança grave no Paraná.",
     "event_ids": [
+     "evt-bd2d05e3c88a2c15",
+     "evt-69fe9df4649ad4cf",
      "evt-d06bade223d768ce"
     ]
    }
   ],
   "watch": null,
-  "generated_at": "2026-11-23T21:55:59Z",
+  "generated_at": "2026-11-23T22:06:36Z",
   "model": "gemini-3.5-flash-lite",
   "author": "IA",
-  "signature": "82e82b6b237d",
+  "signature": "bc3a946f555c",
   "event_ids": [
-   "evt-7bba2a25b96f50e7",
+   "evt-4c8f79ab1ff8007e",
    "evt-33d322728fe534d0",
-   "evt-a75b92adae5ef8b7",
-   "evt-269205119e188e4c",
-   "evt-69fe9df4649ad4cf",
-   "evt-f7a3d4999efe6d59",
-   "evt-61728fc1ca981c1b",
-   "evt-d06bade223d768ce",
+   "evt-7bba2a25b96f50e7",
    "evt-908c9df9af74b67d",
-   "evt-e184bc92caf5aae1"
+   "evt-a75b92adae5ef8b7",
+   "evt-bd2d05e3c88a2c15",
+   "evt-69fe9df4649ad4cf",
+   "evt-d06bade223d768ce",
+   "evt-269205119e188e4c",
+   "evt-5191dee90cecc4bb"
   ],
   "stale": false
  },
  "politica": {
-  "headline": "Bolsonaro segue na UTI; Câmara vota ajuste fiscal e Lula discute vaga de Barroso no STF",
-  "overview": "O ex-presidente Jair Bolsonaro continua internado em UTI, com quadro estável e sem previsão de alta. No Congresso, o ajuste fiscal do ministro Bruno Moretti deve ser votado nesta segunda-feira (23) na Câmara, enquanto Lula discute com a cúpula do Congresso e ministros do STF o substituto de Luís Roberto Barroso.",
+  "headline": "Bolsonaro segue na UTI sem previsão de alta e Câmara analisa pacote fiscal",
+  "overview": "O ex-presidente Jair Bolsonaro continua internado em UTI em Brasília com obstrução intestinal e pneumonia. Enquanto isso, a Câmara dos Deputados analisa o pacote de ajuste fiscal do governo, após a exoneração temporária de ministro para votação.",
   "points": [
    {
-    "text": "Jair Bolsonaro segue internado em UTI, com quadro estável e sem previsão de alta; segundo boletim médico de domingo (22), ele recebeu diagnóstico de abdômen agudo obstrutivo.",
+    "text": "Segundo boletins médicos, o ex-presidente Jair Bolsonaro segue internado em uma unidade de terapia intensiva no Hospital DF Star, em Brasília, diagnosticado com abdômen agudo obstrutivo e pneumonia, estando clinicamente estável e sem previsão de alta.",
     "event_ids": [
-     "evt-ca656ba50c560d2a"
+     "evt-ca656ba50c560d2a",
+     "evt-2fff094471ea88ec",
+     "evt-324568be3b5ae444"
     ]
    },
    {
-    "text": "Bruno Moretti afirmou às centrais sindicais que o ajuste fiscal que leva seu nome preserva direitos sociais; o texto deve ser votado nesta segunda (23) na Câmara, e Lula exonerou temporariamente o ministro da SRI, José Guimarães, para a votação.",
+    "text": "A Câmara dos Deputados iniciou a análise do projeto de ajuste fiscal do governo, reunindo medidas de cortes de gastos e aumento de arrecadação.",
     "event_ids": [
-     "evt-9aed35ccc2202069",
+     "evt-d50614a1721cec3c"
+    ]
+   },
+   {
+    "text": "O presidente Lula exonerou temporariamente o ministro José Guimarães para que ele reassuma seu mandato na Câmara e participe das discussões no Congresso.",
+    "event_ids": [
      "evt-1b1325ec4f4e1534"
     ]
    },
    {
-    "text": "Lula se reuniu no sábado (21) com a cúpula do Congresso e ministros do STF para definir o nome do substituto de Luís Roberto Barroso no tribunal.",
+    "text": "O ministro Alexandre de Moraes determinou a citação por edital do senador Flávio Bolsonaro, afirmando que ele está em local incerto e não sabido nos Estados Unidos para responder a denúncia por calúnia.",
     "event_ids": [
-     "evt-827af45842d63de9"
+     "evt-5252591c82fa7bee"
     ]
    },
    {
-    "text": "A AGU pediu ao STF que reconheça não ser mais necessária a liminar de Flávio Dino sobre a transição para a escala 5x2, após o decreto que regulamentou a mudança; o fim da escala 6x1 deve afetar cerca de 102 mil trabalhadores domésticos, estima o Instituto Doméstica Legal.",
+    "text": "A deputada estadual Monica Seixas relatou ter sofrido tratamento hostil e teve a entrada na Cisjordânia negada pelo governo de Israel ao desembarcar no aeroporto.",
     "event_ids": [
-     "evt-e3849dfcc23a0732",
-     "evt-0fc8a6f114de98ad"
+     "evt-d8f40aa8d6f7803f"
     ]
    },
    {
-    "text": "Davi Alcolumbre tem dito que facilitará a liberação de emendas de comissão se reeleito presidente do Senado, segundo aliados ouvidos pela Folha.",
+    "text": "A Polícia Federal planeja a compra de três veículos blindados resistentes a tiros de fuzil para a segurança do presidente da República e autoridades visitantes.",
     "event_ids": [
-     "evt-80ace758a24acc58"
-    ]
-   },
-   {
-    "text": "Os pedidos de refúgio de cubanos no Brasil chegaram a 4.885 em setembro, o maior número mensal de 2026, segundo o Observatório das Migrações Internacionais.",
-    "event_ids": [
-     "evt-3a0c475209dd0cb0"
+     "evt-13b8121c0f55f78c"
     ]
    }
   ],
-  "watch": "A votação do ajuste fiscal na Câmara estava prevista para esta segunda-feira (23).",
-  "generated_at": "2026-11-23T17:39:21Z",
-  "model": null,
-  "author": "Claude (VS Code)",
-  "signature": "9e9e887e84f8",
+  "watch": null,
+  "generated_at": "2026-11-23T22:06:36Z",
+  "model": "gemini-3.5-flash-lite",
+  "author": "IA",
+  "signature": "6c968885a515",
   "event_ids": [
-   "evt-1b1325ec4f4e1534",
    "evt-ca656ba50c560d2a",
-   "evt-9aed35ccc2202069",
-   "evt-80ace758a24acc58",
-   "evt-827af45842d63de9",
-   "evt-0fc8a6f114de98ad",
-   "evt-e3849dfcc23a0732",
-   "evt-6bfc655842ed286f",
-   "evt-3a0c475209dd0cb0",
-   "evt-5c75e94d168b26c8"
+   "evt-2fff094471ea88ec",
+   "evt-d24766f7e0c35fbb",
+   "evt-d8f40aa8d6f7803f",
+   "evt-d50614a1721cec3c",
+   "evt-324568be3b5ae444",
+   "evt-5252591c82fa7bee",
+   "evt-1b1325ec4f4e1534",
+   "evt-13b8121c0f55f78c",
+   "evt-742bdda9b7183909"
   ],
-  "stale": true
+  "stale": false
  },
  "economia": {
-  "headline": "Dólar passa de R$ 6 pela primeira vez desde abril de 2025; Nvidia dispara com volta de Jensen Huang",
-  "overview": "O dólar chegou a R$ 6,0055 na máxima desta segunda-feira (23), com a votação do pacote fiscal no radar, e o boletim Focus elevou a projeção para a moeda no fim de 2026. No exterior, a recondução de Jensen Huang ao comando da Nvidia fez as ações da empresa subirem mais de 30% e ajudou na recuperação das bolsas dos EUA e da Europa.",
+  "headline": "Retorno de CEO impulsiona Nvidia e Fazenda revisa PIB e inflação",
+  "overview": "A economia global repercute o retorno de Jensen Huang à liderança da Nvidia, fazendo as ações dispararem e as bolsas internacionais se recuperarem. No cenário nacional, o Ministério da Fazenda reduziu a projeção do PIB de 2027 e elevou a inflação, enquanto o Congresso avalia medidas de ajuste fiscal.",
   "points": [
    {
-    "text": "O dólar chegou a R$ 6,0055 na máxima desta segunda (23), a primeira vez acima de R$ 6 desde 9 de abril de 2025, com a votação do pacote fiscal no radar; o Ibovespa caía.",
-    "event_ids": [
-     "evt-38a81467fda7bf3c"
-    ]
-   },
-   {
-    "text": "No boletim Focus, analistas elevaram de R$ 5,40 para R$ 5,55 a projeção para o dólar no fim de 2026 e aumentaram a expectativa para a inflação.",
-    "event_ids": [
-     "evt-3157e4d6c66fa21f"
-    ]
-   },
-   {
-    "text": "A Nvidia reconduziu Jensen Huang ao cargo de CEO e suas ações subiram mais de 30%; as bolsas dos EUA e da Europa se recuperaram. Desde o pico em outubro, a empresa chegou a perder quase 50% do valor em Bolsa até 20 de novembro.",
+    "text": "A Nvidia reconduziu Jensen Huang ao cargo de CEO, gerando alta de mais de 30% nas ações da empresa, recuperação nas bolsas dos Estados Unidos e da Europa e um ganho de mercado de US$ 953 bilhões em um único dia.",
     "event_ids": [
      "evt-4b9b15a56546adcb",
-     "evt-ddd45338b16222a8"
+     "evt-ddd45338b16222a8",
+     "evt-425f541f5bf3cfd9"
     ]
    },
    {
-    "text": "O Conselho da Justiça Federal liberou R$ 2,8 bilhões para pagar atrasados a aposentados, pensionistas e outros beneficiários que venceram ações contra o INSS.",
+    "text": "Segundo o Ministério da Fazenda, a projeção do PIB para 2027 foi reduzida de 2,3% para 1,8% e a estimativa de inflação pelo IPCA subiu de 3,8% para 4,5% no Boletim Macrofiscal.",
+    "event_ids": [
+     "evt-b3c88d6fd380d907"
+    ]
+   },
+   {
+    "text": "A Câmara dos Estados pode votar o projeto de lei complementar de ajuste fiscal para atingir superávit primário, medida que o ministro da Fazenda, Dario Durigan, classificou como um primeiro passo.",
+    "event_ids": [
+     "evt-293dd53625559149",
+     "evt-9c25ae3614eec119"
+    ]
+   },
+   {
+    "text": "O Conselho da Justiça Federal liberou R$ 2,8 bilhões para o pagamento de atrasados a beneficiários que venceram o INSS na Justiça.",
     "event_ids": [
      "evt-1f549dee155f3884"
     ]
    },
    {
-    "text": "Portaria da Receita Federal abriu a qualquer empresa com CNPJ o ambiente de testes do piloto da CBS, da reforma tributária.",
+    "text": "O Boletim Focus do Banco Central apontou que o mercado financeiro elevou a estimativa para o dólar em 2026 para R$ 5,55.",
     "event_ids": [
-     "evt-103eba11077caad5"
+     "evt-3157e4d6c66fa21f"
     ]
    },
    {
-    "text": "O Minha Casa, Minha Vida respondeu por 58,6% dos lançamentos residenciais no terceiro trimestre de 2026, participação recorde, com 70,1 mil unidades.",
+    "text": "A Receita Federal permitiu a participação de qualquer empresa no piloto da Reforma Tributária relativo à CBS, e a CVM suspendeu o registro de companhia aberta do BRB e de outras quatro empresas.",
     "event_ids": [
-     "evt-70e098f309ea7998"
+     "evt-103eba11077caad5",
+     "evt-c2629d85b9b32591"
     ]
    }
   ],
-  "watch": null,
-  "generated_at": "2026-11-23T17:39:21Z",
-  "model": null,
-  "author": "Claude (VS Code)",
-  "signature": "ac360be4615a",
+  "watch": "A Câmara dos Deputados deve votar o projeto de ajuste fiscal nos próximos dias.",
+  "generated_at": "2026-11-23T22:06:36Z",
+  "model": "gemini-3.5-flash-lite",
+  "author": "IA",
+  "signature": "640b145dda48",
   "event_ids": [
-   "evt-ddd45338b16222a8",
-   "evt-4b9b15a56546adcb",
-   "evt-1f549dee155f3884",
-   "evt-3157e4d6c66fa21f",
-   "evt-38a81467fda7bf3c",
+   "evt-b3c88d6fd380d907",
+   "evt-293dd53625559149",
    "evt-103eba11077caad5",
-   "evt-b44b84851c0f8a0c",
-   "evt-2f30f852ea49a4e0",
-   "evt-68af0175b51285da",
-   "evt-70e098f309ea7998"
+   "evt-3157e4d6c66fa21f",
+   "evt-4b9b15a56546adcb",
+   "evt-c2629d85b9b32591",
+   "evt-ddd45338b16222a8",
+   "evt-425f541f5bf3cfd9",
+   "evt-9c25ae3614eec119",
+   "evt-1f549dee155f3884"
   ],
-  "stale": true
+  "stale": false
  },
  "mundo": {
-  "headline": "Ameaças de bomba atingem escolas na Europa; Ucrânia afunda navio russo na costa da Líbia",
-  "overview": "Centenas de escolas na Alemanha receberam ameaças de bomba por e-mail, em meio a uma onda de falsos alertas na Europa. A Ucrânia afundou embarcações russas na costa da Líbia, e nos EUA o Exército planeja detonar explosivos em Iowa apesar de uma ordem judicial.",
+  "headline": "Supremo da Espanha anistia líder separatista e Europa registra alertas de bomba",
+  "overview": "O Supremo Tribunal da Espanha concedeu anistia ao líder separatista Carles Puigdemont. Enquanto isso, centenas de escolas na Alemanha e em outros países europeus receberam falsas ameaças de bomba, e milhares de pessoas foram evacuadas de uma arena no Reino Unido devido à liberação de uma substância desconhecida.",
   "points": [
    {
-    "text": "Centenas de escolas na Alemanha — mais de 450, segundo o g1 — receberam ameaças de bomba por e-mail; a polícia descarta perigo concreto, em meio a uma onda de falsos alertas em colégios de toda a Europa.",
+    "text": "O Supremo Tribunal da Espanha encerrou o processo criminal contra o líder separatista catalão Carles Puigdemont referente à tentativa de independência de 2017.",
+    "event_ids": [
+     "evt-e937f81480294ff1"
+    ]
+   },
+   {
+    "text": "Mais de 450 escolas na Alemanha receberam ameaças de bomba por e-mail, em meio a uma onda de falsos alarmes em colégios por toda a Europa, segundo a polícia, que descarta perigo concreto.",
     "event_ids": [
      "evt-9bbbbea4d186b3d5"
     ]
    },
    {
-    "text": "A Ucrânia afundou duas embarcações russas na costa da Líbia, incluindo um navio de guerra atracado em uma base militar, em ataque de drones que Volodymyr Zelensky chamou de \"exemplar\".",
-    "event_ids": [
-     "evt-e28d5bfd95e51328"
-    ]
-   },
-   {
-    "text": "O Exército dos EUA pretende detonar cerca de cinco toneladas de explosivos deteriorados em Iowa, mesmo após uma decisão judicial suspender a operação e apesar de alertas de ambientalistas.",
-    "event_ids": [
-     "evt-e95c9ad7aba29a4f"
-    ]
-   },
-   {
-    "text": "Em Manchester, milhares de pessoas foram retiradas de uma arena durante show do rapper Don Toliver após a liberação de uma \"substância desconhecida\"; mais de 80 receberam atendimento médico.",
+    "text": "Milhares de pessoas foram retiradas de uma arena em Manchester após a liberação de uma substância desconhecida durante um show, deixando mais de 80 pessoas em atendimento médico.",
     "event_ids": [
      "evt-799e09c06def94a1"
     ]
    },
    {
-    "text": "Donald Trump celebrou a volta de Jensen Huang ao comando da Nvidia e disse que não há risco à segurança nacional.",
+    "text": "O presidente dos Estados Unidos, Donald Trump, celebrou o retorno de Jensen Huang ao comando da Nvidia e criticou o governador da Califórnia por comutar penas de morte.",
     "event_ids": [
+     "evt-dd2db1026f90685e",
      "evt-b91ed7a4f39ef41e"
     ]
    },
    {
-    "text": "O narcotraficante mexicano Fausto Isidro Meza Flores, da lista dos 10 mais procurados do FBI, foi detido em operação de forças especiais com participação do Exército que deixou pelo menos 11 mortos.",
+    "text": "O Exército dos Estados Unidos planeja detonar cinco toneladas de explosivos em Iowa, apesar de ordem judicial contrária e de alertas de ambientalistas sobre os riscos da operação.",
     "event_ids": [
-     "evt-d148bd4729ad4430"
+     "evt-e95c9ad7aba29a4f"
+    ]
+   },
+   {
+    "text": "A Ucrânia afundou duas embarcações russas na costa da Líbia com ataques de drones, ação elogiada pelo presidente ucraniano Volodymyr Zelensky.",
+    "event_ids": [
+     "evt-e28d5bfd95e51328"
     ]
    }
   ],
   "watch": null,
-  "generated_at": "2026-11-23T17:39:21Z",
-  "model": null,
-  "author": "Claude (VS Code)",
-  "signature": "fd5facc9ce7b",
+  "generated_at": "2026-11-23T22:06:36Z",
+  "model": "gemini-3.5-flash-lite",
+  "author": "IA",
+  "signature": "0953cca66af6",
   "event_ids": [
+   "evt-e937f81480294ff1",
+   "evt-1e07558ae093b1e6",
    "evt-9bbbbea4d186b3d5",
+   "evt-dd2db1026f90685e",
    "evt-b91ed7a4f39ef41e",
-   "evt-533cbd5089ecacce",
-   "evt-799e09c06def94a1",
    "evt-d787de1824686433",
-   "evt-d148bd4729ad4430",
-   "evt-e28d5bfd95e51328",
    "evt-e95c9ad7aba29a4f",
-   "evt-205193826db3f8b8",
-   "evt-108ab00b534039d1"
+   "evt-799e09c06def94a1",
+   "evt-d148bd4729ad4430",
+   "evt-e28d5bfd95e51328"
   ],
-  "stale": true
+  "stale": false
  },
  "technology_ai": {
-  "headline": "Nvidia reconduz Jensen Huang; Google personaliza a Busca e DeepMind usa agentes em algoritmos quânticos",
-  "overview": "A Nvidia trouxe Jensen Huang de volta como CEO com apoio de altos funcionários do governo americano, e Donald Trump endossou o retorno. Entre os anúncios, o Google apresentou uma Busca mais personalizada e a DeepMind descreveu o uso de equipes de agentes com verificação formal para aprimorar algoritmos quânticos.",
+  "headline": "Jensen Huang retorna à liderança da Nvidia e avanços em inteligência artificial marcam o setor",
+  "overview": "Jensen Huang foi reintegrado como CEO e presidente do conselho da Nvidia após avaliações governamentais. No setor de inteligência artificial, empresas anunciaram novos recursos de agentes e automação, enquanto debates sobre consciência de IA e desempenho de APIs continuam.",
   "points": [
    {
-    "text": "A Nvidia reverteu sua decisão e trouxe Jensen Huang de volta como CEO, com apoio de altos funcionários do governo dos EUA; Donald Trump endossou o retorno e pediu que a empresa continue sua investigação de controle de exportação.",
+    "text": "Jensen Huang foi reintegrado como CEO e presidente do conselho da Nvidia, após o conselho afirmar que altos funcionários do governo confirmaram que ele não representa risco à segurança nacional, com endosso do presidente dos EUA e citação ao Procurador-Geral.",
     "event_ids": [
-     "evt-ecab1061c917e910",
-     "evt-57e4d9bc2d25bc90"
+     "evt-57e4d9bc2d25bc90",
+     "evt-66cc673a6baaba00"
     ]
    },
    {
-    "text": "A Google DeepMind descreveu o uso de equipes de agentes e verificação formal para aprimorar algoritmos quânticos voltados a fusão e química.",
+    "text": "O Google DeepMind utilizou equipes de agentes e verificação formal para aprimorar algoritmos quânticos voltados a áreas como fusão e química.",
     "event_ids": [
      "evt-61dcf1169479ac82"
     ]
    },
    {
-    "text": "O Google anunciou em seu blog uma Busca mais personalizada para cada usuário.",
+    "text": "O Google apresentou uma nova barra de pesquisa com foco em inteligência pessoal, conectando diversos aplicativos da marca.",
     "event_ids": [
      "evt-39c2da17cef629dc"
     ]
    },
    {
-    "text": "Um teste da Microsoft com seis modelos e 1.356 execuções indicou que o estilo da API (REST, POST-only ou RPC) não é o fator decisivo para o sucesso de agentes de código.",
+    "text": "A Anthropic apontou a possibilidade de IA consciente como fator de risco antes de abrir seu capital, gerando ceticismo de um filósofo.",
+    "event_ids": [
+     "evt-1ee9f5994a817a2b"
+    ]
+   },
+   {
+    "text": "A Microsoft testou estilos de API e indicou que o fator decisivo para o sucesso de agentes de código não tem relação com o estilo da API.",
     "event_ids": [
      "evt-1ff6b35879607ca9"
     ]
    },
    {
-    "text": "A Microsoft admitiu que alguns e-mails não foram entregues durante o apagão do Outlook, que deixou usuários horas sem acesso.",
+    "text": "A Richpanel passou a utilizar novos modelos da OpenAI para automatizar o suporte empresarial por meio de agentes.",
     "event_ids": [
-     "evt-66d5e198926b91b3"
-    ]
-   },
-   {
-    "text": "No blog da Hugging Face, um guia sobre como construir e manter avaliações de agentes e o RoboTrack, sobre rastreamento de pontos para manipulação robótica no mundo real.",
-    "event_ids": [
-     "evt-6fd4c32fe34a4cba",
-     "evt-ca38829e73128713"
+     "evt-680b35173b971311"
     ]
    }
   ],
   "watch": null,
-  "generated_at": "2026-11-23T17:39:21Z",
-  "model": null,
-  "author": "Claude (VS Code)",
-  "signature": "e84ecf1df9c9",
+  "generated_at": "2026-11-23T22:06:36Z",
+  "model": "gemini-3.5-flash-lite",
+  "author": "IA",
+  "signature": "e538f6018ebc",
   "event_ids": [
+   "evt-61dcf1169479ac82",
    "evt-1ff6b35879607ca9",
    "evt-57e4d9bc2d25bc90",
-   "evt-6fd4c32fe34a4cba",
+   "evt-680b35173b971311",
    "evt-39c2da17cef629dc",
-   "evt-61dcf1169479ac82",
-   "evt-ecab1061c917e910",
-   "evt-77ab3d65a27896e8",
-   "evt-a88353929e99aa7d",
-   "evt-ca38829e73128713",
-   "evt-66d5e198926b91b3"
+   "evt-6fd4c32fe34a4cba",
+   "evt-1ee9f5994a817a2b",
+   "evt-f8a4e02f42124693",
+   "evt-66cc673a6baaba00",
+   "evt-77ab3d65a27896e8"
   ],
-  "stale": true
+  "stale": false
  },
  "ciencia_saude": {
-  "headline": "Fracasso da COP31 reabre debate sobre conferências da ONU; NHS lança estudo de IA contra câncer de mama",
-  "overview": "O fracasso da COP31, em Antália, na Turquia, reacendeu os apelos por reforma no modelo das conferências climáticas da ONU, e a influência da Arábia Saudita pesou no resultado, segundo a Folha. Na saúde, o NHS britânico iniciou o maior estudo do mundo sobre IA na detecção de câncer de mama, e entidades alertam para perdas do SUS com o ajuste fiscal.",
+  "headline": "Avanços em inteligência artificial na saúde e impactos climáticos",
+  "overview": "O serviço de saúde britânico iniciou um amplo estudo com inteligência artificial para detectar câncer de mama, enquanto no Brasil o estado de São Paulo começou a aplicar vacinas contra a mpox e o Rio registra alta nos casos de Covid. No cenário ambiental, o fracasso da COP31 gerou debates sobre o modelo das conferências climáticas da ONU.",
   "points": [
    {
-    "text": "O fracasso da COP31, na cidade turca de Antália, reacendeu os apelos por reforma de um sistema em que uma pequena minoria, ou até um único país, pode bloquear avanços; segundo a Folha, a influência da Arábia Saudita pesou no resultado.",
-    "event_ids": [
-     "evt-51d9ebc2c1bad477",
-     "evt-dac0d383c997442b"
-    ]
-   },
-   {
-    "text": "O serviço público de saúde britânico (NHS) anunciou o maior estudo mundial sobre detecção de câncer de mama com auxílio de IA, com cerca de 700 mil mulheres nos próximos três anos.",
+    "text": "O serviço público de saúde britânico iniciou o maior estudo mundial sobre a detecção de câncer de mama com auxílio de inteligência artificial, envolvendo 700 mil mulheres em três anos.",
     "event_ids": [
      "evt-6967b745689cded8"
     ]
    },
    {
-    "text": "Entidades ligadas à saúde pública alertam que o SUS pode perder até R$ 10 bilhões por ano em recursos obrigatórios com o ajuste fiscal conhecido como plano Moretti, aprovado pelo Senado na quarta (18).",
+    "text": "Um estudo demonstrou que a combinação de dois medicamentos aumentou a sobrevida mediana de pacientes com câncer de pulmão agressivo em estágio extenso.",
+    "event_ids": [
+     "evt-af697816726c83a6"
+    ]
+   },
+   {
+    "text": "Segundo o Ministério da Saúde, a OMS monitora a variante PJ.2.1 após o estado do Rio de Janeiro apresentar incidência de síndrome respiratória aguda grave em nível de alerta.",
+    "event_ids": [
+     "evt-baeb0f5e3c0381a3"
+    ]
+   },
+   {
+    "text": "O estado de São Paulo começou a distribuir mil novas doses da vacina contra a mpox recebidas do Ministério da Saúde.",
+    "event_ids": [
+     "evt-c612272695c42060"
+    ]
+   },
+   {
+    "text": "Entidades de saúde pública alertam que o SUS pode perder até R$ 10 bilhões de recursos obrigatórios por ano devido ao projeto de ajuste fiscal aprovado no Senado.",
     "event_ids": [
      "evt-fd0004be8893dfdb"
     ]
    },
    {
-    "text": "O temor de uma seca mais intensa provocada pelo El Niño em 2027 acirrou a disputa entre estados do Nordeste pela água da transposição do rio São Francisco.",
+    "text": "O colapso da conferência climática COP31, influenciado por impasses e pela atuação de países como a Arábia Saudita, reabriu o debate sobre a reforma no modelo de negociações da ONU.",
     "event_ids": [
-     "evt-2596c728bb556eb8"
-    ]
-   },
-   {
-    "text": "Astrônomos observaram uma estrela 18 mil vezes mais brilhante que o Sol engolindo uma companheira menor, em fusão descrita na revista Nature.",
-    "event_ids": [
-     "evt-bdfd43b5cbb16b49"
+     "evt-dac0d383c997442b",
+     "evt-51d9ebc2c1bad477"
     ]
    }
   ],
   "watch": null,
-  "generated_at": "2026-11-23T17:39:21Z",
-  "model": null,
-  "author": "Claude (VS Code)",
-  "signature": "82b1d6b18757",
+  "generated_at": "2026-11-23T22:06:36Z",
+  "model": "gemini-3.5-flash-lite",
+  "author": "IA",
+  "signature": "e083b643bb62",
   "event_ids": [
-   "evt-bdfd43b5cbb16b49",
    "evt-6967b745689cded8",
+   "evt-af697816726c83a6",
+   "evt-baeb0f5e3c0381a3",
+   "evt-c612272695c42060",
    "evt-6625feef0db7a0a0",
    "evt-fd0004be8893dfdb",
-   "evt-4c45523cb619ba10",
-   "evt-cccb8dbe3ff5e5b5",
    "evt-dac0d383c997442b",
+   "evt-4c45523cb619ba10",
    "evt-51d9ebc2c1bad477",
-   "evt-2596c728bb556eb8",
-   "evt-5ffa2f889a7315ce"
+   "evt-bdfd43b5cbb16b49"
   ],
-  "stale": true
+  "stale": false
  }
 }
