@@ -35,6 +35,13 @@ class MockGeminiClient:
                 "points": [{"text": f"{SAMPLE_MARK} {it['title']}", "refs": [it["ref"]]} for it in items[:4]],
                 "watch": None,
             }
+        if "<<DIGEST>>" in prompt:
+            payload = json.loads(prompt[prompt.index("<<DIGEST>>") + 10:prompt.index("<</DIGEST>>")])
+            return {"items": [
+                {"ref": it["ref"], "title_pt": f"{SAMPLE_MARK} {it['title']}",
+                 "summary": f"{SAMPLE_MARK} Parágrafo simulado explicando a notícia: {it['title']}."}
+                for it in payload
+            ]}
         if "<<TRANSLATE>>" in prompt:
             payload = json.loads(prompt[prompt.index("<<TRANSLATE>>") + 13:prompt.index("<</TRANSLATE>>")])
             return {"items": [

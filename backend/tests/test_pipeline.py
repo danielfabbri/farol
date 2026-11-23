@@ -162,3 +162,19 @@ def test_brief_failure_keeps_previous_as_stale(settings):
     latest = load(settings.data_dir / "latest.json")
     tech = next(s for s in latest["sections"] if s["id"] == "technology_ai")
     assert tech["brief"]["stale"] is True
+
+
+def test_digest_writes_short_paragraph_for_recent_articles(settings):
+    s = replace(settings, analysis_enabled=False)
+    run(s, session=NoNetworkSession(), now=utcnow())
+    latest = load(s.data_dir / "latest.json")
+    with_text = [a for a in latest["articles"] if len(a["excerpt"]) >= s.digest_min_excerpt_chars]
+    assert with_text and all(a["summary"].startswith("[FICTÍCIO] Parágrafo") for a in with_text)
+    assert all(not a["ai_processed"] for a in latest["articles"])
+
+
+def test_digest_disabled_leaves_summary_empty(settings):
+    s = replace(settings, digest_enabled=False, analysis_enabled=False)
+    run(s, session=NoNetworkSession(), now=utcnow())
+    latest = load(s.data_dir / "latest.json")
+    assert all(not a["summary"] for a in latest["articles"])

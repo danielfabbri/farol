@@ -150,6 +150,8 @@ data class Article(
 ) {
     val displayTitle: String get() = titlePt?.takeIf { it.isNotBlank() } ?: originalTitle
     val publishedOrCollected: String get() = publishedAt ?: collectedAt
+    /** Momento da publicação em milissegundos (para ordenar: mais recente primeiro). */
+    val timeMillis: Long get() = isoMillis(publishedOrCollected)
     /** Texto curto para listas: resumo da IA, senão trecho traduzido, senão trecho original. */
     val preview: String? get() = summary ?: excerptPt ?: excerpt.takeIf { it.isNotBlank() }
     val isTranslatedOnly: Boolean get() = !aiProcessed && titlePt != null
@@ -188,3 +190,11 @@ val FarolJson = Json {
     coerceInputValues = true
     explicitNulls = false
 }
+
+
+fun isoMillis(value: String?): Long =
+    value?.let { runCatching { java.time.OffsetDateTime.parse(it).toInstant().toEpochMilli() }.getOrNull() } ?: 0L
+
+/** Momento da notícia mais recente do acontecimento. */
+fun Event.latestMillis(articles: Map<String, Article>): Long =
+    articleIds.mapNotNull { articles[it]?.timeMillis }.maxOrNull()?.takeIf { it > 0 } ?: isoMillis(lastSeen)

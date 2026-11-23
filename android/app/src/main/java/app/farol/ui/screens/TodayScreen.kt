@@ -55,6 +55,7 @@ import androidx.compose.ui.unit.sp
 import app.farol.data.SyncResult
 import app.farol.data.model.Article
 import app.farol.data.model.Event
+import app.farol.data.model.latestMillis
 import app.farol.data.model.FilterInfo
 import app.farol.data.model.LatestFeed
 import app.farol.data.model.Section
@@ -131,11 +132,9 @@ fun TodayScreen(
                 if (section.filters.isNotEmpty()) {
                     item { TopicChips(section.filters, topic) { topic = it } }
                 }
-                val ordered = run {
-                    val inSection = feed.events.filter { it.category == section.id && it.matches(topic, arts) }
-                    val hl = section.highlights.mapNotNull { id -> inSection.firstOrNull { it.id == id } }
-                    hl + inSection.filter { it !in hl }.sortedByDescending { it.score }
-                }
+                // Sempre da mais recente para a mais antiga.
+                val ordered = feed.events.filter { it.category == section.id && it.matches(topic, arts) }
+                    .sortedByDescending { it.latestMillis(arts) }
                 val shown = ordered.take(state.highlightLimit + state.otherLimit)
                 val label = topic?.let { t -> section.filters.firstOrNull { it.id == t }?.label } ?: section.label
                 item { SectionHeader(label, "${shown.size} de ${ordered.size}", HPad) }
@@ -169,6 +168,7 @@ fun TodayScreen(
 
             // ---------------- Capa ----------------
             val highlights = feed.highlights.mapNotNull { state.eventsById[it] }.take(state.highlightLimit)
+                .sortedByDescending { it.latestMillis(arts) }
             val readCount = highlights.count(isRead)
             item { SectionHeader("Destaques", "$readCount de ${highlights.size} lidos", HPad) }
             itemsIndexed(highlights, key = { _, e -> e.id }) { i, event ->

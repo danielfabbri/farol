@@ -50,6 +50,7 @@ class Article(BaseModel):
     ai_model: str | None = None
     ai_processed_at: datetime | None = None
     ai_attempts: int = 0
+    digest_attempts: int = 0  # tentativas do resumo curto (parágrafo)
     source_priority: int = 3
     is_sample: bool = False
 

@@ -85,7 +85,7 @@ fun ExploreScreen(state: UiState, onOpenArticle: (String) -> Unit, onOpenDay: (S
     val sourceCounts = base.groupingBy { it.sourceName }.eachCount().entries.sortedByDescending { it.value }.map { it.key to it.value }
     val activeSource = source?.takeIf { s -> sourceCounts.any { it.first == s } }
     val results = base.filter { activeSource == null || it.sourceName == activeSource }
-        .sortedWith(compareByDescending<app.farol.data.model.Article> { it.relevanceScore ?: -1 }.thenByDescending { it.publishedOrCollected })
+        .sortedByDescending { it.timeMillis }
 
     LazyColumn(contentPadding = PaddingValues(vertical = 12.dp), modifier = Modifier.fillMaxSize()) {
         item { Box(Modifier.padding(horizontal = 20.dp)) { ScreenTitle("Explorar", "Notícias das últimas 48 horas.") } }
@@ -214,7 +214,7 @@ fun ArchiveDayScreen(
             null, ArchiveState.Loading -> Box(Modifier.padding(padding).fillMaxSize(), contentAlignment = Alignment.Center) { CircularProgressIndicator() }
             is ArchiveState.Error -> Column(Modifier.padding(padding).padding(20.dp)) { NoticeCard(archive.message) }
             is ArchiveState.Loaded -> LazyColumn(Modifier.padding(padding), contentPadding = PaddingValues(horizontal = 20.dp, vertical = 8.dp)) {
-                val list = archive.articles.sortedByDescending { it.relevanceScore ?: -1 }
+                val list = archive.articles.sortedByDescending { it.timeMillis }
                 if (list.isEmpty()) item { EmptyState("Dia sem notícias", "Nenhuma notícia registrada nesta data.") }
                 items(list, key = { it.id }) { a ->
                     CompactArticleRow(a, state.labelFor(a), a.id in state.readIds) { onOpenArticle(a.id) }

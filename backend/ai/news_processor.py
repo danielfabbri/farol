@@ -127,6 +127,61 @@ def translate_articles(
     return done, None
 
 
+def summarize_articles(
+    client: JsonGenerator,
+    articles: list[Article],
+    usage: AiUsage,
+    *,
+    batch_size: int,
+    daily_limit: int,
+    run_limit: int,
+    excerpt_chars: int = 700,
+) -> tuple[int, str | None]:
+    """Um parágrafo curto explicando cada notícia (e o título em português). Retorna (resumidas, motivo_de_parada)."""
+    from backend.ai.prompts import DIGEST_SCHEMA, DIGEST_SYSTEM_PROMPT, build_digest_prompt
+    from backend.models.analysis import Digest
+
+    done, run_calls = 0, 0
+    for start in range(0, len(articles), batch_size):
+        if usage.state.get("digest_calls", 0) >= daily_limit or run_calls >= run_limit:
+            return done, "budget_reached"
+        batch = articles[start:start + batch_size]
+        refs = {f"d{i + 1}": a for i, a in enumerate(batch)}
+        items = [{"ref": r, "title": a.original_title, "excerpt": truncate(a.excerpt, excerpt_chars)} for r, a in refs.items()]
+        before = getattr(client, "calls_made", None)
+        try:
+            data = client.generate_json(DIGEST_SYSTEM_PROMPT, build_digest_prompt(items), DIGEST_SCHEMA)
+        except GeminiError as exc:
+            after = getattr(client, "calls_made", None)
+            n = max(0, after - before) if before is not None and after is not None else 1
+            usage.state["digest_calls"] = usage.state.get("digest_calls", 0) + n
+            log.warning("Resumo curto falhou: %s", exc)
+            if isinstance(exc, QuotaExceeded):
+                return done, "quota_exhausted"
+            return done, "unavailable" if isinstance(exc, ServiceUnavailable) else "error"
+        after = getattr(client, "calls_made", None)
+        n = max(1, after - before) if before is not None and after is not None else 1
+        usage.state["digest_calls"] = usage.state.get("digest_calls", 0) + n
+        run_calls += n
+        for a in batch:
+            a.digest_attempts += 1
+        for raw in (data.get("items") if isinstance(data, dict) else None) or []:
+            if not isinstance(raw, dict) or raw.get("ref") not in refs:
+                continue
+            try:
+                dg = Digest.model_validate(raw)
+            except ValidationError:
+                continue
+            art = refs[dg.ref]
+            if art.ai_processed:
+                continue  # nunca sobrescreve a análise completa
+            art.summary = dg.summary.strip()
+            if art.language != "pt" and not art.title_pt:
+                art.title_pt = dg.title_pt.strip()
+            done += 1
+    return done, None
+
+
 @dataclass
 class ProcessReport:
     processed: int = 0

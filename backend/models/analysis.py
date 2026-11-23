@@ -121,6 +121,26 @@ class Translation(BaseModel):
         return self
 
 
+class Digest(BaseModel):
+    """Resumo curto (um parágrafo) + título em português."""
+
+    model_config = ConfigDict(extra="ignore")
+
+    ref: str
+    title_pt: str = Field(min_length=3, max_length=240)
+    summary: str = Field(min_length=40, max_length=600)
+
+    @model_validator(mode="before")
+    @classmethod
+    def _fix_text(cls, data):
+        return _fix_all(data)
+
+    @model_validator(mode="after")
+    def _quality(self):
+        _reject_corrupted(self.title_pt, self.summary)
+        return self
+
+
 class BatchAnalysis(BaseModel):
     items: list[dict] = Field(default_factory=list)
 

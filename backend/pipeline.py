@@ -16,7 +16,7 @@ from backend.ai.intelligence_analyzer import (
 )
 from backend.ai.mock_client import MockGeminiClient
 from backend.ai.fallback_translator import translate_titles
-from backend.ai.news_processor import AiUsage, NewsProcessor, translate_articles
+from backend.ai.news_processor import AiUsage, NewsProcessor, summarize_articles, translate_articles
 from backend.ai.section_briefer import generate_brief, signature, top_events
 from backend.ai.gemini_client import FatalGeminiError, GeminiError, QuotaExceeded, ServiceUnavailable
 from backend.models.edition import Section, SectionBrief
@@ -194,8 +194,16 @@ def run(
          and a.language != "pt" and a.reference_time >= pending_cut),
         key=lambda a: (a.source_priority, a.reference_time), reverse=True,
     )
+    # Resumo curto (um parágrafo) das notícias da janela publicada, mais recentes primeiro.
+    digest_cut = now - timedelta(hours=settings.latest_window_hours)
+    digest_todo = sorted(
+        (a for a in working.values()
+         if settings.digest_enabled and not a.summary and not a.off_topic and a.digest_attempts < 2
+         and len(a.excerpt or "") >= settings.digest_min_excerpt_chars and a.reference_time >= digest_cut),
+        key=lambda a: a.reference_time, reverse=True,
+    )
     translator = None
-    if untranslated and client is not None:
+    if (untranslated or digest_todo) and client is not None:
         if ai_client is not None or settings.ai_mock:
             translator = client
         elif settings.has_api_key:
@@ -205,7 +213,16 @@ def run(
                 exhausted_models=set(usage.state.get("exhausted_models", [])) | getattr(client, "exhausted_models", set()),
                 min_interval=settings.ai_min_interval_seconds,
             )
-    if translator is not None:
+    digested, dg_stop = 0, None
+    if translator is not None and digest_todo:
+        digested, dg_stop = summarize_articles(
+            translator, digest_todo, usage, batch_size=settings.digest_batch_size,
+            daily_limit=settings.max_digest_calls_per_day, run_limit=settings.max_digest_calls_per_run,
+        )
+        log.info("Resumos curtos: %d de %d%s", digested, len(digest_todo), f" (parou: {dg_stop})" if dg_stop else "")
+        untranslated = [a for a in untranslated if not a.title_pt]
+    ai_report["digested"] = digested
+    if translator is not None and untranslated and dg_stop != "quota_exhausted":
         translated, tr_stop = translate_articles(
             translator, untranslated, usage, batch_size=settings.translation_batch_size,
             daily_limit=settings.max_translation_calls_per_day, run_limit=settings.max_translation_calls_per_run,

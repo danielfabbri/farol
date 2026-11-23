@@ -73,6 +73,12 @@ class Settings:
     max_translation_calls_per_run: int = 2
     max_translation_calls_per_day: int = 40
     title_fallback_enabled: bool = True
+    # Resumo curto: um parágrafo por notícia (modelos "lite", cota própria)
+    digest_enabled: bool = True
+    digest_batch_size: int = 12
+    max_digest_calls_per_run: int = 12
+    max_digest_calls_per_day: int = 120
+    digest_min_excerpt_chars: int = 60
     # Imagem de destaque da página da notícia quando o feed não traz foto
     image_enrichment_enabled: bool = True
     max_image_lookups_per_run: int = 80
@@ -125,6 +131,7 @@ def load_settings(*, dev: bool = False, mock_ai: bool = False, no_ai: bool = Fal
         ai_mock=mock_ai or dev or _bool("FAROL_AI_MOCK", False),
         analysis_enabled=_bool("FAROL_AI_ANALYSIS", False),
         briefs_enabled=_bool("FAROL_SECTION_BRIEFS", False),
+        digest_enabled=_bool("FAROL_DIGEST", True),
         dev_mode=dev,
         max_ai_calls_per_run=_int("FAROL_MAX_AI_CALLS_PER_RUN", 10),
         max_ai_calls_per_day=_int("FAROL_MAX_AI_CALLS_PER_DAY", 30),

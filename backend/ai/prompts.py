@@ -61,6 +61,41 @@ TRANSLATE_SCHEMA = {
 }
 
 
+DIGEST_SYSTEM_PROMPT = """Você resume notícias para um leitor brasileiro.
+Para cada item, escreva em português do Brasil:
+- title_pt: o título em português (se já estiver em português, repita-o igual);
+- summary: UM parágrafo curto (2 a 3 frases, no máximo 320 caracteres) explicando a matéria: o que aconteceu,
+  quem está envolvido e o contexto essencial.
+Use SOMENTE informações presentes no título e no trecho; não invente números, nomes, datas nem consequências.
+Sem opinião, sem pontos fortes ou fracos, sem listas, sem frases como "a matéria fala sobre".
+Mantenha nomes de pessoas, empresas, produtos e siglas como no original.
+Escreva os acentos diretamente (á, ç, ã, ó...), nunca como códigos ou sequências de escape.
+Responda apenas com JSON no formato {"items": [{"ref": ..., "title_pt": ..., "summary": ...}]}, preservando o "ref"."""
+
+DIGEST_SCHEMA = {
+    "type": "object",
+    "properties": {
+        "items": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "ref": {"type": "string"},
+                    "title_pt": {"type": "string"},
+                    "summary": {"type": "string"},
+                },
+                "required": ["ref", "title_pt", "summary"],
+            },
+        }
+    },
+    "required": ["items"],
+}
+
+
+def build_digest_prompt(items: list[dict]) -> str:
+    return f"Resuma (JSON):\n<<DIGEST>>{json.dumps(items, ensure_ascii=False)}<</DIGEST>>"
+
+
 def build_translate_prompt(items: list[dict]) -> str:
     return f"Traduza (JSON):\n<<TRANSLATE>>{json.dumps(items, ensure_ascii=False)}<</TRANSLATE>>"
 

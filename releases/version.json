@@ -1,9 +1,9 @@
 {
-  "version_code": 7,
-  "version_name": "0.6.0",
+  "version_code": 8,
+  "version_name": "0.7.0",
   "apk": "releases/farol.apk",
-  "sha256": "53be112095c46015ff550148ea4bef5191702724c669dd42c0d79e516f57731a",
+  "sha256": "a36f8eb4450d57e641c1e77caa56725b16ba35dbcde1b4550b5a3c16b28c9af7",
   "size": 1811024,
-  "notes": "Abriu, atualizou: o app busca a edição mais nova sempre que é aberto (sem esperar o cache) e, se ela tiver mais de 1 hora, pede uma coleta nova sozinho. Resumos das seções removidos.",
-  "published_at": "2026-11-23T22:15:42Z"
+  "notes": "Notícias sempre da mais recente para a mais antiga, em todas as seções. Cada notícia ganha um parágrafo curto explicando a matéria.",
+  "published_at": "2026-11-23T23:16:59Z"
 }
