@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Farol estilizado: torre, lanterna e feixes de luz (área segura 66dp). -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp" android:height="108dp"
+    android:viewportWidth="108" android:viewportHeight="108">
+    <path android:fillColor="#5B9BFF" android:fillAlpha="0.55" android:pathData="M61,38 L86,31 L86,47 Z" />
+    <path android:fillColor="#5B9BFF" android:fillAlpha="0.55" android:pathData="M47,38 L22,31 L22,47 Z" />
+    <path android:fillColor="#FFFFFF" android:pathData="M45,35 L54,27 L63,35 Z" />
+    <path android:fillColor="#5B9BFF" android:pathData="M47,36 L61,36 L61,43 L47,43 Z" />
+    <path android:fillColor="#FFFFFF" android:pathData="M48,45 L60,45 L63,80 L45,80 Z" />
+    <path android:fillColor="#0A1222" android:pathData="M48.6,55 L59.4,55 L59.8,59 L48.2,59 Z" />
+    <path android:fillColor="#0A1222" android:pathData="M47.6,67 L60.4,67 L60.8,71 L47.2,71 Z" />
+    <path android:fillColor="#FFFFFF" android:pathData="M39,81 L69,81 L69,85 L39,85 Z" />
+</vector>

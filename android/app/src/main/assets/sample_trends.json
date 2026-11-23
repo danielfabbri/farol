@@ -1,0 +1,27 @@
+{
+ "generated_at": "2026-11-23T14:45:27Z",
+ "is_sample": true,
+ "window_days": 7,
+ "disclaimer": "Sinais baseados em contagem de menções entre fontes. Não são previsões.",
+ "trends": [
+  {
+   "key": "technology:ai agents",
+   "label": "AI Agents",
+   "kind": "technology",
+   "first_seen": "2026-11-23T11:45:27Z",
+   "last_seen": "2026-11-23T13:45:27Z",
+   "article_count": 3,
+   "source_count": 3,
+   "event_count": 2,
+   "daily_counts": {
+    "2026-11-23": 3
+   },
+   "related_entities": [],
+   "event_ids": [
+    "evt-5736ca30b2ad4c06",
+    "evt-3d2c2bfd6ac1b1de"
+   ],
+   "status": "emerging"
+  }
+ ]
+}

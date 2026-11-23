@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+  <title>Exemplo Tech News (FICTÍCIO)</title>
+  <id>urn:example:tech-news</id>
+  <updated>__NOW_MINUS_1H__</updated>
+  <entry>
+    <title>[EXAMPLE] Example Labs launches Atlas agent framework, taking aim at enterprise automation</title>
+    <link href="https://news.example.org/2026/atlas-agent-framework-enterprise"/>
+    <id>urn:example:1</id>
+    <updated>__NOW_MINUS_1H__</updated>
+    <summary>Fictional coverage by an independent outlet of the same announcement.</summary>
+  </entry>
+  <entry>
+    <title>[EXAMPLE] Startup Nimbus raises Series A to build GPU cloud for AI inference</title>
+    <link href="https://news.example.org/2026/nimbus-series-a"/>
+    <id>urn:example:2</id>
+    <updated>__NOW_MINUS_8H__</updated>
+    <content type="html">&lt;p&gt;Fictional startup funding news about GPUs and inference.&lt;/p&gt;</content>
+  </entry>
+</feed>

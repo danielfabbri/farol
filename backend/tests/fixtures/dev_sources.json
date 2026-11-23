@@ -1,0 +1,8 @@
+{
+  "_doc": "Fontes FICTÍCIAS do modo de desenvolvimento (python -m backend.main --dev). Nunca usar em produção.",
+  "sources": [
+    {"id": "exemplo-labs", "name": "Exemplo Labs (fictício)", "url": "fixture://sample_rss.xml", "category": "technology_ai", "source_type": "primary", "priority": 5, "max_items_per_run": 10},
+    {"id": "exemplo-news", "name": "Exemplo Tech News (fictício)", "url": "fixture://sample_atom.xml", "category": "technology_ai", "source_type": "press", "priority": 3, "max_items_per_run": 10},
+    {"id": "exemplo-agregador", "name": "Exemplo Agregador (fictício)", "url": "fixture://sample_hn.xml", "category": "technology_ai", "source_type": "aggregator", "priority": 2, "max_items_per_run": 10, "require_keywords": true}
+  ]
+}

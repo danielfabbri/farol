@@ -1,0 +1,77 @@
+name: FAROL — coleta e inteligência
+
+on:
+  schedule:
+    # Horários de Brasília (UTC-3): 05h30, 11h30, 17h30, 20h30.
+    # O GitHub Actions usa UTC e pode atrasar alguns minutos em horários de pico.
+    - cron: "30 8 * * *"
+    - cron: "30 14 * * *"
+    - cron: "30 20 * * *"
+    - cron: "30 23 * * *"
+  workflow_dispatch:
+    inputs:
+      no_ai:
+        description: "Executar somente a coleta, sem IA"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+# Uma execução por vez; uma nova espera a anterior terminar (não cancela no meio do commit).
+concurrency:
+  group: farol-intelligence
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: backend/requirements*.txt
+
+      - name: Dependências
+        run: pip install -r backend/requirements-dev.txt
+
+      - name: Testes automatizados (offline, sem consumir cota)
+        run: python -m pytest backend/tests -q
+
+      - name: Coleta, IA e publicação dos dados
+        id: pipeline
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_MODEL: ${{ vars.GEMINI_MODEL }}
+          GEMINI_FALLBACK_MODELS: ${{ vars.GEMINI_FALLBACK_MODELS }}
+          FAROL_MAX_AI_CALLS_PER_DAY: ${{ vars.FAROL_MAX_AI_CALLS_PER_DAY }}
+          FAROL_MAX_AI_CALLS_PER_RUN: ${{ vars.FAROL_MAX_AI_CALLS_PER_RUN }}
+          PYTHONIOENCODING: utf-8
+        run: python -m backend.main ${{ inputs.no_ai && '--no-ai' || '' }}
+
+      - name: Commit dos dados
+        # Também grava o estado quando a coleta falha por completo (exit 1), para registrar a execução.
+        if: always() && (steps.pipeline.outcome == 'success' || steps.pipeline.outcome == 'failure')
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data
+          if git diff --cached --quiet; then
+            echo "Nenhuma mudança nos dados."
+            exit 0
+          fi
+          git commit -q -m "data: edição $(date -u +'%Y-%m-%d %H:%M') UTC"
+          for attempt in 1 2 3 4; do
+            if git push -q; then echo "Dados publicados."; exit 0; fi
+            echo "Push recusado (tentativa $attempt); sincronizando e tentando de novo..."
+            sleep $((attempt * 5))
+            git pull -q --rebase
+          done
+          echo "::error::Não foi possível publicar os dados após 4 tentativas."
+          exit 1

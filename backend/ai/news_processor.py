@@ -1,0 +1,203 @@
+"""Classificação, resumo e relação entre notícias em UMA chamada por lote.
+
+Responde às responsabilidades de classificação, resumo, relevância e relação com eventos
+anteriores sem multiplicar chamadas — essencial para caber na cota gratuita da Gemini.
+"""
+from __future__ import annotations
+
+import logging
+from dataclasses import dataclass, field
+from datetime import datetime
+from zoneinfo import ZoneInfo
+
+from pydantic import ValidationError
+
+from backend.ai.gemini_client import (
+    FatalGeminiError, GeminiError, JsonGenerator, QuotaExceeded, SchemaRejected, ServiceUnavailable,
+)
+from backend.ai.prompts import SYSTEM_PROMPT, build_batch_prompt, response_schema
+from backend.collectors.normalization import truncate
+from backend.models.analysis import ArticleAnalysis
+from backend.models.article import Article
+
+log = logging.getLogger(__name__)
+QUOTA_TZ = ZoneInfo("America/Los_Angeles")  # a cota diária da Gemini reinicia à meia-noite do Pacífico
+
+
+class AiUsage:
+    """Orçamento de chamadas por execução e por dia, persistido em data/state/ai_usage.json."""
+
+    def __init__(self, state: dict | None, now: datetime, *, daily_limit: int, run_limit: int):
+        day = now.astimezone(QUOTA_TZ).date().isoformat()
+        state = dict(state or {})
+        if state.get("day") != day:
+            state = {"day": day, "calls": 0, "quota_exhausted": False}
+        self.state = state
+        self.daily_limit = daily_limit
+        self.run_limit = run_limit
+        self.run_calls = 0
+
+    @property
+    def quota_exhausted(self) -> bool:
+        return bool(self.state.get("quota_exhausted"))
+
+    def can_call(self) -> bool:
+        return (
+            not self.quota_exhausted
+            and self.state["calls"] < self.daily_limit
+            and self.run_calls < self.run_limit
+        )
+
+    def record(self, n: int = 1) -> None:
+        self.state["calls"] += n
+        self.run_calls += n
+
+    def mark_exhausted(self) -> None:
+        self.state["quota_exhausted"] = True
+
+
+@dataclass
+class ProcessReport:
+    processed: int = 0
+    failed: int = 0
+    batches: int = 0
+    calls: int = 0
+    stopped_reason: str | None = None
+    errors: list[str] = field(default_factory=list)
+    relations: dict[str, str] = field(default_factory=dict)
+
+
+class NewsProcessor:
+    def __init__(self, client: JsonGenerator, category: dict, *, batch_size: int, max_input_chars: int, max_attempts: int):
+        self.client = client
+        self.category = category
+        self.batch_size = batch_size
+        self.max_input_chars = max_input_chars
+        self.max_attempts = max_attempts
+        self.sub_ids = [s["id"] for s in category.get("subcategories", [])] or ["other"]
+        self._use_schema = True
+
+    def _input(self, ref: str, a: Article) -> dict:
+        return {
+            "ref": ref,
+            "source": a.source_name,
+            "source_type": a.source_type,
+            "published_at": a.published_at.isoformat() if a.published_at else None,
+            "language": a.language,
+            "title": truncate(a.original_title, 300),
+            "excerpt": truncate(a.excerpt, self.max_input_chars),
+        }
+
+    def _call(self, prompt: str) -> tuple[dict, int]:
+        before = getattr(self.client, "calls_made", None)
+        try:
+            schema = response_schema(self.sub_ids) if self._use_schema else None
+            try:
+                data = self.client.generate_json(SYSTEM_PROMPT, prompt, schema)
+            except SchemaRejected:
+                log.warning("Schema recusado pela API; repetindo com validação apenas local")
+                self._use_schema = False
+                data = self.client.generate_json(SYSTEM_PROMPT, prompt, None)
+            return data, self._calls_since(before)
+        except GeminiError as exc:
+            exc.calls_used = self._calls_since(before)  # type: ignore[attr-defined]
+            raise
+
+    def _calls_since(self, before: int | None) -> int:
+        after = getattr(self.client, "calls_made", None)
+        return max(0, after - before) if before is not None and after is not None else 1
+
+    def apply(self, article: Article, analysis: ArticleAnalysis, now: datetime) -> None:
+        article.title_pt = analysis.title_pt.strip()
+        article.summary = analysis.summary.strip()
+        article.key_points = analysis.key_points
+        article.why_it_matters = analysis.why_it_matters.strip() or None
+        article.potential_impacts = analysis.potential_impacts
+        article.uncertainties = analysis.uncertainties
+        article.entities = analysis.entities
+        article.technologies = analysis.technologies
+        article.subcategory = analysis.subcategory if analysis.subcategory in self.sub_ids else "other"
+        article.relevance_score = analysis.relevance_score
+        article.novelty_score = analysis.novelty_score
+        article.business_potential = analysis.business_potential
+        article.career_potential = analysis.career_potential
+        article.study_potential = analysis.study_potential
+        article.off_topic = not analysis.is_on_topic
+        article.ai_processed = True
+        article.ai_model = self.client.model
+        article.ai_processed_at = now
+
+    def process(self, pending: list[Article], recent_events: list[dict], usage: AiUsage, now: datetime) -> ProcessReport:
+        report = ProcessReport()
+        queue = [a for a in pending if not a.ai_processed and a.ai_attempts < self.max_attempts]
+        for start in range(0, len(queue), self.batch_size):
+            if not usage.can_call():
+                report.stopped_reason = "quota_exhausted" if usage.quota_exhausted else "budget_reached"
+                break
+            batch = queue[start:start + self.batch_size]
+            refs = {f"a{i + 1}": a for i, a in enumerate(batch)}
+            prompt = build_batch_prompt([self._input(r, a) for r, a in refs.items()], recent_events, self.category)
+            report.batches += 1
+            try:
+                data, used = self._call(prompt)
+                usage.record(used)
+                report.calls += used
+            except QuotaExceeded as exc:
+                used = getattr(exc, "calls_used", 1)
+                usage.record(used)
+                report.calls += used
+                if exc.daily:
+                    usage.mark_exhausted()  # bloqueia novas chamadas até a cota diária reiniciar
+                report.stopped_reason = "quota_exhausted"
+                report.errors.append(str(exc))
+                log.warning("Cota da Gemini atingida (%s): chamadas interrompidas; coleta segue sem IA.",
+                            "diária" if exc.daily else "por minuto")
+                break
+            except ServiceUnavailable as exc:
+                # Sobrecarga transitória: não penaliza os artigos; ficam para a próxima edição.
+                used = getattr(exc, "calls_used", 0)
+                usage.record(used)
+                report.calls += used
+                report.stopped_reason = "unavailable"
+                report.errors.append(str(exc))
+                log.warning("Gemini sobrecarregada; artigos ficam pendentes para a próxima edição.")
+                break
+            except FatalGeminiError as exc:
+                usage.record(getattr(exc, "calls_used", 1))
+                report.stopped_reason = "fatal_error"
+                report.errors.append(str(exc))
+                log.error("IA desativada nesta execução: %s", exc)
+                break
+            except GeminiError as exc:
+                used = getattr(exc, "calls_used", 1)
+                usage.record(used)
+                report.calls += used
+                report.errors.append(str(exc))
+                for a in batch:
+                    a.ai_attempts += 1
+                report.failed += len(batch)
+                log.warning("Lote falhou (%s); artigos ficam pendentes", exc)
+                continue
+
+            got: set[str] = set()
+            for raw in (data.get("items") if isinstance(data, dict) else None) or []:
+                ref = str(raw.get("ref", "")) if isinstance(raw, dict) else ""
+                article = refs.get(ref)
+                if article is None or ref in got:
+                    continue
+                try:
+                    analysis = ArticleAnalysis.model_validate(raw)
+                except ValidationError as exc:
+                    log.warning("Resposta inválida para %s: %d erro(s) de validação", article.id, exc.error_count())
+                    continue
+                self.apply(article, analysis, now)
+                got.add(ref)
+                if analysis.related_event_id:
+                    report.relations[article.id] = analysis.related_event_id
+            for ref, a in refs.items():
+                if ref in got:
+                    report.processed += 1
+                else:
+                    a.ai_attempts += 1
+                    report.failed += 1
+        return report

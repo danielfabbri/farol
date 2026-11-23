@@ -221,3 +221,21 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# ---------------- FAROL ----------------
+# Dados fictícios do modo de desenvolvimento (python -m backend.main --dev)
+data-dev/
+# Android / Gradle
+.gradle/
+android/.gradle/
+android/.kotlin/
+android/local.properties
+android/app/build/
+android/build/
+android/captures/
+*.iml
+.idea/
+*.jks
+*.keystore
+# Arquivos temporários de escrita atômica
+data/**/.tmp-*

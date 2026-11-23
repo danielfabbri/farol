@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+<channel>
+  <title>Exemplo Labs (FICTÍCIO)</title>
+  <link>https://example.com/</link>
+  <description>Feed fictício para testes do FAROL.</description>
+  <language>en-us</language>
+  <item>
+    <title>[EXAMPLE] Example Labs launches Atlas agent framework for enterprise automation</title>
+    <link>https://example.com/news/atlas-agent-framework?utm_source=rss&amp;utm_medium=feed</link>
+    <pubDate>__NOW_MINUS_2H__</pubDate>
+    <description><![CDATA[<p>Fictional item. <b>Example Labs</b> announced an AI agent framework for <a href="#">automation</a>.</p><script>alert(1)</script>]]></description>
+  </item>
+  <item>
+    <title>[EXAMPLE] Example Labs releases Orion 2 language model with longer context</title>
+    <link>https://example.com/news/orion-2</link>
+    <pubDate>__NOW_MINUS_5H__</pubDate>
+    <description>Fictional item about a new large language model (LLM).</description>
+  </item>
+  <item>
+    <title>[EXAMPLE] Example Labs opens robotics research lab</title>
+    <link>https://example.com/news/robotics-lab</link>
+    <pubDate>__NOW_MINUS_20H__</pubDate>
+    <description>Fictional item about robotics and humanoid robots.</description>
+  </item>
+  <item>
+    <title>[EXAMPLE] Old archived post that must be ignored</title>
+    <link>https://example.com/news/old-post</link>
+    <pubDate>__NOW_MINUS_400H__</pubDate>
+    <description>Fictional old item outside the max age window.</description>
+  </item>
+  <item>
+    <title></title>
+    <link>https://example.com/news/no-title</link>
+  </item>
+</channel>
+</rss>

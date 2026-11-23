@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+<channel>
+  <title>Exemplo Agregador (FICTÍCIO)</title>
+  <link>https://example.net/</link>
+  <description>Agregador fictício.</description>
+  <item>
+    <title>[EXAMPLE] Show: an open source tool to evaluate LLM agents</title>
+    <link>https://tools.example.net/llm-eval</link>
+    <pubDate>__NOW_MINUS_3H__</pubDate>
+    <comments>https://example.net/item?id=1</comments>
+    <description><![CDATA[<a href="https://example.net/item?id=1">Comments</a>]]></description>
+  </item>
+  <item>
+    <title>[EXAMPLE] A history of medieval bread recipes</title>
+    <link>https://food.example.net/bread</link>
+    <pubDate>__NOW_MINUS_3H__</pubDate>
+    <comments>https://example.net/item?id=2</comments>
+    <description><![CDATA[<a href="https://example.net/item?id=2">Comments</a>]]></description>
+  </item>
+</channel>
+</rss>
