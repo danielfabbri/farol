@@ -61,11 +61,15 @@ class FarolRepository(
     val readIds: Flow<Set<String>> = db.readDao().observeIds().map { it.toSet() }
 
     /** Baixa latest.json (e tendências). Usa ETag via cache do OkHttp; "force" revalida no servidor. */
-    suspend fun refresh(force: Boolean): SyncResult = withContext(Dispatchers.IO) {
+    suspend fun refresh(force: Boolean, commitSha: String? = null): SyncResult = withContext(Dispatchers.IO) {
         if (prefs.demoMode.value) return@withContext SyncResult.Demo
         mutex.withLock {
             try {
-                val resp = api.latest(if (force) "no-cache" else null, if (force) System.currentTimeMillis() / 1000 else null)
+                val resp = if (commitSha != null) {
+                    api.latestAt("https://raw.githubusercontent.com/${app.farol.BuildConfig.GITHUB_REPO}/$commitSha/data/latest.json")
+                } else {
+                    api.latest(if (force) "no-cache" else null, if (force) System.currentTimeMillis() / 1000 else null)
+                }
                 if (!resp.isSuccessful) return@withLock SyncResult.Failed("HTTP ${resp.code()}")
                 val body = resp.body()?.string() ?: return@withLock SyncResult.Failed("resposta vazia")
                 FarolJson.decodeFromString<LatestFeed>(body) // valida antes de substituir o cache

@@ -6,6 +6,7 @@ import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.Path
 import retrofit2.http.Query
+import retrofit2.http.Url
 
 /**
  * Arquivos JSON públicos servidos pelo GitHub Raw.
@@ -13,7 +14,10 @@ import retrofit2.http.Query
  * a resposta é revalidada no servidor e, se nada mudou, volta 304 sem baixar o corpo.
  */
 interface FarolApi {
-    /** [bust] diferente a cada atualização forçada contorna o cache da CDN do GitHub (~5 min). */
+    /**
+     * Atenção: a CDN do GitHub Raw guarda o arquivo por ~5 min e ignora parâmetros de URL.
+     * Para pegar uma edição recém-publicada sem esperar, use [latestAt] com o SHA do commit.
+     */
     @GET("data/latest.json")
     suspend fun latest(
         @Header("Cache-Control") cacheControl: String? = null,
@@ -25,6 +29,10 @@ interface FarolApi {
         @Header("Cache-Control") cacheControl: String? = null,
         @Query("t") bust: Long? = null,
     ): Response<ResponseBody>
+
+    /** Edição de um commit específico (URL imutável: nunca vem desatualizada do cache). */
+    @GET
+    suspend fun latestAt(@Url url: String): Response<ResponseBody>
 
     @GET("data/articles/{day}.json")
     suspend fun archiveDay(@Path("day") day: String): Response<ResponseBody>

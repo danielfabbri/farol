@@ -201,8 +201,10 @@ class MainViewModel(
                         if (run.conclusion == "success" || run.conclusion == "failure") {
                             // "failure" pode ser só uma fonte fora do ar: os dados coletados são publicados mesmo assim.
                             scanState.value = ScanState.Running("Baixando a nova edição…", started)
-                            delay(5_000)
-                            val res = repo.refresh(force = true)
+                            delay(3_000)
+                            // Pelo SHA do commit: a CDN do GitHub ainda pode servir a edição anterior por alguns minutos.
+                            val sha = github.latestMainSha(token)
+                            val res = repo.refresh(force = true, commitSha = sha)
                             scanState.value = when (res) {
                                 SyncResult.Updated -> ScanState.Done("Varredura concluída. Nova edição carregada.")
                                 SyncResult.NotModified -> ScanState.Done("Varredura concluída. Nenhuma novidade desde a última edição.")

@@ -62,6 +62,19 @@ class GitHubActions(private val http: OkHttpClient) {
         }
     }
 
+    /** SHA do commit mais recente do main (para baixar a edição recém-publicada sem esperar a CDN). */
+    suspend fun latestMainSha(token: String): String? = withContext(Dispatchers.IO) {
+        val req = Request.Builder().url("https://api.github.com/repos/${BuildConfig.GITHUB_REPO}/commits/main")
+            .auth(token).header("Accept", "application/vnd.github.sha").get().build()
+        try {
+            http.newCall(req).execute().use { resp ->
+                resp.body?.string()?.trim()?.takeIf { resp.isSuccessful && it.matches(Regex("[0-9a-f]{40}")) }
+            }
+        } catch (e: Exception) {
+            null
+        }
+    }
+
     /** Execução manual mais recente criada a partir de [since] (ou null se ainda não apareceu). */
     suspend fun latestManualRun(token: String, since: Instant): WorkflowRun? = withContext(Dispatchers.IO) {
         val req = Request.Builder().url("$base/runs?event=workflow_dispatch&per_page=5").auth(token).get().build()

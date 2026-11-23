@@ -1,9 +1,9 @@
 {
-  "version_code": 4,
-  "version_name": "0.4.0",
+  "version_code": 5,
+  "version_name": "0.4.1",
   "apk": "releases/farol.apk",
-  "sha256": "16047fab8181f52ba8d97004de379edf43599c5f16fe2eaeaf11f6306085dfb2",
-  "size": 1794636,
-  "notes": "Imagens nas notícias; rótulo de categoria corrigido; Explorar com busca, seções e filtro por fonte; mais 17 fontes e seção Ciência e Saúde; tela Hoje mais limpa (Varrer agora foi para Ajustes).",
-  "published_at": "2026-11-23T17:42:55Z"
+  "sha256": "1bd84a29e1d2c1654aac7494164d6e58f4e117804ae2c162edd7e7fa01cfae7b",
+  "size": 1794640,
+  "notes": "Imagens nas notícias; rótulo de categoria corrigido; Explorar com busca, seções e filtro por fonte; mais 17 fontes e seção Ciência e Saúde; tela Hoje mais limpa (Varrer agora foi para Ajustes); varredura baixa a edição nova sem esperar o cache.",
+  "published_at": "2026-11-23T17:46:11Z"
 }
