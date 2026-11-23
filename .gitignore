@@ -239,3 +239,5 @@ android/captures/
 *.keystore
 # Arquivos temporários de escrita atômica
 data/**/.tmp-*
+# Dados locais da prévia web (python -m backend.main com FAROL_DATA_DIR=data-local)
+data-local/

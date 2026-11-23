@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FAROL — prévia web</title>
+<style>
+  :root {
+    --bg:#0A1222; --surface:#0F1A2E; --card:#15233D; --card2:#1B2C4A; --line:#1E2D4A;
+    --text:#E6ECF5; --muted:#9AA8BF; --blue:#5B9BFF; --blue-bg:#173A73; --amber:#F2C46D;
+  }
+  :root[data-theme="light"] {
+    --bg:#F6F8FC; --surface:#FFFFFF; --card:#FFFFFF; --card2:#E6ECF6; --line:#DDE4EF;
+    --text:#0B1426; --muted:#4A5872; --blue:#1E5FD9; --blue-bg:#DCE7FF; --amber:#8A5A00;
+  }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--text); font:15px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; }
+  .wrap { max-width:680px; margin:0 auto; padding:16px 16px 96px; }
+  .brand { display:flex; align-items:center; gap:8px; color:var(--blue); letter-spacing:5px; font-size:13px; }
+  .brand .sp { flex:1 }
+  select, button { font:inherit; color:var(--text); background:var(--card); border:1px solid var(--line); border-radius:10px; padding:6px 10px; }
+  button { cursor:pointer; }
+  h1 { font-size:30px; line-height:1.2; margin:6px 0 4px; letter-spacing:-.5px; }
+  h2 { font-size:19px; margin:28px 0 12px; display:flex; justify-content:space-between; align-items:baseline; }
+  h2 small { font-size:12px; color:var(--muted); font-weight:500; }
+  .muted { color:var(--muted); } .small { font-size:12px; }
+  .eyebrow { text-transform:uppercase; font-size:11px; letter-spacing:1.1px; font-weight:600; color:var(--muted); }
+  .notice { border:1px solid color-mix(in srgb,var(--blue) 35%,transparent); background:color-mix(in srgb,var(--blue) 8%,transparent); border-radius:14px; padding:12px 14px; margin-top:12px; font-size:13px; }
+  .notice.warn { border-color:color-mix(in srgb,var(--amber) 40%,transparent); background:color-mix(in srgb,var(--amber) 9%,transparent); }
+  .card { background:var(--card); border-radius:20px; padding:18px; margin-bottom:12px; cursor:pointer; }
+  .card:hover { background:var(--card2); }
+  .row { display:flex; align-items:center; gap:10px; }
+  .rank { color:var(--blue); font-weight:600; }
+  .title { font-size:19px; font-weight:600; line-height:1.3; margin:10px 0 8px; }
+  .read .title { color:var(--muted); }
+  .summary { color:var(--muted); display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; }
+  .meta { font-size:12px; color:var(--muted); margin-top:12px; }
+  .bars { display:inline-flex; gap:3px; align-items:flex-end; }
+  .bars i { width:4px; border-radius:2px; background:var(--line); display:block; }
+  .bars i.on { background:var(--blue); }
+  .item { padding:12px 4px; border-bottom:1px solid var(--line); cursor:pointer; display:flex; gap:12px; }
+  .item .t { font-weight:600; }
+  .end { border:1px solid var(--line); border-radius:20px; padding:24px; text-align:center; margin:20px 0; }
+  .chips { display:flex; flex-wrap:wrap; gap:8px; margin-top:16px; }
+  .chip { border-radius:999px; padding:5px 12px; background:var(--card); border:1px solid var(--line); cursor:pointer; font-size:13px; }
+  .chip.on { background:var(--blue-bg); border-color:var(--blue); }
+  .pill { display:inline-block; border-radius:999px; padding:3px 10px; background:var(--card2); color:var(--muted); font-size:12px; margin:0 6px 6px 0; }
+  nav.tabs { position:fixed; bottom:0; left:0; right:0; background:var(--surface); border-top:1px solid var(--line); display:flex; justify-content:center; }
+  nav.tabs button { flex:1; max-width:170px; border:0; background:none; padding:14px 0; color:var(--muted); border-radius:0; }
+  nav.tabs button.on { color:var(--blue); font-weight:600; }
+  #detail { position:fixed; inset:0; background:var(--bg); overflow:auto; display:none; }
+  #detail .wrap { padding-bottom:40px; }
+  .sec h3 { font-size:16px; margin:26px 0 2px; }
+  .sec ul { padding-left:18px; margin:8px 0; }
+  .sec li { margin-bottom:6px; }
+  .src { display:block; padding:12px 0; border-bottom:1px solid var(--line); color:var(--text); text-decoration:none; }
+  .src b { color:var(--blue); font-weight:600; display:block; font-size:13px; }
+  .btn { display:block; text-align:center; background:var(--blue); color:#04122B; padding:12px; border-radius:999px; text-decoration:none; font-weight:600; margin-top:24px; }
+  .trendbars { display:flex; gap:6px; align-items:flex-end; height:36px; margin-top:14px; }
+  .trendbars i { flex:1; background:var(--blue); border-radius:3px; display:block; }
+  .trendbars i.z { background:var(--line); }
+  .apk { display:none; }
+</style>
+</head>
+<body>
+<div class="wrap" id="app">
+  <div class="brand">FAROL <span class="sp"></span>
+    <select id="source" title="Origem dos dados"></select>
+    <button id="theme" title="Alternar tema">◐</button>
+  </div>
+  <div class="notice apk" id="apk">📱 No celular? <a href="farol.apk" style="color:var(--blue)">Baixar o app Android (APK)</a></div>
+  <div id="view"></div>
+</div>
+<div id="detail"><div class="wrap" id="detailBody"></div></div>
+<nav class="tabs">
+  <button data-tab="hoje" class="on">Hoje</button>
+  <button data-tab="explorar">Explorar</button>
+  <button data-tab="tendencias">Tendências</button>
+</nav>
+
+<script>
+const GITHUB = "https://raw.githubusercontent.com/danielfabbri/farol/main/data/";
+const SOURCES = [
+  { id: "local", label: "Dados locais (feeds reais)", base: "local/" },
+  { id: "dev", label: "Dados fictícios (dev)", base: "dev/" },
+  { id: "github", label: "GitHub (produção)", base: GITHUB },
+];
+const store = {
+  get(k, d) { try { const v = localStorage.getItem(k); return v === null ? d : JSON.parse(v); } catch { return d; } },
+  set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} },
+};
+let feed = null, trends = null, tab = "hoje", filter = null;
+let read = new Set(store.get("farol.read", []));
+const $ = (s) => document.querySelector(s);
+const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const fmt = (iso, o) => iso ? new Date(iso).toLocaleString("pt-BR", o || { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" }) : "—";
+function rel(iso) {
+  if (!iso) return "";
+  const m = (Date.now() - new Date(iso)) / 60000;
+  if (m < 1) return "agora"; if (m < 60) return `há ${Math.round(m)} min`;
+  if (m < 1440) return `há ${Math.round(m / 60)} h`;
+  const d = Math.round(m / 1440); return d === 1 ? "há 1 dia" : `há ${d} dias`;
+}
+function bars(score) {
+  const n = score == null ? 0 : Math.max(1, Math.min(5, Math.floor((score + 10) / 20)));
+  return `<span class="bars" title="Relevância editorial (IA): ${score ?? "—"}">` +
+    [0,1,2,3,4].map(i => `<i class="${i < n ? "on" : ""}" style="height:${6 + i * 2.5}px"></i>`).join("") + "</span>";
+}
+const pot = (p) => ({ high: "Alto", medium: "Médio", low: "Baixo" }[p] || "—");
+const title = (a) => a.title_pt || a.original_title;
+const byId = () => Object.fromEntries((feed?.articles || []).map(a => [a.id, a]));
+const evById = () => Object.fromEntries((feed?.events || []).map(e => [e.id, e]));
+function lead(ev, arts) {
+  const items = ev.article_ids.map(i => arts[i]).filter(Boolean);
+  return items.find(a => a.ai_processed) || items[0];
+}
+function nextEdition() {
+  const now = new Date(new Date().toLocaleString("en-US", { timeZone: "America/Sao_Paulo" }));
+  const mins = now.getHours() * 60 + now.getMinutes();
+  const t = [[5,30],[11,30],[17,30],[20,30]].find(([h,m]) => h * 60 + m > mins);
+  return t ? `hoje às ${t[0].toString().padStart(2,"0")}h${t[1]} (Brasília)` : "amanhã às 05h30 (Brasília)";
+}
+
+async function load() {
+  const src = SOURCES.find(s => s.id === $("#source").value);
+  $("#view").innerHTML = `<p class="muted">Carregando…</p>`;
+  try {
+    const r = await fetch(src.base + "latest.json", { cache: "no-cache" });
+    if (!r.ok) throw new Error(`HTTP ${r.status}`);
+    feed = await r.json();
+  } catch (e) {
+    feed = null;
+    $("#view").innerHTML = `<div class="notice warn">Não foi possível carregar ${esc(src.label)}: ${esc(e.message)}.` +
+      (src.id === "github" ? " Execute o workflow no GitHub Actions para publicar a primeira edição." : "") + `</div>`;
+    return;
+  }
+  try { const t = await fetch(src.base + "trends/latest.json", { cache: "no-cache" }); trends = t.ok ? await t.json() : null; } catch { trends = null; }
+  render();
+}
+
+function render() {
+  if (!feed) return;
+  document.querySelectorAll("nav.tabs button").forEach(b => b.classList.toggle("on", b.dataset.tab === tab));
+  ({ hoje: renderToday, explorar: renderExplore, tendencias: renderTrends })[tab]();
+}
+
+function notices() {
+  let h = "";
+  if (feed.is_sample) h += `<div class="notice warn">🧪 ${esc(feed.notice || "Dados fictícios.")}</div>`;
+  const ai = feed.ai_status || {};
+  if (ai.message && !["ok", "idle", ""].includes(ai.state)) h += `<div class="notice">ℹ️ ${esc(ai.message)}</div>`;
+  return h;
+}
+
+function renderToday() {
+  const arts = byId(), evs = evById(), e = feed.edition;
+  const hl = feed.highlights.map(i => evs[i]).filter(Boolean);
+  const shown = new Set(hl.map(x => x.id));
+  const isRead = (ev) => ev.article_ids.some(i => read.has(i));
+  const others = feed.events.filter(x => !shown.has(x.id)).sort((a, b) => b.score - a.score).slice(0, 15);
+  const readCount = hl.filter(isRead).length;
+  let h = `<h1>${esc(e.label)}</h1>
+    <div class="muted">Atualizada em ${fmt(feed.generated_at)}</div>
+    <div class="muted small">${e.article_count} notícias · ${e.ai_processed_count} analisadas pela IA · ${e.sources_ok} fontes</div>
+    ${notices()}<h2>Destaques <small>${readCount} de ${hl.length} lidos</small></h2>`;
+  hl.forEach((ev, i) => {
+    const a = lead(ev, arts); if (!a) return;
+    const extra = ev.source_count - 1;
+    h += `<div class="card ${isRead(ev) ? "read" : ""}" data-open="${a.id}">
+      <div class="row"><span class="rank">${String(i + 1).padStart(2, "0")}</span>
+      <span class="eyebrow" style="flex:1">${esc(feed.subcategories[a.subcategory] || "Tecnologia e IA")}</span>${bars(a.relevance_score)}</div>
+      <div class="title">${esc(title(a))}</div>
+      <div class="summary">${esc(a.summary || a.excerpt)}</div>
+      <div class="meta">${esc(a.source_name)}${extra > 0 ? ` · +${extra} ${extra === 1 ? "fonte" : "fontes"}` : ""} · ${rel(a.published_at || a.collected_at)}${a.ai_processed ? "" : " · sem análise da IA"}</div>
+    </div>`;
+  });
+  if (others.length) {
+    h += `<h2>Também nesta edição <small>${others.length}</small></h2>`;
+    others.forEach(ev => { const a = lead(ev, arts); if (a) h += itemRow(a, ev.source_count - 1); });
+  }
+  const all = hl.length && readCount === hl.length;
+  h += `<div class="end"><div style="font-size:22px">✓</div><b>${all ? "Você está em dia" : "Fim da edição"}</b>
+    <div class="muted small" style="margin-top:6px">${all ? "Você leu todos os destaques." : "Não há mais nada nesta edição."} A próxima sai ${nextEdition()}.</div></div>`;
+  $("#view").innerHTML = h;
+}
+
+function itemRow(a, extra = 0) {
+  return `<div class="item" data-open="${a.id}"><div style="flex:1">
+    <div class="eyebrow">${esc(feed.subcategories[a.subcategory] || "")}</div>
+    <div class="t" style="${read.has(a.id) ? "color:var(--muted)" : ""}">${esc(title(a))}</div>
+    <div class="meta" style="margin-top:4px">${esc(a.source_name)}${extra > 0 ? ` · +${extra} fontes` : ""} · ${rel(a.published_at || a.collected_at)}${a.ai_processed ? "" : " · sem análise da IA"}</div>
+  </div>${bars(a.relevance_score)}</div>`;
+}
+
+function renderExplore() {
+  const list = feed.articles.filter(a => !filter || (a.tags || []).includes(filter))
+    .sort((a, b) => (b.relevance_score ?? -1) - (a.relevance_score ?? -1));
+  let h = `<h1>Explorar</h1><div class="muted">Notícias das últimas 48 horas, por tema.</div><div class="chips">
+    <span class="chip ${!filter ? "on" : ""}" data-filter="">Tudo</span>` +
+    feed.filters.map(f => `<span class="chip ${filter === f.id ? "on" : ""}" data-filter="${f.id}">${esc(f.label)}</span>`).join("") +
+    `</div><h2>${filter ? esc(feed.filters.find(f => f.id === filter)?.label) : "Todas as notícias"} <small>${list.length}</small></h2>`;
+  h += list.map(a => itemRow(a)).join("") || `<p class="muted">Nenhuma notícia recente neste tema.</p>`;
+  $("#view").innerHTML = h;
+}
+
+function renderTrends() {
+  let h = `<h1>Tendências</h1><div class="muted">Assuntos que várias fontes vêm citando.</div>
+    <div class="notice">${esc(trends?.disclaimer || "Sinais baseados em contagem de menções. Não são previsões.")}</div><div style="height:16px"></div>`;
+  const list = trends?.trends || [];
+  if (!list.length) h += `<p class="muted">Ainda sem tendências: elas aparecem quando um assunto é citado por pelo menos 2 fontes em 3+ notícias analisadas pela IA.</p>`;
+  list.forEach(t => {
+    const end = new Date(Object.keys(t.daily_counts).sort().pop() || Date.now());
+    const series = [6,5,4,3,2,1,0].map(d => t.daily_counts[new Date(end - d * 864e5).toISOString().slice(0, 10)] || 0);
+    const max = Math.max(1, ...series);
+    const st = { emerging: "Emergente", rising: "Em alta" }[t.status] || "Recorrente";
+    h += `<div class="card" style="cursor:default"><div class="row"><span class="eyebrow" style="flex:1">${t.kind === "technology" ? "Tecnologia" : "Empresa / organização"}</span><span class="pill">${st}</span></div>
+      <div class="title">${esc(t.label)}</div>
+      <div class="muted small">${t.source_count} fontes · ${t.article_count} notícias · ${t.event_count} acontecimentos<br>Primeira menção ${fmt(t.first_seen, { day: "numeric", month: "short" })} · mais recente ${rel(t.last_seen)}</div>
+      <div class="trendbars">${series.map(v => `<i class="${v ? "" : "z"}" style="height:${v ? Math.max(4, 36 * v / max) : 3}px"></i>`).join("")}</div>
+      <div style="margin-top:12px">${t.related_entities.map(e => `<span class="pill">${esc(e)}</span>`).join("")}</div></div>`;
+  });
+  $("#view").innerHTML = h;
+}
+
+function openArticle(id) {
+  const a = byId()[id]; if (!a) return;
+  read.add(id); store.set("farol.read", [...read]);
+  const ev = evById()[a.event_id];
+  const list = (xs) => `<ul>${xs.map(x => `<li>${esc(x)}</li>`).join("")}</ul>`;
+  const sec = (t, cap, body) => `<div class="sec"><h3>${t}</h3>${cap ? `<div class="eyebrow">${cap}</div>` : ""}${body}</div>`;
+  let h = `<button id="back">← Voltar</button>
+    <div class="eyebrow" style="margin-top:18px;color:var(--blue)">${esc(feed.subcategories[a.subcategory] || "Tecnologia e IA")}</div>
+    <h1 style="font-size:24px">${esc(title(a))}</h1>
+    ${a.title_pt && a.title_pt !== a.original_title ? `<div class="muted small"><i>Original: ${esc(a.original_title)}</i></div>` : ""}
+    <div class="muted small" style="margin-top:10px">${esc(a.source_name)} · publicado em ${fmt(a.published_at || a.collected_at, { day: "numeric", month: "long", year: "numeric" })}</div>
+    ${a.relevance_score != null ? `<div class="row small muted" style="margin-top:10px">${bars(a.relevance_score)} Relevância editorial ${a.relevance_score}/100</div>` : ""}`;
+  if (!a.ai_processed) {
+    h += `<div class="notice">Esta notícia ainda não foi analisada pela IA. Abaixo, o trecho publicado pela própria fonte.</div>`;
+    if (a.excerpt) h += sec("Trecho da fonte", "", `<p>${esc(a.excerpt)}</p>`);
+  } else {
+    if (a.summary) h += sec("Resumo", "Fatos reportados", `<p>${esc(a.summary)}</p>`);
+    if (a.key_points?.length) h += sec("Principais pontos", "", list(a.key_points));
+    if (a.why_it_matters) h += sec("Por que isso importa", "Interpretação", `<p>${esc(a.why_it_matters)}</p>`);
+    if (a.potential_impacts?.length) h += sec("Impactos potenciais", "Hipóteses — não são previsões", list(a.potential_impacts));
+    if (a.uncertainties?.length) h += sec("Não confirmado", "O que as fontes não informam", list(a.uncertainties));
+    h += sec("Avaliação editorial", "Opinião da IA, não fato objetivo",
+      `<p>Novidade <b>${a.novelty_score ?? "—"}</b> · Negócios <b>${pot(a.business_potential)}</b> · Carreira <b>${pot(a.career_potential)}</b> · Estudo <b>${pot(a.study_potential)}</b></p>`);
+  }
+  const chips = [...new Set([...(a.entities || []), ...(a.technologies || [])])];
+  if (chips.length) h += `<div style="margin-top:18px">${chips.map(c => `<span class="pill">${esc(c)}</span>`).join("")}</div>`;
+  const srcs = ev?.sources?.length ? ev.sources : [{ source_name: a.source_name, source_url: a.source_url, title: a.original_title, published_at: a.published_at }];
+  h += sec("Fontes originais", ev && ev.source_count > 1 ? `${ev.source_count} veículos cobriram este acontecimento` : "",
+    srcs.map(s => `<a class="src" href="${esc(s.source_url)}" target="_blank" rel="noopener"><b>${esc(s.source_name)} ↗</b>${esc(s.title)}<div class="muted small">${fmt(s.published_at)}</div></a>`).join("") +
+    (a.discussion_url ? `<a class="src" href="${esc(a.discussion_url)}" target="_blank" rel="noopener"><b>Discussão ↗</b>Comentários no agregador</a>` : ""));
+  h += `<a class="btn" href="${esc(a.source_url)}" target="_blank" rel="noopener">Abrir publicação original ↗</a>
+    <p class="muted small" style="margin-top:14px">${a.ai_processed ? `Resumo gerado por IA (${esc(a.ai_model || "Gemini")}) a partir do título e do trecho publicados pela fonte. Confira sempre a publicação original.` : "Conteúdo exibido como publicado no feed da fonte."}</p>`;
+  $("#detailBody").innerHTML = h;
+  $("#detail").style.display = "block"; $("#detail").scrollTop = 0;
+  $("#back").onclick = () => { $("#detail").style.display = "none"; render(); };
+}
+
+document.addEventListener("click", (ev) => {
+  const o = ev.target.closest("[data-open]"); if (o) return openArticle(o.dataset.open);
+  const f = ev.target.closest("[data-filter]"); if (f) { filter = f.dataset.filter || null; return render(); }
+  const t = ev.target.closest("nav.tabs button"); if (t) { tab = t.dataset.tab; window.scrollTo(0, 0); return render(); }
+});
+$("#source").innerHTML = SOURCES.map(s => `<option value="${s.id}">${s.label}</option>`).join("");
+$("#source").value = store.get("farol.source", "local");
+$("#source").onchange = () => { store.set("farol.source", $("#source").value); load(); };
+const applyTheme = (t) => { document.documentElement.dataset.theme = t; store.set("farol.theme", t); };
+applyTheme(store.get("farol.theme", "dark"));
+$("#theme").onclick = () => applyTheme(document.documentElement.dataset.theme === "dark" ? "light" : "dark");
+fetch("farol.apk", { method: "HEAD" }).then(r => { if (r.ok) $("#apk").style.display = "block"; }).catch(() => {});
+load();
+</script>
+</body>
+</html>
