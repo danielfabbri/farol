@@ -71,6 +71,9 @@ class Settings:
     max_translation_calls_per_run: int = 2
     max_translation_calls_per_day: int = 12
     title_fallback_enabled: bool = True
+    # Imagem de destaque da página da notícia quando o feed não traz foto
+    image_enrichment_enabled: bool = True
+    max_image_lookups_per_run: int = 80
     # Resumo da seção inteira (1 chamada por seção, só quando os principais fatos mudam)
     briefs_enabled: bool = True
     max_brief_calls_per_run: int = 6

@@ -24,6 +24,7 @@ class Article(BaseModel):
     source_url: str
     discussion_url: str | None = None
     image_url: str | None = None
+    image_checked: bool = False  # já tentamos achar imagem na página da notícia
     published_at: datetime | None = None
     collected_at: datetime
     language: str = "en"

@@ -10,7 +10,16 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.ui.layout.ContentScale
-import coil.compose.AsyncImage
+import coil.compose.SubcomposeAsyncImage
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.material.icons.outlined.AccountBalance
+import androidx.compose.material.icons.outlined.Flag
+import androidx.compose.material.icons.outlined.Memory
+import androidx.compose.material.icons.outlined.Newspaper
+import androidx.compose.material.icons.outlined.Paid
+import androidx.compose.material.icons.outlined.Public
+import androidx.compose.material.icons.outlined.Science
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -117,7 +126,7 @@ fun HighlightCard(
         modifier = Modifier.fillMaxWidth().padding(bottom = 12.dp),
     ) {
         Column {
-        lead?.imageUrl?.let { NewsImage(it, Modifier.fillMaxWidth().aspectRatio(16f / 9f)) }
+        NewsImage(lead?.imageUrl, event.category, Modifier.fillMaxWidth().aspectRatio(16f / 9f))
         Column(Modifier.padding(18.dp)) {
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Text(
@@ -159,15 +168,51 @@ fun HighlightCard(
     }
 }
 
-/** Imagem publicada pelo próprio veículo (carregada do endereço original; nada é copiado). */
+/**
+ * Imagem publicada pelo próprio veículo (carregada do endereço original; nada é copiado).
+ * Sem imagem — ou se ela não carregar — mostra a ilustração da seção, para nenhum card ficar vazio.
+ */
 @Composable
-fun NewsImage(url: String, modifier: Modifier = Modifier) {
-    AsyncImage(
+fun NewsImage(url: String?, category: String, modifier: Modifier = Modifier, compact: Boolean = false) {
+    if (url == null) {
+        SectionArt(category, modifier, compact)
+        return
+    }
+    SubcomposeAsyncImage(
         model = url,
         contentDescription = null,
         contentScale = ContentScale.Crop,
-        modifier = modifier.background(MaterialTheme.colorScheme.surfaceContainerHighest),
+        modifier = modifier,
+        loading = { Box(Modifier.fillMaxSize().background(MaterialTheme.colorScheme.surfaceContainerHighest)) },
+        error = { SectionArt(category, Modifier.fillMaxSize(), compact) },
     )
+}
+
+fun sectionIcon(category: String): ImageVector = when (category) {
+    "brasil" -> Icons.Outlined.Flag
+    "politica" -> Icons.Outlined.AccountBalance
+    "economia" -> Icons.Outlined.Paid
+    "mundo" -> Icons.Outlined.Public
+    "ciencia_saude" -> Icons.Outlined.Science
+    "technology_ai" -> Icons.Outlined.Memory
+    else -> Icons.Outlined.Newspaper
+}
+
+/** Ilustração da seção: degradê com o ícone (usada quando a notícia não tem foto). */
+@Composable
+fun SectionArt(category: String, modifier: Modifier = Modifier, compact: Boolean = false) {
+    val c = MaterialTheme.colorScheme
+    Box(
+        modifier.background(Brush.linearGradient(listOf(c.primaryContainer, c.surfaceContainerHighest))),
+        contentAlignment = Alignment.Center,
+    ) {
+        Icon(
+            sectionIcon(category),
+            contentDescription = null,
+            tint = c.primary.copy(alpha = 0.75f),
+            modifier = Modifier.size(if (compact) 28.dp else 48.dp),
+        )
+    }
 }
 
 @Composable
@@ -213,15 +258,7 @@ fun CompactArticleRow(article: Article, subcategoryLabel: String?, read: Boolean
             SourceLine(article.sourceName, extraSources, Fmt.relative(article.publishedOrCollected), article.aiProcessed)
         }
         Spacer(Modifier.width(12.dp))
-        if (article.imageUrl != null) {
-            NewsImage(article.imageUrl, Modifier.size(76.dp).clip(RoundedCornerShape(12.dp)))
-        } else {
-            Column(horizontalAlignment = Alignment.End) {
-                ImportanceIndicator(article.relevanceScore)
-                Spacer(Modifier.height(10.dp))
-                if (read) ReadDot(true)
-            }
-        }
+        NewsImage(article.imageUrl, article.category, Modifier.size(76.dp).clip(RoundedCornerShape(12.dp)), compact = true)
     }
 }
 

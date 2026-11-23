@@ -46,7 +46,7 @@ Alguns portais só oferecem um feed com tudo misturado. Nesses, a seção vem do
 
 ### Imagens
 
-O endereço da imagem de capa vem do próprio feed (`media:content`, `media:thumbnail`, `enclosure` ou a primeira `<img>` do trecho). O FAROL guarda só o endereço; a imagem continua hospedada pelo veículo e é exibida com crédito. Folha e DW não publicam imagens nos feeds.
+O endereço da imagem de capa vem do próprio feed (`media:content`, `media:thumbnail`, `enclosure` ou a primeira `<img>` do trecho). O FAROL guarda só o endereço; a imagem continua hospedada pelo veículo e é exibida com crédito. Quando o feed não traz foto (Folha, DW, Agência Brasil...), o pipeline lê o início da página da própria notícia (até 300 KB) e usa a imagem de destaque que o veículo declara (`og:image`/`twitter:image`, a mesma do compartilhamento em redes). Logotipos são descartados e cada notícia é consultada uma única vez (`backend/collectors/image_enricher.py`, até 80 por execução). Sem nenhuma foto, o app mostra a ilustração da seção.
 
 Conteúdo que não é notícia é excluído pelo título (`exclude_keywords` em `categories.json` e em cada fonte): loterias, horóscopo, cupons e prêmios patrocinados nas seções de hard news; ofertas e promoções em Tecnologia.
 

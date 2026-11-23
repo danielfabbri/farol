@@ -103,7 +103,7 @@ fun ArticleScreen(
                 .padding(bottom = 40.dp),
         ) {
             article.imageUrl?.let {
-                NewsImage(it, Modifier.fillMaxWidth().aspectRatio(16f / 9f).clip(RoundedCornerShape(16.dp)))
+                NewsImage(it, article.category, Modifier.fillMaxWidth().aspectRatio(16f / 9f).clip(RoundedCornerShape(16.dp)))
                 Text(
                     "Imagem: ${article.sourceName}",
                     style = MaterialTheme.typography.labelSmall,

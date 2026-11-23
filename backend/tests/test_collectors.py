@@ -159,3 +159,47 @@ def test_section_rules_classify_general_feeds_and_drop_others():
 def test_rss_fixture_images_are_extracted():
     arts = parse_entries(_load_fixture("sample_rss.xml", NOW), src(), NOW)
     assert arts[0].image_url == "https://example.com/img/atlas.jpg"
+
+
+def test_find_page_image_prefers_og_and_skips_logos():
+    from backend.collectors.image_enricher import find_page_image
+    html = '''<head><meta content="https://img.x.com/foto.jpg?w=1&amp;h=2" property="og:image">
+              <meta name="twitter:image" content="https://img.x.com/tw.jpg"></head>'''
+    assert find_page_image(html, "https://x.com/n") == "https://img.x.com/foto.jpg?w=1&h=2"
+    logo = '<meta property="og:image" content="https://x.com/static/logo-folha-share.jpg"><meta name="twitter:image" content="/img/f.jpg">'
+    assert find_page_image(logo, "https://x.com/n/1") == "https://x.com/img/f.jpg"  # relativo resolvido, logo descartado
+    assert find_page_image("<html>sem meta</html>", "https://x.com") is None
+
+
+def test_enrich_images_tries_each_article_once():
+    from backend.collectors.image_enricher import enrich_images
+    from backend.models.article import Article
+
+    class Resp:
+        status_code = 200
+        headers = {"Content-Type": "text/html"}
+        encoding = "utf-8"
+        def __init__(self, body): self.body = body
+        def iter_content(self, n): yield self.body
+        def __enter__(self): return self
+        def __exit__(self, *a): return False
+
+    class S:
+        calls = 0
+        def get(self, url, **kw):
+            S.calls += 1
+            return Resp(b'<meta property="og:image" content="https://img.x.com/a.jpg">' if "com-foto" in url else b"<html></html>")
+
+    mk = lambda i, url: Article(id=i, original_title="t", source_id="s", source_name="S", source_url=url,
+                                collected_at=NOW, category="brasil")
+    a, b, c = mk("1", "https://x.com/com-foto"), mk("2", "https://x.com/sem"), mk("3", "https://x.com/c")
+    c.image_url = "https://ja.tem/img.jpg"
+    assert enrich_images([a, b, c], S()) == 1
+    assert a.image_url == "https://img.x.com/a.jpg" and b.image_url is None and b.image_checked
+    assert S.calls == 2 and enrich_images([a, b, c], S()) == 0 and S.calls == 2  # não tenta de novo
+
+
+def test_generic_filter_looks_only_at_filename():
+    from backend.collectors.image_enricher import find_page_image
+    ebc = '<meta property="og:image" content="https://imagens.ebc.com.br/x=/1600x800/https://agenciabrasil.ebc.com.br/sites/default/files/thumbnails/image/foto.jpg">'
+    assert find_page_image(ebc, "https://agenciabrasil.ebc.com.br/n").endswith("/foto.jpg")

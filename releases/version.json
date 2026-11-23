@@ -1,9 +1,9 @@
 {
-  "version_code": 5,
-  "version_name": "0.4.1",
+  "version_code": 6,
+  "version_name": "0.5.0",
   "apk": "releases/farol.apk",
-  "sha256": "1bd84a29e1d2c1654aac7494164d6e58f4e117804ae2c162edd7e7fa01cfae7b",
-  "size": 1794640,
-  "notes": "Imagens nas notícias; rótulo de categoria corrigido; Explorar com busca, seções e filtro por fonte; mais 17 fontes e seção Ciência e Saúde; tela Hoje mais limpa (Varrer agora foi para Ajustes); varredura baixa a edição nova sem esperar o cache.",
-  "published_at": "2026-11-23T17:46:11Z"
+  "sha256": "fff15eb3cae70ebf0ed5222ccb3de3906de2f80e48b9cde36ee96c451e4d5847",
+  "size": 1811024,
+  "notes": "Imagens em praticamente todas as notícias: quando o feed não traz foto, o FAROL usa a imagem de destaque da página da notícia; sem foto, aparece a ilustração da seção.",
+  "published_at": "2026-11-23T18:12:24Z"
 }

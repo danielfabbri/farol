@@ -20,6 +20,7 @@ from backend.ai.news_processor import AiUsage, NewsProcessor, translate_articles
 from backend.ai.section_briefer import generate_brief, signature, top_events
 from backend.ai.gemini_client import FatalGeminiError, GeminiError, QuotaExceeded, ServiceUnavailable
 from backend.models.edition import Section, SectionBrief
+from backend.collectors.image_enricher import enrich_images
 from backend.collectors.normalization import keyword_pattern, utcnow
 from backend.collectors.rss_collector import collect_source
 from backend.collectors.source_manager import load_sources
@@ -124,6 +125,14 @@ def run(
 
     sources_ok = sum(1 for r in source_report.values() if r["status"] != "error")
     sources_failed = len(source_report) - sources_ok
+
+    # Imagens: notícias sem foto no feed recebem a imagem de destaque da própria página.
+    if settings.image_enrichment_enabled and not settings.dev_mode:
+        recent_no_image = sorted(
+            (a for a in list(working.values()) + new_articles if not a.image_url and not a.image_checked),
+            key=lambda a: a.reference_time, reverse=True,
+        )
+        enrich_images(recent_no_image, session, max_items=settings.max_image_lookups_per_run)
 
     for a in new_articles:
         a.tags = compute_tags(a, filters)
