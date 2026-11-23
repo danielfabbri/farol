@@ -195,6 +195,3 @@ val FarolJson = Json {
 fun isoMillis(value: String?): Long =
     value?.let { runCatching { java.time.OffsetDateTime.parse(it).toInstant().toEpochMilli() }.getOrNull() } ?: 0L
 
-/** Momento da notícia mais recente do acontecimento. */
-fun Event.latestMillis(articles: Map<String, Article>): Long =
-    articleIds.mapNotNull { articles[it]?.timeMillis }.maxOrNull()?.takeIf { it > 0 } ?: isoMillis(lastSeen)

@@ -19,7 +19,9 @@ import androidx.compose.material.icons.outlined.Memory
 import androidx.compose.material.icons.outlined.Newspaper
 import androidx.compose.material.icons.outlined.Paid
 import androidx.compose.material.icons.outlined.Public
+import androidx.compose.material.icons.outlined.RocketLaunch
 import androidx.compose.material.icons.outlined.Science
+import androidx.compose.material.icons.outlined.SmartToy
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -195,6 +197,8 @@ fun sectionIcon(category: String): ImageVector = when (category) {
     "mundo" -> Icons.Outlined.Public
     "ciencia_saude" -> Icons.Outlined.Science
     "technology_ai" -> Icons.Outlined.Memory
+    "robotica" -> Icons.Outlined.SmartToy
+    "espaco" -> Icons.Outlined.RocketLaunch
     else -> Icons.Outlined.Newspaper
 }
 
@@ -221,7 +225,6 @@ fun SourceLine(primary: String, extraSources: Int, time: String, aiProcessed: Bo
         add(primary)
         if (extraSources > 0) add("+$extraSources ${if (extraSources == 1) "fonte" else "fontes"}")
         if (time.isNotBlank()) add(time)
-        if (!aiProcessed) add("resumo da IA pendente")
     }
     Text(
         parts.joinToString("  ·  "),

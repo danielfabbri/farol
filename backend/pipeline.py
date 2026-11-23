@@ -88,6 +88,18 @@ def run(
     filters = cat_doc.get("filters", [])
     kw = {cid: keyword_pattern(c.get("keywords", [])) for cid, c in categories.items()}
     cat_ex_re = {cid: keyword_pattern(c["exclude_keywords"]) for cid, c in categories.items() if c.get("exclude_keywords")}
+    # Seções temáticas (ex.: Robótica, Espaço) puxam de outras seções as notícias cujo título trata do tema.
+    claims = [
+        (cid, keyword_pattern(c["claim_keywords"]), set(c.get("claim_from", [])))
+        for cid, c in sorted(categories.items(), key=lambda kv: kv[1].get("order", 99))
+        if c.get("claim_keywords")
+    ]
+
+    def claim(a: Article) -> None:
+        for cid, rx, origins in claims:
+            if a.category in origins and rx.search(a.original_title):
+                a.category = cid
+                return
     sources = [s for s in load_sources(settings.sources_path)
                if s.category in categories or any(c in categories for c in s.section_rules.values())]
 
@@ -95,6 +107,8 @@ def run(
     http_cache: dict = repo.load_state("http_cache", {})
     dedup = Deduplicator(repo.load_state("seen", {}))
     working: dict[str, Article] = repo.load_recent_articles(now.date(), settings.working_window_days)
+    for a in working.values():
+        claim(a)  # vale também para notícias coletadas antes de a seção existir
 
     # 1) Coleta
     new_articles: list[Article] = []
@@ -106,6 +120,8 @@ def run(
             exclude_re=keyword_pattern(src.exclude_keywords) if src.exclude_keywords else None,
             timeout=settings.http_timeout_seconds, is_sample=settings.dev_mode,
         )
+        for a in res.articles:
+            claim(a)
         fresh = [
             a for a in res.articles
             if a.category in categories and not (cat_ex_re.get(a.category) and cat_ex_re[a.category].search(a.original_title))

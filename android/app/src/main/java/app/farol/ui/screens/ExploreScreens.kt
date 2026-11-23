@@ -74,14 +74,16 @@ private fun app.farol.data.model.Article.matches(terms: List<String>): Boolean {
 }
 
 @Composable
-fun ExploreScreen(state: UiState, onOpenArticle: (String) -> Unit, onOpenDay: (String) -> Unit) {
+fun ExploreScreen(state: UiState, onOpenArticle: (String) -> Unit, onOpenDay: (String) -> Unit, onUnreadOnly: (Boolean) -> Unit = {}) {
     var query by rememberSaveable { mutableStateOf("") }
     var section by rememberSaveable { mutableStateOf<String?>(null) }
     var source by rememberSaveable { mutableStateOf<String?>(null) }
     val feed = state.feed
     val sections = feed?.sections.orEmpty().sortedBy { it.order }
     val terms = fold(query).split(" ").filter { it.length >= 2 }
-    val base = feed?.articles.orEmpty().filter { (section == null || it.category == section) && it.matches(terms) }
+    val base = feed?.articles.orEmpty().filter {
+        (section == null || it.category == section) && it.matches(terms) && !(state.unreadOnly && it.id in state.readIds)
+    }
     val sourceCounts = base.groupingBy { it.sourceName }.eachCount().entries.sortedByDescending { it.value }.map { it.key to it.value }
     val activeSource = source?.takeIf { s -> sourceCounts.any { it.first == s } }
     val results = base.filter { activeSource == null || it.sourceName == activeSource }
@@ -113,6 +115,7 @@ fun ExploreScreen(state: UiState, onOpenArticle: (String) -> Unit, onOpenDay: (S
                 horizontalArrangement = Arrangement.spacedBy(8.dp),
                 modifier = Modifier.padding(top = 14.dp),
             ) {
+                item { FilterChip(selected = state.unreadOnly, onClick = { onUnreadOnly(!state.unreadOnly) }, label = { Text("Só não lidas") }) }
                 item { FilterChip(selected = section == null, onClick = { section = null }, label = { Text("Todas as seções") }) }
                 items(sections, key = { it.id }) { s ->
                     FilterChip(selected = section == s.id, onClick = { section = if (section == s.id) null else s.id }, label = { Text(s.label) })

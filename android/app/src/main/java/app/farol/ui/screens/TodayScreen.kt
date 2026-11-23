@@ -55,7 +55,6 @@ import androidx.compose.ui.unit.sp
 import app.farol.data.SyncResult
 import app.farol.data.model.Article
 import app.farol.data.model.Event
-import app.farol.data.model.latestMillis
 import app.farol.data.model.FilterInfo
 import app.farol.data.model.LatestFeed
 import app.farol.data.model.Section
@@ -74,11 +73,20 @@ import app.farol.ui.components.SectionHeader
 import app.farol.util.Fmt
 import kotlinx.coroutines.delay
 
-/** Artigo que representa o evento: o primeiro analisado pela IA, senão o traduzido, senão o primeiro. */
+/**
+ * Notícia que representa o acontecimento: a mais recente do grupo (preferindo uma com resumo).
+ * O horário exibido no card e a ordenação usam esta mesma notícia.
+ */
 fun leadArticle(event: Event, articles: Map<String, Article>): Article? {
-    val items = event.articleIds.mapNotNull { articles[it] }
-    return items.firstOrNull { it.aiProcessed } ?: items.firstOrNull { it.titlePt != null } ?: items.firstOrNull()
+    val items = event.articleIds.mapNotNull { articles[it] }.sortedByDescending { it.timeMillis }
+    val newest = items.firstOrNull() ?: return null
+    // Uma com resumo, se for praticamente tão recente quanto a mais nova (até 2 h de diferença).
+    return items.firstOrNull { !it.summary.isNullOrBlank() && newest.timeMillis - it.timeMillis <= 2 * 3_600_000L } ?: newest
 }
+
+/** Momento exibido no card do acontecimento (o da notícia principal). */
+fun Event.shownMillis(articles: Map<String, Article>): Long =
+    leadArticle(this, articles)?.timeMillis?.takeIf { it > 0 } ?: app.farol.data.model.isoMillis(lastSeen)
 
 private fun Event.matches(topic: String?, articles: Map<String, Article>): Boolean =
     topic == null || topic in tags || articleIds.any { id -> articles[id]?.tags?.contains(topic) == true }
@@ -92,6 +100,7 @@ fun TodayScreen(
     onRefresh: () -> Unit,
     onOpenArticle: (String) -> Unit,
     onOpenExplore: () -> Unit,
+    onUnreadOnly: (Boolean) -> Unit = {},
 ) {
     val feed = state.feed
     var sectionId by rememberSaveable { mutableStateOf<String?>(null) }
@@ -104,6 +113,15 @@ fun TodayScreen(
             item { TodayHeader(feed, section) }
             if (sections.isNotEmpty()) {
                 item { SectionBar(sections, sectionId) { sectionId = it; topic = null } }
+            }
+            if (feed != null) {
+                item {
+                    Box(HPad.padding(top = 8.dp)) {
+                        Chip("Só não lidas", state.unreadOnly, small = true) {
+                            onUnreadOnly(!state.unreadOnly)
+                        }
+                    }
+                }
             }
             item {
                 Column(HPad) { SyncNotices(state) }
@@ -133,8 +151,9 @@ fun TodayScreen(
                     item { TopicChips(section.filters, topic) { topic = it } }
                 }
                 // Sempre da mais recente para a mais antiga.
-                val ordered = feed.events.filter { it.category == section.id && it.matches(topic, arts) }
-                    .sortedByDescending { it.latestMillis(arts) }
+                val ordered = feed.events
+                    .filter { it.category == section.id && it.matches(topic, arts) && !(state.unreadOnly && isRead(it)) }
+                    .sortedByDescending { it.shownMillis(arts) }
                 val shown = ordered.take(state.highlightLimit + state.otherLimit)
                 val label = topic?.let { t -> section.filters.firstOrNull { it.id == t }?.label } ?: section.label
                 item { SectionHeader(label, "${shown.size} de ${ordered.size}", HPad) }
@@ -167,10 +186,13 @@ fun TodayScreen(
             }
 
             // ---------------- Capa ----------------
-            val highlights = feed.highlights.mapNotNull { state.eventsById[it] }.take(state.highlightLimit)
-                .sortedByDescending { it.latestMillis(arts) }
-            val readCount = highlights.count(isRead)
-            item { SectionHeader("Destaques", "$readCount de ${highlights.size} lidos", HPad) }
+            val allHighlights = feed.highlights.mapNotNull { state.eventsById[it] }.take(state.highlightLimit)
+            val readCount = allHighlights.count(isRead)
+            val highlights = allHighlights.filter { !(state.unreadOnly && isRead(it)) }.sortedByDescending { it.shownMillis(arts) }
+            item { SectionHeader("Destaques", "$readCount de ${allHighlights.size} lidos", HPad) }
+            if (highlights.isEmpty() && allHighlights.isNotEmpty()) {
+                item { EmptyState("Nenhum destaque novo", "Você já leu todos os destaques desta edição.", HPad) }
+            }
             itemsIndexed(highlights, key = { _, e -> e.id }) { i, event ->
                 val lead = leadArticle(event, arts)
                 Box(HPad) {
@@ -200,7 +222,7 @@ fun TodayScreen(
             }
 
             item {
-                val allRead = highlights.isNotEmpty() && readCount == highlights.size
+                val allRead = allHighlights.isNotEmpty() && readCount == allHighlights.size
                 EndCard(
                     title = if (allRead) "Você está em dia" else "Fim da capa",
                     body = (if (allRead) "Você leu todos os destaques. " else "") +

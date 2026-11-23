@@ -105,8 +105,16 @@ def test_translation_never_overwrites_full_analysis(settings):
 def test_new_filters_apply_to_existing_articles(settings):
     run(settings, session=NoNetworkSession(), now=utcnow())
     latest = load(settings.data_dir / "latest.json")
-    robotics = [a for a in latest["articles"] if "robotics" in a["tags"]]
-    assert robotics and {"id": "research", "label": "Pesquisa"} in latest["filters"]
+    agents = [a for a in latest["articles"] if "agents" in a["tags"]]
+    assert agents and {"id": "research", "label": "Pesquisa"} in latest["filters"]
+
+
+def test_thematic_sections_claim_matching_titles(settings):
+    run(settings, session=NoNetworkSession(), now=utcnow())
+    latest = load(settings.data_dir / "latest.json")
+    robots = [a for a in latest["articles"] if "robot" in a["original_title"].lower()]
+    assert robots and all(a["category"] == "robotica" for a in robots)
+    assert any(s["id"] == "robotica" for s in latest["sections"])
 
 
 def test_without_key_runs_collection_only(settings):
@@ -130,7 +138,7 @@ def test_sections_and_briefs(settings):
     run(settings, session=NoNetworkSession(), now=now)
     latest = load(settings.data_dir / "latest.json")
     secs = {s["id"]: s for s in latest["sections"]}
-    assert [s["id"] for s in latest["sections"]] == ["brasil", "politica", "economia", "mundo", "ciencia_saude", "technology_ai"]
+    assert [s["id"] for s in latest["sections"]] == ["brasil", "politica", "economia", "mundo", "ciencia_saude", "technology_ai", "robotica", "espaco"]
     tech, pol = secs["technology_ai"], secs["politica"]
     assert tech["highlights"] and pol["highlights"]
     assert {"id": "agents", "label": "Agentes de IA"} in tech["filters"] and pol["filters"] == []

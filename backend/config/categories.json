@@ -357,6 +357,134 @@
         "black magalu",
         "black do mercado livre"
       ]
+    },
+    {
+      "id": "robotica",
+      "label": "Robótica",
+      "enabled": true,
+      "order": 7,
+      "ai_context": "Seção especializada (Robótica). Público: um brasileiro curioso e bem informado. relevance_score = importância do fato para a área (ineditismo, alcance, marcos técnicos); 90+ só para marcos históricos. Atribua sempre quem anunciou ou afirmou. Potenciais de negócios, carreira e estudo: avalie apenas quando houver relação clara; senão use \"low\".",
+      "keywords": [],
+      "claim_from": [
+        "technology_ai",
+        "ciencia_saude"
+      ],
+      "claim_keywords": [
+        "rob[ôo]s?",
+        "robot",
+        "robots",
+        "robotic",
+        "robotics",
+        "rob[óo]tic[ao]s?",
+        "humanoides?",
+        "humanoids?",
+        "exoesqueletos?",
+        "exoskeletons?",
+        "robotax[ií]s?",
+        "Boston Dynamics",
+        "Unitree",
+        "Figure AI",
+        "Optimus"
+      ],
+      "exclude_keywords": [
+        "oferta",
+        "ofertas",
+        "promo[çc][ãa]o",
+        "desconto",
+        "cupom",
+        "black friday",
+        "pre[çc]o baixo",
+        "hor[oó]scopo",
+        "gift guide",
+        "deal",
+        "deals",
+        "aspirador",
+        "vacuum"
+      ],
+      "subcategories": [
+        {
+          "id": "other",
+          "label": "Outros"
+        }
+      ]
+    },
+    {
+      "id": "espaco",
+      "label": "Espaço",
+      "enabled": true,
+      "order": 8,
+      "ai_context": "Seção especializada (Espaço e astronomia). Público: um brasileiro curioso e bem informado. relevance_score = importância do fato para a área (ineditismo, alcance, marcos técnicos); 90+ só para marcos históricos. Atribua sempre quem anunciou ou afirmou. Potenciais de negócios, carreira e estudo: avalie apenas quando houver relação clara; senão use \"low\".",
+      "keywords": [],
+      "claim_from": [
+        "technology_ai",
+        "ciencia_saude"
+      ],
+      "claim_keywords": [
+        "NASA",
+        "ESA",
+        "SpaceX",
+        "Blue Origin",
+        "Starship",
+        "Falcon 9",
+        "Artemis",
+        "foguetes?",
+        "rockets?",
+        "astronautas?",
+        "astronauts?",
+        "espacia(?:l|is)",
+        "spacecraft",
+        "space station",
+        "sat[ée]lites?",
+        "satellites?",
+        "telesc[óo]pios?",
+        "telescopes?",
+        "James Webb",
+        "JWST",
+        "Hubble",
+        "asteroides?",
+        "asteroids?",
+        "cometas?",
+        "comets?",
+        "gal[áa]xias?",
+        "galaxy",
+        "galaxies",
+        "exoplanetas?",
+        "exoplanets?",
+        "Marte",
+        "Mars",
+        "lunar",
+        "buracos? negros?",
+        "black holes?",
+        "nebulosas?",
+        "nebula",
+        "supernovas?",
+        "astronomia",
+        "astronomy",
+        "astr[ôo]nomos?",
+        "astronomers?",
+        "[óo]rbita",
+        "orbit",
+        "orbital"
+      ],
+      "exclude_keywords": [
+        "oferta",
+        "ofertas",
+        "promo[çc][ãa]o",
+        "desconto",
+        "cupom",
+        "black friday",
+        "pre[çc]o baixo",
+        "hor[oó]scopo",
+        "gift guide",
+        "deal",
+        "deals"
+      ],
+      "subcategories": [
+        {
+          "id": "other",
+          "label": "Outros"
+        }
+      ]
     }
   ],
   "filters": [
@@ -505,21 +633,6 @@
       ],
       "subcategories": [
         "startups"
-      ],
-      "category": "technology_ai"
-    },
-    {
-      "id": "robotics",
-      "label": "Robótica",
-      "entities": [],
-      "keywords": [
-        "robot",
-        "robots",
-        "robotics",
-        "humanoid"
-      ],
-      "subcategories": [
-        "robotics"
       ],
       "category": "technology_ai"
     },

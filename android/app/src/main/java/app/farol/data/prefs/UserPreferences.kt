@@ -29,6 +29,10 @@ class UserPreferences(context: Context) {
     private val _githubToken = MutableStateFlow(sp.getString(KEY_TOKEN, null))
     val githubToken: StateFlow<String?> = _githubToken.asStateFlow()
 
+    /** Filtro "Só não lidas" (Hoje e Explorar). */
+    private val _unreadOnly = MutableStateFlow(sp.getBoolean(KEY_UNREAD_ONLY, false))
+    val unreadOnly: StateFlow<Boolean> = _unreadOnly.asStateFlow()
+
     private val _lastSync = MutableStateFlow(sp.getLong(KEY_LAST_SYNC, 0L))
     val lastSync: StateFlow<Long> = _lastSync.asStateFlow()
 
@@ -41,6 +45,7 @@ class UserPreferences(context: Context) {
         sp.edit().apply { if (clean == null) remove(KEY_TOKEN) else putString(KEY_TOKEN, clean) }.apply()
         _githubToken.value = clean
     }
+    fun setUnreadOnly(on: Boolean) { sp.edit().putBoolean(KEY_UNREAD_ONLY, on).apply(); _unreadOnly.value = on }
     fun setLastSync(ts: Long) { sp.edit().putLong(KEY_LAST_SYNC, ts).apply(); _lastSync.value = ts }
 
     private companion object {
@@ -48,6 +53,7 @@ class UserPreferences(context: Context) {
         const val KEY_HIGHLIGHTS = "highlight_limit"
         const val KEY_OTHERS = "other_limit"
         const val KEY_DEMO = "demo_mode"
+        const val KEY_UNREAD_ONLY = "unread_only"
         const val KEY_LAST_SYNC = "last_sync"
         const val KEY_TOKEN = "github_token"
     }

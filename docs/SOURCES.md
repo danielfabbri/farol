@@ -72,6 +72,36 @@ Conteúdo que não é notícia é excluído pelo título (`exclude_keywords` em 
 | 14 | arXiv — cs.AI | `https://rss.arxiv.org/rss/cs.AI` | pesquisa | ~300 itens/dia; prioridade mínima e no máximo 3 por execução |
 | 15 | arXiv — cs.LG | `https://rss.arxiv.org/rss/cs.LG` | pesquisa | Idem |
 
+## Robótica e Espaço
+
+Seções temáticas com fontes especializadas (verificadas em 2026-11-23, HTTP 200 com itens recentes). As fontes em inglês
+têm título traduzido e um parágrafo de resumo em português gerados pela Gemini.
+
+| Seção | Fonte | Feed |
+|---|---|---|
+| Espaço | NASA (comunicados) | `https://www.nasa.gov/news-release/feed/` |
+| Espaço | Space.com | `https://www.space.com/feeds/all` |
+| Espaço | Ars Technica — Espaço | `https://arstechnica.com/space/feed/` |
+| Espaço | Spaceflight Now | `https://spaceflightnow.com/feed/` |
+| Espaço | Universe Today | `https://www.universetoday.com/feed/` |
+| Espaço | SpaceNews | `https://spacenews.com/feed/` |
+| Espaço | ESA | `https://www.esa.int/rssfeed/TopNews` |
+| Espaço | The Planetary Society | `https://www.planetary.org/rss/articles` |
+| Robótica | IEEE Spectrum — Robótica | `https://spectrum.ieee.org/feeds/topic/robotics.rss` |
+| Robótica | The Robot Report | `https://www.therobotreport.com/feed/` |
+| Robótica | Robohub | `https://robohub.org/feed/` |
+| Robótica | TechCrunch — Robótica | `https://techcrunch.com/category/robotics/feed/` |
+| Robótica | arXiv cs.RO | `https://rss.arxiv.org/rss/cs.RO` |
+| Ciência e Saúde | g1 — Ciência | `https://g1.globo.com/rss/g1/ciencia/` |
+
+**Notícias em português:** não há feed brasileiro dedicado ativo (os feeds de seção do Canaltech, `/rss/espaco/` e
+`/rss/robotica/`, estão parados há meses). Por isso as seções usam `claim_from` + `claim_keywords` em `categories.json`:
+uma notícia de Tecnologia ou Ciência e Saúde cujo **título** fala do tema (robô, humanoide, NASA, foguete, satélite,
+telescópio...) passa para Robótica ou Espaço. Assim entram Canaltech, Olhar Digital, Tecnoblog, Folha e g1.
+
+Testados e não usados: `esa.int/rssfeed/Our_Activities/Space_News` (404), `robotics247.com/rss` (vazio),
+`apolo11.com/rss.php` (404), Space Today (títulos de chamada de vídeo).
+
 ## Indisponíveis
 
 | Fonte | Situação | Decisão |

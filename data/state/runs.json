@@ -354,5 +354,32 @@
    "calls_today": 11
   },
   "retention_removed": 0
+ },
+ {
+  "started_at": "2026-11-23T23:38:35+00:00",
+  "finished_at": "2026-11-23T23:43:24+00:00",
+  "status": "partial",
+  "trigger": "local",
+  "edition_id": "2026-11-23-2338",
+  "sources_ok": 62,
+  "sources_failed": 1,
+  "failed_sources": {
+   "hacker-news": "HTTP 419"
+  },
+  "new_articles": 94,
+  "highlights": 8,
+  "events": 133,
+  "ai": {
+   "state": "idle",
+   "processed": 0,
+   "failed": 0,
+   "calls": 0,
+   "digested": 144,
+   "translated": 7,
+   "briefs": 0,
+   "errors": [],
+   "calls_today": 11
+  },
+  "retention_removed": 0
  }
 ]
