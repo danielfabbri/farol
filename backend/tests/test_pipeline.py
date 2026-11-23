@@ -24,24 +24,25 @@ def test_end_to_end_dev_run(settings):
     latest = load(root / "latest.json")
     feed = LatestFeed.model_validate(latest)  # validação do contrato com o app
     assert feed.is_sample and "FICTÍCIOS" in feed.notice
-    assert feed.edition.new_articles == 6  # 3 do RSS + 2 do Atom + 1 do agregador (o off-topic é filtrado)
+    assert feed.edition.new_articles == 9  # tec: 3 RSS + 2 Atom + 1 agregador (off-topic filtrado); política: 2 + 1
     titles = [a.original_title for a in feed.articles]
     assert not any("bread" in t for t in titles) and not any("Old archived" in t for t in titles)
     assert all(a.ai_processed for a in feed.articles)
 
     # Mesmo acontecimento coberto por duas fontes => um evento com as duas fontes.
     multi = [e for e in feed.events if e.source_count == 2]
-    assert len(multi) == 1 and "Atlas" in multi[0].sources[0].title
+    assert len(multi) == 2 and any("Atlas" in e.sources[0].title for e in multi)
+    assert any("Câmara" in e.sources[0].title for e in multi)  # agrupamento entre portais em português
     assert feed.highlights and feed.highlights[0] in {e.id for e in feed.events}
     assert {"id": "agents", "label": "Agentes de IA"} in feed.filters
 
     # Persistência: arquivos por dia, edição e tendências.
     repo = JsonRepository(root)
-    assert repo.article_days() and len(repo.load_recent_articles(now.date(), 8)) == 6
+    assert repo.article_days() and len(repo.load_recent_articles(now.date(), 8)) == 9
     assert list((root / "editions").rglob("*.json"))
     assert (root / "trends" / "latest.json").exists()
     runs = load(root / "state" / "runs.json")
-    assert runs[-1]["status"] == "ok" and runs[-1]["ai"]["processed"] == 6
+    assert runs[-1]["status"] == "ok" and runs[-1]["ai"]["processed"] == 9
 
 
 def test_second_run_is_incremental(settings):
@@ -67,7 +68,7 @@ def test_quota_exhausted_still_publishes_collected_data(settings):
     assert result.status == "partial"
     latest = load(settings.data_dir / "latest.json")
     assert latest["ai_status"]["state"] == "quota_exhausted"
-    assert len(latest["articles"]) == 6 and not any(a["ai_processed"] for a in latest["articles"])
+    assert len(latest["articles"]) == 9 and not any(a["ai_processed"] for a in latest["articles"])
     assert latest["highlights"]  # edição continua sendo gerada sem IA
     usage = load(settings.data_dir / "state" / "ai_usage.json")
     assert usage["quota_exhausted"] is True
@@ -88,9 +89,10 @@ def test_translation_fallback_keeps_everything_in_portuguese(settings):
     result = run(settings, session=NoNetworkSession(), ai_client=AnalysisDownTranslationUp(), now=utcnow())
     latest = load(settings.data_dir / "latest.json")
     assert latest["ai_status"]["state"] == "unavailable"
-    assert latest["ai_status"]["translated_this_run"] == 6
+    assert latest["ai_status"]["translated_this_run"] == 6  # só as 6 em inglês; as em português não precisam
     assert "traduzidos" in latest["ai_status"]["message"]
-    assert all(a["title_pt"].startswith("[FICTÍCIO]") and not a["ai_processed"] for a in latest["articles"])
+    english = [a for a in latest["articles"] if a["language"] != "pt"]
+    assert english and all(a["title_pt"].startswith("[FICTÍCIO]") and not a["ai_processed"] for a in english)
     assert result.summary["ai"]["translated"] == 6
 
 
@@ -121,3 +123,42 @@ def test_retention_removes_old_files(settings):
     run(settings, session=NoNetworkSession(), now=utcnow())
     assert not (repo.articles_dir / "2000-01-01.json").exists()
     assert not (repo.editions_dir / "2000-01-01").exists()
+
+
+def test_sections_and_briefs(settings):
+    now = utcnow()
+    run(settings, session=NoNetworkSession(), now=now)
+    latest = load(settings.data_dir / "latest.json")
+    secs = {s["id"]: s for s in latest["sections"]}
+    assert [s["id"] for s in latest["sections"]] == ["brasil", "politica", "economia", "mundo", "technology_ai"]
+    tech, pol = secs["technology_ai"], secs["politica"]
+    assert tech["highlights"] and pol["highlights"]
+    assert {"id": "agents", "label": "Agentes de IA"} in tech["filters"] and pol["filters"] == []
+    # Capa: o melhor de cada seção com conteúdo entra nos destaques gerais.
+    assert pol["highlights"][0] in latest["highlights"] and tech["highlights"][0] in latest["highlights"]
+    brief = tech["brief"]
+    event_ids = {e["id"] for e in latest["events"]}
+    assert brief and brief["points"] and all(set(p["event_ids"]) <= event_ids for p in brief["points"])
+
+
+def test_brief_is_reused_when_section_unchanged(settings):
+    now = utcnow()
+    run(settings, session=NoNetworkSession(), now=now)
+    mock = MockGeminiClient()
+    run(settings, session=NoNetworkSession(), ai_client=mock, now=now + timedelta(hours=1))
+    assert not any("<<BRIEF>>" in p for p in mock.prompts)  # nada mudou: nenhuma chamada nova
+
+
+def test_brief_failure_keeps_previous_as_stale(settings):
+    from backend.ai.gemini_client import ServiceUnavailable
+    from backend.storage.json_repository import JsonRepository
+    now = utcnow()
+    run(settings, session=NoNetworkSession(), now=now)
+    repo = JsonRepository(settings.data_dir)
+    store = repo.read_json(repo.root / "briefs" / "latest.json", {})
+    store["technology_ai"]["signature"] = "mudou"
+    repo.write_json(repo.root / "briefs" / "latest.json", store)
+    run(settings, session=NoNetworkSession(), ai_client=MockGeminiClient(fail_with=ServiceUnavailable("503")), now=now + timedelta(hours=1))
+    latest = load(settings.data_dir / "latest.json")
+    tech = next(s for s in latest["sections"] if s["id"] == "technology_ai")
+    assert tech["brief"]["stale"] is True

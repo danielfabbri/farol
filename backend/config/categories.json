@@ -1,9 +1,209 @@
 {
-  "_doc": "Categorias, subcategorias e filtros do FAROL. Novas categorias podem ser adicionadas aqui sem mudar o código; cada fonte em sources.json aponta para uma categoria.",
+  "_doc": "Seções (categories) e temas (filters) do FAROL. Cada seção tem subcategorias e um contexto editorial para a IA (ai_context). Os temas (filters) pertencem a uma seção pelo campo category. Novas seções podem ser adicionadas aqui sem mudar o código.",
   "categories": [
     {
+      "id": "brasil",
+      "label": "Brasil",
+      "enabled": true,
+      "order": 1,
+      "ai_context": "Seção de HARD NEWS (Brasil). Público: um cidadão brasileiro bem informado. relevance_score = impacto público do fato (alcance, consequências, ineditismo); 90+ só para fatos de grande repercussão nacional ou mundial. Trate com rigor declarações de autoridades: atribua sempre quem disse. Potenciais de negócios, carreira e estudo: avalie apenas quando houver relação clara; senão use \"low\".",
+      "keywords": [],
+      "subcategories": [
+        {
+          "id": "br_justica",
+          "label": "Justiça"
+        },
+        {
+          "id": "br_seguranca",
+          "label": "Segurança pública"
+        },
+        {
+          "id": "br_saude",
+          "label": "Saúde"
+        },
+        {
+          "id": "br_educacao",
+          "label": "Educação"
+        },
+        {
+          "id": "br_meio_ambiente",
+          "label": "Meio ambiente e clima"
+        },
+        {
+          "id": "br_cidades",
+          "label": "Cidades e serviços"
+        },
+        {
+          "id": "other",
+          "label": "Outros"
+        }
+      ],
+      "exclude_keywords": [
+        "mega-sena",
+        "lotof[aá]cil",
+        "quina",
+        "lotomania",
+        "timemania",
+        "dupla sena",
+        "hor[oó]scopo",
+        "cupom",
+        "pr[eê]mio de jornalismo",
+        "dicas para aproveitar"
+      ]
+    },
+    {
+      "id": "politica",
+      "label": "Política",
+      "enabled": true,
+      "order": 2,
+      "ai_context": "Seção de HARD NEWS (Política). Público: um cidadão brasileiro bem informado. relevance_score = impacto público do fato (alcance, consequências, ineditismo); 90+ só para fatos de grande repercussão nacional ou mundial. Trate com rigor declarações de autoridades: atribua sempre quem disse. Potenciais de negócios, carreira e estudo: avalie apenas quando houver relação clara; senão use \"low\".",
+      "keywords": [],
+      "subcategories": [
+        {
+          "id": "pol_governo",
+          "label": "Governo federal"
+        },
+        {
+          "id": "pol_congresso",
+          "label": "Congresso"
+        },
+        {
+          "id": "pol_judiciario",
+          "label": "STF e Judiciário"
+        },
+        {
+          "id": "pol_eleicoes",
+          "label": "Eleições e partidos"
+        },
+        {
+          "id": "pol_estados",
+          "label": "Estados e municípios"
+        },
+        {
+          "id": "other",
+          "label": "Outros"
+        }
+      ],
+      "exclude_keywords": [
+        "mega-sena",
+        "lotof[aá]cil",
+        "quina",
+        "lotomania",
+        "timemania",
+        "dupla sena",
+        "hor[oó]scopo",
+        "cupom",
+        "pr[eê]mio de jornalismo",
+        "dicas para aproveitar"
+      ]
+    },
+    {
+      "id": "economia",
+      "label": "Economia",
+      "enabled": true,
+      "order": 3,
+      "ai_context": "Seção de HARD NEWS (Economia). Público: um cidadão brasileiro bem informado. relevance_score = impacto público do fato (alcance, consequências, ineditismo); 90+ só para fatos de grande repercussão nacional ou mundial. Trate com rigor declarações de autoridades: atribua sempre quem disse. Potenciais de negócios, carreira e estudo: avalie apenas quando houver relação clara; senão use \"low\".",
+      "keywords": [],
+      "subcategories": [
+        {
+          "id": "eco_juros_inflacao",
+          "label": "Juros e inflação"
+        },
+        {
+          "id": "eco_contas_publicas",
+          "label": "Contas públicas e impostos"
+        },
+        {
+          "id": "eco_mercado",
+          "label": "Mercado financeiro"
+        },
+        {
+          "id": "eco_empresas",
+          "label": "Empresas e negócios"
+        },
+        {
+          "id": "eco_trabalho",
+          "label": "Emprego e renda"
+        },
+        {
+          "id": "eco_global",
+          "label": "Economia global"
+        },
+        {
+          "id": "other",
+          "label": "Outros"
+        }
+      ],
+      "exclude_keywords": [
+        "mega-sena",
+        "lotof[aá]cil",
+        "quina",
+        "lotomania",
+        "timemania",
+        "dupla sena",
+        "hor[oó]scopo",
+        "cupom",
+        "pr[eê]mio de jornalismo",
+        "dicas para aproveitar"
+      ]
+    },
+    {
+      "id": "mundo",
+      "label": "Mundo",
+      "enabled": true,
+      "order": 4,
+      "ai_context": "Seção de HARD NEWS (Mundo). Público: um cidadão brasileiro bem informado. relevance_score = impacto público do fato (alcance, consequências, ineditismo); 90+ só para fatos de grande repercussão nacional ou mundial. Trate com rigor declarações de autoridades: atribua sempre quem disse. Potenciais de negócios, carreira e estudo: avalie apenas quando houver relação clara; senão use \"low\".",
+      "keywords": [],
+      "subcategories": [
+        {
+          "id": "mun_eua",
+          "label": "Estados Unidos"
+        },
+        {
+          "id": "mun_america_latina",
+          "label": "América Latina"
+        },
+        {
+          "id": "mun_europa",
+          "label": "Europa"
+        },
+        {
+          "id": "mun_oriente_medio",
+          "label": "Oriente Médio"
+        },
+        {
+          "id": "mun_asia",
+          "label": "Ásia"
+        },
+        {
+          "id": "mun_conflitos",
+          "label": "Guerras e conflitos"
+        },
+        {
+          "id": "mun_diplomacia",
+          "label": "Diplomacia e organismos internacionais"
+        },
+        {
+          "id": "other",
+          "label": "Outros"
+        }
+      ],
+      "exclude_keywords": [
+        "mega-sena",
+        "lotof[aá]cil",
+        "quina",
+        "lotomania",
+        "timemania",
+        "dupla sena",
+        "hor[oó]scopo",
+        "cupom",
+        "pr[eê]mio de jornalismo",
+        "dicas para aproveitar"
+      ]
+    },
+    {
       "id": "technology_ai",
-      "label": "Tecnologia e Inteligência Artificial",
+      "label": "Tecnologia",
       "enabled": true,
       "keywords": [
         "ai",
@@ -103,6 +303,17 @@
           "id": "other",
           "label": "Outros"
         }
+      ],
+      "ai_context": "Seção de TECNOLOGIA E INTELIGÊNCIA ARTIFICIAL. Público: um profissional de tecnologia brasileiro que acompanha IA. relevance_score = importância para quem trabalha com tecnologia; potenciais de negócios, carreira e estudo fazem sentido aqui.",
+      "order": 5,
+      "exclude_keywords": [
+        "cupom",
+        "menor pre[cç]o",
+        "oferta",
+        "desconto",
+        "black friday",
+        "black magalu",
+        "black do mercado livre"
       ]
     }
   ],
@@ -122,7 +333,8 @@
         "azure",
         "copilot"
       ],
-      "subcategories": []
+      "subcategories": [],
+      "category": "technology_ai"
     },
     {
       "id": "openai",
@@ -137,7 +349,8 @@
         "chatgpt",
         "gpt-\\d"
       ],
-      "subcategories": []
+      "subcategories": [],
+      "category": "technology_ai"
     },
     {
       "id": "google",
@@ -153,7 +366,8 @@
         "deepmind",
         "gemini"
       ],
-      "subcategories": []
+      "subcategories": [],
+      "category": "technology_ai"
     },
     {
       "id": "anthropic",
@@ -166,7 +380,8 @@
         "anthropic",
         "claude"
       ],
-      "subcategories": []
+      "subcategories": [],
+      "category": "technology_ai"
     },
     {
       "id": "nvidia",
@@ -179,7 +394,8 @@
         "nvidia",
         "cuda"
       ],
-      "subcategories": []
+      "subcategories": [],
+      "category": "technology_ai"
     },
     {
       "id": "agents",
@@ -193,7 +409,8 @@
       ],
       "subcategories": [
         "ai_agents"
-      ]
+      ],
+      "category": "technology_ai"
     },
     {
       "id": "llms",
@@ -207,7 +424,8 @@
       ],
       "subcategories": [
         "llms"
-      ]
+      ],
+      "category": "technology_ai"
     },
     {
       "id": "dev",
@@ -227,7 +445,8 @@
       ],
       "subcategories": [
         "dev_tools"
-      ]
+      ],
+      "category": "technology_ai"
     },
     {
       "id": "startups",
@@ -244,7 +463,8 @@
       ],
       "subcategories": [
         "startups"
-      ]
+      ],
+      "category": "technology_ai"
     },
     {
       "id": "robotics",
@@ -258,7 +478,8 @@
       ],
       "subcategories": [
         "robotics"
-      ]
+      ],
+      "category": "technology_ai"
     },
     {
       "id": "research",
@@ -272,7 +493,8 @@
       ],
       "subcategories": [
         "research"
-      ]
+      ],
+      "category": "technology_ai"
     },
     {
       "id": "products",
@@ -288,7 +510,8 @@
       ],
       "subcategories": [
         "products"
-      ]
+      ],
+      "category": "technology_ai"
     },
     {
       "id": "market",
@@ -304,7 +527,8 @@
       ],
       "subcategories": [
         "business_market"
-      ]
+      ],
+      "category": "technology_ai"
     },
     {
       "id": "infra",
@@ -325,7 +549,8 @@
       ],
       "subcategories": [
         "ai_infrastructure"
-      ]
+      ],
+      "category": "technology_ai"
     },
     {
       "id": "policy",
@@ -342,7 +567,8 @@
       ],
       "subcategories": [
         "policy_safety"
-      ]
+      ],
+      "category": "technology_ai"
     },
     {
       "id": "careers",
@@ -357,7 +583,8 @@
       ],
       "subcategories": [
         "careers_opportunities"
-      ]
+      ],
+      "category": "technology_ai"
     }
   ]
 }

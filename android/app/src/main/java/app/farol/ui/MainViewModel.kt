@@ -18,6 +18,10 @@ import app.farol.data.prefs.ThemeMode
 import app.farol.data.prefs.UserPreferences
 import app.farol.data.remote.DispatchResult
 import app.farol.data.remote.GitHubActions
+import app.farol.data.update.AppUpdater
+import app.farol.data.update.ReleaseInfo
+import android.content.Intent
+import java.io.File
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import java.time.Instant
@@ -60,6 +64,16 @@ sealed interface ScanState {
     data class Failed(val message: String) : ScanState
 }
 
+sealed interface UpdateState {
+    data object Idle : UpdateState
+    data object Checking : UpdateState
+    data object UpToDate : UpdateState
+    data class Available(val info: ReleaseInfo) : UpdateState
+    data class Downloading(val info: ReleaseInfo, val progress: Float) : UpdateState
+    data class Ready(val info: ReleaseInfo, val file: File) : UpdateState
+    data class Error(val message: String) : UpdateState
+}
+
 sealed interface ArchiveState {
     data object Loading : ArchiveState
     data class Loaded(val articles: List<Article>) : ArchiveState
@@ -79,7 +93,50 @@ class MainViewModel(
     private val repo: FarolRepository,
     private val prefs: UserPreferences,
     private val github: GitHubActions,
+    private val updater: AppUpdater,
 ) : ViewModel() {
+
+    private val _update = MutableStateFlow<UpdateState>(UpdateState.Idle)
+    val update: StateFlow<UpdateState> = _update.asStateFlow()
+
+    /** Verifica se há versão nova do app. [silent]: ao abrir o app, sem mostrar erro. */
+    fun checkForUpdate(silent: Boolean = false) {
+        val cur = _update.value
+        if (cur is UpdateState.Checking || cur is UpdateState.Downloading) return
+        viewModelScope.launch {
+            if (!silent) _update.value = UpdateState.Checking
+            _update.value = try {
+                updater.check()?.let { UpdateState.Available(it) } ?: if (silent) UpdateState.Idle else UpdateState.UpToDate
+            } catch (e: Exception) {
+                if (silent) UpdateState.Idle else UpdateState.Error("Não foi possível verificar: sem conexão ou servidor indisponível.")
+            }
+        }
+    }
+
+    fun downloadUpdate() {
+        val info = when (val cur = _update.value) {
+            is UpdateState.Available -> cur.info
+            is UpdateState.Error -> return checkForUpdate()
+            else -> return
+        }
+        viewModelScope.launch {
+            _update.value = UpdateState.Downloading(info, 0f)
+            _update.value = try {
+                val file = updater.download(info) { p -> _update.value = UpdateState.Downloading(info, p) }
+                UpdateState.Ready(info, file)
+            } catch (e: Exception) {
+                UpdateState.Error("Falha no download: ${e.message ?: "erro de rede"}.")
+            }
+        }
+    }
+
+    /** Intent a abrir: a tela de permissão (se ainda não concedida) ou o instalador do Android. */
+    fun installIntent(): Intent? {
+        val ready = _update.value as? UpdateState.Ready ?: return null
+        return if (updater.canInstall()) updater.installIntent(ready.file) else updater.permissionIntent()
+    }
+
+    fun canInstallPackages(): Boolean = updater.canInstall()
 
     private val sync = MutableStateFlow(SyncPart())
     private val scanState = MutableStateFlow<ScanState>(ScanState.Idle)
@@ -165,6 +222,7 @@ class MainViewModel(
 
     init {
         refresh(force = false) // atualização automática ao abrir o app
+        checkForUpdate(silent = true)
     }
 
     fun refresh(force: Boolean) {
@@ -222,7 +280,7 @@ class MainViewModel(
         val Factory: ViewModelProvider.Factory = viewModelFactory {
             initializer {
                 val app = this[ViewModelProvider.AndroidViewModelFactory.APPLICATION_KEY] as FarolApplication
-                MainViewModel(app.container.repository, app.container.prefs, app.container.gitHubActions)
+                MainViewModel(app.container.repository, app.container.prefs, app.container.gitHubActions, app.container.updater)
             }
         }
     }

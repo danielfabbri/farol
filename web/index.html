@@ -90,7 +90,7 @@ const store = {
   get(k, d) { try { const v = localStorage.getItem(k); return v === null ? d : JSON.parse(v); } catch { return d; } },
   set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} },
 };
-let feed = null, trends = null, tab = "hoje", filter = null, topic = null;
+let feed = null, trends = null, tab = "hoje", filter = null, topic = null, section = null;
 let read = new Set(store.get("farol.read", []));
 const $ = (s) => document.querySelector(s);
 const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
@@ -156,49 +156,74 @@ function notices() {
 
 function renderToday() {
   const arts = byId(), evs = evById(), e = feed.edition;
-  const hl = feed.highlights.map(i => evs[i]).filter(Boolean);
-  const shown = new Set(hl.map(x => x.id));
+  const sections = (feed.sections || []).slice().sort((a, b) => a.order - b.order);
+  const sec = sections.find(s => s.id === section);
   const isRead = (ev) => ev.article_ids.some(i => read.has(i));
-  const others = feed.events.filter(x => !shown.has(x.id)).sort((a, b) => b.score - a.score).slice(0, 15);
-  const readCount = hl.filter(isRead).length;
-  let h = `<h1>${esc(e.label)}</h1>
-    <div class="muted">Atualizada em ${fmt(feed.generated_at)}</div>
+  let h = `<h1>${esc(sec ? sec.label : e.label)}</h1>
+    <div class="muted">${sec ? esc(e.label) + " · " : ""}Atualizada em ${fmt(feed.generated_at)}</div>
     <div class="muted small">${e.article_count} notícias · ${e.ai_processed_count} analisadas pela IA · ${e.sources_ok} fontes</div>
-    ${topicBar()}${notices()}`;
-  if (topic) {
-    const lbl = feed.filters.find(f => f.id === topic)?.label || "";
-    const evsT = feed.events.filter(ev => (ev.tags || []).includes(topic) || ev.article_ids.some(i => (arts[i]?.tags || []).includes(topic))).sort((a, b) => b.score - a.score);
-    h += `<h2>${esc(lbl)} <small>${evsT.length} acontecimentos</small></h2>`;
-    evsT.forEach(ev => { const a = lead(ev, arts); if (a) h += itemRow(a, ev.source_count - 1); });
-    h += `<div class="end"><b>Fim de ${esc(lbl)}</b><div class="muted small" style="margin-top:6px">Isso é tudo sobre este tema nesta edição.</div></div>`;
+    ${sectionBar(sections)}${notices()}`;
+  if (sec) {
+    if (sec.brief) h += briefCard(sec, true);
+    if (sec.filters?.length) h += `<div class="chips" style="flex-wrap:nowrap;overflow-x:auto;margin-top:8px">
+      <span class="chip ${!topic ? "on" : ""}" data-topic="" style="white-space:nowrap">Todos os temas</span>` +
+      sec.filters.map(f => `<span class="chip ${topic === f.id ? "on" : ""}" data-topic="${f.id}" style="white-space:nowrap">${esc(f.label)}</span>`).join("") + `</div>`;
+    const inSec = feed.events.filter(ev => ev.category === sec.id && (!topic || (ev.tags || []).includes(topic) || ev.article_ids.some(i => (arts[i]?.tags || []).includes(topic))));
+    const hlS = sec.highlights.map(id => inSec.find(x => x.id === id)).filter(Boolean);
+    const list = hlS.concat(inSec.filter(x => !hlS.includes(x)).sort((a, b) => b.score - a.score));
+    const lbl = topic ? (sec.filters.find(f => f.id === topic)?.label || sec.label) : sec.label;
+    h += `<h2>${esc(lbl)} <small>${list.length} acontecimentos</small></h2>`;
+    list.forEach((ev, i) => { const a = lead(ev, arts); if (!a) return; h += i < 3 ? card(a, ev, i, isRead(ev)) : itemRow(a, ev.source_count - 1); });
+    h += `<div class="end"><b>Fim de ${esc(lbl)}</b><div class="muted small" style="margin-top:6px">Isso é tudo nesta edição. A próxima sai ${nextEdition()}.</div></div>`;
     $("#view").innerHTML = h; return;
   }
+  const hl = feed.highlights.map(i => evs[i]).filter(Boolean);
+  const readCount = hl.filter(isRead).length;
   h += `<h2>Destaques <small>${readCount} de ${hl.length} lidos</small></h2>`;
-  hl.forEach((ev, i) => {
-    const a = lead(ev, arts); if (!a) return;
-    const extra = ev.source_count - 1;
-    h += `<div class="card ${isRead(ev) ? "read" : ""}" data-open="${a.id}">
-      <div class="row"><span class="rank">${String(i + 1).padStart(2, "0")}</span>
-      <span class="eyebrow" style="flex:1">${esc(feed.subcategories[a.subcategory] || "Tecnologia e IA")}</span>${bars(a.relevance_score)}</div>
-      <div class="title">${esc(title(a))}</div>
-      <div class="summary">${esc(preview(a))}</div>
-      <div class="meta">${esc(a.source_name)}${extra > 0 ? ` · +${extra} ${extra === 1 ? "fonte" : "fontes"}` : ""} · ${rel(a.published_at || a.collected_at)}${a.ai_processed ? "" : " · resumo da IA pendente"}</div>
-    </div>`;
-  });
-  if (others.length) {
-    h += `<h2>Também nesta edição <small>${others.length}</small></h2>`;
-    others.forEach(ev => { const a = lead(ev, arts); if (a) h += itemRow(a, ev.source_count - 1); });
+  hl.forEach((ev, i) => { const a = lead(ev, arts); if (a) h += card(a, ev, i, isRead(ev), sections.find(s => s.id === ev.category)?.label); });
+  const withBriefs = sections.filter(s => s.brief);
+  if (withBriefs.length) {
+    h += `<h2>Resumo das seções <small>${withBriefs.length}</small></h2>`;
+    withBriefs.forEach(s => { h += briefCard(s, false); });
   }
   const all = hl.length && readCount === hl.length;
-  h += `<div class="end"><div style="font-size:22px">✓</div><b>${all ? "Você está em dia" : "Fim da edição"}</b>
-    <div class="muted small" style="margin-top:6px">${all ? "Você leu todos os destaques." : "Não há mais nada nesta edição."} A próxima sai ${nextEdition()}.</div></div>`;
+  h += `<div class="end"><div style="font-size:22px">✓</div><b>${all ? "Você está em dia" : "Fim da capa"}</b>
+    <div class="muted small" style="margin-top:6px">Abra uma seção acima para ver o resto. A próxima edição sai ${nextEdition()}.</div></div>`;
   $("#view").innerHTML = h;
 }
 
-function topicBar() {
+function card(a, ev, i, isRd, label) {
+  const extra = ev.source_count - 1;
+  return `<div class="card ${isRd ? "read" : ""}" data-open="${a.id}">
+    <div class="row"><span class="rank">${String(i + 1).padStart(2, "0")}</span>
+    <span class="eyebrow" style="flex:1">${esc(label || feed.subcategories[a.subcategory] || "")}</span>${bars(a.relevance_score)}</div>
+    <div class="title">${esc(title(a))}</div>
+    <div class="summary">${esc(preview(a))}</div>
+    <div class="meta">${esc(a.source_name)}${extra > 0 ? ` · +${extra} ${extra === 1 ? "fonte" : "fontes"}` : ""} · ${rel(a.published_at || a.collected_at)}${a.ai_processed ? "" : " · resumo da IA pendente"}</div>
+  </div>`;
+}
+
+function briefCard(sec, expanded) {
+  const b = sec.brief, arts = byId(), evs = evById();
+  let h = `<div class="card" style="background:var(--blue-bg);${expanded ? "cursor:default;margin-top:16px" : ""}" ${expanded ? "" : `data-section="${sec.id}"`}>
+    <div class="eyebrow" style="color:var(--blue)">${expanded ? "Resumo da seção" : esc(sec.label) + " ›"}</div>
+    <div class="title">${esc(b.headline)}</div><div class="${expanded ? "" : "summary"}">${esc(b.overview)}</div>`;
+  if (expanded) {
+    h += `<ul style="padding-left:18px;margin:12px 0">` + b.points.map(p => {
+      const ev = p.event_ids.map(id => evs[id]).find(Boolean); const a = ev && lead(ev, arts);
+      return `<li style="margin-bottom:8px">${a ? `<a href="#" data-open="${a.id}" style="color:var(--text);text-decoration:none">${esc(p.text)} <span style="color:var(--blue)">›</span></a>` : esc(p.text)}</li>`;
+    }).join("") + `</ul>`;
+    if (b.watch) h += `<div class="eyebrow">O que acompanhar</div><div class="small">${esc(b.watch)}</div>`;
+  }
+  h += `<div class="meta">Resumo por ${esc(b.author)}${b.model ? ` (${esc(b.model)})` : ""} · ${fmt(b.generated_at)}${b.stale ? " · a seção mudou desde então" : ""}</div></div>`;
+  return h;
+}
+
+function sectionBar(sections) {
+  if (!sections.length) return "";
   return `<div class="chips" style="flex-wrap:nowrap;overflow-x:auto;padding-bottom:4px">
-    <span class="chip ${!topic ? "on" : ""}" data-topic="" style="white-space:nowrap">Tudo</span>` +
-    feed.filters.map(f => `<span class="chip ${topic === f.id ? "on" : ""}" data-topic="${f.id}" style="white-space:nowrap">${esc(f.label)}</span>`).join("") + `</div>`;
+    <span class="chip ${!section ? "on" : ""}" data-section="" style="white-space:nowrap">Capa</span>` +
+    sections.map(s => `<span class="chip ${section === s.id ? "on" : ""}" data-section="${s.id}" style="white-space:nowrap">${esc(s.label)}</span>`).join("") + `</div>`;
 }
 
 function itemRow(a, extra = 0) {
@@ -278,7 +303,8 @@ function openArticle(id) {
 }
 
 document.addEventListener("click", (ev) => {
-  const o = ev.target.closest("[data-open]"); if (o) return openArticle(o.dataset.open);
+  const o = ev.target.closest("[data-open]"); if (o) { ev.preventDefault(); return openArticle(o.dataset.open); }
+  const sc = ev.target.closest("[data-section]"); if (sc) { section = sc.dataset.section || null; topic = null; window.scrollTo(0, 0); return render(); }
   const tp = ev.target.closest("[data-topic]"); if (tp) { topic = tp.dataset.topic || null; return render(); }
   const f = ev.target.closest("[data-filter]"); if (f) { filter = f.dataset.filter || null; return render(); }
   const t = ev.target.closest("nav.tabs button"); if (t) { tab = t.dataset.tab; window.scrollTo(0, 0); return render(); }

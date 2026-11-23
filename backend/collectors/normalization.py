@@ -62,6 +62,16 @@ def looks_corrupted(text: str | None) -> bool:
     return bool(text) and bool(_CORRUPT_RE.search(text))
 
 
+def drop_repeated_prefix(text: str) -> str:
+    """Remove legenda de foto duplicada no início do trecho (padrão do g1: "Legenda Crédito Legenda Crédito Texto...")."""
+    for size in range(min(320, len(text) // 2), 19, -1):
+        head = text[:size]
+        rest = text[size:].lstrip()
+        if rest.startswith(head):
+            return rest[len(head):].lstrip()
+    return text
+
+
 def truncate(text: str, limit: int) -> str:
     if len(text) <= limit:
         return text

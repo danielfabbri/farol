@@ -12,8 +12,8 @@
   "last_modified": "Mon, 23 Nov 2026 12:35:24 GMT"
  },
  "microsoft-research": {
-  "etag": "\"8fb62bede660660b2faf21768734afe3\"",
-  "last_modified": "Mon, 23 Nov 2026 14:53:34 GMT"
+  "etag": "\"564fd7dda60af8ea79d53f8d450b539b\"",
+  "last_modified": "Mon, 23 Nov 2026 16:33:22 GMT"
  },
  "openai-news": {
   "etag": null,
@@ -28,8 +28,8 @@
   "last_modified": "Fri, 20 Nov 2026 23:30:30 GMT"
  },
  "google-deepmind": {
-  "etag": null,
-  "last_modified": "Wed, 18 Nov 2026 21:35:43 GMT"
+  "etag": "\"mxYxOA\"",
+  "last_modified": null
  },
  "nvidia-blog": {
   "etag": "\"0ffc67c757439b59faadacbb95463851-gzip\"",
@@ -40,19 +40,43 @@
   "last_modified": null
  },
  "mit-tech-review-ai": {
-  "etag": "W/\"3859201ede81e45d807f78a4282c3a1b\"",
-  "last_modified": "Mon, 23 Nov 2026 12:11:01 GMT"
+  "etag": "W/\"8f0e6091219b4cdd1e4e0b6d0c3d83d7\"",
+  "last_modified": "Mon, 23 Nov 2026 16:21:56 GMT"
  },
  "ars-technica-ai": {
-  "etag": "\"553f864040629b6de41775941c5b6814\"",
-  "last_modified": "Mon, 23 Nov 2026 15:47:51 GMT"
+  "etag": "\"50f10173704d82d5941aafc35c28139e\"",
+  "last_modified": "Mon, 23 Nov 2026 15:55:12 GMT"
  },
  "ars-technica-tech": {
-  "etag": "\"de6b9a910727413715fa2c8cf8365ce3\"",
-  "last_modified": "Mon, 23 Nov 2026 15:46:21 GMT"
+  "etag": "\"50f10173704d82d5941aafc35c28139e\"",
+  "last_modified": "Mon, 23 Nov 2026 15:55:12 GMT"
  },
  "techcrunch-ai": {
-  "etag": "W/\"e91bd704f22a39005963797aab379b47\"",
-  "last_modified": "Mon, 23 Nov 2026 15:48:09 GMT"
+  "etag": "W/\"a964eb5eb13e49b6610a74ee0fe5828c\"",
+  "last_modified": "Mon, 23 Nov 2026 16:29:45 GMT"
+ },
+ "agenciabrasil-geral": {
+  "etag": "\"1795451446-1\"",
+  "last_modified": "Mon, 23 Nov 2026 16:30:46 GMT"
+ },
+ "agenciabrasil-politica": {
+  "etag": "\"1795451431-1\"",
+  "last_modified": "Mon, 23 Nov 2026 16:30:31 GMT"
+ },
+ "poder360": {
+  "etag": "\"5e65842a1e0384bb68dcb391ea194ae5-gzip\"",
+  "last_modified": "Mon, 23 Nov 2026 16:28:54 GMT"
+ },
+ "agenciabrasil-economia": {
+  "etag": "\"1795451394-1\"",
+  "last_modified": "Mon, 23 Nov 2026 16:29:54 GMT"
+ },
+ "infomoney": {
+  "etag": "W/\"167b23b6d3033c42c84af0d76f08c04b\"",
+  "last_modified": "Mon, 23 Nov 2026 16:33:11 GMT"
+ },
+ "agenciabrasil-internacional": {
+  "etag": "\"1795451386-1\"",
+  "last_modified": "Mon, 23 Nov 2026 16:29:46 GMT"
  }
 }

@@ -22,6 +22,7 @@ class Source(BaseModel):
     priority: int = Field(default=3, ge=1, le=5)
     max_items_per_run: int = Field(default=8, ge=1, le=50)
     require_keywords: bool = False
+    exclude_keywords: list[str] = Field(default_factory=list)
     enabled: bool = True
     notes: str | None = None
 

@@ -21,7 +21,9 @@ import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.SegmentedButton
 import androidx.compose.material3.SegmentedButtonDefaults
 import androidx.compose.material3.SingleChoiceSegmentedButtonRow
+import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.OutlinedTextField
+import app.farol.ui.UpdateState
 import androidx.compose.material3.Switch
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.text.input.PasswordVisualTransformation
@@ -52,6 +54,10 @@ fun SettingsScreen(
     onClearCache: () -> Unit,
     onSaveToken: (String?) -> Unit,
     onScan: () -> Unit,
+    update: UpdateState,
+    onCheckUpdate: () -> Unit,
+    onDownloadUpdate: () -> Unit,
+    onInstallUpdate: () -> Unit,
 ) {
     var confirmClear by remember { mutableStateOf(false) }
     var tokenInput by remember { mutableStateOf("") }
@@ -60,6 +66,52 @@ fun SettingsScreen(
         Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(horizontal = 20.dp).padding(bottom = 32.dp),
     ) {
         ScreenTitle("Configurações", null)
+
+        Section("Atualizar app")
+        Text("Versão instalada: ${BuildConfig.VERSION_NAME}", style = MaterialTheme.typography.bodyMedium)
+        Spacer(Modifier.height(10.dp))
+        when (update) {
+            UpdateState.Idle, UpdateState.UpToDate -> {
+                if (update == UpdateState.UpToDate) {
+                    Text("Você já tem a versão mais recente.", style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.primary)
+                    Spacer(Modifier.height(8.dp))
+                }
+                OutlinedButton(onClick = onCheckUpdate) { Text("Verificar atualização") }
+            }
+            UpdateState.Checking -> Row(verticalAlignment = Alignment.CenterVertically) {
+                CircularProgressIndicator(Modifier.size(18.dp), strokeWidth = 2.dp)
+                Spacer(Modifier.width(10.dp))
+                Text("Verificando…", style = MaterialTheme.typography.bodyMedium)
+            }
+            is UpdateState.Available -> {
+                Text("Nova versão ${update.info.versionName} disponível", style = MaterialTheme.typography.titleSmall, color = MaterialTheme.colorScheme.primary)
+                if (update.info.notes.isNotBlank()) {
+                    Spacer(Modifier.height(4.dp))
+                    Text(update.info.notes, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                }
+                Spacer(Modifier.height(10.dp))
+                Button(onClick = onDownloadUpdate) { Text("Baixar e instalar") }
+            }
+            is UpdateState.Downloading -> {
+                Text("Baixando ${update.info.versionName}… ${(update.progress * 100).toInt()}%", style = MaterialTheme.typography.bodyMedium)
+                Spacer(Modifier.height(8.dp))
+                LinearProgressIndicator(progress = { update.progress }, modifier = Modifier.fillMaxWidth())
+            }
+            is UpdateState.Ready -> {
+                Text("Versão ${update.info.versionName} baixada e verificada.", style = MaterialTheme.typography.bodyMedium)
+                Spacer(Modifier.height(10.dp))
+                Button(onClick = onInstallUpdate) { Text("Instalar agora") }
+                Hint(
+                    "Na primeira vez, o Android pede para permitir que o FAROL instale apps: permita e volte aqui para tocar em " +
+                        "\"Instalar agora\" de novo. Seus salvos e ajustes são mantidos."
+                )
+            }
+            is UpdateState.Error -> {
+                Text(update.message, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.error)
+                Spacer(Modifier.height(8.dp))
+                OutlinedButton(onClick = onCheckUpdate) { Text("Tentar de novo") }
+            }
+        }
 
         Section("Sincronização")
         Text("Última sincronização: ${Fmt.dateTime(state.lastSync)}", style = MaterialTheme.typography.bodyMedium)

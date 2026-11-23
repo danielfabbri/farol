@@ -47,7 +47,8 @@ def select_highlights(events: list[Event], now: datetime, limit: int, window_hou
     recent = [e for e in events if e.last_seen >= cutoff]
     if len(recent) < limit:  # dias fracos: amplia a janela em vez de deixar a edição vazia
         recent = [e for e in events if e.last_seen >= now - timedelta(hours=window_hours * 2)]
-    recent.sort(key=lambda e: (e.ai_processed, e.score), reverse=True)
+    # Pequena preferência por eventos já analisados (têm resumo), sem ignorar o ranking.
+    recent.sort(key=lambda e: e.score + (5 if e.ai_processed else 0), reverse=True)
     return recent[:limit]
 
 

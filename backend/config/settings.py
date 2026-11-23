@@ -57,8 +57,8 @@ class Settings:
     ai_mock: bool = False
     dev_mode: bool = False
     # Controle de cota da IA
-    max_ai_calls_per_run: int = 5
-    max_ai_calls_per_day: int = 20
+    max_ai_calls_per_run: int = 10
+    max_ai_calls_per_day: int = 30
     # Lotes e contexto pequenos: o plano gratuito recusa (HTTP 503) prompts grandes sob carga.
     ai_batch_size: int = 6
     ai_max_context_events: int = 15
@@ -71,12 +71,18 @@ class Settings:
     max_translation_calls_per_run: int = 2
     max_translation_calls_per_day: int = 12
     title_fallback_enabled: bool = True
+    # Resumo da seção inteira (1 chamada por seção, só quando os principais fatos mudam)
+    briefs_enabled: bool = True
+    max_brief_calls_per_run: int = 6
+    max_brief_calls_per_day: int = 20
     # Coleta
     max_age_days: int = 4
     http_timeout_seconds: int = 20
     # Edição e publicação
-    highlights_per_edition: int = 7
+    highlights_per_edition: int = 8
+    section_highlights: int = 5
     latest_max_articles: int = 60
+    latest_max_articles_per_section: int = 25
     latest_window_hours: int = 48
     # Retenção
     retention_article_days: int = 120
@@ -113,14 +119,15 @@ def load_settings(*, dev: bool = False, mock_ai: bool = False, no_ai: bool = Fal
         ai_enabled=_bool("FAROL_AI_ENABLED", True) and not no_ai,
         ai_mock=mock_ai or dev or _bool("FAROL_AI_MOCK", False),
         dev_mode=dev,
-        max_ai_calls_per_run=_int("FAROL_MAX_AI_CALLS_PER_RUN", 5),
-        max_ai_calls_per_day=_int("FAROL_MAX_AI_CALLS_PER_DAY", 20),
+        max_ai_calls_per_run=_int("FAROL_MAX_AI_CALLS_PER_RUN", 10),
+        max_ai_calls_per_day=_int("FAROL_MAX_AI_CALLS_PER_DAY", 30),
+        max_brief_calls_per_day=_int("FAROL_MAX_BRIEF_CALLS_PER_DAY", 20),
         ai_batch_size=max(1, _int("FAROL_AI_BATCH_SIZE", 6)),
         ai_max_context_events=_int("FAROL_AI_MAX_CONTEXT_EVENTS", 15),
         ai_min_interval_seconds=_float("FAROL_AI_MIN_INTERVAL_SECONDS", 13.0),
         max_input_chars=_int("FAROL_MAX_INPUT_CHARS", 700),
         max_age_days=_int("FAROL_MAX_AGE_DAYS", 4),
-        highlights_per_edition=_int("FAROL_HIGHLIGHTS", 7),
+        highlights_per_edition=_int("FAROL_HIGHLIGHTS", 8),
         latest_max_articles=_int("FAROL_LATEST_MAX_ARTICLES", 60),
         min_minutes_between_runs=_int("FAROL_MIN_MINUTES_BETWEEN_RUNS", 30),
     )

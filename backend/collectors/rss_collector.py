@@ -11,7 +11,7 @@ import requests
 
 from backend.collectors.http_client import FetchError, FetchResult, fetch
 from backend.collectors.normalization import (
-    article_id, clean_text, normalize_url, struct_to_datetime, truncate,
+    article_id, clean_text, drop_repeated_prefix, normalize_url, struct_to_datetime, truncate,
 )
 from backend.collectors.source_manager import Source
 from backend.config.settings import FIXTURES_DIR
@@ -48,7 +48,7 @@ def parse_entries(content: bytes, source: Source, collected_at: datetime, *, is_
         summary_html = entry.get("summary") or ""
         if not summary_html and entry.get("content"):
             summary_html = entry["content"][0].get("value", "")
-        excerpt = truncate(clean_text(summary_html), EXCERPT_LIMIT)
+        excerpt = truncate(drop_repeated_prefix(clean_text(summary_html)), EXCERPT_LIMIT)
         # Hacker News e arXiv incluem textos padrão ("Comments", "Announce Type") sem valor.
         if excerpt.lower() in {"comments", ""}:
             excerpt = ""
@@ -102,6 +102,7 @@ def collect_source(
     collected_at: datetime,
     max_age_days: int,
     keyword_re: re.Pattern | None,
+    exclude_re: re.Pattern | None = None,
     timeout: int = 20,
     is_sample: bool = False,
 ) -> SourceResult:
@@ -125,6 +126,8 @@ def collect_source(
     fresh = [a for a in articles if a.published_at is None or a.published_at >= cutoff]
     if source.require_keywords and keyword_re is not None:
         fresh = [a for a in fresh if keyword_re.search(f"{a.original_title} {a.excerpt}")]
+    if exclude_re is not None:  # promoções, loterias e outros conteúdos que não são notícia
+        fresh = [a for a in fresh if not exclude_re.search(a.original_title)]
     fresh.sort(key=lambda a: a.reference_time, reverse=True)
     return SourceResult(
         source.id, ok=True, status="ok", articles=fresh, entries_seen=seen,

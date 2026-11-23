@@ -66,6 +66,36 @@ class Trend(BaseModel):
     status: str
 
 
+class BriefPoint(BaseModel):
+    text: str
+    event_ids: list[str] = Field(default_factory=list)
+
+
+class SectionBrief(BaseModel):
+    """Resumo da seção inteira. Cada tópico aponta para os acontecimentos de onde saiu."""
+
+    headline: str
+    overview: str
+    points: list[BriefPoint]
+    watch: str | None = None
+    generated_at: datetime
+    model: str | None = None
+    author: str = "IA"
+    signature: str = ""
+    event_ids: list[str] = Field(default_factory=list)
+    stale: bool = False
+
+
+class Section(BaseModel):
+    id: str
+    label: str
+    order: int = 0
+    highlights: list[str] = Field(default_factory=list)
+    filters: list[dict] = Field(default_factory=list)
+    article_count: int = 0
+    brief: SectionBrief | None = None
+
+
 class LatestFeed(BaseModel):
     """Contrato de dados consumido pelo aplicativo Android (data/latest.json)."""
 
@@ -82,3 +112,4 @@ class LatestFeed(BaseModel):
     archive_days: list[str]
     ai_status: dict
     notice: str | None = None
+    sections: list[Section] = Field(default_factory=list)

@@ -13,6 +13,9 @@ _STOPWORDS = {
     "are", "be", "its", "it", "as", "how", "why", "what", "new", "now", "this", "that", "into", "your",
     "you", "we", "our", "will", "can", "after", "about", "says", "say", "o", "os", "as", "um", "uma",
     "de", "do", "da", "dos", "das", "e", "em", "no", "na", "para", "por", "com", "que", "se",
+    "nos", "nas", "ao", "aos", "um", "uns", "umas", "sobre", "apos", "contra", "diz", "dizem", "mais",
+    "ser", "foi", "sao", "tem", "vai", "pode", "como", "entre", "ate", "sem", "seu", "sua", "seus", "suas",
+    "ja", "nao", "sim", "veja", "entenda", "saiba", "video", "ao vivo",
 }
 _TOKEN_RE = re.compile(r"[a-z0-9][a-z0-9.\-+]*")
 

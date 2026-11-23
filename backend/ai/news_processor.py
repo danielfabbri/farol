@@ -15,7 +15,7 @@ from pydantic import ValidationError
 from backend.ai.gemini_client import (
     FatalGeminiError, GeminiError, JsonGenerator, QuotaExceeded, SchemaRejected, ServiceUnavailable,
 )
-from backend.ai.prompts import SYSTEM_PROMPT, build_batch_prompt, response_schema
+from backend.ai.prompts import build_batch_prompt, response_schema, system_prompt
 from backend.collectors.normalization import truncate
 from backend.models.analysis import ArticleAnalysis
 from backend.models.article import Article
@@ -54,6 +54,17 @@ class AiUsage:
 
     def mark_exhausted(self) -> None:
         self.state["quota_exhausted"] = True
+
+    # Orçamentos nomeados adicionais (ex.: "brief_calls" para os resumos de seção).
+    def can_spend(self, key: str, daily_limit: int, run_limit: int) -> bool:
+        runs = getattr(self, "_spent_run", {})
+        return (not self.quota_exhausted and self.state.get(key, 0) < daily_limit and runs.get(key, 0) < run_limit)
+
+    def spend(self, key: str, n: int = 1) -> None:
+        self.state[key] = self.state.get(key, 0) + n
+        runs = getattr(self, "_spent_run", {})
+        runs[key] = runs.get(key, 0) + n
+        self._spent_run = runs
 
     # Orçamento separado para a tradução leve (usa modelos "lite", com cota própria).
     def can_translate(self, daily_limit: int, run_limit: int) -> bool:
@@ -153,11 +164,11 @@ class NewsProcessor:
         try:
             schema = response_schema(self.sub_ids) if self._use_schema else None
             try:
-                data = self.client.generate_json(SYSTEM_PROMPT, prompt, schema)
+                data = self.client.generate_json(system_prompt(self.category), prompt, schema)
             except SchemaRejected:
                 log.warning("Schema recusado pela API; repetindo com validação apenas local")
                 self._use_schema = False
-                data = self.client.generate_json(SYSTEM_PROMPT, prompt, None)
+                data = self.client.generate_json(system_prompt(self.category), prompt, None)
             return data, self._calls_since(before)
         except GeminiError as exc:
             exc.calls_used = self._calls_since(before)  # type: ignore[attr-defined]

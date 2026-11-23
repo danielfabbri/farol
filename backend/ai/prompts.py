@@ -3,7 +3,8 @@ from __future__ import annotations
 
 import json
 
-SYSTEM_PROMPT = """Você é o analista editorial do FAROL, uma central pessoal de inteligência sobre tecnologia e IA.
+SYSTEM_PROMPT = """Você é o analista editorial do FAROL, uma central pessoal de inteligência e notícias.
+{context}
 Escreva sempre em português do Brasil, com tom objetivo e sem sensacionalismo.
 Escreva os acentos diretamente (á, ç, ã, ó...), nunca como códigos ou sequências de escape.
 
@@ -17,14 +18,21 @@ REGRAS DE VERACIDADE (obrigatórias):
 7. Escores (0-100) e potenciais (low/medium/high) são avaliações editoriais suas, não fatos.
 
 CLASSIFICAÇÃO:
-- "is_on_topic": false se a notícia não tem relação real com tecnologia/IA (ex.: item de agregador fora do tema).
+- "is_on_topic": false se a notícia não pertence à seção (ex.: entretenimento, fofoca ou item de agregador fora do tema).
 - "subcategory": escolha um id da lista fornecida.
-- "relevance_score": importância para um profissional de tecnologia que acompanha IA. 90+ apenas para acontecimentos de grande impacto.
+- "relevance_score": siga o critério da seção descrito acima. 90+ apenas para acontecimentos de grande impacto.
 - "novelty_score": quanto a notícia traz algo realmente novo.
-- "entities": empresas, organizações e pessoas citadas. "technologies": tecnologias e produtos citados.
+- "entities": empresas, organizações, instituições e pessoas citadas. "technologies": tecnologias e produtos citados (lista vazia se não houver).
+- Se a notícia já estiver em português, mantenha "title_pt" fiel ao título original (sem sensacionalismo).
 - "related_event_id": se a notícia trata claramente do MESMO acontecimento de um evento recente listado, informe o id (evt-...). Caso contrário, null. Não relacione apenas por tema parecido.
 
-Responda apenas com JSON no formato {"items": [...]}, um item por notícia, preservando o "ref"."""
+Responda apenas com JSON no formato {{"items": [...]}}, um item por notícia, preservando o "ref"."""
+
+DEFAULT_CONTEXT = "Seção de tecnologia e inteligência artificial."
+
+
+def system_prompt(category: dict) -> str:
+    return SYSTEM_PROMPT.format(context=category.get("ai_context") or DEFAULT_CONTEXT)
 
 
 TRANSLATE_SYSTEM_PROMPT = """Você traduz títulos e trechos de notícias de tecnologia para português do Brasil.

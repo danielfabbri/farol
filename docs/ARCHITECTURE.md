@@ -72,6 +72,23 @@ O histórico completo continua no Git mesmo após a retenção. O `latest.json` 
 
 **Sem consumo infinito:** a edição tem número fixo de destaques, um contador "x de y lidos" e um cartão de **fim da edição** com o horário da próxima. Não há rolagem infinita, autoplay, notificações ou métricas de tempo de tela. O arquivo histórico fica separado e só é baixado quando você abre um dia.
 
+## Seções e resumos de seção
+
+`categories.json` define as **seções** (Brasil, Política, Economia, Mundo, Tecnologia), cada uma com subcategorias, filtros de exclusão e um `ai_context` (o critério editorial que a IA recebe: impacto público em hard news, relevância profissional em Tecnologia). Os **temas** (`filters`) pertencem a uma seção — hoje, Microsoft, OpenAI, Agentes etc. ficam dentro de Tecnologia.
+
+A cada execução, para cada seção:
+- **Destaques da seção** (5) e, na **capa**, o melhor de cada seção primeiro e depois os demais por importância (8).
+- No máximo 25 notícias por seção no `latest.json`, para nenhuma seção engolir as outras.
+- O orçamento da IA é dividido entre as seções que têm pendências.
+- **Resumo da seção** (`section_briefer.py`): uma chamada com os 10 principais acontecimentos → manchete, abertura, 3–6 tópicos (cada um ligado aos acontecimentos de origem; tópico sem origem é descartado) e "o que acompanhar". Só é refeito quando o conjunto dos principais acontecimentos muda (assinatura); se a IA falhar, o anterior continua visível marcado como "a seção mudou desde então"; resumos com mais de 36 h deixam de ser exibidos.
+- **Modo manual** (`backend/briefing_cli.py`): exporta exatamente o mesmo material e importa resumos escritos fora do pipeline — por exemplo, pelo Claude no VS Code enquanto a cota gratuita da Gemini estiver instável —, com a mesma validação e autoria identificada no app.
+
+Agrupamento entre portais: além de títulos quase iguais, notícias com 4+ termos distintivos em comum em 36 h viram o mesmo acontecimento (g1 e Folha redigem manchetes diferentes para o mesmo fato).
+
+## Atualização do app
+
+`scripts/release_app.py` gera o APK de release, copia para `releases/farol.apk` e escreve `releases/version.json` (versão, tamanho, SHA-256, notas). O app verifica esse arquivo ao abrir e em **Ajustes → Atualizar app**; baixa o APK, confere o SHA-256 e entrega ao instalador do Android (`FileProvider` + permissão `REQUEST_INSTALL_PACKAGES`, que o Android pede para o usuário confirmar). Como o APK é assinado com a mesma chave da instalação anterior, a atualização mantém salvos e ajustes.
+
 ## Novas categorias
 
 1. Adicione a categoria em `categories.json` (palavras-chave e subcategorias) e, se quiser, novos filtros.

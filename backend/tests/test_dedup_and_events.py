@@ -8,10 +8,10 @@ from backend.storage.deduplication import Deduplicator, title_similarity
 NOW = utcnow()
 
 
-def art(id, title, source="s1", hours=0, **kw) -> Article:
+def art(id, title, source="s1", hours=0, category="technology_ai", **kw) -> Article:
     return Article(id=id, original_title=title, source_id=source, source_name=source.upper(),
                    source_url=f"https://example.com/{id}", published_at=NOW - timedelta(hours=hours),
-                   collected_at=NOW, category="technology_ai", **kw)
+                   collected_at=NOW, category=category, **kw)
 
 
 def test_title_similarity_same_story_vs_different():
@@ -69,3 +69,28 @@ def test_ai_relations_only_move_isolated_articles():
 def test_off_topic_articles_are_excluded_from_events():
     a = art("a", "Bread recipes", off_topic=True, event_id="evt-a")
     assert build_events([a]) == []
+
+
+def test_cross_portal_grouping_with_different_wording():
+    a = art("a", "Alemanha tem ameaças de bomba em mais de 450 escolas em meio a falsos alertas", "g1", hours=3, category="mundo")
+    b = art("b", "Centenas de escolas na Alemanha e na Dinamarca recebem ameaças de bomba por email", "folha", hours=2, category="mundo")
+    c = art("c", "Lula exonera ministro para votação do projeto de ajuste na Câmara", "g1", hours=2, category="politica")
+    d = art("d", "Mesmo com ajuste, dólar deve seguir em alta enquanto Lula não indicar nome para a Fazenda", "folha", hours=1, category="politica")
+    assign_events_by_title([a, b, c, d], [])
+    assert a.event_id == b.event_id
+    assert c.event_id != d.event_id
+
+
+def test_drop_repeated_caption_prefix():
+    from backend.collectors.normalization import drop_repeated_prefix
+    t = "Lula durante live Ricardo Stuckert/PR Lula durante live Ricardo Stuckert/PR O presidente se reuniu hoje."
+    assert drop_repeated_prefix(t) == "O presidente se reuniu hoje."
+    assert drop_repeated_prefix("Texto normal sem repetição nenhuma aqui.") == "Texto normal sem repetição nenhuma aqui."
+
+
+def test_exclusion_filter_drops_promotions():
+    from backend.collectors.normalization import keyword_pattern
+    p = keyword_pattern(["cupom", "menor pre[cç]o", "mega-sena"])
+    assert p.search("Black Magalu: Edge 70 tem o menor preço que já vimos")
+    assert p.search("Mega-Sena acumula e prêmio vai a R$ 65 milhões")
+    assert not p.search("Câmara aprova ajuste fiscal")

@@ -1,0 +1,309 @@
+{
+ "brasil": {
+  "headline": "Temporais deixam morte e desalojados em SP; Tupanciretã (RS) segue sem energia",
+  "overview": "Chuvas fortes atingiram a capital paulista e o litoral norte entre domingo (22) e segunda-feira (23), com uma morte em Ubatuba e desalojados na zona leste de São Paulo. No Rio Grande do Sul, Tupanciretã continua sem previsão de restabelecimento total da energia três dias após um temporal.",
+  "points": [
+   {
+    "text": "Chuvas em São Paulo deixaram 34 desalojados no bairro da Penha, na zona leste, e uma mulher desaparecida, segundo a Defesa Civil; em Ubatuba, no litoral norte, o temporal causou alagamentos e deixou uma mulher morta.",
+    "event_ids": [
+     "evt-a75b92adae5ef8b7",
+     "evt-ce267554297baa0f"
+    ]
+   },
+   {
+    "text": "Três dias após o temporal que devastou Tupanciretã, na região central do Rio Grande do Sul, a rede elétrica do município ainda não tem previsão de restabelecimento total.",
+    "event_ids": [
+     "evt-61728fc1ca981c1b"
+    ]
+   },
+   {
+    "text": "Katia Batista e David Reis, lideranças de movimento de moradia conhecidas como \"casal da habitação\", são investigados em inquérito policial sobre cobranças para acelerar o acesso a moradias populares da prefeitura de São Paulo, segundo a Folha.",
+    "event_ids": [
+     "evt-908c9df9af74b67d"
+    ]
+   },
+   {
+    "text": "A Abin apresentou proposta de estratégia nacional para a criptografia pós-quântica, com proteção prioritária dos ativos considerados críticos até 2029.",
+    "event_ids": [
+     "evt-7bba2a25b96f50e7"
+    ]
+   },
+   {
+    "text": "Em São Bernardo do Campo (SP), uma moto em fuga da dispersão de um baile funk atingiu uma equipe da GCM: o garupa morreu e um agente ficou ferido.",
+    "event_ids": [
+     "evt-f7a3d4999efe6d59"
+    ]
+   },
+   {
+    "text": "Um homem de 74 anos com Alzheimer foi encontrado vivo após passar 11 dias perdido na floresta amazônica, em Macapá (AP).",
+    "event_ids": [
+     "evt-517861a060fe2826"
+    ]
+   }
+  ],
+  "watch": null,
+  "generated_at": "2026-11-23T16:37:18Z",
+  "model": null,
+  "author": "Claude (VS Code)",
+  "signature": "d2a1e6cefb00",
+  "event_ids": [
+   "evt-a75b92adae5ef8b7",
+   "evt-7bba2a25b96f50e7",
+   "evt-61728fc1ca981c1b",
+   "evt-908c9df9af74b67d",
+   "evt-e184bc92caf5aae1",
+   "evt-269205119e188e4c",
+   "evt-517861a060fe2826",
+   "evt-f2d4891d88f3dfa0",
+   "evt-f7a3d4999efe6d59",
+   "evt-ce267554297baa0f"
+  ],
+  "stale": false
+ },
+ "politica": {
+  "headline": "Ajuste fiscal vai a voto na Câmara enquanto Lula discute substituto de Barroso no STF",
+  "overview": "O ajuste fiscal do ministro do Planejamento, Bruno Moretti, deve ser votado nesta segunda-feira (23) na Câmara, e Lula exonerou temporariamente o ministro José Guimarães para a votação. No sábado (21), o presidente reuniu a cúpula do Congresso e ministros do STF para definir o substituto de Luís Roberto Barroso.",
+  "points": [
+   {
+    "text": "Bruno Moretti afirmou às centrais sindicais que o ajuste fiscal que leva seu nome preserva direitos sociais; o texto deve ser votado nesta segunda (23) na Câmara, e Lula exonerou temporariamente o ministro da SRI, José Guimarães, para a votação.",
+    "event_ids": [
+     "evt-9aed35ccc2202069",
+     "evt-1b1325ec4f4e1534"
+    ]
+   },
+   {
+    "text": "Segundo o g1, a equipe de Lula o alertou de que, mesmo com a aprovação do ajuste, o dólar pode seguir pressionado até que ele indique um nome \"forte\" para a Fazenda ou anuncie medidas fiscais mais profundas.",
+    "event_ids": [
+     "evt-a0863bce8a092cf4"
+    ]
+   },
+   {
+    "text": "Lula se reuniu no sábado (21) com a cúpula do Congresso e ministros do STF para definir o nome do substituto de Luís Roberto Barroso no tribunal.",
+    "event_ids": [
+     "evt-827af45842d63de9"
+    ]
+   },
+   {
+    "text": "A AGU pediu ao STF que reconheça não ser mais necessária a liminar de Flávio Dino sobre a transição para a escala 5x2, após o decreto do governo que regulamentou a mudança; o fim da escala 6x1 deve afetar cerca de 102 mil trabalhadores domésticos, estima o Instituto Doméstica Legal.",
+    "event_ids": [
+     "evt-e3849dfcc23a0732",
+     "evt-0fc8a6f114de98ad"
+    ]
+   },
+   {
+    "text": "Davi Alcolumbre tem dito que facilitará a liberação de emendas de comissão se reeleito presidente do Senado, segundo aliados ouvidos pela Folha.",
+    "event_ids": [
+     "evt-80ace758a24acc58"
+    ]
+   },
+   {
+    "text": "Os pedidos de refúgio de cubanos no Brasil chegaram a 4.885 em setembro, o maior número mensal de 2026, segundo o Observatório das Migrações Internacionais.",
+    "event_ids": [
+     "evt-3a0c475209dd0cb0"
+    ]
+   }
+  ],
+  "watch": "A votação do ajuste fiscal na Câmara estava prevista para esta segunda-feira (23).",
+  "generated_at": "2026-11-23T16:37:18Z",
+  "model": null,
+  "author": "Claude (VS Code)",
+  "signature": "a6451faf73b0",
+  "event_ids": [
+   "evt-9aed35ccc2202069",
+   "evt-80ace758a24acc58",
+   "evt-827af45842d63de9",
+   "evt-0fc8a6f114de98ad",
+   "evt-e3849dfcc23a0732",
+   "evt-6bfc655842ed286f",
+   "evt-3a0c475209dd0cb0",
+   "evt-5c75e94d168b26c8",
+   "evt-a0863bce8a092cf4",
+   "evt-1b1325ec4f4e1534"
+  ],
+  "stale": false
+ },
+ "economia": {
+  "headline": "Focus eleva projeção do dólar para R$ 5,55; volta de Jensen Huang faz ações da Nvidia dispararem",
+  "overview": "O boletim Focus desta segunda-feira (23) elevou de R$ 5,40 para R$ 5,55 a projeção do dólar para o fim de 2026 e aumentou a expectativa de inflação. No exterior, a recondução de Jensen Huang ao comando da Nvidia fez as ações da empresa subirem mais de 30%.",
+  "points": [
+   {
+    "text": "Analistas consultados pelo Banco Central no boletim Focus elevaram de R$ 5,40 para R$ 5,55 a projeção para o dólar no fim de 2026 e aumentaram a expectativa para a inflação.",
+    "event_ids": [
+     "evt-3157e4d6c66fa21f"
+    ]
+   },
+   {
+    "text": "A Nvidia reconduziu Jensen Huang ao cargo de CEO e suas ações subiram mais de 30% nesta segunda (23); segundo a Forbes, a fortuna de Huang cresceu cerca de US$ 36,6 bilhões (cerca de R$ 219 bilhões).",
+    "event_ids": [
+     "evt-4b9b15a56546adcb",
+     "evt-ddd45338b16222a8"
+    ]
+   },
+   {
+    "text": "O Conselho da Justiça Federal liberou R$ 2,8 bilhões para pagar atrasados a aposentados, pensionistas e outros beneficiários que venceram ações contra o INSS.",
+    "event_ids": [
+     "evt-1f549dee155f3884"
+    ]
+   },
+   {
+    "text": "Portaria da Receita Federal abriu a qualquer empresa com CNPJ o ambiente de testes do piloto da CBS, da reforma tributária.",
+    "event_ids": [
+     "evt-103eba11077caad5"
+    ]
+   },
+   {
+    "text": "O Minha Casa, Minha Vida respondeu por 58,6% dos lançamentos residenciais no terceiro trimestre de 2026, participação recorde, com 70,1 mil unidades.",
+    "event_ids": [
+     "evt-70e098f309ea7998"
+    ]
+   },
+   {
+    "text": "Nos EUA, o crescimento da atividade empresarial desacelerou ainda mais em novembro, segundo pesquisa divulgada nesta segunda (23).",
+    "event_ids": [
+     "evt-2af2b8ac52b2d998"
+    ]
+   }
+  ],
+  "watch": null,
+  "generated_at": "2026-11-23T16:37:18Z",
+  "model": null,
+  "author": "Claude (VS Code)",
+  "signature": "34b38ed66394",
+  "event_ids": [
+   "evt-1f549dee155f3884",
+   "evt-4b9b15a56546adcb",
+   "evt-3157e4d6c66fa21f",
+   "evt-103eba11077caad5",
+   "evt-b44b84851c0f8a0c",
+   "evt-2f30f852ea49a4e0",
+   "evt-ddd45338b16222a8",
+   "evt-68af0175b51285da",
+   "evt-70e098f309ea7998",
+   "evt-2af2b8ac52b2d998"
+  ],
+  "stale": false
+ },
+ "mundo": {
+  "headline": "COP31 termina sem acordo; Ucrânia afunda navio russo e ameaças de bomba atingem escolas na Europa",
+  "overview": "A COP31 terminou sem acordo após a negociação mais longa da história das conferências climáticas da ONU, expondo a divisão sobre combustíveis fósseis. Na Europa, centenas de escolas na Alemanha e na Dinamarca receberam ameaças de bomba por e-mail, e a Ucrânia afundou embarcações russas na costa da Líbia.",
+  "points": [
+   {
+    "text": "A COP31 terminou sem acordo e escancarou a divisão entre países sobre combustíveis fósseis; as negociações se estenderam até o fim de semana, tornando-a a conferência climática da ONU mais longa da história.",
+    "event_ids": [
+     "evt-9291ae79675a3698"
+    ]
+   },
+   {
+    "text": "A Ucrânia afundou duas embarcações russas na costa da Líbia, incluindo um navio de guerra atracado em uma base militar, em ataque de drones que Volodymyr Zelensky chamou de \"exemplar\".",
+    "event_ids": [
+     "evt-e28d5bfd95e51328"
+    ]
+   },
+   {
+    "text": "Centenas de escolas na Alemanha — mais de 450, segundo o g1 — e na Dinamarca receberam ameaças de bomba por e-mail; a polícia descarta perigo concreto, em meio a uma onda de falsos alertas na Europa.",
+    "event_ids": [
+     "evt-9bbbbea4d186b3d5"
+    ]
+   },
+   {
+    "text": "Em Manchester, milhares de pessoas foram retiradas de uma arena durante show do rapper Don Toliver após a liberação de uma \"substância desconhecida\"; mais de 80 receberam atendimento médico.",
+    "event_ids": [
+     "evt-799e09c06def94a1"
+    ]
+   },
+   {
+    "text": "Donald Trump celebrou a volta de Jensen Huang ao comando da Nvidia e disse que não há risco à segurança nacional.",
+    "event_ids": [
+     "evt-b91ed7a4f39ef41e"
+    ]
+   },
+   {
+    "text": "O narcotraficante mexicano Fausto Isidro Meza Flores, da lista dos 10 mais procurados do FBI, foi detido em operação de forças especiais com participação do Exército que deixou pelo menos 11 mortos.",
+    "event_ids": [
+     "evt-d148bd4729ad4430"
+    ]
+   }
+  ],
+  "watch": null,
+  "generated_at": "2026-11-23T16:37:18Z",
+  "model": null,
+  "author": "Claude (VS Code)",
+  "signature": "0fa97cfd6811",
+  "event_ids": [
+   "evt-9bbbbea4d186b3d5",
+   "evt-b91ed7a4f39ef41e",
+   "evt-799e09c06def94a1",
+   "evt-e28d5bfd95e51328",
+   "evt-d148bd4729ad4430",
+   "evt-533cbd5089ecacce",
+   "evt-205193826db3f8b8",
+   "evt-108ab00b534039d1",
+   "evt-d787de1824686433",
+   "evt-9291ae79675a3698"
+  ],
+  "stale": false
+ },
+ "technology_ai": {
+  "headline": "Nvidia reconduz Jensen Huang ao comando com aval do governo dos EUA",
+  "overview": "A Nvidia reverteu sua decisão e trouxe Jensen Huang de volta como CEO e presidente do conselho, com apoio de altos funcionários do governo americano. Também se destacam um teste da Microsoft sobre agentes de código, a rodada bilionária da Sierra e a falha que deixou e-mails do Outlook sem entrega.",
+  "points": [
+   {
+    "text": "A Nvidia reintegrou Jensen Huang como CEO e presidente do conselho; segundo o conselho, altos funcionários do governo confirmaram que ele \"não representa risco à segurança nacional\". Donald Trump endossou o retorno e pediu que a empresa continue sua investigação de controle de exportação.",
+    "event_ids": [
+     "evt-66cc673a6baaba00",
+     "evt-ecab1061c917e910",
+     "evt-57e4d9bc2d25bc90",
+     "evt-ecb1341183931cf9"
+    ]
+   },
+   {
+    "text": "Um teste da Microsoft com seis modelos e 1.356 execuções indicou que o estilo da API (REST, POST-only ou RPC) não é o fator decisivo para o sucesso de agentes de código.",
+    "event_ids": [
+     "evt-1ff6b35879607ca9"
+    ]
+   },
+   {
+    "text": "A Sierra, cofundada por Bret Taylor, captou US$ 1,75 bilhão em rodada Série F e dobrou sua avaliação para US$ 30 bilhões em seis meses.",
+    "event_ids": [
+     "evt-169eafdcd04a25ce"
+    ]
+   },
+   {
+    "text": "A Microsoft admitiu que alguns e-mails não foram entregues durante o apagão do Outlook, que deixou usuários horas sem acesso.",
+    "event_ids": [
+     "evt-66d5e198926b91b3"
+    ]
+   },
+   {
+    "text": "A Anatel propôs, em consulta pública, antecipar para 2027 as novas regras de autenticação de chamadas contra fraudes e ligações abusivas.",
+    "event_ids": [
+     "evt-101f21e0f146d377"
+    ]
+   },
+   {
+    "text": "A Hugging Face publicou um guia sobre como construir e manter avaliações de agentes de IA.",
+    "event_ids": [
+     "evt-6fd4c32fe34a4cba"
+    ]
+   }
+  ],
+  "watch": null,
+  "generated_at": "2026-11-23T16:37:18Z",
+  "model": null,
+  "author": "Claude (VS Code)",
+  "signature": "ebab1b43f310",
+  "event_ids": [
+   "evt-1ff6b35879607ca9",
+   "evt-57e4d9bc2d25bc90",
+   "evt-6fd4c32fe34a4cba",
+   "evt-66d5e198926b91b3",
+   "evt-169eafdcd04a25ce",
+   "evt-ecb1341183931cf9",
+   "evt-ecab1061c917e910",
+   "evt-66cc673a6baaba00",
+   "evt-1793f4fe05b13a1c",
+   "evt-101f21e0f146d377"
+  ],
+  "stale": false
+ }
+}

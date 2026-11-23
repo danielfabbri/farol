@@ -123,3 +123,31 @@ class Translation(BaseModel):
 
 class BatchAnalysis(BaseModel):
     items: list[dict] = Field(default_factory=list)
+
+
+class BriefPointOut(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+
+    text: str = Field(min_length=10, max_length=400)
+    refs: list[str] = Field(default_factory=list)
+
+
+class BriefOutput(BaseModel):
+    """Resposta da IA para o resumo de uma seção inteira."""
+
+    model_config = ConfigDict(extra="ignore")
+
+    headline: str = Field(min_length=5, max_length=140)
+    overview: str = Field(min_length=20, max_length=900)
+    points: list[BriefPointOut] = Field(min_length=1, max_length=8)
+    watch: str | None = Field(default=None, max_length=400)
+
+    @model_validator(mode="before")
+    @classmethod
+    def _fix_text(cls, data):
+        return _fix_all(data)
+
+    @model_validator(mode="after")
+    def _quality(self):
+        _reject_corrupted(self.headline, self.overview, self.watch or "", *(p.text for p in self.points))
+        return self

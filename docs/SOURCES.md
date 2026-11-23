@@ -4,6 +4,30 @@ As fontes ficam em [`backend/config/sources.json`](../backend/config/sources.jso
 
 **Todos os endereços foram verificados em 23/11/2026** com uma requisição real: HTTP 200 e itens presentes no feed. Nenhuma URL foi deduzida.
 
+## Portais brasileiros (hard news)
+
+| Seção | Fonte | Feed |
+|---|---|---|
+| Política | Agência Brasil — Política | `https://agenciabrasil.ebc.com.br/rss/politica/feed.xml` |
+| Política | g1 — Política | `https://g1.globo.com/rss/g1/politica/` |
+| Política | Folha — Poder | `https://feeds.folha.uol.com.br/poder/rss091.xml` |
+| Política | Poder360 | `https://www.poder360.com.br/feed/` |
+| Economia | Agência Brasil — Economia | `https://agenciabrasil.ebc.com.br/rss/economia/feed.xml` |
+| Economia | g1 — Economia | `https://g1.globo.com/rss/g1/economia/` |
+| Economia | Folha — Mercado | `https://feeds.folha.uol.com.br/mercado/rss091.xml` |
+| Economia | InfoMoney | `https://www.infomoney.com.br/feed/` |
+| Mundo | Agência Brasil — Internacional | `https://agenciabrasil.ebc.com.br/rss/internacional/feed.xml` |
+| Mundo | g1 — Mundo | `https://g1.globo.com/rss/g1/mundo/` |
+| Mundo | Folha — Mundo | `https://feeds.folha.uol.com.br/mundo/rss091.xml` |
+| Mundo | BBC News Brasil | `https://feeds.bbci.co.uk/portuguese/rss.xml` |
+| Brasil | Agência Brasil — Geral | `https://agenciabrasil.ebc.com.br/rss/geral/feed.xml` |
+| Brasil | Folha — Cotidiano | `https://feeds.folha.uol.com.br/cotidiano/rss091.xml` |
+| Tecnologia | Tecnoblog | `https://tecnoblog.net/feed/` |
+
+Conteúdo que não é notícia é excluído pelo título (`exclude_keywords` em `categories.json` e em cada fonte): loterias, horóscopo, cupons e prêmios patrocinados nas seções de hard news; ofertas e promoções em Tecnologia.
+
+## Tecnologia e IA (internacionais)
+
 | # | Fonte | Feed | Tipo | Observações |
 |---|---|---|---|---|
 | 1 | Microsoft Source — AI | `https://news.microsoft.com/source/topics/ai/feed/` | primária | Substitui o antigo Microsoft AI Blog (ver abaixo) |
@@ -28,6 +52,8 @@ As fontes ficam em [`backend/config/sources.json`](../backend/config/sources.jso
 
 | Fonte | Situação | Decisão |
 |---|---|---|
+| **CNN Brasil** | Feeds por editoria (`/politica/feed/`, `/economia/feed/`, `/internacional/feed/`, `/nacional/feed/`) retornam 404. | Não cadastrada. |
+| **g1 — Brasil e g1 — Tecnologia** | `/rss/g1/brasil/` e `/rss/g1/tecnologia/` respondem 200, mas sem itens. | Não cadastradas; a seção Brasil usa Agência Brasil e Folha. |
 | **Anthropic News** (`anthropic.com/news`) | Não há feed RSS/Atom oficial. `rss.xml`, `news/rss.xml`, `feed.xml` e `news/feed` retornam 404, e a página não declara feed. | **Sem scraping.** A cobertura sobre Anthropic/Claude vem de veículos que a reportam (TechCrunch, Ars, MIT TR, Hacker News). Se a Anthropic publicar um feed, basta adicioná-lo ao `sources.json`. |
 | **Microsoft AI Blog** (`blogs.microsoft.com/ai/feed/`) | Retorna **HTTP 410 (Gone)**: o blog foi desativado. | Substituído pelo feed oficial do Microsoft Source, tópico AI. |
 

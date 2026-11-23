@@ -27,6 +27,14 @@ class MockGeminiClient:
             raise self.fail_with
         if self.raw_response is not None:
             return self.raw_response
+        if "<<BRIEF>>" in prompt:
+            items = json.loads(prompt[prompt.index("<<BRIEF>>") + 9:prompt.index("<</BRIEF>>")])
+            return {
+                "headline": f"{SAMPLE_MARK} Síntese simulada da seção",
+                "overview": f"{SAMPLE_MARK} Parágrafo de abertura simulado com {len(items)} acontecimentos.",
+                "points": [{"text": f"{SAMPLE_MARK} {it['title']}", "refs": [it["ref"]]} for it in items[:4]],
+                "watch": None,
+            }
         if "<<TRANSLATE>>" in prompt:
             payload = json.loads(prompt[prompt.index("<<TRANSLATE>>") + 13:prompt.index("<</TRANSLATE>>")])
             return {"items": [

@@ -17,6 +17,9 @@ from backend.ai.intelligence_analyzer import (
 from backend.ai.mock_client import MockGeminiClient
 from backend.ai.fallback_translator import translate_titles
 from backend.ai.news_processor import AiUsage, NewsProcessor, translate_articles
+from backend.ai.section_briefer import generate_brief, signature, top_events
+from backend.ai.gemini_client import FatalGeminiError, GeminiError, QuotaExceeded, ServiceUnavailable
+from backend.models.edition import Section, SectionBrief
 from backend.collectors.normalization import keyword_pattern, utcnow
 from backend.collectors.rss_collector import collect_source
 from backend.collectors.source_manager import load_sources
@@ -83,6 +86,7 @@ def run(
     categories = {c["id"]: c for c in cat_doc["categories"] if c.get("enabled", True)}
     filters = cat_doc.get("filters", [])
     kw = {cid: keyword_pattern(c.get("keywords", [])) for cid, c in categories.items()}
+    cat_exclude = {cid: c.get("exclude_keywords", []) for cid, c in categories.items()}
     sources = [s for s in load_sources(settings.sources_path) if s.category in categories]
 
     session = session or requests.Session()
@@ -97,6 +101,7 @@ def run(
         res = collect_source(
             src, session, cache=http_cache.get(src.id, {}), collected_at=now,
             max_age_days=settings.max_age_days, keyword_re=kw.get(src.category),
+            exclude_re=keyword_pattern(ex) if (ex := cat_exclude.get(src.category, []) + src.exclude_keywords) else None,
             timeout=settings.http_timeout_seconds, is_sample=settings.dev_mode,
         )
         fresh = [a for a in res.articles if a.id not in working and not dedup.is_duplicate(a)]
@@ -138,10 +143,14 @@ def run(
             (e for e in build_events(working.values()) if e.last_seen >= pending_cut),
             key=lambda e: e.last_seen, reverse=True,
         )[: settings.ai_max_context_events]
+        # Orçamento dividido entre as seções com pendências (nenhuma seção monopoliza a cota).
+        cats_pending = [cid for cid in categories if any(a.category == cid for a in pending)]
+        per_cat = max(1, settings.max_ai_calls_per_run // max(1, len(cats_pending)))
         for cid, category in categories.items():
             cat_pending = [a for a in pending if a.category == cid]
             if not cat_pending:
                 continue
+            usage.run_limit = min(settings.max_ai_calls_per_run, usage.run_calls + per_cat)
             processor = NewsProcessor(
                 client, category, batch_size=settings.ai_batch_size,
                 max_input_chars=settings.max_input_chars, max_attempts=settings.ai_max_attempts_per_article,
@@ -213,22 +222,83 @@ def run(
     repo.save_articles(working.values())
 
     # 4) Eventos, ranking e edição
+    usage.run_limit = settings.max_ai_calls_per_run
     events = build_events(working.values())
     for e in events:
         e.score = score_event(e, working, now)
-    highlights = select_highlights(events, now, settings.highlights_per_edition)
-    highlight_ids = {e.id for e in highlights}
     by_score = {e.id: e.score for e in events}
+    ordered_cats = sorted(categories.values(), key=lambda c: c.get("order", 99))
 
+    # Destaques por seção e capa (o melhor de cada seção primeiro, depois por importância).
+    section_highlights = {
+        c["id"]: select_highlights([e for e in events if e.category == c["id"]], now, settings.section_highlights)
+        for c in ordered_cats
+    }
+    front: list = [hl[0] for c in ordered_cats if (hl := section_highlights[c["id"]])]
+    rest = sorted((e for hl in section_highlights.values() for e in hl[1:]), key=lambda e: e.score, reverse=True)
+    highlights = (front + rest)[: settings.highlights_per_edition]
+    highlight_ids = {e.id for e in highlights} | {e.id for hl in section_highlights.values() for e in hl}
+
+    # Janela da edição: limite por seção, para nenhuma seção engolir as outras.
     window_cut = now - timedelta(hours=settings.latest_window_hours)
     visible = [a for a in working.values() if not a.off_topic]
-    in_window = [a for a in visible if a.reference_time >= window_cut or a.event_id in highlight_ids]
-    in_window.sort(key=lambda a: (a.event_id in highlight_ids, by_score.get(a.event_id, 0), a.relevance_score or 0), reverse=True)
-    latest_articles = in_window[: settings.latest_max_articles]
+    latest_articles = []
+    for c in ordered_cats:
+        in_window = [a for a in visible if a.category == c["id"] and (a.reference_time >= window_cut or a.event_id in highlight_ids)]
+        in_window.sort(key=lambda a: (a.event_id in highlight_ids, by_score.get(a.event_id, 0), a.relevance_score or 0), reverse=True)
+        latest_articles += in_window[: settings.latest_max_articles_per_section]
     latest_event_ids = {a.event_id for a in latest_articles}
     latest_events = sorted((e for e in events if e.id in latest_event_ids), key=lambda e: e.score, reverse=True)
+    articles_by_id = {a.id: a for a in latest_articles}
 
+    # Resumo de cada seção (reaproveitado se os principais acontecimentos não mudaram).
     edition_id, label = edition_identity(now)
+    briefs_path = repo.root / "briefs" / "latest.json"
+    briefs_store: dict = repo.read_json(briefs_path, {})
+    brief_client = client if (client is not None and settings.briefs_enabled) else None
+    briefs_made = 0
+    for c in ordered_cats:
+        sec_events = [e for e in latest_events if e.category == c["id"]]
+        if len(sec_events) < 2:
+            continue
+        sig = signature(top_events(sec_events))
+        prev = briefs_store.get(c["id"])
+        if prev and prev.get("signature") == sig:
+            continue
+        made = False
+        if brief_client is not None and usage.can_spend("brief_calls", settings.max_brief_calls_per_day, settings.max_brief_calls_per_run):
+            try:
+                brief = generate_brief(brief_client, c["label"], label, sec_events, articles_by_id, now)
+                usage.spend("brief_calls")
+                briefs_store[c["id"]] = brief.model_dump(mode="json")
+                briefs_made += 1
+                made = True
+            except GeminiError as exc:
+                usage.spend("brief_calls")
+                log.warning("Resumo da seção %s indisponível: %s", c["label"], exc)
+                if isinstance(exc, (ServiceUnavailable, QuotaExceeded, FatalGeminiError)):
+                    brief_client = None  # serviço fora: não insiste nas outras seções nesta execução
+        if not made and prev:
+            prev["stale"] = True  # mantém o anterior, sinalizando que a seção mudou desde então
+    for sid in list(briefs_store):
+        gen = briefs_store[sid].get("generated_at", "")
+        if gen and datetime.fromisoformat(gen.replace("Z", "+00:00")) < now - timedelta(hours=36):
+            del briefs_store[sid]  # resumo velho demais não é exibido
+    repo.write_json(briefs_path, briefs_store)
+    ai_report["briefs"] = briefs_made
+
+    section_filters = {cid: [{"id": f["id"], "label": f["label"]} for f in filters if f.get("category") == cid] for cid in categories}
+    sections = [
+        Section(
+            id=c["id"], label=c["label"], order=c.get("order", 99),
+            highlights=[e.id for e in section_highlights[c["id"]]],
+            filters=section_filters.get(c["id"], []),
+            article_count=sum(1 for a in latest_articles if a.category == c["id"]),
+            brief=SectionBrief.model_validate(briefs_store[c["id"]]) if c["id"] in briefs_store else None,
+        )
+        for c in ordered_cats
+    ]
+
     pending_after = sum(1 for a in visible if not a.ai_processed and a.reference_time >= pending_cut)
     edition = EditionInfo(
         id=edition_id, label=label, generated_at=now, highlight_count=len(highlights),
@@ -256,6 +326,7 @@ def run(
                 if translated and ai_state not in ("ok", "idle") else ""),
         },
         notice=SAMPLE_NOTICE if settings.dev_mode else None,
+        sections=sections,
     )
     latest_doc = latest.model_dump(mode="json")
     LatestFeed.model_validate(latest_doc)  # garante que o contrato do app continua válido

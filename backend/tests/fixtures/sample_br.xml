@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+<channel>
+  <title>Portal Exemplo — Política (FICTÍCIO)</title>
+  <link>https://example.com.br/</link>
+  <description>Feed fictício em português para testes.</description>
+  <language>pt-br</language>
+  <item>
+    <title>[EXEMPLO] Câmara aprova projeto que muda regras do orçamento fictício</title>
+    <link>https://example.com.br/politica/camara-aprova-orcamento</link>
+    <pubDate>__NOW_MINUS_2H__</pubDate>
+    <description><![CDATA[<p>Texto fictício: deputados aprovaram em votação simbólica o projeto do orçamento fictício.</p>]]></description>
+  </item>
+  <item>
+    <title>[EXEMPLO] Senado instala comissão fictícia para debater segurança pública</title>
+    <link>https://example.com.br/politica/senado-comissao</link>
+    <pubDate>__NOW_MINUS_6H__</pubDate>
+    <description>Texto fictício sobre a instalação de uma comissão.</description>
+  </item>
+</channel>
+</rss>

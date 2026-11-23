@@ -14,7 +14,7 @@ from backend.tests.conftest import FakeResponse, ScriptedSession
 
 NOW = utcnow()
 FAKE_KEY = "TEST-KEY-1234567890-never-real"
-CATEGORY = json.loads((CONFIG_DIR / "categories.json").read_text(encoding="utf-8"))["categories"][0]
+CATEGORY = next(c for c in json.loads((CONFIG_DIR / "categories.json").read_text(encoding="utf-8"))["categories"] if c["id"] == "technology_ai")
 
 
 def art(i: int) -> Article:

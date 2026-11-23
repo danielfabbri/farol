@@ -1,11 +1,11 @@
 # kotlinx.serialization
 -keepattributes *Annotation*, InnerClasses
 -dontnote kotlinx.serialization.**
--keepclassmembers class app.farol.data.model.** {
+-keepclassmembers class app.farol.data.** {
     *** Companion;
     kotlinx.serialization.KSerializer serializer(...);
 }
--keep,includedescriptorclasses class app.farol.data.model.**$$serializer { *; }
+-keep,includedescriptorclasses class app.farol.data.**$$serializer { *; }
 # Retrofit
 -keepattributes Signature, Exceptions
 -keep,allowobfuscation,allowshrinking interface retrofit2.Call

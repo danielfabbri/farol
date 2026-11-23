@@ -7,5 +7,6 @@
   "gemini-3.5-flash",
   "gemini-flash-latest"
  ],
- "fallback_chars": 1442
+ "fallback_chars": 3017,
+ "brief_calls": 2
 }

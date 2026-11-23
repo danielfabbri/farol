@@ -75,6 +75,10 @@ O Gradle precisa de `android/local.properties` apontando para o SDK (o Android S
 sdk.dir=C\:/Users/SEU_USUARIO/AppData/Local/Android/Sdk
 ```
 
+### Atualizar o app depois de instalado
+
+A partir da versão 0.3.0: **Ajustes → Atualizar app → Verificar atualização → Baixar e instalar → Instalar agora**. Na primeira vez, o Android pede para permitir que o FAROL instale apps; permita e toque em "Instalar agora" de novo. O app também avisa na tela Hoje quando há versão nova.
+
 ### Botão "Varrer agora" (opcional)
 
 O botão dispara o workflow do GitHub Actions na hora, sem esperar o próximo horário. Para o app ter permissão, crie **uma vez** um token pessoal de escopo mínimo:

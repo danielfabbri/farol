@@ -17,6 +17,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavGraph.Companion.findStartDestination
@@ -55,6 +56,8 @@ fun FarolApp(vm: MainViewModel, state: UiState) {
     val backStack by nav.currentBackStackEntryAsState()
     val route = backStack?.destination?.route
     val archive by vm.archive.collectAsStateWithLifecycle()
+    val update by vm.update.collectAsStateWithLifecycle()
+    val context = LocalContext.current
     val openArticle: (String) -> Unit = { id -> nav.navigate("article/$id") }
 
     Scaffold(
@@ -79,6 +82,7 @@ fun FarolApp(vm: MainViewModel, state: UiState) {
             composable("today") {
                 TodayScreen(
                     state,
+                    update = update,
                     onRefresh = { vm.refresh(force = true) },
                     onScan = vm::scanNow,
                     onDismissScan = vm::dismissScanMessage,
@@ -103,6 +107,10 @@ fun FarolApp(vm: MainViewModel, state: UiState) {
                     onClearCache = { vm.clearCache() },
                     onSaveToken = { vm.setGithubToken(it) },
                     onScan = { vm.scanNow(); nav.goTopLevel("today") },
+                    update = update,
+                    onCheckUpdate = { vm.checkForUpdate() },
+                    onDownloadUpdate = { vm.downloadUpdate() },
+                    onInstallUpdate = { vm.installIntent()?.let { context.startActivity(it) } },
                 )
             }
             composable("article/{id}") { entry ->

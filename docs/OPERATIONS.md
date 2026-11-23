@@ -17,7 +17,8 @@
 - `timeout-minutes: 25` limita qualquer execução travada.
 
 ### Gemini
-- Lotes de **6 notícias** por chamada; teto de **5 chamadas por execução** e **20 por dia** (configurável).
+- Lotes de **6 notícias** por chamada; teto de **10 chamadas por execução** (divididas entre as seções) e **30 por dia** (configurável).
+- **Resumos de seção:** até 6 chamadas por execução e 20 por dia, só quando os principais acontecimentos da seção mudam.
 - Medido em 23/11/2026 num lote de 6 notícias: ~1.300 tokens de entrada, ~2.000 de saída e ~3.500 de "raciocínio" do modelo. Total ≈ 7 mil tokens por chamada, **≈ 140 mil tokens/dia** no teto.
 - Capacidade: até ~120 notícias analisadas por dia. O volume típico de notícias novas fica entre 30 e 80.
 
@@ -50,6 +51,27 @@ Textos gerados com caracteres corrompidos (ex.: `c#00f3digo`, `Inteligêêode`) 
 | Schedules desativados após 60 dias sem atividade | Workflows agendados param | Os commits diários de dados contam como atividade. Se o GitHub desativar mesmo assim, reative em *Actions* |
 | Crescimento do repositório | Clone mais lento | Retenção de 120 dias nos arquivos; JSON comprime bem no Git (~1–3 MB/mês de histórico) |
 | Alguém habilitar faturamento no projeto Google | Cobranças possíveis | Não vincular faturamento; tetos de chamadas no código como segunda barreira |
+
+## Resumos das seções escritos no VS Code (temporário)
+
+Enquanto a Gemini gratuita estiver sobrecarregada, os resumos podem ser escritos pelo Claude no VS Code:
+
+```bash
+python -m backend.briefing_cli export > pedido.json      # material de cada seção
+# o Claude lê pedido.json e escreve respostas.json seguindo as mesmas regras do prompt automático
+python -m backend.briefing_cli import respostas.json --author "Claude (VS Code)"
+git add data && git commit -m "data: resumos das seções" && git push
+```
+
+O app mostra a autoria ("Resumo por Claude (VS Code)"). Na próxima execução automática, o resumo é mantido se a seção não mudou; se mudou e a Gemini conseguir responder, ela o substitui.
+
+## Publicar nova versão do app
+
+1. Aumente `versionCode` e `versionName` em `android/app/build.gradle.kts`.
+2. `python scripts/release_app.py --notes "o que mudou"` (gera e verifica o APK).
+3. Commit e push de `releases/`. No celular: **Ajustes → Atualizar app → Verificar atualização**.
+
+Gere sempre na mesma máquina (mesma chave de assinatura); com outra chave, o Android recusa a atualização e é preciso desinstalar.
 
 ## Monitoramento
 

@@ -12,9 +12,14 @@ from typing import Iterable
 
 from backend.models.article import Article
 from backend.models.edition import Event, EventSource
-from backend.storage.deduplication import title_similarity
+from backend.storage.deduplication import title_similarity, title_tokens
 
 TYPE_RANK = {"primary": 0, "research": 1, "press": 2, "aggregator": 3}
+
+
+def _distinctive(title: str) -> set[str]:
+    """Termos com 5+ letras: nomes, lugares e substantivos que identificam o fato."""
+    return {t for t in title_tokens(title) if len(t) >= 5 and not t.isdigit()}
 
 
 def assign_events_by_title(
@@ -24,18 +29,33 @@ def assign_events_by_title(
     threshold: float = 0.6,
     min_shared: int = 3,
     window_hours: int = 72,
+    distinctive_shared: int = 4,
+    distinctive_window_hours: int = 36,
 ) -> None:
+    """Agrupa coberturas do mesmo fato por fontes diferentes.
+
+    Duas regras: títulos muito parecidos (redação quase igual) ou, para portais que
+    redigem a manchete de outro jeito, 4+ termos distintivos em comum num intervalo de 36 h
+    (ex.: "Alemanha... ameaças de bomba... escolas" no g1 e na Folha).
+    """
     pool = [a for a in existing if a.event_id]
     window = timedelta(hours=window_hours)
+    dwindow = timedelta(hours=distinctive_window_hours)
     for art in sorted(new_articles, key=lambda a: a.reference_time):
         best, best_score = None, 0.0
+        art_terms = _distinctive(art.original_title)
         for other in pool:
-            if other.source_id == art.source_id or abs(other.reference_time - art.reference_time) > window:
+            gap = abs(other.reference_time - art.reference_time)
+            if other.source_id == art.source_id or other.category != art.category or gap > window:
                 continue
             score, shared = title_similarity(art.original_title, other.original_title)
-            if shared >= min_shared and score > best_score:
+            if shared >= min_shared and score >= threshold and score > best_score:
                 best, best_score = other, score
-        art.event_id = best.event_id if best is not None and best_score >= threshold else f"evt-{art.id}"
+            elif gap <= dwindow and len(art_terms & _distinctive(other.original_title)) >= distinctive_shared:
+                alt = 0.5 + 0.01 * len(art_terms & _distinctive(other.original_title))
+                if alt > best_score:
+                    best, best_score = other, alt
+        art.event_id = best.event_id if best is not None else f"evt-{art.id}"
         pool.append(art)
 
 

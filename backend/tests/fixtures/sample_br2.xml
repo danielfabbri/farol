@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+<channel>
+  <title>Jornal Exemplo — Poder (FICTÍCIO)</title>
+  <link>https://example.org.br/</link>
+  <description>Outro portal fictício.</description>
+  <language>pt-br</language>
+  <item>
+    <title>[EXEMPLO] Câmara aprova projeto que muda as regras do orçamento fictício; texto vai ao Senado</title>
+    <link>https://example.org.br/poder/2026/camara-orcamento</link>
+    <pubDate>__NOW_MINUS_1H__</pubDate>
+    <description>Cobertura fictícia independente da mesma votação.</description>
+  </item>
+</channel>
+</rss>

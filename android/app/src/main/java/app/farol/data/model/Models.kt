@@ -20,6 +20,37 @@ data class LatestFeed(
     @SerialName("archive_days") val archiveDays: List<String> = emptyList(),
     @SerialName("ai_status") val aiStatus: AiStatus = AiStatus(),
     val notice: String? = null,
+    val sections: List<Section> = emptyList(),
+)
+
+@Serializable
+data class Section(
+    val id: String,
+    val label: String,
+    val order: Int = 0,
+    val highlights: List<String> = emptyList(),
+    val filters: List<FilterInfo> = emptyList(),
+    @SerialName("article_count") val articleCount: Int = 0,
+    val brief: SectionBrief? = null,
+)
+
+/** Resumo da seção inteira; cada tópico aponta para os acontecimentos de origem. */
+@Serializable
+data class SectionBrief(
+    val headline: String,
+    val overview: String,
+    val points: List<BriefPoint> = emptyList(),
+    val watch: String? = null,
+    @SerialName("generated_at") val generatedAt: String,
+    val model: String? = null,
+    val author: String = "IA",
+    val stale: Boolean = false,
+)
+
+@Serializable
+data class BriefPoint(
+    val text: String,
+    @SerialName("event_ids") val eventIds: List<String> = emptyList(),
 )
 
 @Serializable
