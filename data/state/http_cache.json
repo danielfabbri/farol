@@ -1,19 +1,19 @@
 {
  "microsoft-source-ai": {
-  "etag": "W/\"23ad8bce50062094c0e682704515c8b3\"",
-  "last_modified": "Fri, 20 Nov 2026 20:55:35 GMT"
+  "etag": "W/\"5d81494fe7676fae198e39f51d13014b\"",
+  "last_modified": "Mon, 23 Nov 2026 19:24:50 GMT"
  },
  "microsoft-blog": {
   "etag": "W/\"cdc07e28b70a1b93fafa0c205bd6db76\"",
   "last_modified": "Tue, 17 Nov 2026 20:57:44 GMT"
  },
  "microsoft-devblogs": {
-  "etag": "W/\"8596524220a92e305236bf918c2527bf\"",
-  "last_modified": "Mon, 23 Nov 2026 12:35:24 GMT"
+  "etag": "W/\"728cb762cabd450b660815ead318a231\"",
+  "last_modified": "Mon, 23 Nov 2026 20:41:04 GMT"
  },
  "microsoft-research": {
-  "etag": "\"bc51f757783adac82211e3ec8e18ee95\"",
-  "last_modified": "Mon, 23 Nov 2026 16:52:50 GMT"
+  "etag": "\"1d7f56c9c4746ce6c64cf4ac90ad3578\"",
+  "last_modified": "Mon, 23 Nov 2026 21:35:13 GMT"
  },
  "openai-news": {
   "etag": null,
@@ -28,55 +28,55 @@
   "last_modified": "Mon, 23 Nov 2026 17:21:12 GMT"
  },
  "google-deepmind": {
-  "etag": null,
-  "last_modified": "Mon, 23 Nov 2026 16:59:40 GMT"
+  "etag": "\"wnqkWQ\"",
+  "last_modified": null
  },
  "nvidia-blog": {
-  "etag": "\"4d2397a174f8438623ce35d2e3aa4c48-gzip\"",
-  "last_modified": "Mon, 23 Nov 2026 17:00:08 GMT"
+  "etag": "\"92ef700b8be402db01cd5fff9f416316-gzip\"",
+  "last_modified": "Mon, 23 Nov 2026 18:13:00 GMT"
  },
  "huggingface-blog": {
   "etag": "W/\"42298-tXD2I7mC5oUSAGFcKFwWRx+ANhs\"",
   "last_modified": null
  },
  "mit-tech-review-ai": {
-  "etag": "W/\"8f0e6091219b4cdd1e4e0b6d0c3d83d7\"",
-  "last_modified": "Mon, 23 Nov 2026 16:21:56 GMT"
+  "etag": "W/\"6c749bffa44f6fd894cbb819e101d93f\"",
+  "last_modified": "Mon, 23 Nov 2026 20:47:40 GMT"
  },
  "ars-technica-ai": {
-  "etag": "\"d54d59f143a51d6eb8cf0985733656e3\"",
-  "last_modified": "Mon, 23 Nov 2026 17:17:15 GMT"
+  "etag": "\"aa10e0ced43cd56bfbc170cd8f6ac9b5\"",
+  "last_modified": "Mon, 23 Nov 2026 21:32:57 GMT"
  },
  "ars-technica-tech": {
-  "etag": "\"d54d59f143a51d6eb8cf0985733656e3\"",
-  "last_modified": "Mon, 23 Nov 2026 17:17:15 GMT"
+  "etag": "\"aa10e0ced43cd56bfbc170cd8f6ac9b5\"",
+  "last_modified": "Mon, 23 Nov 2026 21:32:57 GMT"
  },
  "techcrunch-ai": {
-  "etag": "W/\"1249b14b76a09f6862b59964e297bb12\"",
-  "last_modified": "Mon, 23 Nov 2026 17:33:01 GMT"
+  "etag": "W/\"2a59703930c0c07caf4a748c375b87d3\"",
+  "last_modified": "Mon, 23 Nov 2026 21:47:41 GMT"
  },
  "agenciabrasil-geral": {
-  "etag": "\"1795454460-1\"",
-  "last_modified": "Mon, 23 Nov 2026 17:21:00 GMT"
+  "etag": "\"1795470780-1\"",
+  "last_modified": "Mon, 23 Nov 2026 21:53:00 GMT"
  },
  "agenciabrasil-politica": {
-  "etag": "\"1795454370-1\"",
-  "last_modified": "Mon, 23 Nov 2026 17:19:30 GMT"
+  "etag": "\"1795470760-1\"",
+  "last_modified": "Mon, 23 Nov 2026 21:52:40 GMT"
  },
  "poder360": {
   "etag": "\"5e65842a1e0384bb68dcb391ea194ae5-gzip\"",
   "last_modified": "Mon, 23 Nov 2026 16:28:54 GMT"
  },
  "agenciabrasil-economia": {
-  "etag": "\"1795454456-1\"",
-  "last_modified": "Mon, 23 Nov 2026 17:20:56 GMT"
+  "etag": "\"1795470755-1\"",
+  "last_modified": "Mon, 23 Nov 2026 21:52:35 GMT"
  },
  "infomoney": {
   "etag": "W/\"167b23b6d3033c42c84af0d76f08c04b\"",
   "last_modified": "Mon, 23 Nov 2026 16:33:11 GMT"
  },
  "agenciabrasil-internacional": {
-  "etag": "\"1795454364-1\"",
-  "last_modified": "Mon, 23 Nov 2026 17:19:24 GMT"
+  "etag": "\"1795470604-1\"",
+  "last_modified": "Mon, 23 Nov 2026 21:50:04 GMT"
  }
 }

@@ -2,12 +2,18 @@ name: FAROL — coleta e inteligência
 
 on:
   schedule:
-    # Horários de Brasília (UTC-3): 05h30, 11h30, 17h30, 20h30.
-    # O GitHub Actions usa UTC e pode atrasar alguns minutos em horários de pico.
-    - cron: "30 8 * * *"
-    - cron: "30 14 * * *"
-    - cron: "30 20 * * *"
-    - cron: "30 23 * * *"
+    # Horários de Brasília (UTC-3): ~05h20, ~11h20, ~17h20, ~20h20.
+    # O GitHub Actions atrasa ou até descarta disparos agendados em horários de pico (minutos :00 e :30),
+    # por isso usamos minutos "quebrados" e um disparo reserva 35 min depois de cada horário.
+    # A reserva só roda de fato se a principal não tiver rodado (proteção de 100 min no pipeline).
+    - cron: "17 8 * * *"
+    - cron: "52 8 * * *"
+    - cron: "17 14 * * *"
+    - cron: "52 14 * * *"
+    - cron: "17 20 * * *"
+    - cron: "52 20 * * *"
+    - cron: "17 23 * * *"
+    - cron: "52 23 * * *"
   workflow_dispatch:
     inputs:
       no_ai:
@@ -52,6 +58,8 @@ jobs:
           GEMINI_FALLBACK_MODELS: ${{ vars.GEMINI_FALLBACK_MODELS }}
           FAROL_MAX_AI_CALLS_PER_DAY: ${{ vars.FAROL_MAX_AI_CALLS_PER_DAY }}
           FAROL_MAX_AI_CALLS_PER_RUN: ${{ vars.FAROL_MAX_AI_CALLS_PER_RUN }}
+          # Agendada: ignora se já houve edição há menos de 100 min (disparo reserva). Manual: sempre roda.
+          FAROL_MIN_MINUTES_BETWEEN_RUNS: ${{ github.event_name == 'schedule' && '100' || '0' }}
           PYTHONIOENCODING: utf-8
         run: python -m backend.main ${{ inputs.no_ai && '--no-ai' || '' }}
 

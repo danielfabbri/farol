@@ -1,62 +1,55 @@
 {
  "brasil": {
-  "headline": "Temporais deixam morte e desalojados em SP; Tupanciretã (RS) segue sem energia",
-  "overview": "Chuvas fortes atingiram a capital paulista e o litoral norte entre domingo (22) e segunda-feira (23), com uma morte em Ubatuba e desalojados na zona leste de São Paulo. No Rio Grande do Sul, Tupanciretã continua sem previsão de restabelecimento total da energia três dias após um temporal.",
+  "headline": "Noticias do Brasil englobam seguranca, chuvas e novos projetos estrategicos",
+  "overview": "O cenario nacional traz registros de incidentes violentos, impactos severos de tempestades em diferentes estados e iniciativas institucionais de longo prazo. Destacam-se investigacoes policiais, o trágico falecimento de uma crianca e desdobramentos climaticos.",
   "points": [
    {
-    "text": "Chuvas em São Paulo deixaram 34 desalojados no bairro da Penha, na zona leste, e uma mulher desaparecida, segundo a Defesa Civil; em Ubatuba, no litoral norte, o temporal causou alagamentos e deixou uma mulher morta.",
+    "text": "Um menino de 3 anos morreu baleado durante um conflito entre grupos indigenas na Terra Indigena Ligeiro, no Rio Grande do Sul, em caso investigado pela Policia Federal.",
     "event_ids": [
-     "evt-a75b92adae5ef8b7",
-     "evt-ce267554297baa0f"
+     "evt-33d322728fe534d0"
     ]
    },
    {
-    "text": "Três dias após o temporal que devastou Tupanciretã, na região central do Rio Grande do Sul, a rede elétrica do município ainda não tem previsão de restabelecimento total.",
+    "text": "Fortes chuvas em Sao Paulo deixaram 34 pessoas desalojadas e uma mulher desaparecida apos cair em um rio.",
     "event_ids": [
-     "evt-61728fc1ca981c1b"
+     "evt-a75b92adae5ef8b7"
     ]
    },
    {
-    "text": "Katia Batista e David Reis, lideranças de movimento de moradia conhecidas como \"casal da habitação\", são investigados em inquérito policial sobre cobranças para acelerar o acesso a moradias populares da prefeitura de São Paulo, segundo a Folha.",
-    "event_ids": [
-     "evt-908c9df9af74b67d"
-    ]
-   },
-   {
-    "text": "A Abin apresentou proposta de estratégia nacional para a criptografia pós-quântica, com proteção prioritária dos ativos considerados críticos até 2029.",
+    "text": "A Abin apresentou uma proposta de estrategia nacional de criptografia pós-quântica para proteger sistemas contra avancos computacionais ate 2035.",
     "event_ids": [
      "evt-7bba2a25b96f50e7"
     ]
    },
    {
-    "text": "Em São Bernardo do Campo (SP), uma moto em fuga da dispersão de um baile funk atingiu uma equipe da GCM: o garupa morreu e um agente ficou ferido.",
+    "text": "Um casal foi resgatado apos ser mantido preso no porta-malas de um carro por suspeitos armados em Mogi das Cruzes, em Sao Paulo.",
     "event_ids": [
-     "evt-f7a3d4999efe6d59"
+     "evt-69fe9df4649ad4cf"
     ]
    },
    {
-    "text": "Um homem de 74 anos com Alzheimer foi encontrado vivo após passar 11 dias perdido na floresta amazônica, em Macapá (AP).",
+    "text": "O motorista de uma caminhonete foi preso na BR-116, no Parana, com sinais de embriaguez apos acidente que deixou uma crianca em estado grave.",
     "event_ids": [
-     "evt-517861a060fe2826"
+     "evt-d06bade223d768ce"
     ]
    }
   ],
   "watch": null,
-  "generated_at": "2026-11-23T16:37:18Z",
-  "model": null,
-  "author": "Claude (VS Code)",
-  "signature": "d2a1e6cefb00",
+  "generated_at": "2026-11-23T21:55:59Z",
+  "model": "gemini-3.5-flash-lite",
+  "author": "IA",
+  "signature": "82e82b6b237d",
   "event_ids": [
-   "evt-a75b92adae5ef8b7",
    "evt-7bba2a25b96f50e7",
-   "evt-61728fc1ca981c1b",
-   "evt-908c9df9af74b67d",
-   "evt-e184bc92caf5aae1",
+   "evt-33d322728fe534d0",
+   "evt-a75b92adae5ef8b7",
    "evt-269205119e188e4c",
-   "evt-517861a060fe2826",
-   "evt-f2d4891d88f3dfa0",
+   "evt-69fe9df4649ad4cf",
    "evt-f7a3d4999efe6d59",
-   "evt-ce267554297baa0f"
+   "evt-61728fc1ca981c1b",
+   "evt-d06bade223d768ce",
+   "evt-908c9df9af74b67d",
+   "evt-e184bc92caf5aae1"
   ],
   "stale": false
  },
@@ -120,7 +113,7 @@
    "evt-3a0c475209dd0cb0",
    "evt-5c75e94d168b26c8"
   ],
-  "stale": false
+  "stale": true
  },
  "economia": {
   "headline": "Dólar passa de R$ 6 pela primeira vez desde abril de 2025; Nvidia dispara com volta de Jensen Huang",
@@ -181,7 +174,7 @@
    "evt-68af0175b51285da",
    "evt-70e098f309ea7998"
   ],
-  "stale": false
+  "stale": true
  },
  "mundo": {
   "headline": "Ameaças de bomba atingem escolas na Europa; Ucrânia afunda navio russo na costa da Líbia",
@@ -241,7 +234,7 @@
    "evt-205193826db3f8b8",
    "evt-108ab00b534039d1"
   ],
-  "stale": false
+  "stale": true
  },
  "technology_ai": {
   "headline": "Nvidia reconduz Jensen Huang; Google personaliza a Busca e DeepMind usa agentes em algoritmos quânticos",
@@ -303,7 +296,7 @@
    "evt-ca38829e73128713",
    "evt-66d5e198926b91b3"
   ],
-  "stale": false
+  "stale": true
  },
  "ciencia_saude": {
   "headline": "Fracasso da COP31 reabre debate sobre conferências da ONU; NHS lança estudo de IA contra câncer de mama",
@@ -358,6 +351,6 @@
    "evt-2596c728bb556eb8",
    "evt-5ffa2f889a7315ce"
   ],
-  "stale": false
+  "stale": true
  }
 }

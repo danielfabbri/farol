@@ -1,12 +1,12 @@
 {
  "day": "2026-11-23",
- "calls": 4,
+ "calls": 5,
  "quota_exhausted": false,
- "translation_calls": 1,
+ "translation_calls": 2,
  "exhausted_models": [
   "gemini-3.5-flash",
   "gemini-flash-latest"
  ],
  "fallback_chars": 4498,
- "brief_calls": 4
+ "brief_calls": 6
 }
