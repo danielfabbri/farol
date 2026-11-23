@@ -17,6 +17,8 @@ DEFAULT_MODEL = "gemini-flash-latest"
 # Somente modelos Flash do plano gratuito. Usados apenas se o principal estiver sobrecarregado
 # (HTTP 503) ou descontinuado (HTTP 404) — nunca quando a cota acaba.
 DEFAULT_FALLBACKS = ("gemini-3.5-flash", "gemini-3.5-flash-lite", "gemini-flash-lite-latest")
+# Modelos "lite" gratuitos para a tradução leve (prompts pequenos, cota separada por modelo).
+DEFAULT_TRANSLATION_MODELS = ("gemini-flash-lite-latest", "gemini-3.5-flash-lite", "gemini-3.1-flash-lite")
 
 
 def _int(name: str, default: int) -> int:
@@ -63,6 +65,12 @@ class Settings:
     ai_min_interval_seconds: float = 13.0
     ai_max_attempts_per_article: int = 3
     max_input_chars: int = 700
+    # Tradução leve: título + trecho em português quando a análise completa não for possível.
+    translation_models: tuple[str, ...] = DEFAULT_TRANSLATION_MODELS
+    translation_batch_size: int = 25
+    max_translation_calls_per_run: int = 2
+    max_translation_calls_per_day: int = 12
+    title_fallback_enabled: bool = True
     # Coleta
     max_age_days: int = 4
     http_timeout_seconds: int = 20
@@ -96,6 +104,10 @@ def load_settings(*, dev: bool = False, mock_ai: bool = False, no_ai: bool = Fal
         gemini_model=model,
         gemini_fallback_models=tuple(
             m.strip() for m in (os.environ.get("GEMINI_FALLBACK_MODELS") or ",".join(DEFAULT_FALLBACKS)).split(",")
+            if m.strip()
+        ),
+        translation_models=tuple(
+            m.strip() for m in (os.environ.get("GEMINI_TRANSLATION_MODELS") or ",".join(DEFAULT_TRANSLATION_MODELS)).split(",")
             if m.strip()
         ),
         ai_enabled=_bool("FAROL_AI_ENABLED", True) and not no_ai,

@@ -66,6 +66,7 @@
 <div class="wrap" id="app">
   <div class="brand">FAROL <span class="sp"></span>
     <select id="source" title="Origem dos dados"></select>
+    <button id="scan" title="Coleta as fontes agora neste PC (dados locais)">📡 Varrer agora</button>
     <button id="theme" title="Alternar tema">◐</button>
   </div>
   <div class="notice apk" id="apk">📱 No celular? <a href="farol.apk" style="color:var(--blue)">Baixar o app Android (APK)</a></div>
@@ -81,15 +82,15 @@
 <script>
 const GITHUB = "https://raw.githubusercontent.com/danielfabbri/farol/main/data/";
 const SOURCES = [
-  { id: "local", label: "Dados locais (feeds reais)", base: "local/" },
-  { id: "dev", label: "Dados fictícios (dev)", base: "dev/" },
   { id: "github", label: "GitHub (produção)", base: GITHUB },
+  { id: "local", label: "Dados locais (varredura neste PC)", base: "local/" },
+  { id: "dev", label: "Dados fictícios (dev)", base: "dev/" },
 ];
 const store = {
   get(k, d) { try { const v = localStorage.getItem(k); return v === null ? d : JSON.parse(v); } catch { return d; } },
   set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} },
 };
-let feed = null, trends = null, tab = "hoje", filter = null;
+let feed = null, trends = null, tab = "hoje", filter = null, topic = null;
 let read = new Set(store.get("farol.read", []));
 const $ = (s) => document.querySelector(s);
 const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
@@ -108,11 +109,12 @@ function bars(score) {
 }
 const pot = (p) => ({ high: "Alto", medium: "Médio", low: "Baixo" }[p] || "—");
 const title = (a) => a.title_pt || a.original_title;
+const preview = (a) => a.summary || a.excerpt_pt || a.excerpt;
 const byId = () => Object.fromEntries((feed?.articles || []).map(a => [a.id, a]));
 const evById = () => Object.fromEntries((feed?.events || []).map(e => [e.id, e]));
 function lead(ev, arts) {
   const items = ev.article_ids.map(i => arts[i]).filter(Boolean);
-  return items.find(a => a.ai_processed) || items[0];
+  return items.find(a => a.ai_processed) || items.find(a => a.title_pt) || items[0];
 }
 function nextEdition() {
   const now = new Date(new Date().toLocaleString("en-US", { timeZone: "America/Sao_Paulo" }));
@@ -162,7 +164,16 @@ function renderToday() {
   let h = `<h1>${esc(e.label)}</h1>
     <div class="muted">Atualizada em ${fmt(feed.generated_at)}</div>
     <div class="muted small">${e.article_count} notícias · ${e.ai_processed_count} analisadas pela IA · ${e.sources_ok} fontes</div>
-    ${notices()}<h2>Destaques <small>${readCount} de ${hl.length} lidos</small></h2>`;
+    ${topicBar()}${notices()}`;
+  if (topic) {
+    const lbl = feed.filters.find(f => f.id === topic)?.label || "";
+    const evsT = feed.events.filter(ev => (ev.tags || []).includes(topic) || ev.article_ids.some(i => (arts[i]?.tags || []).includes(topic))).sort((a, b) => b.score - a.score);
+    h += `<h2>${esc(lbl)} <small>${evsT.length} acontecimentos</small></h2>`;
+    evsT.forEach(ev => { const a = lead(ev, arts); if (a) h += itemRow(a, ev.source_count - 1); });
+    h += `<div class="end"><b>Fim de ${esc(lbl)}</b><div class="muted small" style="margin-top:6px">Isso é tudo sobre este tema nesta edição.</div></div>`;
+    $("#view").innerHTML = h; return;
+  }
+  h += `<h2>Destaques <small>${readCount} de ${hl.length} lidos</small></h2>`;
   hl.forEach((ev, i) => {
     const a = lead(ev, arts); if (!a) return;
     const extra = ev.source_count - 1;
@@ -170,8 +181,8 @@ function renderToday() {
       <div class="row"><span class="rank">${String(i + 1).padStart(2, "0")}</span>
       <span class="eyebrow" style="flex:1">${esc(feed.subcategories[a.subcategory] || "Tecnologia e IA")}</span>${bars(a.relevance_score)}</div>
       <div class="title">${esc(title(a))}</div>
-      <div class="summary">${esc(a.summary || a.excerpt)}</div>
-      <div class="meta">${esc(a.source_name)}${extra > 0 ? ` · +${extra} ${extra === 1 ? "fonte" : "fontes"}` : ""} · ${rel(a.published_at || a.collected_at)}${a.ai_processed ? "" : " · sem análise da IA"}</div>
+      <div class="summary">${esc(preview(a))}</div>
+      <div class="meta">${esc(a.source_name)}${extra > 0 ? ` · +${extra} ${extra === 1 ? "fonte" : "fontes"}` : ""} · ${rel(a.published_at || a.collected_at)}${a.ai_processed ? "" : " · resumo da IA pendente"}</div>
     </div>`;
   });
   if (others.length) {
@@ -184,11 +195,17 @@ function renderToday() {
   $("#view").innerHTML = h;
 }
 
+function topicBar() {
+  return `<div class="chips" style="flex-wrap:nowrap;overflow-x:auto;padding-bottom:4px">
+    <span class="chip ${!topic ? "on" : ""}" data-topic="" style="white-space:nowrap">Tudo</span>` +
+    feed.filters.map(f => `<span class="chip ${topic === f.id ? "on" : ""}" data-topic="${f.id}" style="white-space:nowrap">${esc(f.label)}</span>`).join("") + `</div>`;
+}
+
 function itemRow(a, extra = 0) {
   return `<div class="item" data-open="${a.id}"><div style="flex:1">
     <div class="eyebrow">${esc(feed.subcategories[a.subcategory] || "")}</div>
     <div class="t" style="${read.has(a.id) ? "color:var(--muted)" : ""}">${esc(title(a))}</div>
-    <div class="meta" style="margin-top:4px">${esc(a.source_name)}${extra > 0 ? ` · +${extra} fontes` : ""} · ${rel(a.published_at || a.collected_at)}${a.ai_processed ? "" : " · sem análise da IA"}</div>
+    <div class="meta" style="margin-top:4px">${esc(a.source_name)}${extra > 0 ? ` · +${extra} fontes` : ""} · ${rel(a.published_at || a.collected_at)}${a.ai_processed ? "" : " · resumo da IA pendente"}</div>
   </div>${bars(a.relevance_score)}</div>`;
 }
 
@@ -235,8 +252,9 @@ function openArticle(id) {
     <div class="muted small" style="margin-top:10px">${esc(a.source_name)} · publicado em ${fmt(a.published_at || a.collected_at, { day: "numeric", month: "long", year: "numeric" })}</div>
     ${a.relevance_score != null ? `<div class="row small muted" style="margin-top:10px">${bars(a.relevance_score)} Relevância editorial ${a.relevance_score}/100</div>` : ""}`;
   if (!a.ai_processed) {
-    h += `<div class="notice">Esta notícia ainda não foi analisada pela IA. Abaixo, o trecho publicado pela própria fonte.</div>`;
-    if (a.excerpt) h += sec("Trecho da fonte", "", `<p>${esc(a.excerpt)}</p>`);
+    h += `<div class="notice">O resumo completo da IA ainda não ficou pronto${a.title_pt ? " — título e trecho foram traduzidos automaticamente" : ""}. Ele aparece numa próxima edição.</div>`;
+    if (a.excerpt_pt) h += sec("Trecho da fonte", "Traduzido automaticamente", `<p>${esc(a.excerpt_pt)}</p>`);
+    else if (a.excerpt) h += sec("Trecho da fonte", "No idioma original", `<p>${esc(a.excerpt)}</p>`);
   } else {
     if (a.summary) h += sec("Resumo", "Fatos reportados", `<p>${esc(a.summary)}</p>`);
     if (a.key_points?.length) h += sec("Principais pontos", "", list(a.key_points));
@@ -253,7 +271,7 @@ function openArticle(id) {
     srcs.map(s => `<a class="src" href="${esc(s.source_url)}" target="_blank" rel="noopener"><b>${esc(s.source_name)} ↗</b>${esc(s.title)}<div class="muted small">${fmt(s.published_at)}</div></a>`).join("") +
     (a.discussion_url ? `<a class="src" href="${esc(a.discussion_url)}" target="_blank" rel="noopener"><b>Discussão ↗</b>Comentários no agregador</a>` : ""));
   h += `<a class="btn" href="${esc(a.source_url)}" target="_blank" rel="noopener">Abrir publicação original ↗</a>
-    <p class="muted small" style="margin-top:14px">${a.ai_processed ? `Resumo gerado por IA (${esc(a.ai_model || "Gemini")}) a partir do título e do trecho publicados pela fonte. Confira sempre a publicação original.` : "Conteúdo exibido como publicado no feed da fonte."}</p>`;
+    <p class="muted small" style="margin-top:14px">${a.ai_processed ? `Resumo gerado por IA (${esc(a.ai_model || "Gemini")}) a partir do título e do trecho publicados pela fonte. Confira sempre a publicação original.` : "Título e trecho traduzidos automaticamente a partir do feed da fonte."}</p>`;
   $("#detailBody").innerHTML = h;
   $("#detail").style.display = "block"; $("#detail").scrollTop = 0;
   $("#back").onclick = () => { $("#detail").style.display = "none"; render(); };
@@ -261,16 +279,27 @@ function openArticle(id) {
 
 document.addEventListener("click", (ev) => {
   const o = ev.target.closest("[data-open]"); if (o) return openArticle(o.dataset.open);
+  const tp = ev.target.closest("[data-topic]"); if (tp) { topic = tp.dataset.topic || null; return render(); }
   const f = ev.target.closest("[data-filter]"); if (f) { filter = f.dataset.filter || null; return render(); }
   const t = ev.target.closest("nav.tabs button"); if (t) { tab = t.dataset.tab; window.scrollTo(0, 0); return render(); }
 });
 $("#source").innerHTML = SOURCES.map(s => `<option value="${s.id}">${s.label}</option>`).join("");
-$("#source").value = store.get("farol.source", "local");
-$("#source").onchange = () => { store.set("farol.source", $("#source").value); load(); };
+$("#source").value = store.get("farol.source2", "github");
+$("#source").onchange = () => { store.set("farol.source2", $("#source").value); load(); };
 const applyTheme = (t) => { document.documentElement.dataset.theme = t; store.set("farol.theme", t); };
 applyTheme(store.get("farol.theme", "dark"));
 $("#theme").onclick = () => applyTheme(document.documentElement.dataset.theme === "dark" ? "light" : "dark");
 fetch("farol.apk", { method: "HEAD" }).then(r => { if (r.ok) $("#apk").style.display = "block"; }).catch(() => {});
+$("#scan").onclick = async () => {
+  const b = $("#scan"); b.disabled = true; b.textContent = "Varrendo… (2–6 min)";
+  try {
+    const r = await fetch("api/varrer", { method: "POST" });
+    const d = await r.json().catch(() => ({}));
+    if (!r.ok) throw new Error(d.erro || `HTTP ${r.status}`);
+    $("#source").value = "local"; store.set("farol.source2", "local"); await load();
+  } catch (e) { alert("Não foi possível varrer: " + e.message); }
+  b.disabled = false; b.textContent = "📡 Varrer agora";
+};
 load();
 </script>
 </body>

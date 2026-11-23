@@ -77,7 +77,15 @@ fun FarolApp(vm: MainViewModel, state: UiState) {
     ) { padding ->
         NavHost(nav, startDestination = "today", modifier = Modifier.padding(padding)) {
             composable("today") {
-                TodayScreen(state, onRefresh = { vm.refresh(force = true) }, onOpenArticle = openArticle, onOpenExplore = { nav.goTopLevel("explore") })
+                TodayScreen(
+                    state,
+                    onRefresh = { vm.refresh(force = true) },
+                    onScan = vm::scanNow,
+                    onDismissScan = vm::dismissScanMessage,
+                    onOpenSettings = { nav.goTopLevel("settings") },
+                    onOpenArticle = openArticle,
+                    onOpenExplore = { nav.goTopLevel("explore") },
+                )
             }
             composable("explore") {
                 ExploreScreen(state, onOpenArticle = openArticle, onOpenDay = { day -> nav.navigate("archive/$day") })
@@ -93,6 +101,8 @@ fun FarolApp(vm: MainViewModel, state: UiState) {
                     onOtherLimit = vm::setOtherLimit,
                     onDemoMode = vm::setDemoMode,
                     onClearCache = { vm.clearCache() },
+                    onSaveToken = { vm.setGithubToken(it) },
+                    onScan = { vm.scanNow(); nav.goTopLevel("today") },
                 )
             }
             composable("article/{id}") { entry ->

@@ -30,6 +30,38 @@ def clean_text(value: str | None) -> str:
     return _WS_RE.sub(" ", text).strip()
 
 
+_ESCAPED_CHAR_RE = re.compile(r"(?:\\|#)u?([0-9a-fA-F]{4})")
+
+
+def fix_unicode_escapes(text: str) -> str:
+    """Corrige acentos que alguns modelos devolvem como código ("c#00f3digo", "#u00e0", "\\u00e7").
+
+    Só converte letras latinas acentuadas (U+00A0–U+017F), para não tocar em hashtags como "#2024".
+    """
+    if not text or ("#" not in text and "\\" not in text):
+        return text
+
+    def repl(m: re.Match) -> str:
+        code = int(m.group(1), 16)
+        return chr(code) if 0xA0 <= code <= 0x17F else m.group(0)
+
+    return _ESCAPED_CHAR_RE.sub(repl, text)
+
+
+_CORRUPT_RE = re.compile(
+    r"([áéíóúâêôãõçà])\1"            # acento duplicado: "Inteligêêode"
+    r"|[A-Za-zÀ-ÿ]#[0-9a-fA-F]{2}"     # resto de código: "c#00f3"
+    r"|\\u[0-9a-fA-F]{4}"              # escape literal
+    r"|[Ѐ-ӿ֐-ۿ぀-ヿ一-鿿]"  # alfabetos inesperados
+    r"|�"                         # caractere de substituição
+)
+
+
+def looks_corrupted(text: str | None) -> bool:
+    """Heurística para texto gerado com defeito (modelos "lite" às vezes corrompem acentos)."""
+    return bool(text) and bool(_CORRUPT_RE.search(text))
+
+
 def truncate(text: str, limit: int) -> str:
     if len(text) <= limit:
         return text

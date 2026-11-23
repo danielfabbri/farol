@@ -65,7 +65,7 @@ class FarolRepository(
         if (prefs.demoMode.value) return@withContext SyncResult.Demo
         mutex.withLock {
             try {
-                val resp = api.latest(if (force) "no-cache" else null)
+                val resp = api.latest(if (force) "no-cache" else null, if (force) System.currentTimeMillis() / 1000 else null)
                 if (!resp.isSuccessful) return@withLock SyncResult.Failed("HTTP ${resp.code()}")
                 val body = resp.body()?.string() ?: return@withLock SyncResult.Failed("resposta vazia")
                 FarolJson.decodeFromString<LatestFeed>(body) // valida antes de substituir o cache
@@ -89,7 +89,7 @@ class FarolRepository(
     }
 
     private suspend fun refreshTrends(force: Boolean) {
-        val resp = api.trends(if (force) "no-cache" else null)
+        val resp = api.trends(if (force) "no-cache" else null, if (force) System.currentTimeMillis() / 1000 else null)
         val body = resp.body()?.string() ?: return
         if (!resp.isSuccessful) return
         FarolJson.decodeFromString<TrendsDoc>(body)

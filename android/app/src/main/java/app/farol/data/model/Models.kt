@@ -95,6 +95,7 @@ data class Article(
     @SerialName("collected_at") val collectedAt: String,
     val language: String = "en",
     val excerpt: String = "",
+    @SerialName("excerpt_pt") val excerptPt: String? = null,
     val category: String = "",
     val subcategory: String? = null,
     val summary: String? = null,
@@ -117,6 +118,9 @@ data class Article(
 ) {
     val displayTitle: String get() = titlePt?.takeIf { it.isNotBlank() } ?: originalTitle
     val publishedOrCollected: String get() = publishedAt ?: collectedAt
+    /** Texto curto para listas: resumo da IA, senão trecho traduzido, senão trecho original. */
+    val preview: String? get() = summary ?: excerptPt ?: excerpt.takeIf { it.isNotBlank() }
+    val isTranslatedOnly: Boolean get() = !aiProcessed && titlePt != null
 }
 
 @Serializable

@@ -3,7 +3,7 @@
   "sources": [
     {
       "id": "microsoft-source-ai",
-      "name": "Microsoft Source — AI",
+      "name": "Microsoft Source — IA",
       "url": "https://news.microsoft.com/source/topics/ai/feed/",
       "homepage": "https://news.microsoft.com/source/topics/ai/",
       "category": "technology_ai",
@@ -17,7 +17,7 @@
     },
     {
       "id": "microsoft-blog",
-      "name": "The Official Microsoft Blog",
+      "name": "Blog oficial da Microsoft",
       "url": "https://blogs.microsoft.com/feed/",
       "homepage": "https://blogs.microsoft.com/",
       "category": "technology_ai",
@@ -30,7 +30,7 @@
     },
     {
       "id": "microsoft-devblogs",
-      "name": "Microsoft for Developers",
+      "name": "Microsoft para Desenvolvedores",
       "url": "https://devblogs.microsoft.com/feed/",
       "homepage": "https://devblogs.microsoft.com/",
       "category": "technology_ai",
@@ -70,7 +70,7 @@
     },
     {
       "id": "google-ai-blog",
-      "name": "Google — AI (The Keyword)",
+      "name": "Google — IA (The Keyword)",
       "url": "https://blog.google/technology/ai/rss/",
       "homepage": "https://blog.google/technology/ai/",
       "category": "technology_ai",
@@ -83,7 +83,7 @@
     },
     {
       "id": "google-research",
-      "name": "Google Research Blog",
+      "name": "Google Research (blog)",
       "url": "https://research.google/blog/rss/",
       "homepage": "https://research.google/blog/",
       "category": "technology_ai",
@@ -122,7 +122,7 @@
     },
     {
       "id": "huggingface-blog",
-      "name": "Hugging Face Blog",
+      "name": "Hugging Face (blog)",
       "url": "https://huggingface.co/blog/feed.xml",
       "homepage": "https://huggingface.co/blog",
       "category": "technology_ai",
@@ -136,7 +136,7 @@
     },
     {
       "id": "mit-tech-review-ai",
-      "name": "MIT Technology Review — AI",
+      "name": "MIT Technology Review — IA",
       "url": "https://www.technologyreview.com/topic/artificial-intelligence/feed",
       "homepage": "https://www.technologyreview.com/topic/artificial-intelligence/",
       "category": "technology_ai",
@@ -149,7 +149,7 @@
     },
     {
       "id": "ars-technica-ai",
-      "name": "Ars Technica — AI",
+      "name": "Ars Technica — IA",
       "url": "https://arstechnica.com/ai/feed/",
       "homepage": "https://arstechnica.com/ai/",
       "category": "technology_ai",
@@ -162,7 +162,7 @@
     },
     {
       "id": "ars-technica-tech",
-      "name": "Ars Technica — Biz & IT",
+      "name": "Ars Technica — Negócios e TI",
       "url": "https://feeds.arstechnica.com/arstechnica/technology-lab",
       "homepage": "https://arstechnica.com/information-technology/",
       "category": "technology_ai",
@@ -175,7 +175,7 @@
     },
     {
       "id": "techcrunch-ai",
-      "name": "TechCrunch — AI",
+      "name": "TechCrunch — IA",
       "url": "https://techcrunch.com/category/artificial-intelligence/feed/",
       "homepage": "https://techcrunch.com/category/artificial-intelligence/",
       "category": "technology_ai",

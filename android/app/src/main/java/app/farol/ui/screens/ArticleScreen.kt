@@ -131,8 +131,15 @@ fun ArticleScreen(
             }
 
             if (!article.aiProcessed) {
-                NoticeCard("Esta notícia ainda não foi analisada pela IA. Abaixo, o trecho publicado pela própria fonte.")
-                if (article.excerpt.isNotBlank()) Block("Trecho da fonte", null) { Body(article.excerpt) }
+                NoticeCard(
+                    "O resumo completo da IA ainda não ficou pronto para esta notícia" +
+                        (if (article.isTranslatedOnly) " — título e trecho foram traduzidos automaticamente." else ".") +
+                        " Ele aparece numa próxima edição."
+                )
+                when {
+                    !article.excerptPt.isNullOrBlank() -> Block("Trecho da fonte", "Traduzido automaticamente") { Body(article.excerptPt) }
+                    article.excerpt.isNotBlank() -> Block("Trecho da fonte", "No idioma original") { Body(article.excerpt) }
+                }
             } else {
                 article.summary?.let { Block("Resumo", "Fatos reportados") { Body(it) } }
                 if (article.keyPoints.isNotEmpty()) Block("Principais pontos", null) { Bullets(article.keyPoints) }
@@ -186,7 +193,7 @@ fun ArticleScreen(
                 if (article.aiProcessed) {
                     "Resumo gerado por IA (${article.aiModel ?: "Gemini"}) a partir do título e do trecho publicados pela fonte. Confira sempre a publicação original."
                 } else {
-                    "Conteúdo exibido como publicado no feed da fonte."
+                    "Título e trecho traduzidos automaticamente a partir do feed da fonte. Confira sempre a publicação original."
                 },
                 style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,

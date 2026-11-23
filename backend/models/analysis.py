@@ -4,9 +4,27 @@ Os escores e potenciais são avaliações editoriais da IA, não fatos objetivos
 """
 from __future__ import annotations
 
-from pydantic import BaseModel, ConfigDict, Field, field_validator
+from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
 
+from backend.collectors.normalization import fix_unicode_escapes, looks_corrupted
+
+
+def _reject_corrupted(*texts: str) -> None:
+    for t in texts:
+        if looks_corrupted(t):
+            raise ValueError("texto gerado com caracteres corrompidos")
 from backend.models.article import Potential
+
+
+def _fix_all(data):
+    """Aplica a correção de acentos em todos os textos da resposta da IA."""
+    if isinstance(data, str):
+        return fix_unicode_escapes(data)
+    if isinstance(data, list):
+        return [_fix_all(x) for x in data]
+    if isinstance(data, dict):
+        return {k: _fix_all(v) for k, v in data.items()}
+    return data
 
 
 def _clean_list(values: list, limit: int) -> list[str]:
@@ -40,6 +58,16 @@ class ArticleAnalysis(BaseModel):
     study_potential: Potential = "low"
     related_event_id: str | None = None
 
+    @model_validator(mode="before")
+    @classmethod
+    def _fix_text(cls, data):
+        return _fix_all(data)
+
+    @model_validator(mode="after")
+    def _quality(self):
+        _reject_corrupted(self.title_pt, self.summary, self.why_it_matters, *self.key_points, *self.potential_impacts)
+        return self
+
     @field_validator("relevance_score", "novelty_score", mode="before")
     @classmethod
     def _clamp(cls, v):
@@ -71,6 +99,26 @@ class ArticleAnalysis(BaseModel):
     def _rel(cls, v):
         s = str(v or "").strip()
         return s if s.startswith("evt-") else None
+
+
+class Translation(BaseModel):
+    """Tradução leve (título + trecho) para notícias que ainda não receberam a análise completa."""
+
+    model_config = ConfigDict(extra="ignore")
+
+    ref: str
+    title_pt: str = Field(min_length=3, max_length=240)
+    excerpt_pt: str = Field(default="", max_length=1200)
+
+    @model_validator(mode="before")
+    @classmethod
+    def _fix_text(cls, data):
+        return _fix_all(data)
+
+    @model_validator(mode="after")
+    def _quality(self):
+        _reject_corrupted(self.title_pt, self.excerpt_pt)
+        return self
 
 
 class BatchAnalysis(BaseModel):

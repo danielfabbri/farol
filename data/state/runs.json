@@ -1,0 +1,108 @@
+[
+ {
+  "started_at": "2026-11-23T15:45:26+00:00",
+  "finished_at": "2026-11-23T15:50:30+00:00",
+  "status": "partial",
+  "trigger": "local",
+  "edition_id": "2026-11-23-1545",
+  "sources_ok": 16,
+  "sources_failed": 1,
+  "failed_sources": {
+   "hacker-news": "HTTP 419"
+  },
+  "new_articles": 35,
+  "highlights": 7,
+  "events": 19,
+  "ai": {
+   "state": "unavailable",
+   "processed": 6,
+   "failed": 0,
+   "calls": 3,
+   "events_merged": 0,
+   "translated": 18,
+   "errors": [
+    "todos os modelos indisponíveis: gemini-flash-lite-latest: sobrecarregado após 3 tentativas (HTTP 503 UNAVAILABLE); gemini-3.5-flash: cota diária; gemini-3.5-flash-lite: sobrecarregado após 3 tentativas (HTTP 503 UNAVAILABLE)"
+   ],
+   "calls_today": 3
+  },
+  "retention_removed": 0
+ },
+ {
+  "started_at": "2026-11-23T15:51:09+00:00",
+  "finished_at": "2026-11-23T15:52:31+00:00",
+  "status": "partial",
+  "trigger": "local",
+  "edition_id": "2026-11-23-1551",
+  "sources_ok": 15,
+  "sources_failed": 2,
+  "failed_sources": {
+   "microsoft-research": "falhou após 3 tentativas: ReadTimeout",
+   "hacker-news": "HTTP 419"
+  },
+  "new_articles": 14,
+  "highlights": 7,
+  "events": 27,
+  "ai": {
+   "state": "disabled",
+   "processed": 0,
+   "failed": 0,
+   "calls": 0,
+   "translated": 0,
+   "errors": [],
+   "calls_today": 3
+  },
+  "retention_removed": 0
+ },
+ {
+  "started_at": "2026-11-23T15:53:09+00:00",
+  "finished_at": "2026-11-23T15:55:38+00:00",
+  "status": "partial",
+  "trigger": "local",
+  "edition_id": "2026-11-23-1553",
+  "sources_ok": 16,
+  "sources_failed": 1,
+  "failed_sources": {
+   "hacker-news": "HTTP 419"
+  },
+  "new_articles": 10,
+  "highlights": 7,
+  "events": 33,
+  "ai": {
+   "state": "budget_reached",
+   "processed": 0,
+   "failed": 0,
+   "calls": 0,
+   "events_merged": 0,
+   "translated": 0,
+   "errors": [],
+   "calls_today": 3
+  },
+  "retention_removed": 0
+ },
+ {
+  "started_at": "2026-11-23T15:56:30+00:00",
+  "finished_at": "2026-11-23T15:59:59+00:00",
+  "status": "partial",
+  "trigger": "local",
+  "edition_id": "2026-11-23-1556",
+  "sources_ok": 16,
+  "sources_failed": 1,
+  "failed_sources": {
+   "hacker-news": "HTTP 419"
+  },
+  "new_articles": 6,
+  "highlights": 7,
+  "events": 39,
+  "ai": {
+   "state": "budget_reached",
+   "processed": 0,
+   "failed": 0,
+   "calls": 0,
+   "events_merged": 0,
+   "translated": 18,
+   "errors": [],
+   "calls_today": 3
+  },
+  "retention_removed": 0
+ }
+]

@@ -1,0 +1,327 @@
+{
+ "1ff6b35879607ca9": {
+  "s": "microsoft-devblogs",
+  "t": "agents ai apis coding non-rest struggle",
+  "d": "2026-11-23"
+ },
+ "de5cd1a6d51dc917": {
+  "s": "openai-news",
+  "t": "intelligence perplexity",
+  "d": "2026-11-23"
+ },
+ "3ea993db7e3c60d1": {
+  "s": "openai-news",
+  "t": "adversarial combatting distillation",
+  "d": "2026-11-23"
+ },
+ "d15c45643214b444": {
+  "s": "openai-news",
+  "t": "astra financial gpt-6 hebbia improvements research sees",
+  "d": "2026-11-23"
+ },
+ "f4784c30400364a2": {
+  "s": "openai-news",
+  "t": "ai candidates drug help identify promising scientists",
+  "d": "2026-11-23"
+ },
+ "b00f82b6db94c2e5": {
+  "s": "google-ai-blog",
+  "t": "api gemini introducing retrieval tool",
+  "d": "2026-11-23"
+ },
+ "2adef6bfeca022c8": {
+  "s": "google-ai-blog",
+  "t": "age ai creativity curiosity isaacson walter",
+  "d": "2026-11-23"
+ },
+ "565159543ba42dea": {
+  "s": "google-research",
+  "t": "also businesses call duplex evolved gemini google",
+  "d": "2026-11-23"
+ },
+ "44d231d9ee488f2d": {
+  "s": "google-research",
+  "t": "cannot computer game have quantum unless win",
+  "d": "2026-11-23"
+ },
+ "1a7867b3a729efa2": {
+  "s": "nvidia-blog",
+  "t": "accelerated azure computing expand microsoft nvidia pcs windows",
+  "d": "2026-11-23"
+ },
+ "1112027d5901b6f1": {
+  "s": "nvidia-blog",
+  "t": "agents ai developers frontier ideas omniverse simulations turn",
+  "d": "2026-11-23"
+ },
+ "6fd4c32fe34a4cba": {
+  "s": "huggingface-blog",
+  "t": "agentic build evaluation maintain",
+  "d": "2026-11-23"
+ },
+ "80d31a6dee298bbd": {
+  "s": "huggingface-blog",
+  "t": "cutting-edge inkling local mini performance setup welcome",
+  "d": "2026-11-23"
+ },
+ "211fbe8009a45ecd": {
+  "s": "huggingface-blog",
+  "t": "adapt adapters cost favorite harness improve introducing model performance",
+  "d": "2026-11-23"
+ },
+ "583b7a1c74131e15": {
+  "s": "mit-tech-review-ai",
+  "t": "ai got graph just major misunderstood most update",
+  "d": "2026-11-23"
+ },
+ "66cc673a6baaba00": {
+  "s": "ars-technica-ai",
+  "t": "board ceo chair huang jensen nvidia reinstated",
+  "d": "2026-11-23"
+ },
+ "1793f4fe05b13a1c": {
+  "s": "ars-technica-ai",
+  "t": "ai asus future glimpse local offers p16 powered proart review",
+  "d": "2026-11-23"
+ },
+ "4d6c192ff8628768": {
+  "s": "ars-technica-ai",
+  "t": "ai button chat google history homepage out rolls search",
+  "d": "2026-11-23"
+ },
+ "8bc8fed2fbe62d07": {
+  "s": "ars-technica-ai",
+  "t": "2030 ai amid centers data emissions goal meta net-zero reconsiders record",
+  "d": "2026-11-23"
+ },
+ "6e086317ffb3ab4e": {
+  "s": "ars-technica-ai",
+  "t": "2m ai canaries chain disaster plants privacy researcher supply surfaced",
+  "d": "2026-11-23"
+ },
+ "e63fea43dcbf5070": {
+  "s": "ars-technica-ai",
+  "t": "ai alert bag cops doritos gun school sue teens traumatized triggers",
+  "d": "2026-11-23"
+ },
+ "57e4d9bc2d25bc90": {
+  "s": "techcrunch-ai",
+  "t": "endorses evidence has huang jensen nvidia return trump us wrongdoing",
+  "d": "2026-11-23"
+ },
+ "169eafdcd04a25ce": {
+  "s": "techcrunch-ai",
+  "t": "30b ai cx demand doubles months off sierra six takes valuation within",
+  "d": "2026-11-23"
+ },
+ "ecab1061c917e910": {
+  "s": "techcrunch-ai",
+  "t": "back brings ceo course huang jensen nvidia reverses",
+  "d": "2026-11-23"
+ },
+ "914bb147d0bf37ce": {
+  "s": "techcrunch-ai",
+  "t": "anthropic baillie before bet big capital gic gifford ipo notable",
+  "d": "2026-11-23"
+ },
+ "05744626c0d61baf": {
+  "s": "techcrunch-ai",
+  "t": "ai chief development has limit openai scientist thoughts",
+  "d": "2026-11-23"
+ },
+ "bed82431ae1f061b": {
+  "s": "techcrunch-ai",
+  "t": "backlash big center centers data tech",
+  "d": "2026-11-23"
+ },
+ "f3487ac9886e909d": {
+  "s": "techcrunch-ai",
+  "t": "ai confronts existential mobile restricts screenshots signal surveillance threat",
+  "d": "2026-11-23"
+ },
+ "a1abc1ba2744afcb": {
+  "s": "techcrunch-ai",
+  "t": "nvidias tale two",
+  "d": "2026-11-23"
+ },
+ "036e80097ea45f31": {
+  "s": "arxiv-cs-ai",
+  "t": "adding agent ai brainstorming diversity formation human-ai more one productivity shape size team teams",
+  "d": "2026-11-23"
+ },
+ "d55ff3b0f9c34956": {
+  "s": "arxiv-cs-ai",
+  "t": "coherence construction cti formal graphs knowledge limits synthesizing validation",
+  "d": "2026-11-23"
+ },
+ "7ccc51f7d59b51f0": {
+  "s": "arxiv-cs-ai",
+  "t": "4.5m-pair dataset generator preference source-agnostic tool-calling toumaii",
+  "d": "2026-11-23"
+ },
+ "f6d163dedaeebba8": {
+  "s": "arxiv-cs-lg",
+  "t": "beyond critical landscape linear loss network neural points",
+  "d": "2026-11-23"
+ },
+ "3c3aa18781a83d8a": {
+  "s": "arxiv-cs-lg",
+  "t": "abstraction causal features parasite pathways spurious through",
+  "d": "2026-11-23"
+ },
+ "37b4f98aea36c2bf": {
+  "s": "arxiv-cs-lg",
+  "t": "aggregation cross-attack federated learning robust",
+  "d": "2026-11-23"
+ },
+ "6ccebafcdf30c270": {
+  "s": "techcrunch-ai",
+  "t": "agents ai here live messages text top",
+  "d": "2026-11-23"
+ },
+ "dffab27fe8d5022c": {
+  "s": "techcrunch-ai",
+  "t": "ai face future hollywood microdrama selling startup version",
+  "d": "2026-11-23"
+ },
+ "59fa562eab8a38b3": {
+  "s": "techcrunch-ai",
+  "t": "ai backs building daniel ek fusion here power re researcher startup they",
+  "d": "2026-11-23"
+ },
+ "321bf9e3c390a636": {
+  "s": "techcrunch-ai",
+  "t": "167-year-old ai claimed did human hypothesis riemann solution too",
+  "d": "2026-11-23"
+ },
+ "e43240c9ae66c70f": {
+  "s": "techcrunch-ai",
+  "t": "chips environment financing space survive their",
+  "d": "2026-11-23"
+ },
+ "f0e77c900b9f7797": {
+  "s": "techcrunch-ai",
+  "t": "continues fallout huang jensen nvidia scandal",
+  "d": "2026-11-23"
+ },
+ "912ce9389b493fc3": {
+  "s": "techcrunch-ai",
+  "t": "ai-powered could gadgets home make office six smarter",
+  "d": "2026-11-23"
+ },
+ "2ed09bbf2a0c5d3c": {
+  "s": "techcrunch-ai",
+  "t": "agent ai apple developing mac may own runs",
+  "d": "2026-11-23"
+ },
+ "d63805c1edc2014f": {
+  "s": "arxiv-cs-ai",
+  "t": "chatatom dynamics llm molecular multi-agent simulation system visualization",
+  "d": "2026-11-23"
+ },
+ "e212b10205684c80": {
+  "s": "arxiv-cs-ai",
+  "t": "answers beyond final immune interpretable microenvironment mif reasoning tumor",
+  "d": "2026-11-23"
+ },
+ "7b900895fb883c79": {
+  "s": "arxiv-cs-ai",
+  "t": "associative energy-based generalization generative memorization memory modeling models perspective",
+  "d": "2026-11-23"
+ },
+ "097f75a8ae6375e7": {
+  "s": "arxiv-cs-lg",
+  "t": "depth-linked generation multimodal residual retrieval tokens",
+  "d": "2026-11-23"
+ },
+ "6f9b787a29073169": {
+  "s": "arxiv-cs-lg",
+  "t": "audits information outcome partial reviewer selection should verify who",
+  "d": "2026-11-23"
+ },
+ "9ba83701155a76cf": {
+  "s": "arxiv-cs-lg",
+  "t": "discard distillation don reusing rl rollouts student teacher traces",
+  "d": "2026-11-23"
+ },
+ "4aacf31011a35eda": {
+  "s": "techcrunch-ai",
+  "t": "2b anthropic cashed founders ipo nearly out record-breaking",
+  "d": "2026-11-23"
+ },
+ "e60f4e5e7cf4b021": {
+  "s": "techcrunch-ai",
+  "t": "300 charm cost device may meta muse",
+  "d": "2026-11-23"
+ },
+ "52653ae3ad736466": {
+  "s": "techcrunch-ai",
+  "t": "agent ai giving outages style tech these y2k",
+  "d": "2026-11-23"
+ },
+ "2fc737ddb9957593": {
+  "s": "techcrunch-ai",
+  "t": "huang jensen scandal timeline unfolding",
+  "d": "2026-11-23"
+ },
+ "392b2bf540dc5865": {
+  "s": "arxiv-cs-ai",
+  "t": "benchmarking beyond calibration demographic discrimination llms normative-descriptive",
+  "d": "2026-11-23"
+ },
+ "f9653447a3f8b3d4": {
+  "s": "arxiv-cs-ai",
+  "t": "analysis conditioned deepfake edit generator localization partial-edit robust towards",
+  "d": "2026-11-23"
+ },
+ "692a19875bb680e5": {
+  "s": "arxiv-cs-ai",
+  "t": "budget-aware heterogeneous llm predict-and-verify proving solvers theorem",
+  "d": "2026-11-23"
+ },
+ "188a3729ded03ab3": {
+  "s": "arxiv-cs-lg",
+  "t": "adaptation asynchronous federated fine-tuning lean library-based",
+  "d": "2026-11-23"
+ },
+ "a50b8b8eb802afe1": {
+  "s": "arxiv-cs-lg",
+  "t": "action dynamics exploration following instruction nitrogen observations spatial visual",
+  "d": "2026-11-23"
+ },
+ "7becd944925aba34": {
+  "s": "arxiv-cs-lg",
+  "t": "data driven evaluation models realistic robustness tabular",
+  "d": "2026-11-23"
+ },
+ "0d97de254e8ee00b": {
+  "s": "arxiv-cs-ai",
+  "t": "across agent astronautbench episodes evidence knowledge measuring progress self-improvement through",
+  "d": "2026-11-23"
+ },
+ "5ab33db9554f44ba": {
+  "s": "arxiv-cs-ai",
+  "t": "beyond eda experience human-crafted scripting self-evolving",
+  "d": "2026-11-23"
+ },
+ "3433b5b74f588396": {
+  "s": "arxiv-cs-ai",
+  "t": "information language organization self-similar",
+  "d": "2026-11-23"
+ },
+ "50fa2e2cfb8dc149": {
+  "s": "arxiv-cs-lg",
+  "t": "5g aerial-only framework gnn graph-xgb hybrid outdoor-to-indoor reconstruction rf sensing signal uav via",
+  "d": "2026-11-23"
+ },
+ "29e4d93f0669f457": {
+  "s": "arxiv-cs-lg",
+  "t": "analysis architectures data forecasting missing much sparsity too traffic",
+  "d": "2026-11-23"
+ },
+ "04c702f12dd21049": {
+  "s": "arxiv-cs-lg",
+  "t": "filters learning neural quadrature recursive self-supervised series time",
+  "d": "2026-11-23"
+ }
+}

@@ -6,6 +6,7 @@ import app.farol.data.FarolRepository
 import app.farol.data.local.FarolDatabase
 import app.farol.data.prefs.UserPreferences
 import app.farol.data.remote.FarolApi
+import app.farol.data.remote.GitHubActions
 import app.farol.sync.SyncWorker
 import okhttp3.Cache
 import okhttp3.OkHttpClient
@@ -29,6 +30,8 @@ class AppContainer(context: Context) {
         .build()
         .create(FarolApi::class.java)
     val repository = FarolRepository(api, db, prefs, context.assets, httpCache)
+    // Sem cache HTTP: o estado da execução precisa vir sempre fresco.
+    val gitHubActions = GitHubActions(okHttp.newBuilder().cache(null).build())
 }
 
 class FarolApplication : Application() {

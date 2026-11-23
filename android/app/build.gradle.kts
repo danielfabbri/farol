@@ -14,10 +14,13 @@ android {
         applicationId = "app.farol"
         minSdk = 26
         targetSdk = 34
-        versionCode = 1
-        versionName = "0.1.0"
+        versionCode = 2
+        versionName = "0.2.0"
         // Dados públicos publicados pelo GitHub Actions (sem autenticação, sem chaves no app).
         buildConfigField("String", "DATA_BASE_URL", "\"https://raw.githubusercontent.com/danielfabbri/farol/main/\"")
+        // Usados pelo botão "Varrer agora" (dispara o workflow pelo token do próprio usuário).
+        buildConfigField("String", "GITHUB_REPO", "\"danielfabbri/farol\"")
+        buildConfigField("String", "WORKFLOW_FILE", "\"intelligence.yml\"")
     }
 
     buildTypes {

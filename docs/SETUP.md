@@ -75,5 +75,18 @@ O Gradle precisa de `android/local.properties` apontando para o SDK (o Android S
 sdk.dir=C\:/Users/SEU_USUARIO/AppData/Local/Android/Sdk
 ```
 
+### Botão "Varrer agora" (opcional)
+
+O botão dispara o workflow do GitHub Actions na hora, sem esperar o próximo horário. Para o app ter permissão, crie **uma vez** um token pessoal de escopo mínimo:
+
+1. Em <https://github.com/settings/personal-access-tokens/new> (também acessível pelo app, em **Ajustes → Varredura sob demanda → Criar token no GitHub**), preencha:
+   - **Token name:** `FAROL`
+   - **Expiration:** 1 ano
+   - **Repository access:** *Only select repositories* → `farol`
+   - **Permissions → Repository permissions → Actions:** *Read and write*. Nada além disso.
+2. Clique em **Generate token**, copie o valor (`github_pat_…`) e cole em **Ajustes → Salvar token**.
+
+O token fica guardado apenas no aparelho e só é enviado para `api.github.com`. Com escopo restrito, ele não consegue ler nem alterar código: apenas iniciar e consultar execuções do workflow deste repositório. Para revogá-lo: GitHub → Settings → Developer settings → Fine-grained tokens.
+
 ### Sem dados ainda?
 Em **Ajustes → Modo demonstração**, o app usa dados **fictícios** embutidos (marcados como tal) para você conhecer a interface antes da primeira edição real.

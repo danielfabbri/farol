@@ -26,6 +26,20 @@ def test_clean_text_strips_html_scripts_and_entities():
     assert clean_text("<p>Olá&nbsp;<b>mundo</b></p><script>x()</script> &amp; ok") == "Olá mundo & ok"
 
 
+def test_fix_unicode_escapes_from_model_output():
+    from backend.collectors.normalization import fix_unicode_escapes
+    assert fix_unicode_escapes("Agentes de c#00f3digo n#u00e3o") == "Agentes de código não"
+    assert fix_unicode_escapes("retorno #u00e0 Nvidia, avalia\\u00e7\\u00e3o") == "retorno à Nvidia, avaliação"
+    assert fix_unicode_escapes("Lançado em #2024 com #1") == "Lançado em #2024 com #1"
+
+
+def test_detects_corrupted_generated_text():
+    from backend.collectors.normalization import looks_corrupted
+    assert looks_corrupted("Perplexidade e Inteligêêode")
+    assert looks_corrupted("c#00f3digo")
+    assert not looks_corrupted("Nvidia volta atrás e traz Jensen Huang de volta como CEO (#1)")
+
+
 def test_truncate_respects_word_boundary():
     assert truncate("um dois três quatro", 10) == "um dois…"
     assert truncate("curto", 10) == "curto"

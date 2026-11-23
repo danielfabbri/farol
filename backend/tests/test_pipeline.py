@@ -73,6 +73,40 @@ def test_quota_exhausted_still_publishes_collected_data(settings):
     assert usage["quota_exhausted"] is True
 
 
+class AnalysisDownTranslationUp(MockGeminiClient):
+    """Simula a análise completa indisponível e a tradução leve funcionando."""
+
+    def generate_json(self, system, prompt, schema=None):
+        if "<<TRANSLATE>>" not in prompt:
+            self.calls += 1
+            from backend.ai.gemini_client import ServiceUnavailable
+            raise ServiceUnavailable("503")
+        return super().generate_json(system, prompt, schema)
+
+
+def test_translation_fallback_keeps_everything_in_portuguese(settings):
+    result = run(settings, session=NoNetworkSession(), ai_client=AnalysisDownTranslationUp(), now=utcnow())
+    latest = load(settings.data_dir / "latest.json")
+    assert latest["ai_status"]["state"] == "unavailable"
+    assert latest["ai_status"]["translated_this_run"] == 6
+    assert "traduzidos" in latest["ai_status"]["message"]
+    assert all(a["title_pt"].startswith("[FICTÍCIO]") and not a["ai_processed"] for a in latest["articles"])
+    assert result.summary["ai"]["translated"] == 6
+
+
+def test_translation_never_overwrites_full_analysis(settings):
+    run(settings, session=NoNetworkSession(), now=utcnow())
+    latest = load(settings.data_dir / "latest.json")
+    assert all(a["ai_processed"] and a["excerpt_pt"] is None for a in latest["articles"])
+
+
+def test_new_filters_apply_to_existing_articles(settings):
+    run(settings, session=NoNetworkSession(), now=utcnow())
+    latest = load(settings.data_dir / "latest.json")
+    robotics = [a for a in latest["articles"] if "robotics" in a["tags"]]
+    assert robotics and {"id": "research", "label": "Pesquisa"} in latest["filters"]
+
+
 def test_without_key_runs_collection_only(settings):
     s = replace(settings, ai_mock=False, gemini_api_key=None)
     result = run(s, session=NoNetworkSession(), now=utcnow())

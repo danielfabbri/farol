@@ -27,6 +27,7 @@ class Article(BaseModel):
     collected_at: datetime
     language: str = "en"
     excerpt: str = ""
+    excerpt_pt: str | None = None
     category: str
     subcategory: str | None = None
     summary: str | None = None

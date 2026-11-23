@@ -106,7 +106,7 @@ fun HighlightCard(
     onClick: () -> Unit,
 ) {
     val title = lead?.displayTitle ?: event.title
-    val summary = lead?.summary ?: event.summary ?: lead?.excerpt
+    val summary = lead?.preview ?: event.summary
     Surface(
         onClick = onClick,
         shape = CardShape,
@@ -159,7 +159,7 @@ fun SourceLine(primary: String, extraSources: Int, time: String, aiProcessed: Bo
         add(primary)
         if (extraSources > 0) add("+$extraSources ${if (extraSources == 1) "fonte" else "fontes"}")
         if (time.isNotBlank()) add(time)
-        if (!aiProcessed) add("sem análise da IA")
+        if (!aiProcessed) add("resumo da IA pendente")
     }
     Text(
         parts.joinToString("  ·  "),

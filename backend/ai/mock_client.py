@@ -27,6 +27,13 @@ class MockGeminiClient:
             raise self.fail_with
         if self.raw_response is not None:
             return self.raw_response
+        if "<<TRANSLATE>>" in prompt:
+            payload = json.loads(prompt[prompt.index("<<TRANSLATE>>") + 13:prompt.index("<</TRANSLATE>>")])
+            return {"items": [
+                {"ref": it["ref"], "title_pt": f"{SAMPLE_MARK} {it['title']}",
+                 "excerpt_pt": f"{SAMPLE_MARK} {it['excerpt']}" if it.get("excerpt") else ""}
+                for it in payload
+            ]}
         payload = json.loads(prompt[prompt.index("<<ARTICLES>>") + len("<<ARTICLES>>"):prompt.index("<</ARTICLES>>")])
         items = []
         for art in payload:

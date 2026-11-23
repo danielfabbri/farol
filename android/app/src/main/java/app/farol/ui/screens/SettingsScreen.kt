@@ -21,7 +21,10 @@ import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.SegmentedButton
 import androidx.compose.material3.SegmentedButtonDefaults
 import androidx.compose.material3.SingleChoiceSegmentedButtonRow
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Switch
+import androidx.compose.ui.platform.LocalUriHandler
+import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
@@ -47,8 +50,12 @@ fun SettingsScreen(
     onOtherLimit: (Int) -> Unit,
     onDemoMode: (Boolean) -> Unit,
     onClearCache: () -> Unit,
+    onSaveToken: (String?) -> Unit,
+    onScan: () -> Unit,
 ) {
     var confirmClear by remember { mutableStateOf(false) }
+    var tokenInput by remember { mutableStateOf("") }
+    val uri = LocalUriHandler.current
     Column(
         Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(horizontal = 20.dp).padding(bottom = 32.dp),
     ) {
@@ -83,6 +90,53 @@ fun SettingsScreen(
             Text("Atualizar agora")
         }
         Hint("O app também atualiza ao abrir e, quando o Android permite, em segundo plano a cada ~6 horas.")
+
+        Section("Varredura sob demanda")
+        Text(
+            "O botão \"Varrer agora\" pede ao GitHub Actions uma coleta imediata em todas as fontes, com análise da IA. " +
+                "Para isso, o app precisa de um token pessoal do GitHub, que fica guardado só neste aparelho.",
+            style = MaterialTheme.typography.bodySmall,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+        )
+        Spacer(Modifier.height(12.dp))
+        if (state.hasToken) {
+            Text("✓ Token configurado", style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.primary)
+            Spacer(Modifier.height(10.dp))
+            Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
+                Button(onClick = onScan, enabled = state.scan !is app.farol.ui.ScanState.Running && state.scan !is app.farol.ui.ScanState.Starting) {
+                    Text("Varrer agora")
+                }
+                OutlinedButton(onClick = { onSaveToken(null) }) { Text("Remover token") }
+            }
+        } else {
+            Text(
+                "Como criar (uma vez, leva 2 minutos):\n" +
+                    "1. Toque em \"Criar token no GitHub\" e entre na sua conta.\n" +
+                    "2. Token name: FAROL · Expiration: 1 ano.\n" +
+                    "3. Repository access: Only select repositories → farol.\n" +
+                    "4. Permissions → Repository permissions → Actions: Read and write.\n" +
+                    "5. Generate token, copie e cole abaixo.",
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurface,
+            )
+            Spacer(Modifier.height(8.dp))
+            TextButton(onClick = { uri.openUri("https://github.com/settings/personal-access-tokens/new") }) {
+                Text("Criar token no GitHub")
+            }
+            OutlinedTextField(
+                value = tokenInput,
+                onValueChange = { tokenInput = it },
+                label = { Text("Token (github_pat_…)") },
+                singleLine = true,
+                visualTransformation = PasswordVisualTransformation(),
+                modifier = Modifier.fillMaxWidth(),
+            )
+            Spacer(Modifier.height(8.dp))
+            Button(onClick = { onSaveToken(tokenInput); tokenInput = "" }, enabled = tokenInput.isNotBlank()) {
+                Text("Salvar token")
+            }
+        }
+        Hint("Cada varredura usa a mesma cota gratuita das edições automáticas; o próprio sistema limita as chamadas à IA por dia.")
 
         Section("Tema")
         Choice(

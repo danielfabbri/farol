@@ -5,6 +5,7 @@ import json
 
 SYSTEM_PROMPT = """Você é o analista editorial do FAROL, uma central pessoal de inteligência sobre tecnologia e IA.
 Escreva sempre em português do Brasil, com tom objetivo e sem sensacionalismo.
+Escreva os acentos diretamente (á, ç, ã, ó...), nunca como códigos ou sequências de escape.
 
 REGRAS DE VERACIDADE (obrigatórias):
 1. Use SOMENTE as informações fornecidas para cada notícia (fonte, data, título e trecho). Não use conhecimento externo para acrescentar fatos.
@@ -24,6 +25,36 @@ CLASSIFICAÇÃO:
 - "related_event_id": se a notícia trata claramente do MESMO acontecimento de um evento recente listado, informe o id (evt-...). Caso contrário, null. Não relacione apenas por tema parecido.
 
 Responda apenas com JSON no formato {"items": [...]}, um item por notícia, preservando o "ref"."""
+
+
+TRANSLATE_SYSTEM_PROMPT = """Você traduz títulos e trechos de notícias de tecnologia para português do Brasil.
+Regras: tradução fiel e natural; não resuma, não acrescente nem omita informação; mantenha nomes de empresas,
+produtos, modelos e siglas sem traduzi-los (ex.: OpenAI, GPT-5, NVIDIA, LLM, Perplexity, Apple, Notion). Se o trecho estiver vazio, devolva excerpt_pt vazio.
+Escreva os acentos diretamente (á, ç, ã, ó...), nunca como códigos ou sequências de escape.
+Responda apenas com JSON no formato {"items": [{"ref": ..., "title_pt": ..., "excerpt_pt": ...}]}, preservando o "ref"."""
+
+TRANSLATE_SCHEMA = {
+    "type": "object",
+    "properties": {
+        "items": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "ref": {"type": "string"},
+                    "title_pt": {"type": "string"},
+                    "excerpt_pt": {"type": "string"},
+                },
+                "required": ["ref", "title_pt", "excerpt_pt"],
+            },
+        }
+    },
+    "required": ["items"],
+}
+
+
+def build_translate_prompt(items: list[dict]) -> str:
+    return f"Traduza (JSON):\n<<TRANSLATE>>{json.dumps(items, ensure_ascii=False)}<</TRANSLATE>>"
 
 
 def response_schema(subcategory_ids: list[str]) -> dict:

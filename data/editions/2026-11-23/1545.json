@@ -1,0 +1,580 @@
+{
+ "edition": {
+  "id": "2026-11-23-1545",
+  "label": "Edição do meio-dia",
+  "generated_at": "2026-11-23T15:45:26Z",
+  "highlight_count": 7,
+  "article_count": 19,
+  "ai_processed_count": 4,
+  "sources_ok": 16,
+  "sources_failed": 1,
+  "new_articles": 35
+ },
+ "is_sample": false,
+ "highlights": [
+  {
+   "id": "evt-1ff6b35879607ca9",
+   "title": "Agentes de c#00f3digo de IA lutam contra APIs n#00e3o-REST?",
+   "summary": "A Microsoft testou estilos de API REST, POST-only e RPC-style com seis modelos em 1.356 execu#u00e7#u00f5es para verificar o comportamento de agentes de c#00f3digo. Os testes indicam que o fator decisivo para o sucesso dos agentes n#u00e3o tem rela#u00e7#u00e3o com o estilo da API.",
+   "category": "technology_ai",
+   "subcategory": "dev_tools",
+   "first_seen": "2026-11-23T10:25:28Z",
+   "last_seen": "2026-11-23T10:25:28Z",
+   "article_ids": [
+    "1ff6b35879607ca9"
+   ],
+   "sources": [
+    {
+     "article_id": "1ff6b35879607ca9",
+     "source_id": "microsoft-devblogs",
+     "source_name": "Microsoft para Desenvolvedores",
+     "source_url": "https://devblogs.microsoft.com/blog/do-ai-coding-agents-struggle-with-non-rest-apis/",
+     "title": "Do AI coding agents struggle with non-REST APIs?",
+     "published_at": "2026-11-23T10:25:28Z"
+    }
+   ],
+   "source_count": 1,
+   "entities": [
+    "Microsoft"
+   ],
+   "technologies": [
+    "APIs REST",
+    "POST-only",
+    "RPC-style",
+    "AI coding agents"
+   ],
+   "tags": [
+    "microsoft",
+    "agents",
+    "dev"
+   ],
+   "relevance_score": 82,
+   "score": 82.0,
+   "ai_processed": true
+  },
+  {
+   "id": "evt-57e4d9bc2d25bc90",
+   "title": "Trump endossa o retorno de Jensen Huang #u00e0 Nvidia e afirma que os EUA n#u00e3o t#u00eam evid#u00eancias de irregularidades",
+   "summary": "O presidente dos EUA citou o Procurador-Geral ao defender o retorno de Jensen Huang #u00e0 lideran#u00e7a da Nvidia, ao mesmo tempo em que instou a empresa a continuar sua investiga#u00e7#u00e3o de controle de exporta#u00e7#u00e3o.",
+   "category": "technology_ai",
+   "subcategory": "business_market",
+   "first_seen": "2026-11-23T15:04:01Z",
+   "last_seen": "2026-11-23T15:04:01Z",
+   "article_ids": [
+    "57e4d9bc2d25bc90"
+   ],
+   "sources": [
+    {
+     "article_id": "57e4d9bc2d25bc90",
+     "source_id": "techcrunch-ai",
+     "source_name": "TechCrunch — IA",
+     "source_url": "https://techcrunch.com/2026/11/23/trump-endorses-jensen-huangs-return-to-nvidia-says-us-has-no-evidence-of-wrongdoing/",
+     "title": "Trump endorses Jensen Huang’s return to Nvidia, says US has no evidence of wrongdoing",
+     "published_at": "2026-11-23T15:04:01Z"
+    }
+   ],
+   "source_count": 1,
+   "entities": [
+    "Nvidia",
+    "Jensen Huang",
+    "EUA (governo)"
+   ],
+   "technologies": [],
+   "tags": [
+    "nvidia",
+    "market",
+    "infra"
+   ],
+   "relevance_score": 80,
+   "score": 80.0,
+   "ai_processed": true
+  },
+  {
+   "id": "evt-6fd4c32fe34a4cba",
+   "title": "Como construir e manter uma avalia#u00e7#u00e3o de agentes",
+   "summary": "Publicação do blog da Hugging Face focada em orientações sobre a construção e a manutenção de processos de avaliação voltados a agentes de IA.",
+   "category": "technology_ai",
+   "subcategory": "dev_tools",
+   "first_seen": "2026-11-23T00:00:00Z",
+   "last_seen": "2026-11-23T00:00:00Z",
+   "article_ids": [
+    "6fd4c32fe34a4cba"
+   ],
+   "sources": [
+    {
+     "article_id": "6fd4c32fe34a4cba",
+     "source_id": "huggingface-blog",
+     "source_name": "Hugging Face (blog)",
+     "source_url": "https://huggingface.co/blog/agentic-evals",
+     "title": "How to build and maintain an agentic evaluation",
+     "published_at": "2026-11-23T00:00:00Z"
+    }
+   ],
+   "source_count": 1,
+   "entities": [
+    "Hugging Face"
+   ],
+   "technologies": [
+    "AI agents"
+   ],
+   "tags": [
+    "agents",
+    "dev"
+   ],
+   "relevance_score": 78,
+   "score": 75.75,
+   "ai_processed": true
+  },
+  {
+   "id": "evt-66cc673a6baaba00",
+   "title": "Jensen Huang é reintegrado como CEO e presidente do conselho da Nvidia",
+   "summary": null,
+   "category": "technology_ai",
+   "subcategory": null,
+   "first_seen": "2026-11-23T14:10:18Z",
+   "last_seen": "2026-11-23T14:10:18Z",
+   "article_ids": [
+    "66cc673a6baaba00"
+   ],
+   "sources": [
+    {
+     "article_id": "66cc673a6baaba00",
+     "source_id": "ars-technica-ai",
+     "source_name": "Ars Technica — IA",
+     "source_url": "https://arstechnica.com/ai/2026/11/jensen-huang-reinstated-as-nvidia-ceo-board-chair/",
+     "title": "Jensen Huang reinstated as Nvidia CEO, board chair",
+     "published_at": "2026-11-23T14:10:18Z"
+    }
+   ],
+   "source_count": 1,
+   "entities": [],
+   "technologies": [],
+   "tags": [
+    "nvidia",
+    "policy"
+   ],
+   "relevance_score": null,
+   "score": 48.0,
+   "ai_processed": false
+  },
+  {
+   "id": "evt-1793f4fe05b13a1c",
+   "title": "Análise: O Asus ProArt P16 oferece um vislumbre de um futuro impulsionado por IA local",
+   "summary": null,
+   "category": "technology_ai",
+   "subcategory": null,
+   "first_seen": "2026-11-23T12:00:00Z",
+   "last_seen": "2026-11-23T12:00:00Z",
+   "article_ids": [
+    "1793f4fe05b13a1c"
+   ],
+   "sources": [
+    {
+     "article_id": "1793f4fe05b13a1c",
+     "source_id": "ars-technica-ai",
+     "source_name": "Ars Technica — IA",
+     "source_url": "https://arstechnica.com/reviews/2026/11/review-the-asus-proart-p16-offers-a-glimpse-of-a-future-powered-by-local-ai/",
+     "title": "Review: The Asus ProArt P16 offers a glimpse of a future powered by local AI",
+     "published_at": "2026-11-23T12:00:00Z"
+    }
+   ],
+   "source_count": 1,
+   "entities": [],
+   "technologies": [],
+   "tags": [
+    "agents"
+   ],
+   "relevance_score": null,
+   "score": 48.0,
+   "ai_processed": false
+  },
+  {
+   "id": "evt-169eafdcd04a25ce",
+   "title": "Sierra dobra avaliapão para US$ 30 bilhões em seis meses com disparada da demanda por IA em CX",
+   "summary": null,
+   "category": "technology_ai",
+   "subcategory": null,
+   "first_seen": "2026-11-23T14:43:03Z",
+   "last_seen": "2026-11-23T14:43:03Z",
+   "article_ids": [
+    "169eafdcd04a25ce"
+   ],
+   "sources": [
+    {
+     "article_id": "169eafdcd04a25ce",
+     "source_id": "techcrunch-ai",
+     "source_name": "TechCrunch — IA",
+     "source_url": "https://techcrunch.com/2026/11/23/sierra-doubles-valuation-to-30b-within-six-months-as-demand-for-ai-in-cx-takes-off/",
+     "title": "Sierra doubles valuation to $30B within six months as demand for AI in CX takes off",
+     "published_at": "2026-11-23T14:43:03Z"
+    }
+   ],
+   "source_count": 1,
+   "entities": [],
+   "technologies": [],
+   "tags": [
+    "market"
+   ],
+   "relevance_score": null,
+   "score": 48.0,
+   "ai_processed": false
+  },
+  {
+   "id": "evt-ecab1061c917e910",
+   "title": "Nvidia volta atrás e traz Jensen Huang de volta como CEO",
+   "summary": null,
+   "category": "technology_ai",
+   "subcategory": null,
+   "first_seen": "2026-11-23T14:21:59Z",
+   "last_seen": "2026-11-23T14:21:59Z",
+   "article_ids": [
+    "ecab1061c917e910"
+   ],
+   "sources": [
+    {
+     "article_id": "ecab1061c917e910",
+     "source_id": "techcrunch-ai",
+     "source_name": "TechCrunch — IA",
+     "source_url": "https://techcrunch.com/2026/11/23/nvidia-reverses-course-and-brings-jensen-huang-back-as-ceo/",
+     "title": "Nvidia reverses course and brings Jensen Huang back as CEO",
+     "published_at": "2026-11-23T14:21:59Z"
+    }
+   ],
+   "source_count": 1,
+   "entities": [],
+   "technologies": [],
+   "tags": [
+    "nvidia"
+   ],
+   "relevance_score": null,
+   "score": 48.0,
+   "ai_processed": false
+  }
+ ],
+ "articles": [
+  {
+   "id": "1ff6b35879607ca9",
+   "event_id": "evt-1ff6b35879607ca9",
+   "original_title": "Do AI coding agents struggle with non-REST APIs?",
+   "title_pt": "Agentes de c#00f3digo de IA lutam contra APIs n#00e3o-REST?",
+   "source_id": "microsoft-devblogs",
+   "source_name": "Microsoft para Desenvolvedores",
+   "source_type": "primary",
+   "source_url": "https://devblogs.microsoft.com/blog/do-ai-coding-agents-struggle-with-non-rest-apis/",
+   "discussion_url": null,
+   "published_at": "2026-11-23T10:25:28Z",
+   "collected_at": "2026-11-23T15:45:26Z",
+   "language": "en",
+   "excerpt": "Should your next API be REST, or something else? And which one will AI coding agents handle best? We tested REST, POST-only and RPC-style APIs with six models across 1,356 runs, and what decided whether agents succeeded had nothing to do with API style. The post Do AI coding agents struggle with non-REST APIs? appeared first on Microsoft for Developers .",
+   "excerpt_pt": null,
+   "category": "technology_ai",
+   "subcategory": "dev_tools",
+   "summary": "A Microsoft testou estilos de API REST, POST-only e RPC-style com seis modelos em 1.356 execu#u00e7#u00f5es para verificar o comportamento de agentes de c#00f3digo. Os testes indicam que o fator decisivo para o sucesso dos agentes n#u00e3o tem rela#u00e7#u00e3o com o estilo da API.",
+   "why_it_matters": "Ajuda desenvolvedores a entenderem as limita#u00e7#u00e3o e o comportamento real de agentes de programa#u00e7#u00e3o ao interagir com diferentes arquiteturas de backend.",
+   "key_points": [
+    "Foram testados estilos de API REST, POST-only e RPC-style.",
+    "O estudo envolveu 6 modelos e 1.356 execu#u00e7#u00f5es.",
+    "O estilo da API n#u00e3o foi o fator determinante para o sucesso dos agentes."
+   ],
+   "potential_impacts": [
+    "Pode mudar a forma como arquitetos projetam integra#u00e7#u00f5es voltadas para o uso de assistentes de IA."
+   ],
+   "uncertainties": [
+    "O trecho n#u00e3o especifica quais foram os seis modelos testados."
+   ],
+   "entities": [
+    "Microsoft"
+   ],
+   "technologies": [
+    "APIs REST",
+    "POST-only",
+    "RPC-style",
+    "AI coding agents"
+   ],
+   "tags": [
+    "microsoft",
+    "agents",
+    "dev"
+   ],
+   "relevance_score": 82,
+   "novelty_score": 75,
+   "business_potential": "medium",
+   "career_potential": "medium",
+   "study_potential": "high",
+   "off_topic": false,
+   "ai_processed": true,
+   "ai_model": "gemini-flash-lite-latest",
+   "ai_processed_at": "2026-11-23T15:45:26Z",
+   "ai_attempts": 0,
+   "source_priority": 4,
+   "is_sample": false
+  },
+  {
+   "id": "6fd4c32fe34a4cba",
+   "event_id": "evt-6fd4c32fe34a4cba",
+   "original_title": "How to build and maintain an agentic evaluation",
+   "title_pt": "Como construir e manter uma avalia#u00e7#u00e3o de agentes",
+   "source_id": "huggingface-blog",
+   "source_name": "Hugging Face (blog)",
+   "source_type": "primary",
+   "source_url": "https://huggingface.co/blog/agentic-evals",
+   "discussion_url": null,
+   "published_at": "2026-11-23T00:00:00Z",
+   "collected_at": "2026-11-23T15:45:26Z",
+   "language": "en",
+   "excerpt": "",
+   "excerpt_pt": null,
+   "category": "technology_ai",
+   "subcategory": "dev_tools",
+   "summary": "Publicação do blog da Hugging Face focada em orientações sobre a construção e a manutenção de processos de avaliação voltados a agentes de IA.",
+   "why_it_matters": "A avalia#u00e7#u00e3o de agentes aut#u00f4nomos #u00e9 um dos maiores gargalos atuais no desenvolvimento de software com IA, tornando guias pr#u00e1ticos muito valiosos.",
+   "key_points": [
+    "O material aborda diretrizes para constru#u00e7#u00e3o de avalia#u00e7#u00f5es agenticas.",
+    "Trata tamb#u00e9m da manuten#u00e7#u00e3o cont#u00ednua de tais sistemas."
+   ],
+   "potential_impacts": [
+    "Pode padronizar m#u00e9tricas de qualidade para equipes que criam fluxos baseados em agentes."
+   ],
+   "uncertainties": [
+    "O trecho fornecido n#u00e3o cont#u00e9m o texto completo do guia."
+   ],
+   "entities": [
+    "Hugging Face"
+   ],
+   "technologies": [
+    "AI agents"
+   ],
+   "tags": [
+    "agents",
+    "dev"
+   ],
+   "relevance_score": 78,
+   "novelty_score": 60,
+   "business_potential": "medium",
+   "career_potential": "high",
+   "study_potential": "high",
+   "off_topic": false,
+   "ai_processed": true,
+   "ai_model": "gemini-flash-lite-latest",
+   "ai_processed_at": "2026-11-23T15:45:26Z",
+   "ai_attempts": 0,
+   "source_priority": 4,
+   "is_sample": false
+  },
+  {
+   "id": "66cc673a6baaba00",
+   "event_id": "evt-66cc673a6baaba00",
+   "original_title": "Jensen Huang reinstated as Nvidia CEO, board chair",
+   "title_pt": "Jensen Huang é reintegrado como CEO e presidente do conselho da Nvidia",
+   "source_id": "ars-technica-ai",
+   "source_name": "Ars Technica — IA",
+   "source_type": "press",
+   "source_url": "https://arstechnica.com/ai/2026/11/jensen-huang-reinstated-as-nvidia-ceo-board-chair/",
+   "discussion_url": null,
+   "published_at": "2026-11-23T14:10:18Z",
+   "collected_at": "2026-11-23T15:45:26Z",
+   "language": "en",
+   "excerpt": "Board says senior government officials confirmed Huang is \"no national security risk.\"",
+   "excerpt_pt": "O conselho afirma que altos funcionários do governo confirmaram que Huang \"não representa risco à segurança nacional\".",
+   "category": "technology_ai",
+   "subcategory": null,
+   "summary": null,
+   "why_it_matters": null,
+   "key_points": [],
+   "potential_impacts": [],
+   "uncertainties": [],
+   "entities": [],
+   "technologies": [],
+   "tags": [
+    "nvidia",
+    "policy"
+   ],
+   "relevance_score": null,
+   "novelty_score": null,
+   "business_potential": null,
+   "career_potential": null,
+   "study_potential": null,
+   "off_topic": false,
+   "ai_processed": false,
+   "ai_model": null,
+   "ai_processed_at": null,
+   "ai_attempts": 0,
+   "source_priority": 3,
+   "is_sample": false
+  },
+  {
+   "id": "1793f4fe05b13a1c",
+   "event_id": "evt-1793f4fe05b13a1c",
+   "original_title": "Review: The Asus ProArt P16 offers a glimpse of a future powered by local AI",
+   "title_pt": "Análise: O Asus ProArt P16 oferece um vislumbre de um futuro impulsionado por IA local",
+   "source_id": "ars-technica-ai",
+   "source_name": "Ars Technica — IA",
+   "source_type": "press",
+   "source_url": "https://arstechnica.com/reviews/2026/11/review-the-asus-proart-p16-offers-a-glimpse-of-a-future-powered-by-local-ai/",
+   "discussion_url": null,
+   "published_at": "2026-11-23T12:00:00Z",
+   "collected_at": "2026-11-23T15:45:26Z",
+   "language": "en",
+   "excerpt": "The new Asus ProArt laptop costs up to $7,000, but it can run a gaggle of local AI agents.",
+   "excerpt_pt": "O novo notebook Asus ProArt custa até US$ 7.000, mas consegue rodar vários agentes de IA locais.",
+   "category": "technology_ai",
+   "subcategory": null,
+   "summary": null,
+   "why_it_matters": null,
+   "key_points": [],
+   "potential_impacts": [],
+   "uncertainties": [],
+   "entities": [],
+   "technologies": [],
+   "tags": [
+    "agents"
+   ],
+   "relevance_score": null,
+   "novelty_score": null,
+   "business_potential": null,
+   "career_potential": null,
+   "study_potential": null,
+   "off_topic": false,
+   "ai_processed": false,
+   "ai_model": null,
+   "ai_processed_at": null,
+   "ai_attempts": 0,
+   "source_priority": 3,
+   "is_sample": false
+  },
+  {
+   "id": "57e4d9bc2d25bc90",
+   "event_id": "evt-57e4d9bc2d25bc90",
+   "original_title": "Trump endorses Jensen Huang’s return to Nvidia, says US has no evidence of wrongdoing",
+   "title_pt": "Trump endossa o retorno de Jensen Huang #u00e0 Nvidia e afirma que os EUA n#u00e3o t#u00eam evid#u00eancias de irregularidades",
+   "source_id": "techcrunch-ai",
+   "source_name": "TechCrunch — IA",
+   "source_type": "press",
+   "source_url": "https://techcrunch.com/2026/11/23/trump-endorses-jensen-huangs-return-to-nvidia-says-us-has-no-evidence-of-wrongdoing/",
+   "discussion_url": null,
+   "published_at": "2026-11-23T15:04:01Z",
+   "collected_at": "2026-11-23T15:45:26Z",
+   "language": "en",
+   "excerpt": "The president cited the U.S. Attorney General in defending Huang's return, while urging Nvidia to continue its export-control investigation.",
+   "excerpt_pt": null,
+   "category": "technology_ai",
+   "subcategory": "business_market",
+   "summary": "O presidente dos EUA citou o Procurador-Geral ao defender o retorno de Jensen Huang #u00e0 lideran#u00e7a da Nvidia, ao mesmo tempo em que instou a empresa a continuar sua investiga#u00e7#u00e3o de controle de exporta#u00e7#u00e3o.",
+   "why_it_matters": "Mostra a interse#u00e7#u00e3o direta entre o poder executivo dos EUA e a governan#u00e7a da principal fabricante de hardware para IA do mundo.",
+   "key_points": [
+    "O presidente endossou o retorno de Jensen Huang #u00e0 Nvidia.",
+    "A declara#u00e3o mencionou o Procurador-Geral dos EUA.",
+    "Houve um pedido para que a Nvidia prossiga com a investiga#u00e7#u00e3o de controle de exporta#u00e7#u00e3o."
+   ],
+   "potential_impacts": [
+    "Pode estabilizar a lideran#u00e7a corporativa da Nvidia em meio a escrut#u00ednios regulat#u00f3rios."
+   ],
+   "uncertainties": [
+    "O trecho n#u00e3o especifica o escopo completo da investiga#u00e7#u00e3o de controle de exporta#u00e3o citada."
+   ],
+   "entities": [
+    "Nvidia",
+    "Jensen Huang",
+    "EUA (governo)"
+   ],
+   "technologies": [],
+   "tags": [
+    "nvidia",
+    "market",
+    "infra"
+   ],
+   "relevance_score": 80,
+   "novelty_score": 60,
+   "business_potential": "high",
+   "career_potential": "low",
+   "study_potential": "low",
+   "off_topic": false,
+   "ai_processed": true,
+   "ai_model": "gemini-flash-lite-latest",
+   "ai_processed_at": "2026-11-23T15:45:26Z",
+   "ai_attempts": 0,
+   "source_priority": 3,
+   "is_sample": false
+  },
+  {
+   "id": "169eafdcd04a25ce",
+   "event_id": "evt-169eafdcd04a25ce",
+   "original_title": "Sierra doubles valuation to $30B within six months as demand for AI in CX takes off",
+   "title_pt": "Sierra dobra avaliapão para US$ 30 bilhões em seis meses com disparada da demanda por IA em CX",
+   "source_id": "techcrunch-ai",
+   "source_name": "TechCrunch — IA",
+   "source_type": "press",
+   "source_url": "https://techcrunch.com/2026/11/23/sierra-doubles-valuation-to-30b-within-six-months-as-demand-for-ai-in-cx-takes-off/",
+   "discussion_url": null,
+   "published_at": "2026-11-23T14:43:03Z",
+   "collected_at": "2026-11-23T15:45:26Z",
+   "language": "en",
+   "excerpt": "Enterprise customer experience company Sierra, co-founded by former Salesforce co-CEO Bret Taylor, said on Monday that it has raised $1.75 billion in a Series F round.",
+   "excerpt_pt": "A empresa de experiância do cliente corporativo Sierra, cofundada pelo ex-co-CEO da Salesforce Bret Taylor, disse na segunda-feira que captou US$ 1,75 bilhão em uma rodada da Série F.",
+   "category": "technology_ai",
+   "subcategory": null,
+   "summary": null,
+   "why_it_matters": null,
+   "key_points": [],
+   "potential_impacts": [],
+   "uncertainties": [],
+   "entities": [],
+   "technologies": [],
+   "tags": [
+    "market"
+   ],
+   "relevance_score": null,
+   "novelty_score": null,
+   "business_potential": null,
+   "career_potential": null,
+   "study_potential": null,
+   "off_topic": false,
+   "ai_processed": false,
+   "ai_model": null,
+   "ai_processed_at": null,
+   "ai_attempts": 0,
+   "source_priority": 3,
+   "is_sample": false
+  },
+  {
+   "id": "ecab1061c917e910",
+   "event_id": "evt-ecab1061c917e910",
+   "original_title": "Nvidia reverses course and brings Jensen Huang back as CEO",
+   "title_pt": "Nvidia volta atrás e traz Jensen Huang de volta como CEO",
+   "source_id": "techcrunch-ai",
+   "source_name": "TechCrunch — IA",
+   "source_type": "press",
+   "source_url": "https://techcrunch.com/2026/11/23/nvidia-reverses-course-and-brings-jensen-huang-back-as-ceo/",
+   "discussion_url": null,
+   "published_at": "2026-11-23T14:21:59Z",
+   "collected_at": "2026-11-23T15:45:26Z",
+   "language": "en",
+   "excerpt": "The stunning reversal was supported by senior officials in the U.S. government.",
+   "excerpt_pt": "A surpreendente reversão foi apoiada por altos funcionários do governo dos EUA.",
+   "category": "technology_ai",
+   "subcategory": null,
+   "summary": null,
+   "why_it_matters": null,
+   "key_points": [],
+   "potential_impacts": [],
+   "uncertainties": [],
+   "entities": [],
+   "technologies": [],
+   "tags": [
+    "nvidia"
+   ],
+   "relevance_score": null,
+   "novelty_score": null,
+   "business_potential": null,
+   "career_potential": null,
+   "study_potential": null,
+   "off_topic": false,
+   "ai_processed": false,
+   "ai_model": null,
+   "ai_processed_at": null,
+   "ai_attempts": 0,
+   "source_priority": 3,
+   "is_sample": false
+  }
+ ]
+}

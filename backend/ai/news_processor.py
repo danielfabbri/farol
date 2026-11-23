@@ -55,6 +55,66 @@ class AiUsage:
     def mark_exhausted(self) -> None:
         self.state["quota_exhausted"] = True
 
+    # Orçamento separado para a tradução leve (usa modelos "lite", com cota própria).
+    def can_translate(self, daily_limit: int, run_limit: int) -> bool:
+        return self.state.get("translation_calls", 0) < daily_limit and getattr(self, "_tr_run", 0) < run_limit
+
+    def record_translation(self, n: int = 1) -> None:
+        self.state["translation_calls"] = self.state.get("translation_calls", 0) + n
+        self._tr_run = getattr(self, "_tr_run", 0) + n
+
+
+def translate_articles(
+    client: JsonGenerator,
+    articles: list[Article],
+    usage: AiUsage,
+    *,
+    batch_size: int,
+    daily_limit: int,
+    run_limit: int,
+    excerpt_chars: int = 400,
+) -> tuple[int, str | None]:
+    """Garante título e trecho em português quando a análise completa não foi possível.
+
+    Retorna (traduzidas, motivo_de_parada).
+    """
+    from backend.ai.prompts import TRANSLATE_SCHEMA, TRANSLATE_SYSTEM_PROMPT, build_translate_prompt
+    from backend.models.analysis import Translation
+
+    done = 0
+    for start in range(0, len(articles), batch_size):
+        if not usage.can_translate(daily_limit, run_limit):
+            return done, "budget_reached"
+        batch = articles[start:start + batch_size]
+        refs = {f"t{i + 1}": a for i, a in enumerate(batch)}
+        items = [{"ref": r, "title": a.original_title, "excerpt": truncate(a.excerpt, excerpt_chars)} for r, a in refs.items()]
+        before = getattr(client, "calls_made", None)
+        try:
+            data = client.generate_json(TRANSLATE_SYSTEM_PROMPT, build_translate_prompt(items), TRANSLATE_SCHEMA)
+        except QuotaExceeded:
+            usage.record_translation(1)
+            return done, "quota_exhausted"
+        except GeminiError as exc:
+            after = getattr(client, "calls_made", None)
+            usage.record_translation(max(0, after - before) if before is not None and after is not None else 1)
+            log.warning("Tradução falhou: %s", exc)
+            return done, "unavailable" if isinstance(exc, ServiceUnavailable) else "error"
+        after = getattr(client, "calls_made", None)
+        usage.record_translation(max(1, after - before) if before is not None and after is not None else 1)
+        for raw in (data.get("items") if isinstance(data, dict) else None) or []:
+            if not isinstance(raw, dict) or raw.get("ref") not in refs:
+                continue
+            try:
+                tr = Translation.model_validate(raw)
+            except ValidationError:
+                continue
+            art = refs[tr.ref]
+            if not art.ai_processed:  # nunca sobrescreve a análise completa
+                art.title_pt = tr.title_pt.strip()
+                art.excerpt_pt = tr.excerpt_pt.strip() or None
+                done += 1
+    return done, None
+
 
 @dataclass
 class ProcessReport:

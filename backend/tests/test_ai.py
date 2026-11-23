@@ -212,6 +212,30 @@ def test_processor_skips_articles_that_exhausted_attempts():
     assert mock.calls == 0
 
 
+def test_fallback_title_translation_and_budget():
+    from backend.ai.fallback_translator import translate_titles
+    ok = lambda t: FakeResponse(200, {"responseStatus": 200, "responseData": {"translatedText": t}})
+    arts = [art(1), art(2), art(3)]
+    s = ScriptedSession([ok("Notícia de agentes 1"), ok("Not\\u00edcia corrompida"), ok("x" * 10)])
+    state = {}
+    n = translate_titles(arts, s, state, run_char_limit=1000)
+    assert n == 2 and arts[0].title_pt == "Notícia de agentes 1" and arts[1].title_pt is None
+    assert state["fallback_chars"] == sum(len(a.original_title) for a in arts)
+    # Orçamento diário esgotado: nenhuma requisição.
+    s2 = ScriptedSession([])
+    assert translate_titles([art(4)], s2, {"fallback_chars": 4500}) == 0 and s2.requests == []
+
+
+def test_fallback_stops_when_service_quota_ends():
+    from backend.ai.fallback_translator import translate_titles
+    warn = FakeResponse(200, {"responseStatus": 429, "quotaFinished": True,
+                              "responseData": {"translatedText": "MYMEMORY WARNING: YOU USED ALL AVAILABLE FREE TRANSLATIONS"}})
+    state = {}
+    arts = [art(1), art(2)]
+    assert translate_titles(arts, ScriptedSession([warn]), state) == 0
+    assert state["fallback_chars"] == 4500 and arts[0].title_pt is None
+
+
 def test_prompt_never_contains_api_key_and_is_truncated():
     a = art(1)
     a.excerpt = "x " * 1000

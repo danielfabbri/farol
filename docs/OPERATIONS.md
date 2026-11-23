@@ -30,6 +30,15 @@ O Google muda as cotas com frequência. Os valores atuais por modelo estão em <
 
 Por isso o cliente percorre uma lista de modelos Flash gratuitos e controla a cota **por modelo** (ver [ARCHITECTURE.md](ARCHITECTURE.md#ia-uma-chamada-por-lote)).
 
+### Tudo em português, mesmo quando a IA falha
+Cada notícia passa por até três camadas, nesta ordem:
+
+1. **Análise completa** (Gemini Flash): título, resumo, pontos-chave, relevância etc., em português.
+2. **Tradução leve** (Gemini *lite*, cota própria, ~25 notícias por chamada, até 12 chamadas/dia): título e trecho.
+3. **Tradução de reserva, só títulos** ([MyMemory](https://mymemory.translated.net/doc/spec.php), gratuito, sem chave, ~4.500 caracteres/dia): usada quando todos os modelos Gemini falham. Recebe apenas as manchetes públicas.
+
+Textos gerados com caracteres corrompidos (ex.: `c#00f3digo`, `Inteligêêode`) são corrigidos ou descartados, e a notícia volta para a fila. Nomes de produtos podem eventualmente sair traduzidos na camada 3; a análise completa corrige isso quando chega.
+
 ## Riscos e mitigação
 
 | Risco | Efeito | Mitigação |

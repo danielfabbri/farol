@@ -15,7 +15,8 @@ from backend.ai.intelligence_analyzer import (
     build_trends, compute_tags, edition_identity, score_event, select_highlights,
 )
 from backend.ai.mock_client import MockGeminiClient
-from backend.ai.news_processor import AiUsage, NewsProcessor
+from backend.ai.fallback_translator import translate_titles
+from backend.ai.news_processor import AiUsage, NewsProcessor, translate_articles
 from backend.collectors.normalization import keyword_pattern, utcnow
 from backend.collectors.rss_collector import collect_source
 from backend.collectors.source_manager import load_sources
@@ -158,18 +159,55 @@ def run(
                 ai_state = rep.stopped_reason
                 if rep.stopped_reason in ("quota_exhausted", "fatal_error", "unavailable"):
                     break
-        for a in working.values():
-            if a.ai_processed and a.ai_processed_at == now:
-                a.tags = compute_tags(a, filters)
     elif client is not None:
         ai_state = "idle"
     elif usage.quota_exhausted:
         ai_state = "quota_exhausted"
-    if client is not None and hasattr(client, "exhausted_models"):
-        usage.state["exhausted_models"] = sorted(client.exhausted_models)
-    log.info("IA: estado=%s processadas=%d falhas=%d chamadas=%d (hoje: %d/%d)", ai_state,
+    # 2b) Tradução leve: tudo em português, mesmo sem a análise completa.
+    translated, tr_stop = 0, None
+    untranslated = sorted(
+        (a for a in working.values()
+         if not a.ai_processed and not a.title_pt and not a.off_topic
+         and a.language != "pt" and a.reference_time >= pending_cut),
+        key=lambda a: (a.source_priority, a.reference_time), reverse=True,
+    )
+    translator = None
+    if untranslated and client is not None:
+        if ai_client is not None or settings.ai_mock:
+            translator = client
+        elif settings.has_api_key:
+            translator = GeminiClient(
+                settings.gemini_api_key or "", settings.translation_models[0],
+                fallback_models=list(settings.translation_models[1:]),
+                exhausted_models=set(usage.state.get("exhausted_models", [])) | getattr(client, "exhausted_models", set()),
+                min_interval=settings.ai_min_interval_seconds,
+            )
+    if translator is not None:
+        translated, tr_stop = translate_articles(
+            translator, untranslated, usage, batch_size=settings.translation_batch_size,
+            daily_limit=settings.max_translation_calls_per_day, run_limit=settings.max_translation_calls_per_run,
+        )
+    # 2c) Último recurso: só os títulos, via serviço gratuito, quando a Gemini não deu conta.
+    still_english = [a for a in untranslated if not a.title_pt]
+    if still_english and settings.title_fallback_enabled and not settings.ai_mock and not settings.dev_mode:
+        still_english.sort(key=lambda a: (a.source_type != "research", a.source_priority, a.reference_time), reverse=True)
+        fb = translate_titles(still_english, session, usage.state)
+        translated += fb
+        if fb:
+            log.info("Tradução de reserva (somente títulos): %d", fb)
+    exhausted_now = set(usage.state.get("exhausted_models", []))
+    for c in (client, translator):
+        exhausted_now |= getattr(c, "exhausted_models", set()) if c is not None else set()
+    usage.state["exhausted_models"] = sorted(exhausted_now)
+    ai_report["translated"] = translated
+    log.info("IA: estado=%s processadas=%d falhas=%d chamadas=%d (hoje: %d/%d) | traduzidas=%d%s", ai_state,
              ai_report["processed"], ai_report["failed"], ai_report["calls"],
-             usage.state["calls"], settings.max_ai_calls_per_day)
+             usage.state["calls"], settings.max_ai_calls_per_day, translated,
+             f" (tradução parou: {tr_stop})" if tr_stop else "")
+
+    # Categorias recalculadas para todos (vale também para filtros recém-criados).
+    for a in working.values():
+        a.tags = compute_tags(a, filters)
 
     # 3) Persistência dos artigos
     repo.save_articles(working.values())
@@ -212,7 +250,10 @@ def run(
         ai_status={
             "state": ai_state, "model": getattr(client, "model", None) if client else None,
             "processed_this_run": ai_report["processed"], "pending": pending_after,
-            "message": AI_MESSAGES.get(ai_state, ""),
+            "translated_this_run": translated,
+            "message": AI_MESSAGES.get(ai_state, "") + (
+                " Enquanto isso, títulos e trechos foram traduzidos automaticamente."
+                if translated and ai_state not in ("ok", "idle") else ""),
         },
         notice=SAMPLE_NOTICE if settings.dev_mode else None,
     )

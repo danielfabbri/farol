@@ -6,40 +6,358 @@
       "label": "Tecnologia e Inteligência Artificial",
       "enabled": true,
       "keywords": [
-        "ai", "a\\.i\\.", "artificial intelligence", "machine learning", "deep learning", "neural",
-        "llm", "llms", "language model", "language models", "foundation model", "transformer",
-        "gpt", "chatgpt", "openai", "anthropic", "claude", "gemini", "deepmind", "copilot",
-        "azure ai", "nvidia", "gpu", "gpus", "cuda", "inference", "agent", "agents", "agentic",
-        "multi-agent", "hugging face", "mistral", "llama", "diffusion", "robot", "robots", "robotics",
-        "automation", "genai", "generative", "chatbot", "reasoning model", "inteligência artificial"
+        "ai",
+        "a\\.i\\.",
+        "artificial intelligence",
+        "machine learning",
+        "deep learning",
+        "neural",
+        "llm",
+        "llms",
+        "language model",
+        "language models",
+        "foundation model",
+        "transformer",
+        "gpt",
+        "chatgpt",
+        "openai",
+        "anthropic",
+        "claude",
+        "gemini",
+        "deepmind",
+        "copilot",
+        "azure ai",
+        "nvidia",
+        "gpu",
+        "gpus",
+        "cuda",
+        "inference",
+        "agent",
+        "agents",
+        "agentic",
+        "multi-agent",
+        "hugging face",
+        "mistral",
+        "llama",
+        "diffusion",
+        "robot",
+        "robots",
+        "robotics",
+        "automation",
+        "genai",
+        "generative",
+        "chatbot",
+        "reasoning model",
+        "inteligência artificial"
       ],
       "subcategories": [
-        {"id": "ai_agents", "label": "Agentes e sistemas multiagentes"},
-        {"id": "llms", "label": "Modelos de linguagem"},
-        {"id": "dev_tools", "label": "Ferramentas de desenvolvimento"},
-        {"id": "automation", "label": "Automação de processos"},
-        {"id": "ai_infrastructure", "label": "Infraestrutura e hardware de IA"},
-        {"id": "robotics", "label": "Robótica e computação"},
-        {"id": "research", "label": "Pesquisa científica"},
-        {"id": "products", "label": "Produtos e lançamentos"},
-        {"id": "startups", "label": "Startups e empresas emergentes"},
-        {"id": "business_market", "label": "Mercado e negócios"},
-        {"id": "careers_opportunities", "label": "Carreira e oportunidades"},
-        {"id": "policy_safety", "label": "Regulação, segurança e ética"},
-        {"id": "other", "label": "Outros"}
+        {
+          "id": "ai_agents",
+          "label": "Agentes e sistemas multiagentes"
+        },
+        {
+          "id": "llms",
+          "label": "Modelos de linguagem"
+        },
+        {
+          "id": "dev_tools",
+          "label": "Ferramentas de desenvolvimento"
+        },
+        {
+          "id": "automation",
+          "label": "Automação de processos"
+        },
+        {
+          "id": "ai_infrastructure",
+          "label": "Infraestrutura e hardware de IA"
+        },
+        {
+          "id": "robotics",
+          "label": "Robótica e computação"
+        },
+        {
+          "id": "research",
+          "label": "Pesquisa científica"
+        },
+        {
+          "id": "products",
+          "label": "Produtos e lançamentos"
+        },
+        {
+          "id": "startups",
+          "label": "Startups e empresas emergentes"
+        },
+        {
+          "id": "business_market",
+          "label": "Mercado e negócios"
+        },
+        {
+          "id": "careers_opportunities",
+          "label": "Carreira e oportunidades"
+        },
+        {
+          "id": "policy_safety",
+          "label": "Regulação, segurança e ética"
+        },
+        {
+          "id": "other",
+          "label": "Outros"
+        }
       ]
     }
   ],
   "filters": [
-    {"id": "microsoft", "label": "Microsoft", "entities": ["microsoft", "azure", "copilot", "github", "bing"], "keywords": ["microsoft", "azure", "copilot"], "subcategories": []},
-    {"id": "openai", "label": "OpenAI", "entities": ["openai", "chatgpt", "sam altman"], "keywords": ["openai", "chatgpt", "gpt-\\d"], "subcategories": []},
-    {"id": "google", "label": "Google", "entities": ["google", "deepmind", "gemini", "alphabet"], "keywords": ["google", "deepmind", "gemini"], "subcategories": []},
-    {"id": "anthropic", "label": "Anthropic", "entities": ["anthropic", "claude"], "keywords": ["anthropic", "claude"], "subcategories": []},
-    {"id": "nvidia", "label": "NVIDIA", "entities": ["nvidia", "cuda"], "keywords": ["nvidia", "cuda"], "subcategories": []},
-    {"id": "agents", "label": "Agentes de IA", "entities": [], "keywords": ["agent", "agents", "agentic", "multi-agent"], "subcategories": ["ai_agents"]},
-    {"id": "llms", "label": "Modelos de linguagem", "entities": [], "keywords": ["llm", "llms", "language model", "language models"], "subcategories": ["llms"]},
-    {"id": "dev", "label": "Desenvolvimento de software", "entities": ["github", "visual studio", "vs code"], "keywords": ["developer", "developers", "coding", "programming", "sdk", "open source"], "subcategories": ["dev_tools"]},
-    {"id": "startups", "label": "Startups", "entities": [], "keywords": ["startup", "startups", "funding", "raises", "series a", "series b", "seed round"], "subcategories": ["startups"]},
-    {"id": "robotics", "label": "Robótica", "entities": [], "keywords": ["robot", "robots", "robotics", "humanoid"], "subcategories": ["robotics"]}
+    {
+      "id": "microsoft",
+      "label": "Microsoft",
+      "entities": [
+        "microsoft",
+        "azure",
+        "copilot",
+        "github",
+        "bing"
+      ],
+      "keywords": [
+        "microsoft",
+        "azure",
+        "copilot"
+      ],
+      "subcategories": []
+    },
+    {
+      "id": "openai",
+      "label": "OpenAI",
+      "entities": [
+        "openai",
+        "chatgpt",
+        "sam altman"
+      ],
+      "keywords": [
+        "openai",
+        "chatgpt",
+        "gpt-\\d"
+      ],
+      "subcategories": []
+    },
+    {
+      "id": "google",
+      "label": "Google",
+      "entities": [
+        "google",
+        "deepmind",
+        "gemini",
+        "alphabet"
+      ],
+      "keywords": [
+        "google",
+        "deepmind",
+        "gemini"
+      ],
+      "subcategories": []
+    },
+    {
+      "id": "anthropic",
+      "label": "Anthropic",
+      "entities": [
+        "anthropic",
+        "claude"
+      ],
+      "keywords": [
+        "anthropic",
+        "claude"
+      ],
+      "subcategories": []
+    },
+    {
+      "id": "nvidia",
+      "label": "NVIDIA",
+      "entities": [
+        "nvidia",
+        "cuda"
+      ],
+      "keywords": [
+        "nvidia",
+        "cuda"
+      ],
+      "subcategories": []
+    },
+    {
+      "id": "agents",
+      "label": "Agentes de IA",
+      "entities": [],
+      "keywords": [
+        "agent",
+        "agents",
+        "agentic",
+        "multi-agent"
+      ],
+      "subcategories": [
+        "ai_agents"
+      ]
+    },
+    {
+      "id": "llms",
+      "label": "Modelos de linguagem",
+      "entities": [],
+      "keywords": [
+        "llm",
+        "llms",
+        "language model",
+        "language models"
+      ],
+      "subcategories": [
+        "llms"
+      ]
+    },
+    {
+      "id": "dev",
+      "label": "Desenvolvimento de software",
+      "entities": [
+        "github",
+        "visual studio",
+        "vs code"
+      ],
+      "keywords": [
+        "developer",
+        "developers",
+        "coding",
+        "programming",
+        "sdk",
+        "open source"
+      ],
+      "subcategories": [
+        "dev_tools"
+      ]
+    },
+    {
+      "id": "startups",
+      "label": "Startups",
+      "entities": [],
+      "keywords": [
+        "startup",
+        "startups",
+        "funding",
+        "raises",
+        "series a",
+        "series b",
+        "seed round"
+      ],
+      "subcategories": [
+        "startups"
+      ]
+    },
+    {
+      "id": "robotics",
+      "label": "Robótica",
+      "entities": [],
+      "keywords": [
+        "robot",
+        "robots",
+        "robotics",
+        "humanoid"
+      ],
+      "subcategories": [
+        "robotics"
+      ]
+    },
+    {
+      "id": "research",
+      "label": "Pesquisa",
+      "entities": [],
+      "keywords": [
+        "paper",
+        "research",
+        "benchmark",
+        "arxiv"
+      ],
+      "subcategories": [
+        "research"
+      ]
+    },
+    {
+      "id": "products",
+      "label": "Lançamentos",
+      "entities": [],
+      "keywords": [
+        "launch",
+        "launches",
+        "released",
+        "releases",
+        "introducing",
+        "announces"
+      ],
+      "subcategories": [
+        "products"
+      ]
+    },
+    {
+      "id": "market",
+      "label": "Mercado",
+      "entities": [],
+      "keywords": [
+        "ipo",
+        "acquisition",
+        "acquires",
+        "revenue",
+        "valuation",
+        "investors"
+      ],
+      "subcategories": [
+        "business_market"
+      ]
+    },
+    {
+      "id": "infra",
+      "label": "Infraestrutura",
+      "entities": [
+        "nvidia",
+        "tsmc",
+        "amd"
+      ],
+      "keywords": [
+        "gpu",
+        "gpus",
+        "chip",
+        "chips",
+        "data center",
+        "datacenter",
+        "inference"
+      ],
+      "subcategories": [
+        "ai_infrastructure"
+      ]
+    },
+    {
+      "id": "policy",
+      "label": "Regulação e segurança",
+      "entities": [],
+      "keywords": [
+        "regulation",
+        "law",
+        "policy",
+        "safety",
+        "copyright",
+        "lawsuit",
+        "security"
+      ],
+      "subcategories": [
+        "policy_safety"
+      ]
+    },
+    {
+      "id": "careers",
+      "label": "Carreira",
+      "entities": [],
+      "keywords": [
+        "jobs",
+        "hiring",
+        "layoffs",
+        "workers",
+        "skills"
+      ],
+      "subcategories": [
+        "careers_opportunities"
+      ]
+    }
   ]
 }

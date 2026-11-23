@@ -25,6 +25,10 @@ class UserPreferences(context: Context) {
     private val _demoMode = MutableStateFlow(sp.getBoolean(KEY_DEMO, false))
     val demoMode: StateFlow<Boolean> = _demoMode.asStateFlow()
 
+    /** Token pessoal do GitHub (opcional), usado só pelo botão "Varrer agora". Fica apenas neste aparelho. */
+    private val _githubToken = MutableStateFlow(sp.getString(KEY_TOKEN, null))
+    val githubToken: StateFlow<String?> = _githubToken.asStateFlow()
+
     private val _lastSync = MutableStateFlow(sp.getLong(KEY_LAST_SYNC, 0L))
     val lastSync: StateFlow<Long> = _lastSync.asStateFlow()
 
@@ -32,6 +36,11 @@ class UserPreferences(context: Context) {
     fun setHighlightLimit(n: Int) { sp.edit().putInt(KEY_HIGHLIGHTS, n).apply(); _highlightLimit.value = n }
     fun setOtherLimit(n: Int) { sp.edit().putInt(KEY_OTHERS, n).apply(); _otherLimit.value = n }
     fun setDemoMode(on: Boolean) { sp.edit().putBoolean(KEY_DEMO, on).apply(); _demoMode.value = on }
+    fun setGithubToken(token: String?) {
+        val clean = token?.trim()?.takeIf { it.isNotEmpty() }
+        sp.edit().apply { if (clean == null) remove(KEY_TOKEN) else putString(KEY_TOKEN, clean) }.apply()
+        _githubToken.value = clean
+    }
     fun setLastSync(ts: Long) { sp.edit().putLong(KEY_LAST_SYNC, ts).apply(); _lastSync.value = ts }
 
     private companion object {
@@ -40,5 +49,6 @@ class UserPreferences(context: Context) {
         const val KEY_OTHERS = "other_limit"
         const val KEY_DEMO = "demo_mode"
         const val KEY_LAST_SYNC = "last_sync"
+        const val KEY_TOKEN = "github_token"
     }
 }

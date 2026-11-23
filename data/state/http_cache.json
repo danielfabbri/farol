@@ -1,0 +1,58 @@
+{
+ "microsoft-source-ai": {
+  "etag": "W/\"23ad8bce50062094c0e682704515c8b3\"",
+  "last_modified": "Fri, 20 Nov 2026 20:55:35 GMT"
+ },
+ "microsoft-blog": {
+  "etag": "W/\"cdc07e28b70a1b93fafa0c205bd6db76\"",
+  "last_modified": "Tue, 17 Nov 2026 20:57:44 GMT"
+ },
+ "microsoft-devblogs": {
+  "etag": "W/\"8596524220a92e305236bf918c2527bf\"",
+  "last_modified": "Mon, 23 Nov 2026 12:35:24 GMT"
+ },
+ "microsoft-research": {
+  "etag": "\"8fb62bede660660b2faf21768734afe3\"",
+  "last_modified": "Mon, 23 Nov 2026 14:53:34 GMT"
+ },
+ "openai-news": {
+  "etag": null,
+  "last_modified": null
+ },
+ "google-ai-blog": {
+  "etag": null,
+  "last_modified": null
+ },
+ "google-research": {
+  "etag": null,
+  "last_modified": "Fri, 20 Nov 2026 23:30:30 GMT"
+ },
+ "google-deepmind": {
+  "etag": null,
+  "last_modified": "Wed, 18 Nov 2026 21:35:43 GMT"
+ },
+ "nvidia-blog": {
+  "etag": "\"0ffc67c757439b59faadacbb95463851-gzip\"",
+  "last_modified": "Mon, 23 Nov 2026 10:17:31 GMT"
+ },
+ "huggingface-blog": {
+  "etag": "W/\"4228c-cM9lO4hPR7HZNHycJiFZyfHpuUc\"",
+  "last_modified": null
+ },
+ "mit-tech-review-ai": {
+  "etag": "W/\"3859201ede81e45d807f78a4282c3a1b\"",
+  "last_modified": "Mon, 23 Nov 2026 12:11:01 GMT"
+ },
+ "ars-technica-ai": {
+  "etag": "\"553f864040629b6de41775941c5b6814\"",
+  "last_modified": "Mon, 23 Nov 2026 15:47:51 GMT"
+ },
+ "ars-technica-tech": {
+  "etag": "\"de6b9a910727413715fa2c8cf8365ce3\"",
+  "last_modified": "Mon, 23 Nov 2026 15:46:21 GMT"
+ },
+ "techcrunch-ai": {
+  "etag": "W/\"e91bd704f22a39005963797aab379b47\"",
+  "last_modified": "Mon, 23 Nov 2026 15:48:09 GMT"
+ }
+}
