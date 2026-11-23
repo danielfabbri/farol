@@ -54,6 +54,7 @@ fun SettingsScreen(
     onClearCache: () -> Unit,
     onSaveToken: (String?) -> Unit,
     onScan: () -> Unit,
+    onDismissScan: () -> Unit,
     update: UpdateState,
     onCheckUpdate: () -> Unit,
     onDownloadUpdate: () -> Unit,
@@ -160,6 +161,7 @@ fun SettingsScreen(
                 }
                 OutlinedButton(onClick = { onSaveToken(null) }) { Text("Remover token") }
             }
+            ScanStatus(state.scan, onDismissScan)
         } else {
             Text(
                 "Como criar (uma vez, leva 2 minutos):\n" +
@@ -246,6 +248,26 @@ fun SettingsScreen(
             confirmButton = { TextButton(onClick = { confirmClear = false; onClearCache() }) { Text("Limpar") } },
             dismissButton = { TextButton(onClick = { confirmClear = false }) { Text("Cancelar") } },
         )
+    }
+}
+
+/** Andamento da varredura sob demanda (o botão fica só aqui, para não ser tocado sem querer). */
+@Composable
+private fun ScanStatus(scan: app.farol.ui.ScanState, onDismiss: () -> Unit) {
+    val (text, busy) = when (scan) {
+        app.farol.ui.ScanState.Idle -> return
+        app.farol.ui.ScanState.Starting -> "Pedindo a varredura ao GitHub…" to true
+        is app.farol.ui.ScanState.Running -> "${scan.step} (costuma levar de 2 a 6 minutos)" to true
+        is app.farol.ui.ScanState.Done -> scan.message to false
+        is app.farol.ui.ScanState.Failed -> scan.message to false
+    }
+    Spacer(Modifier.height(12.dp))
+    Text(text, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.primary)
+    if (busy) {
+        Spacer(Modifier.height(8.dp))
+        LinearProgressIndicator(Modifier.fillMaxWidth())
+    } else {
+        TextButton(onClick = onDismiss) { Text("Ok") }
     }
 }
 

@@ -23,6 +23,7 @@ class Article(BaseModel):
     source_type: SourceType = "press"
     source_url: str
     discussion_url: str | None = None
+    image_url: str | None = None
     published_at: datetime | None = None
     collected_at: datetime
     language: str = "en"

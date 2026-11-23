@@ -8,6 +8,9 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.ui.layout.ContentScale
+import coil.compose.AsyncImage
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -113,6 +116,8 @@ fun HighlightCard(
         color = MaterialTheme.colorScheme.surfaceContainerHigh,
         modifier = Modifier.fillMaxWidth().padding(bottom = 12.dp),
     ) {
+        Column {
+        lead?.imageUrl?.let { NewsImage(it, Modifier.fillMaxWidth().aspectRatio(16f / 9f)) }
         Column(Modifier.padding(18.dp)) {
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Text(
@@ -121,7 +126,7 @@ fun HighlightCard(
                     color = MaterialTheme.colorScheme.primary,
                 )
                 Spacer(Modifier.width(10.dp))
-                Eyebrow(subcategoryLabel ?: "Tecnologia e IA", color = MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.weight(1f))
+                Eyebrow(subcategoryLabel.orEmpty(), color = MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.weight(1f))
                 ImportanceIndicator(lead?.relevanceScore ?: event.relevanceScore)
                 Spacer(Modifier.width(10.dp))
                 ReadDot(read)
@@ -150,7 +155,19 @@ fun HighlightCard(
                 aiProcessed = lead?.aiProcessed ?: event.aiProcessed,
             )
         }
+        }
     }
+}
+
+/** Imagem publicada pelo próprio veículo (carregada do endereço original; nada é copiado). */
+@Composable
+fun NewsImage(url: String, modifier: Modifier = Modifier) {
+    AsyncImage(
+        model = url,
+        contentDescription = null,
+        contentScale = ContentScale.Crop,
+        modifier = modifier.background(MaterialTheme.colorScheme.surfaceContainerHighest),
+    )
 }
 
 @Composable
@@ -196,10 +213,14 @@ fun CompactArticleRow(article: Article, subcategoryLabel: String?, read: Boolean
             SourceLine(article.sourceName, extraSources, Fmt.relative(article.publishedOrCollected), article.aiProcessed)
         }
         Spacer(Modifier.width(12.dp))
-        Column(horizontalAlignment = Alignment.End) {
-            ImportanceIndicator(article.relevanceScore)
-            Spacer(Modifier.height(10.dp))
-            if (read) ReadDot(true)
+        if (article.imageUrl != null) {
+            NewsImage(article.imageUrl, Modifier.size(76.dp).clip(RoundedCornerShape(12.dp)))
+        } else {
+            Column(horizontalAlignment = Alignment.End) {
+                ImportanceIndicator(article.relevanceScore)
+                Spacer(Modifier.height(10.dp))
+                if (read) ReadDot(true)
+            }
         }
     }
 }

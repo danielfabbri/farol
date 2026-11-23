@@ -23,6 +23,30 @@ As fontes ficam em [`backend/config/sources.json`](../backend/config/sources.jso
 | Brasil | Agência Brasil — Geral | `https://agenciabrasil.ebc.com.br/rss/geral/feed.xml` |
 | Brasil | Folha — Cotidiano | `https://feeds.folha.uol.com.br/cotidiano/rss091.xml` |
 | Tecnologia | Tecnoblog | `https://tecnoblog.net/feed/` |
+| Política | Agência Câmara (oficial) | `https://www.camara.leg.br/noticias/rss/ultimas-noticias` |
+| Política | Estadão — Política | `https://www.estadao.com.br/arc/outboundfeeds/feeds/rss/sections/politica/` |
+| Economia | Money Times | `https://www.moneytimes.com.br/feed/` |
+| Mundo | RFI Brasil | `https://www.rfi.fr/br/rss` |
+| Mundo | DW Brasil | `https://rss.dw.com/rdf/rss-br-all` |
+| Brasil | g1 — Educação | `https://g1.globo.com/rss/g1/educacao/` |
+| Ciência e Saúde | Folha — Ciência / Equilíbrio e Saúde / Ambiente | `https://feeds.folha.uol.com.br/{ciencia,equilibrioesaude,ambiente}/rss091.xml` |
+| Tecnologia | Olhar Digital, Canaltech | `https://olhardigital.com.br/feed/`, `https://canaltech.com.br/rss/` |
+| Tecnologia | The Verge, Wired — IA (em inglês, traduzidos) | `https://www.theverge.com/rss/index.xml`, `https://www.wired.com/feed/tag/ai/latest/rss` |
+
+### Feeds gerais classificados pela URL
+
+Alguns portais só oferecem um feed com tudo misturado. Nesses, a seção vem do início do caminho da URL (`section_rules`); o que não casa com nenhuma regra (esporte, entretenimento, colunas sociais) é descartado.
+
+| Fonte | Feed | Regras |
+|---|---|---|
+| CNN Brasil | `https://www.cnnbrasil.com.br/feed/` | `politica/`, `economia/`, `internacional/`→Mundo, `nacional/`→Brasil, `saude/`→Ciência e Saúde |
+| Veja | `https://veja.abril.com.br/feed/` | `politica/`, `economia/`, `mundo/`, `brasil/`, `saude/`, `ciencia/` |
+| CartaCapital | `https://www.cartacapital.com.br/feed/` | `politica/`, `economia/`, `mundo/`, `sociedade/`→Brasil |
+| Exame | `https://exame.com/feed/` | `economia/`, `invest/`, `negocios/`, `mundo/`, `brasil/`, `tecnologia/`, `inteligencia-artificial/`, `ciencia/` |
+
+### Imagens
+
+O endereço da imagem de capa vem do próprio feed (`media:content`, `media:thumbnail`, `enclosure` ou a primeira `<img>` do trecho). O FAROL guarda só o endereço; a imagem continua hospedada pelo veículo e é exibida com crédito. Folha e DW não publicam imagens nos feeds.
 
 Conteúdo que não é notícia é excluído pelo título (`exclude_keywords` em `categories.json` e em cada fonte): loterias, horóscopo, cupons e prêmios patrocinados nas seções de hard news; ofertas e promoções em Tecnologia.
 
@@ -52,7 +76,11 @@ Conteúdo que não é notícia é excluído pelo título (`exclude_keywords` em 
 
 | Fonte | Situação | Decisão |
 |---|---|---|
-| **CNN Brasil** | Feeds por editoria (`/politica/feed/`, `/economia/feed/`, `/internacional/feed/`, `/nacional/feed/`) retornam 404. | Não cadastrada. |
+| **CNN Brasil (feeds por editoria)** | `/politica/feed/`, `/economia/feed/` etc. retornam 404. | Usado o feed geral, classificado pela URL. |
+| **Metrópoles** | Feed geral dominado por colunas e celebridades. | Não cadastrado. |
+| **Nexo** | URLs indicam o formato (expresso, ensaio), não a editoria. | Não cadastrado. |
+| **ONU News, Agência Senado** | Feeds sem itens. | Não cadastrados. |
+| **VentureBeat — AI** | HTTP 429 para clientes automatizados. | Não cadastrado. |
 | **g1 — Brasil e g1 — Tecnologia** | `/rss/g1/brasil/` e `/rss/g1/tecnologia/` respondem 200, mas sem itens. | Não cadastradas; a seção Brasil usa Agência Brasil e Folha. |
 | **Anthropic News** (`anthropic.com/news`) | Não há feed RSS/Atom oficial. `rss.xml`, `news/rss.xml`, `feed.xml` e `news/feed` retornam 404, e a página não declara feed. | **Sem scraping.** A cobertura sobre Anthropic/Claude vem de veículos que a reportam (TechCrunch, Ars, MIT TR, Hacker News). Se a Anthropic publicar um feed, basta adicioná-lo ao `sources.json`. |
 | **Microsoft AI Blog** (`blogs.microsoft.com/ai/feed/`) | Retorna **HTTP 410 (Gone)**: o blog foi desativado. | Substituído pelo feed oficial do Microsoft Source, tópico AI. |

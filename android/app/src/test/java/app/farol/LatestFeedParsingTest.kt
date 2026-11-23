@@ -28,7 +28,7 @@ class LatestFeedParsingTest {
         assertNotNull(Fmt.instant(feed.generatedAt))
         assertTrue(feed.filters.any { it.id == "agents" })
         // Seções e resumos de seção
-        assertEquals(listOf("brasil", "politica", "economia", "mundo", "technology_ai"), feed.sections.map { it.id })
+        assertEquals(listOf("brasil", "politica", "economia", "mundo", "ciencia_saude", "technology_ai"), feed.sections.map { it.id })
         val tech = feed.sections.first { it.id == "technology_ai" }
         assertTrue(tech.filters.isNotEmpty() && tech.brief != null)
         tech.brief!!.points.forEach { p -> p.eventIds.forEach { assertNotNull(events[it]) } }

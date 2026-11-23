@@ -89,37 +89,24 @@ private val HPad = Modifier.padding(horizontal = 20.dp)
 @Composable
 fun TodayScreen(
     state: UiState,
-    update: UpdateState,
     onRefresh: () -> Unit,
-    onScan: () -> Unit,
-    onDismissScan: () -> Unit,
-    onOpenSettings: () -> Unit,
     onOpenArticle: (String) -> Unit,
     onOpenExplore: () -> Unit,
 ) {
     val feed = state.feed
     var sectionId by rememberSaveable { mutableStateOf<String?>(null) }
     var topic by rememberSaveable { mutableStateOf<String?>(null) }
-    var askToken by remember { mutableStateOf(false) }
     val sections = feed?.sections.orEmpty().sortedBy { it.order }
     val section = sections.firstOrNull { it.id == sectionId }
 
     PullToRefreshBox(isRefreshing = state.syncing, onRefresh = onRefresh, modifier = Modifier.fillMaxSize()) {
         LazyColumn(contentPadding = PaddingValues(vertical = 12.dp), modifier = Modifier.fillMaxSize()) {
-            item { TodayHeader(feed, section, state.scan, onScan = { if (state.hasToken) onScan() else askToken = true }) }
+            item { TodayHeader(feed, section) }
             if (sections.isNotEmpty()) {
                 item { SectionBar(sections, sectionId) { sectionId = it; topic = null } }
             }
             item {
-                Column(HPad) {
-                    if (update is UpdateState.Available) {
-                        Box(Modifier.clickable(onClick = onOpenSettings)) {
-                            NoticeCard("Nova versão ${update.info.versionName} do app disponível. Toque para atualizar em Ajustes.", icon = Icons.Outlined.SystemUpdate)
-                        }
-                    }
-                    ScanBanner(state.scan, onDismissScan)
-                    SyncNotices(state)
-                }
+                Column(HPad) { SyncNotices(state) }
             }
 
             if (feed == null) {
@@ -157,11 +144,11 @@ fun TodayScreen(
                 val label = topic?.let { t -> section.filters.firstOrNull { it.id == t }?.label } ?: section.label
                 item { SectionHeader(label, "${shown.size} de ${ordered.size}", HPad) }
                 if (shown.isEmpty()) {
-                    item { EmptyState("Nada em $label nesta edição", "Volte na próxima edição ou toque em \"Varrer agora\".", HPad) }
+                    item { EmptyState("Nada em $label nesta edição", "Volte na próxima edição.", HPad) }
                 }
                 itemsIndexed(shown, key = { _, e -> "s-" + e.id }) { i, event ->
                     val lead = leadArticle(event, arts) ?: return@itemsIndexed
-                    val sub = lead.subcategory?.let { feed.subcategories[it] }
+                    val sub = state.labelFor(lead)
                     Box(HPad) {
                         if (i < 3) {
                             HighlightCard(i + 1, event, lead, sub, isRead(event)) { onOpenArticle(lead.id) }
@@ -190,13 +177,12 @@ fun TodayScreen(
             item { SectionHeader("Destaques", "$readCount de ${highlights.size} lidos", HPad) }
             itemsIndexed(highlights, key = { _, e -> e.id }) { i, event ->
                 val lead = leadArticle(event, arts)
-                val secLabel = sections.firstOrNull { it.id == event.category }?.label
                 Box(HPad) {
                     HighlightCard(
                         rank = i + 1,
                         event = event,
                         lead = lead,
-                        subcategoryLabel = secLabel ?: (lead?.subcategory ?: event.subcategory)?.let { feed.subcategories[it] },
+                        subcategoryLabel = lead?.let { state.labelFor(it) } ?: state.sectionLabels[event.category],
                         read = isRead(event),
                         onClick = { lead?.let { onOpenArticle(it.id) } },
                     )
@@ -238,20 +224,6 @@ fun TodayScreen(
         }
     }
 
-    if (askToken) {
-        AlertDialog(
-            onDismissRequest = { askToken = false },
-            title = { Text("Varrer as fontes agora") },
-            text = {
-                Text(
-                    "A varredura roda no GitHub Actions (gratuito) e leva de 2 a 6 minutos. " +
-                        "Para o app poder iniciá-la, cadastre uma vez um token do GitHub em Ajustes → Varredura sob demanda."
-                )
-            },
-            confirmButton = { TextButton(onClick = { askToken = false; onOpenSettings() }) { Text("Abrir Ajustes") } },
-            dismissButton = { TextButton(onClick = { askToken = false }) { Text("Agora não") } },
-        )
-    }
 }
 
 /** Resumo da seção: tópicos ligados às notícias de origem. Na capa aparece resumido e leva à seção. */
@@ -317,40 +289,15 @@ private fun BriefCard(
 }
 
 @Composable
-private fun TodayHeader(feed: LatestFeed?, section: Section?, scan: ScanState, onScan: () -> Unit) {
-    val scanning = scan is ScanState.Starting || scan is ScanState.Running
+private fun TodayHeader(feed: LatestFeed?, section: Section?) {
     Column(HPad.fillMaxWidth().padding(top = 8.dp)) {
-        Row(verticalAlignment = Alignment.CenterVertically) {
-            Text(
-                "FAROL",
-                style = TextStyle(fontSize = 13.sp, letterSpacing = 5.sp),
-                color = MaterialTheme.colorScheme.primary,
-                modifier = Modifier.weight(1f),
-            )
-            FilledTonalButton(onClick = onScan, enabled = !scanning, contentPadding = PaddingValues(horizontal = 14.dp, vertical = 6.dp)) {
-                if (scanning) CircularProgressIndicator(Modifier.size(16.dp), strokeWidth = 2.dp)
-                else Icon(Icons.Outlined.Radar, contentDescription = null, modifier = Modifier.size(18.dp))
-                Spacer(Modifier.width(8.dp))
-                Text(if (scanning) "Varrendo…" else "Varrer agora")
-            }
-        }
+        Text("FAROL", style = TextStyle(fontSize = 13.sp, letterSpacing = 5.sp), color = MaterialTheme.colorScheme.primary)
         Spacer(Modifier.height(8.dp))
-        Text(section?.label ?: feed?.edition?.label ?: "Hoje", style = MaterialTheme.typography.displaySmall, color = MaterialTheme.colorScheme.onBackground)
-        if (feed != null) {
-            Spacer(Modifier.height(6.dp))
-            Text(
-                (if (section != null) "${feed.edition.label} · " else "") + "Atualizada em ${Fmt.dateTime(feed.generatedAt)}",
-                style = MaterialTheme.typography.bodyMedium,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-            )
-            Spacer(Modifier.height(2.dp))
-            val e = feed.edition
-            Text(
-                "${e.articleCount} notícias  ·  ${e.aiProcessedCount} analisadas pela IA  ·  ${e.sourcesOk} fontes",
-                style = MaterialTheme.typography.labelMedium,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-            )
-        }
+        Text(
+            section?.label ?: feed?.edition?.label ?: "Hoje",
+            style = MaterialTheme.typography.displaySmall,
+            color = MaterialTheme.colorScheme.onBackground,
+        )
     }
 }
 
@@ -391,52 +338,6 @@ private fun Chip(label: String, selected: Boolean, small: Boolean = false, onCli
 }
 
 @Composable
-private fun ScanBanner(scan: ScanState, onDismiss: () -> Unit) {
-    when (scan) {
-        ScanState.Idle -> Unit
-        ScanState.Starting -> ScanProgress("Pedindo a varredura ao GitHub…", null)
-        is ScanState.Running -> ScanProgress(scan.step, scan.startedAt)
-        is ScanState.Done -> {
-            NoticeCard(scan.message)
-            LaunchedEffect(scan) { delay(8_000); onDismiss() }
-        }
-        is ScanState.Failed -> {
-            NoticeCard(scan.message, NoticeTone.Warning)
-            LaunchedEffect(scan) { delay(12_000); onDismiss() }
-        }
-    }
-}
-
-@Composable
-private fun ScanProgress(step: String, startedAt: Long?) {
-    var now by remember { mutableLongStateOf(System.currentTimeMillis()) }
-    LaunchedEffect(Unit) { while (true) { delay(1_000); now = System.currentTimeMillis() } }
-    Surface(
-        shape = RoundedCornerShape(14.dp),
-        color = MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.5f),
-        modifier = Modifier.fillMaxWidth().padding(top = 12.dp),
-    ) {
-        Column(Modifier.padding(14.dp)) {
-            Row(verticalAlignment = Alignment.CenterVertically) {
-                Text(step, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurface, modifier = Modifier.weight(1f))
-                if (startedAt != null) {
-                    val s = ((now - startedAt) / 1000).coerceAtLeast(0)
-                    Text("%d:%02d".format(s / 60, s % 60), style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
-                }
-            }
-            Spacer(Modifier.height(10.dp))
-            LinearProgressIndicator(Modifier.fillMaxWidth())
-            Spacer(Modifier.height(6.dp))
-            Text(
-                "Costuma levar de 2 a 6 minutos. Pode sair do app: a nova edição aparece quando você voltar.",
-                style = MaterialTheme.typography.bodySmall,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-            )
-        }
-    }
-}
-
-@Composable
 private fun SyncNotices(state: UiState) {
     val feed = state.feed
     Column {
@@ -452,15 +353,11 @@ private fun SyncNotices(state: UiState) {
                 NoticeTone.Warning, Icons.Outlined.CloudOff,
             )
             is SyncResult.Failed -> NoticeCard(
-                if (r.reason == "HTTP 404") "Ainda não há edição publicada no GitHub. Toque em \"Varrer agora\" ou aguarde a próxima edição automática."
+                if (r.reason == "HTTP 404") "Ainda não há edição publicada. Aguarde a próxima edição automática."
                 else "Não foi possível atualizar: ${r.reason}. Exibindo a última edição salva.",
                 NoticeTone.Warning,
             )
             else -> Unit
-        }
-        val ai = feed?.aiStatus
-        if (ai != null && ai.state !in setOf("ok", "idle", "") && ai.message.isNotBlank()) {
-            NoticeCard(ai.message)
         }
     }
 }

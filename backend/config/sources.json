@@ -429,6 +429,265 @@
       "require_keywords": false,
       "enabled": true,
       "notes": "Cerca de 300 artigos por dia. Prioridade baixa e limite pequeno para não consumir a cota da IA."
+    },
+    {
+      "id": "camara-noticias",
+      "name": "Agência Câmara",
+      "url": "https://www.camara.leg.br/noticias/rss/ultimas-noticias",
+      "homepage": "https://www.camara.leg.br/noticias",
+      "category": "politica",
+      "source_type": "primary",
+      "language": "pt",
+      "priority": 4,
+      "max_items_per_run": 5,
+      "require_keywords": false,
+      "enabled": true,
+      "notes": "Agência oficial da Câmara dos Deputados."
+    },
+    {
+      "id": "estadao-politica",
+      "name": "Estadão — Política",
+      "url": "https://www.estadao.com.br/arc/outboundfeeds/feeds/rss/sections/politica/",
+      "homepage": "https://www.estadao.com.br/politica/",
+      "category": "politica",
+      "source_type": "press",
+      "language": "pt",
+      "priority": 4,
+      "max_items_per_run": 5,
+      "require_keywords": false,
+      "enabled": true
+    },
+    {
+      "id": "cnn-brasil",
+      "name": "CNN Brasil",
+      "url": "https://www.cnnbrasil.com.br/feed/",
+      "homepage": "https://www.cnnbrasil.com.br/",
+      "category": "brasil",
+      "source_type": "press",
+      "language": "pt",
+      "priority": 4,
+      "max_items_per_run": 8,
+      "require_keywords": false,
+      "enabled": true,
+      "section_rules": {
+        "politica/": "politica",
+        "economia/": "economia",
+        "internacional/": "mundo",
+        "nacional/": "brasil",
+        "saude/": "ciencia_saude"
+      },
+      "notes": "Feed geral: a seção vem do caminho da URL (section_rules); esporte, entretenimento e afins são descartados."
+    },
+    {
+      "id": "veja",
+      "name": "Veja",
+      "url": "https://veja.abril.com.br/feed/",
+      "homepage": "https://veja.abril.com.br/",
+      "category": "brasil",
+      "source_type": "press",
+      "language": "pt",
+      "priority": 3,
+      "max_items_per_run": 6,
+      "require_keywords": false,
+      "enabled": true,
+      "section_rules": {
+        "politica/": "politica",
+        "economia/": "economia",
+        "mundo/": "mundo",
+        "brasil/": "brasil",
+        "saude/": "ciencia_saude",
+        "ciencia/": "ciencia_saude"
+      },
+      "notes": "Feed geral: a seção vem do caminho da URL (section_rules); esporte, entretenimento e afins são descartados."
+    },
+    {
+      "id": "cartacapital",
+      "name": "CartaCapital",
+      "url": "https://www.cartacapital.com.br/feed/",
+      "homepage": "https://www.cartacapital.com.br/",
+      "category": "politica",
+      "source_type": "press",
+      "language": "pt",
+      "priority": 3,
+      "max_items_per_run": 6,
+      "require_keywords": false,
+      "enabled": true,
+      "section_rules": {
+        "politica/": "politica",
+        "economia/": "economia",
+        "mundo/": "mundo",
+        "sociedade/": "brasil"
+      },
+      "notes": "Feed geral: a seção vem do caminho da URL (section_rules); esporte, entretenimento e afins são descartados."
+    },
+    {
+      "id": "exame",
+      "name": "Exame",
+      "url": "https://exame.com/feed/",
+      "homepage": "https://exame.com/",
+      "category": "economia",
+      "source_type": "press",
+      "language": "pt",
+      "priority": 3,
+      "max_items_per_run": 6,
+      "require_keywords": false,
+      "enabled": true,
+      "section_rules": {
+        "economia/": "economia",
+        "invest/": "economia",
+        "negocios/": "economia",
+        "mundo/": "mundo",
+        "brasil/": "brasil",
+        "tecnologia/": "technology_ai",
+        "inteligencia-artificial/": "technology_ai",
+        "ciencia/": "ciencia_saude"
+      },
+      "notes": "Feed geral: a seção vem do caminho da URL (section_rules); esporte, entretenimento e afins são descartados."
+    },
+    {
+      "id": "moneytimes",
+      "name": "Money Times",
+      "url": "https://www.moneytimes.com.br/feed/",
+      "homepage": "https://www.moneytimes.com.br/",
+      "category": "economia",
+      "source_type": "press",
+      "language": "pt",
+      "priority": 3,
+      "max_items_per_run": 5,
+      "require_keywords": false,
+      "enabled": true
+    },
+    {
+      "id": "rfi-brasil",
+      "name": "RFI Brasil",
+      "url": "https://www.rfi.fr/br/rss",
+      "homepage": "https://www.rfi.fr/br/",
+      "category": "mundo",
+      "source_type": "press",
+      "language": "pt",
+      "priority": 4,
+      "max_items_per_run": 5,
+      "require_keywords": false,
+      "enabled": true
+    },
+    {
+      "id": "dw-brasil",
+      "name": "DW Brasil",
+      "url": "https://rss.dw.com/rdf/rss-br-all",
+      "homepage": "https://www.dw.com/pt-br/",
+      "category": "mundo",
+      "source_type": "press",
+      "language": "pt",
+      "priority": 4,
+      "max_items_per_run": 5,
+      "require_keywords": false,
+      "enabled": true,
+      "notes": "Cobertura internacional e sobre o Brasil; sem imagens no feed."
+    },
+    {
+      "id": "g1-educacao",
+      "name": "g1 — Educação",
+      "url": "https://g1.globo.com/rss/g1/educacao/",
+      "homepage": "https://g1.globo.com/educacao/",
+      "category": "brasil",
+      "source_type": "press",
+      "language": "pt",
+      "priority": 3,
+      "max_items_per_run": 4,
+      "require_keywords": false,
+      "enabled": true
+    },
+    {
+      "id": "folha-ciencia",
+      "name": "Folha — Ciência",
+      "url": "https://feeds.folha.uol.com.br/ciencia/rss091.xml",
+      "homepage": "https://www1.folha.uol.com.br/ciencia/",
+      "category": "ciencia_saude",
+      "source_type": "press",
+      "language": "pt",
+      "priority": 4,
+      "max_items_per_run": 5,
+      "require_keywords": false,
+      "enabled": true
+    },
+    {
+      "id": "folha-saude",
+      "name": "Folha — Equilíbrio e Saúde",
+      "url": "https://feeds.folha.uol.com.br/equilibrioesaude/rss091.xml",
+      "homepage": "https://www1.folha.uol.com.br/equilibrioesaude/",
+      "category": "ciencia_saude",
+      "source_type": "press",
+      "language": "pt",
+      "priority": 4,
+      "max_items_per_run": 5,
+      "require_keywords": false,
+      "enabled": true
+    },
+    {
+      "id": "folha-ambiente",
+      "name": "Folha — Ambiente",
+      "url": "https://feeds.folha.uol.com.br/ambiente/rss091.xml",
+      "homepage": "https://www1.folha.uol.com.br/ambiente/",
+      "category": "ciencia_saude",
+      "source_type": "press",
+      "language": "pt",
+      "priority": 4,
+      "max_items_per_run": 5,
+      "require_keywords": false,
+      "enabled": true
+    },
+    {
+      "id": "olhar-digital",
+      "name": "Olhar Digital",
+      "url": "https://olhardigital.com.br/feed/",
+      "homepage": "https://olhardigital.com.br/",
+      "category": "technology_ai",
+      "source_type": "press",
+      "language": "pt",
+      "priority": 3,
+      "max_items_per_run": 4,
+      "require_keywords": false,
+      "enabled": true
+    },
+    {
+      "id": "canaltech",
+      "name": "Canaltech",
+      "url": "https://canaltech.com.br/rss/",
+      "homepage": "https://canaltech.com.br/",
+      "category": "technology_ai",
+      "source_type": "press",
+      "language": "pt",
+      "priority": 2,
+      "max_items_per_run": 4,
+      "require_keywords": false,
+      "enabled": true,
+      "notes": "Muitas ofertas: filtradas pelos exclude_keywords da seção Tecnologia."
+    },
+    {
+      "id": "the-verge",
+      "name": "The Verge",
+      "url": "https://www.theverge.com/rss/index.xml",
+      "homepage": "https://www.theverge.com/",
+      "category": "technology_ai",
+      "source_type": "press",
+      "language": "en",
+      "priority": 3,
+      "max_items_per_run": 5,
+      "require_keywords": false,
+      "enabled": true
+    },
+    {
+      "id": "wired-ai",
+      "name": "Wired — IA",
+      "url": "https://www.wired.com/feed/tag/ai/latest/rss",
+      "homepage": "https://www.wired.com/tag/artificial-intelligence/",
+      "category": "technology_ai",
+      "source_type": "press",
+      "language": "en",
+      "priority": 3,
+      "max_items_per_run": 4,
+      "require_keywords": false,
+      "enabled": true
     }
   ],
   "unavailable": [
@@ -451,6 +710,26 @@
       "name": "g1 — Brasil e g1 — Tecnologia",
       "homepage": "https://g1.globo.com/",
       "reason": "Os endereços /rss/g1/brasil/ e /rss/g1/tecnologia/ respondem 200, mas sem itens (verificado em 2026-11-23)."
+    },
+    {
+      "name": "Metrópoles",
+      "homepage": "https://www.metropoles.com/",
+      "reason": "Feed geral dominado por colunas e celebridades; sem seções de hard news identificáveis pela URL. Não cadastrado."
+    },
+    {
+      "name": "Nexo",
+      "homepage": "https://www.nexojornal.com.br/",
+      "reason": "As URLs do feed indicam o formato (expresso, ensaio, gráfico), não a editoria; não é possível classificar por seção."
+    },
+    {
+      "name": "ONU News e Agência Senado",
+      "homepage": "https://news.un.org/pt/",
+      "reason": "Feeds respondem 200, mas sem itens (verificado em 2026-11-23)."
+    },
+    {
+      "name": "VentureBeat — AI",
+      "homepage": "https://venturebeat.com/category/ai/",
+      "reason": "Recusa clientes automatizados com HTTP 429."
     }
   ]
 }

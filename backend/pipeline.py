@@ -86,8 +86,9 @@ def run(
     categories = {c["id"]: c for c in cat_doc["categories"] if c.get("enabled", True)}
     filters = cat_doc.get("filters", [])
     kw = {cid: keyword_pattern(c.get("keywords", [])) for cid, c in categories.items()}
-    cat_exclude = {cid: c.get("exclude_keywords", []) for cid, c in categories.items()}
-    sources = [s for s in load_sources(settings.sources_path) if s.category in categories]
+    cat_ex_re = {cid: keyword_pattern(c["exclude_keywords"]) for cid, c in categories.items() if c.get("exclude_keywords")}
+    sources = [s for s in load_sources(settings.sources_path)
+               if s.category in categories or any(c in categories for c in s.section_rules.values())]
 
     session = session or requests.Session()
     http_cache: dict = repo.load_state("http_cache", {})
@@ -101,10 +102,14 @@ def run(
         res = collect_source(
             src, session, cache=http_cache.get(src.id, {}), collected_at=now,
             max_age_days=settings.max_age_days, keyword_re=kw.get(src.category),
-            exclude_re=keyword_pattern(ex) if (ex := cat_exclude.get(src.category, []) + src.exclude_keywords) else None,
+            exclude_re=keyword_pattern(src.exclude_keywords) if src.exclude_keywords else None,
             timeout=settings.http_timeout_seconds, is_sample=settings.dev_mode,
         )
-        fresh = [a for a in res.articles if a.id not in working and not dedup.is_duplicate(a)]
+        fresh = [
+            a for a in res.articles
+            if a.category in categories and not (cat_ex_re.get(a.category) and cat_ex_re[a.category].search(a.original_title))
+            and a.id not in working and not dedup.is_duplicate(a)
+        ]
         taken = fresh[: src.max_items_per_run]
         for a in taken:
             dedup.register(a)

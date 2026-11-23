@@ -61,47 +61,55 @@
   "stale": false
  },
  "politica": {
-  "headline": "Ajuste fiscal, saúde de Bolsonaro e articulações no governo marcam a política",
-  "overview": "O cenário político desta segunda-feira é movimentado pela expectativa de votação do ajuste fiscal na Câmara e pelas articulações do governo em torno de pautas econômicas e institucionais. Enquanto isso, o ex-presidente Jair Bolsonaro segue internado em UTI com quadro estável.",
+  "headline": "Bolsonaro segue na UTI; Câmara vota ajuste fiscal e Lula discute vaga de Barroso no STF",
+  "overview": "O ex-presidente Jair Bolsonaro continua internado em UTI, com quadro estável e sem previsão de alta. No Congresso, o ajuste fiscal do ministro Bruno Moretti deve ser votado nesta segunda-feira (23) na Câmara, enquanto Lula discute com a cúpula do Congresso e ministros do STF o substituto de Luís Roberto Barroso.",
   "points": [
    {
-    "text": "O ex-presidente Jair Bolsonaro segue internado em Unidade de Terapia Intensiva após receber diagnóstico de abdômen agudo obstrutivo, mantendo quadro estável e sem previsão de alta, segundo boletim médico.",
+    "text": "Jair Bolsonaro segue internado em UTI, com quadro estável e sem previsão de alta; segundo boletim médico de domingo (22), ele recebeu diagnóstico de abdômen agudo obstrutivo.",
     "event_ids": [
      "evt-ca656ba50c560d2a"
     ]
    },
    {
-    "text": "O ministro do Planejamento, Bruno Moretti, garantiu às centrais sindicais que o ajuste fiscal preserva direitos sociais, com votação prevista para esta segunda-feira na Câmara dos Deputados.",
+    "text": "Bruno Moretti afirmou às centrais sindicais que o ajuste fiscal que leva seu nome preserva direitos sociais; o texto deve ser votado nesta segunda (23) na Câmara, e Lula exonerou temporariamente o ministro da SRI, José Guimarães, para a votação.",
     "event_ids": [
-     "evt-9aed35ccc2202069"
+     "evt-9aed35ccc2202069",
+     "evt-1b1325ec4f4e1534"
     ]
    },
    {
-    "text": "A Advocacia-Geral da União pediu ao STF o reconhecimento de que a decisão provisória sobre a escala 5x2 não é mais necessária após a regulamentação do governo, enquanto o fim da escala 6x1 deve impactar mais de 100 mil trabalhadores domésticos.",
-    "event_ids": [
-     "evt-0fc8a6f114de98ad",
-     "evt-e3849dfcc23a0732"
-    ]
-   },
-   {
-    "text": "O presidente Luiz Inácio Lula da Silva reuniu-se com a cúpula do Congresso e ministros do STF para definir o substituto de Luís Roberto Barroso no tribunal.",
+    "text": "Lula se reuniu no sábado (21) com a cúpula do Congresso e ministros do STF para definir o nome do substituto de Luís Roberto Barroso no tribunal.",
     "event_ids": [
      "evt-827af45842d63de9"
     ]
    },
    {
-    "text": "Aliados relatam que o presidente do Senado, Davi Alcolumbre, tem vinculado a facilitação na liberação de emendas de comissão à sua reeleição para o cargo.",
+    "text": "A AGU pediu ao STF que reconheça não ser mais necessária a liminar de Flávio Dino sobre a transição para a escala 5x2, após o decreto que regulamentou a mudança; o fim da escala 6x1 deve afetar cerca de 102 mil trabalhadores domésticos, estima o Instituto Doméstica Legal.",
+    "event_ids": [
+     "evt-e3849dfcc23a0732",
+     "evt-0fc8a6f114de98ad"
+    ]
+   },
+   {
+    "text": "Davi Alcolumbre tem dito que facilitará a liberação de emendas de comissão se reeleito presidente do Senado, segundo aliados ouvidos pela Folha.",
     "event_ids": [
      "evt-80ace758a24acc58"
     ]
+   },
+   {
+    "text": "Os pedidos de refúgio de cubanos no Brasil chegaram a 4.885 em setembro, o maior número mensal de 2026, segundo o Observatório das Migrações Internacionais.",
+    "event_ids": [
+     "evt-3a0c475209dd0cb0"
+    ]
    }
   ],
-  "watch": "O ajuste fiscal deve ser votado na Câmara dos Deputados, enquanto o mercado aguarda novas definições econômicas e ministeriais do governo.",
-  "generated_at": "2026-11-23T17:21:03Z",
-  "model": "gemini-flash-lite-latest",
-  "author": "IA",
-  "signature": "896e250a4a7b",
+  "watch": "A votação do ajuste fiscal na Câmara estava prevista para esta segunda-feira (23).",
+  "generated_at": "2026-11-23T17:39:21Z",
+  "model": null,
+  "author": "Claude (VS Code)",
+  "signature": "9e9e887e84f8",
   "event_ids": [
+   "evt-1b1325ec4f4e1534",
    "evt-ca656ba50c560d2a",
    "evt-9aed35ccc2202069",
    "evt-80ace758a24acc58",
@@ -110,23 +118,28 @@
    "evt-e3849dfcc23a0732",
    "evt-6bfc655842ed286f",
    "evt-3a0c475209dd0cb0",
-   "evt-5c75e94d168b26c8",
-   "evt-a0863bce8a092cf4"
+   "evt-5c75e94d168b26c8"
   ],
   "stale": false
  },
  "economia": {
-  "headline": "Focus eleva projeção do dólar para R$ 5,55; volta de Jensen Huang faz ações da Nvidia dispararem",
-  "overview": "O boletim Focus desta segunda-feira (23) elevou de R$ 5,40 para R$ 5,55 a projeção do dólar para o fim de 2026 e aumentou a expectativa de inflação. No exterior, a recondução de Jensen Huang ao comando da Nvidia fez as ações da empresa subirem mais de 30%.",
+  "headline": "Dólar passa de R$ 6 pela primeira vez desde abril de 2025; Nvidia dispara com volta de Jensen Huang",
+  "overview": "O dólar chegou a R$ 6,0055 na máxima desta segunda-feira (23), com a votação do pacote fiscal no radar, e o boletim Focus elevou a projeção para a moeda no fim de 2026. No exterior, a recondução de Jensen Huang ao comando da Nvidia fez as ações da empresa subirem mais de 30% e ajudou na recuperação das bolsas dos EUA e da Europa.",
   "points": [
    {
-    "text": "Analistas consultados pelo Banco Central no boletim Focus elevaram de R$ 5,40 para R$ 5,55 a projeção para o dólar no fim de 2026 e aumentaram a expectativa para a inflação.",
+    "text": "O dólar chegou a R$ 6,0055 na máxima desta segunda (23), a primeira vez acima de R$ 6 desde 9 de abril de 2025, com a votação do pacote fiscal no radar; o Ibovespa caía.",
+    "event_ids": [
+     "evt-38a81467fda7bf3c"
+    ]
+   },
+   {
+    "text": "No boletim Focus, analistas elevaram de R$ 5,40 para R$ 5,55 a projeção para o dólar no fim de 2026 e aumentaram a expectativa para a inflação.",
     "event_ids": [
      "evt-3157e4d6c66fa21f"
     ]
    },
    {
-    "text": "A Nvidia reconduziu Jensen Huang ao cargo de CEO e suas ações subiram mais de 30% nesta segunda (23); segundo a Forbes, a fortuna de Huang cresceu cerca de US$ 36,6 bilhões (cerca de R$ 219 bilhões).",
+    "text": "A Nvidia reconduziu Jensen Huang ao cargo de CEO e suas ações subiram mais de 30%; as bolsas dos EUA e da Europa se recuperaram. Desde o pico em outubro, a empresa chegou a perder quase 50% do valor em Bolsa até 20 de novembro.",
     "event_ids": [
      "evt-4b9b15a56546adcb",
      "evt-ddd45338b16222a8"
@@ -149,41 +162,35 @@
     "event_ids": [
      "evt-70e098f309ea7998"
     ]
-   },
-   {
-    "text": "Nos EUA, o crescimento da atividade empresarial desacelerou ainda mais em novembro, segundo pesquisa divulgada nesta segunda (23).",
-    "event_ids": [
-     "evt-2af2b8ac52b2d998"
-    ]
    }
   ],
   "watch": null,
-  "generated_at": "2026-11-23T16:37:18Z",
+  "generated_at": "2026-11-23T17:39:21Z",
   "model": null,
   "author": "Claude (VS Code)",
-  "signature": "34b38ed66394",
+  "signature": "ac360be4615a",
   "event_ids": [
-   "evt-1f549dee155f3884",
+   "evt-ddd45338b16222a8",
    "evt-4b9b15a56546adcb",
+   "evt-1f549dee155f3884",
    "evt-3157e4d6c66fa21f",
+   "evt-38a81467fda7bf3c",
    "evt-103eba11077caad5",
    "evt-b44b84851c0f8a0c",
    "evt-2f30f852ea49a4e0",
-   "evt-ddd45338b16222a8",
    "evt-68af0175b51285da",
-   "evt-70e098f309ea7998",
-   "evt-2af2b8ac52b2d998"
+   "evt-70e098f309ea7998"
   ],
-  "stale": true
+  "stale": false
  },
  "mundo": {
-  "headline": "COP31 termina sem acordo; Ucrânia afunda navio russo e ameaças de bomba atingem escolas na Europa",
-  "overview": "A COP31 terminou sem acordo após a negociação mais longa da história das conferências climáticas da ONU, expondo a divisão sobre combustíveis fósseis. Na Europa, centenas de escolas na Alemanha e na Dinamarca receberam ameaças de bomba por e-mail, e a Ucrânia afundou embarcações russas na costa da Líbia.",
+  "headline": "Ameaças de bomba atingem escolas na Europa; Ucrânia afunda navio russo na costa da Líbia",
+  "overview": "Centenas de escolas na Alemanha receberam ameaças de bomba por e-mail, em meio a uma onda de falsos alertas na Europa. A Ucrânia afundou embarcações russas na costa da Líbia, e nos EUA o Exército planeja detonar explosivos em Iowa apesar de uma ordem judicial.",
   "points": [
    {
-    "text": "A COP31 terminou sem acordo e escancarou a divisão entre países sobre combustíveis fósseis; as negociações se estenderam até o fim de semana, tornando-a a conferência climática da ONU mais longa da história.",
+    "text": "Centenas de escolas na Alemanha — mais de 450, segundo o g1 — receberam ameaças de bomba por e-mail; a polícia descarta perigo concreto, em meio a uma onda de falsos alertas em colégios de toda a Europa.",
     "event_ids": [
-     "evt-9291ae79675a3698"
+     "evt-9bbbbea4d186b3d5"
     ]
    },
    {
@@ -193,9 +200,9 @@
     ]
    },
    {
-    "text": "Centenas de escolas na Alemanha — mais de 450, segundo o g1 — e na Dinamarca receberam ameaças de bomba por e-mail; a polícia descarta perigo concreto, em meio a uma onda de falsos alertas na Europa.",
+    "text": "O Exército dos EUA pretende detonar cerca de cinco toneladas de explosivos deteriorados em Iowa, mesmo após uma decisão judicial suspender a operação e apesar de alertas de ambientalistas.",
     "event_ids": [
-     "evt-9bbbbea4d186b3d5"
+     "evt-e95c9ad7aba29a4f"
     ]
    },
    {
@@ -218,35 +225,45 @@
    }
   ],
   "watch": null,
-  "generated_at": "2026-11-23T16:37:18Z",
+  "generated_at": "2026-11-23T17:39:21Z",
   "model": null,
   "author": "Claude (VS Code)",
-  "signature": "0fa97cfd6811",
+  "signature": "fd5facc9ce7b",
   "event_ids": [
    "evt-9bbbbea4d186b3d5",
    "evt-b91ed7a4f39ef41e",
-   "evt-799e09c06def94a1",
-   "evt-e28d5bfd95e51328",
-   "evt-d148bd4729ad4430",
    "evt-533cbd5089ecacce",
-   "evt-205193826db3f8b8",
-   "evt-108ab00b534039d1",
+   "evt-799e09c06def94a1",
    "evt-d787de1824686433",
-   "evt-9291ae79675a3698"
+   "evt-d148bd4729ad4430",
+   "evt-e28d5bfd95e51328",
+   "evt-e95c9ad7aba29a4f",
+   "evt-205193826db3f8b8",
+   "evt-108ab00b534039d1"
   ],
   "stale": false
  },
  "technology_ai": {
-  "headline": "Nvidia reconduz Jensen Huang ao comando com aval do governo dos EUA",
-  "overview": "A Nvidia reverteu sua decisão e trouxe Jensen Huang de volta como CEO e presidente do conselho, com apoio de altos funcionários do governo americano. Também se destacam um teste da Microsoft sobre agentes de código, a rodada bilionária da Sierra e a falha que deixou e-mails do Outlook sem entrega.",
+  "headline": "Nvidia reconduz Jensen Huang; Google personaliza a Busca e DeepMind usa agentes em algoritmos quânticos",
+  "overview": "A Nvidia trouxe Jensen Huang de volta como CEO com apoio de altos funcionários do governo americano, e Donald Trump endossou o retorno. Entre os anúncios, o Google apresentou uma Busca mais personalizada e a DeepMind descreveu o uso de equipes de agentes com verificação formal para aprimorar algoritmos quânticos.",
   "points": [
    {
-    "text": "A Nvidia reintegrou Jensen Huang como CEO e presidente do conselho; segundo o conselho, altos funcionários do governo confirmaram que ele \"não representa risco à segurança nacional\". Donald Trump endossou o retorno e pediu que a empresa continue sua investigação de controle de exportação.",
+    "text": "A Nvidia reverteu sua decisão e trouxe Jensen Huang de volta como CEO, com apoio de altos funcionários do governo dos EUA; Donald Trump endossou o retorno e pediu que a empresa continue sua investigação de controle de exportação.",
     "event_ids": [
-     "evt-66cc673a6baaba00",
      "evt-ecab1061c917e910",
-     "evt-57e4d9bc2d25bc90",
-     "evt-ecb1341183931cf9"
+     "evt-57e4d9bc2d25bc90"
+    ]
+   },
+   {
+    "text": "A Google DeepMind descreveu o uso de equipes de agentes e verificação formal para aprimorar algoritmos quânticos voltados a fusão e química.",
+    "event_ids": [
+     "evt-61dcf1169479ac82"
+    ]
+   },
+   {
+    "text": "O Google anunciou em seu blog uma Busca mais personalizada para cada usuário.",
+    "event_ids": [
+     "evt-39c2da17cef629dc"
     ]
    },
    {
@@ -256,47 +273,91 @@
     ]
    },
    {
-    "text": "A Sierra, cofundada por Bret Taylor, captou US$ 1,75 bilhão em rodada Série F e dobrou sua avaliação para US$ 30 bilhões em seis meses.",
-    "event_ids": [
-     "evt-169eafdcd04a25ce"
-    ]
-   },
-   {
     "text": "A Microsoft admitiu que alguns e-mails não foram entregues durante o apagão do Outlook, que deixou usuários horas sem acesso.",
     "event_ids": [
      "evt-66d5e198926b91b3"
     ]
    },
    {
-    "text": "A Anatel propôs, em consulta pública, antecipar para 2027 as novas regras de autenticação de chamadas contra fraudes e ligações abusivas.",
+    "text": "No blog da Hugging Face, um guia sobre como construir e manter avaliações de agentes e o RoboTrack, sobre rastreamento de pontos para manipulação robótica no mundo real.",
     "event_ids": [
-     "evt-101f21e0f146d377"
-    ]
-   },
-   {
-    "text": "A Hugging Face publicou um guia sobre como construir e manter avaliações de agentes de IA.",
-    "event_ids": [
-     "evt-6fd4c32fe34a4cba"
+     "evt-6fd4c32fe34a4cba",
+     "evt-ca38829e73128713"
     ]
    }
   ],
   "watch": null,
-  "generated_at": "2026-11-23T16:37:18Z",
+  "generated_at": "2026-11-23T17:39:21Z",
   "model": null,
   "author": "Claude (VS Code)",
-  "signature": "ebab1b43f310",
+  "signature": "e84ecf1df9c9",
   "event_ids": [
    "evt-1ff6b35879607ca9",
    "evt-57e4d9bc2d25bc90",
    "evt-6fd4c32fe34a4cba",
-   "evt-66d5e198926b91b3",
-   "evt-169eafdcd04a25ce",
-   "evt-ecb1341183931cf9",
+   "evt-39c2da17cef629dc",
+   "evt-61dcf1169479ac82",
    "evt-ecab1061c917e910",
-   "evt-66cc673a6baaba00",
-   "evt-1793f4fe05b13a1c",
-   "evt-101f21e0f146d377"
+   "evt-77ab3d65a27896e8",
+   "evt-a88353929e99aa7d",
+   "evt-ca38829e73128713",
+   "evt-66d5e198926b91b3"
   ],
-  "stale": true
+  "stale": false
+ },
+ "ciencia_saude": {
+  "headline": "Fracasso da COP31 reabre debate sobre conferências da ONU; NHS lança estudo de IA contra câncer de mama",
+  "overview": "O fracasso da COP31, em Antália, na Turquia, reacendeu os apelos por reforma no modelo das conferências climáticas da ONU, e a influência da Arábia Saudita pesou no resultado, segundo a Folha. Na saúde, o NHS britânico iniciou o maior estudo do mundo sobre IA na detecção de câncer de mama, e entidades alertam para perdas do SUS com o ajuste fiscal.",
+  "points": [
+   {
+    "text": "O fracasso da COP31, na cidade turca de Antália, reacendeu os apelos por reforma de um sistema em que uma pequena minoria, ou até um único país, pode bloquear avanços; segundo a Folha, a influência da Arábia Saudita pesou no resultado.",
+    "event_ids": [
+     "evt-51d9ebc2c1bad477",
+     "evt-dac0d383c997442b"
+    ]
+   },
+   {
+    "text": "O serviço público de saúde britânico (NHS) anunciou o maior estudo mundial sobre detecção de câncer de mama com auxílio de IA, com cerca de 700 mil mulheres nos próximos três anos.",
+    "event_ids": [
+     "evt-6967b745689cded8"
+    ]
+   },
+   {
+    "text": "Entidades ligadas à saúde pública alertam que o SUS pode perder até R$ 10 bilhões por ano em recursos obrigatórios com o ajuste fiscal conhecido como plano Moretti, aprovado pelo Senado na quarta (18).",
+    "event_ids": [
+     "evt-fd0004be8893dfdb"
+    ]
+   },
+   {
+    "text": "O temor de uma seca mais intensa provocada pelo El Niño em 2027 acirrou a disputa entre estados do Nordeste pela água da transposição do rio São Francisco.",
+    "event_ids": [
+     "evt-2596c728bb556eb8"
+    ]
+   },
+   {
+    "text": "Astrônomos observaram uma estrela 18 mil vezes mais brilhante que o Sol engolindo uma companheira menor, em fusão descrita na revista Nature.",
+    "event_ids": [
+     "evt-bdfd43b5cbb16b49"
+    ]
+   }
+  ],
+  "watch": null,
+  "generated_at": "2026-11-23T17:39:21Z",
+  "model": null,
+  "author": "Claude (VS Code)",
+  "signature": "82b1d6b18757",
+  "event_ids": [
+   "evt-bdfd43b5cbb16b49",
+   "evt-6967b745689cded8",
+   "evt-6625feef0db7a0a0",
+   "evt-fd0004be8893dfdb",
+   "evt-4c45523cb619ba10",
+   "evt-cccb8dbe3ff5e5b5",
+   "evt-dac0d383c997442b",
+   "evt-51d9ebc2c1bad477",
+   "evt-2596c728bb556eb8",
+   "evt-5ffa2f889a7315ce"
+  ],
+  "stale": false
  }
 }

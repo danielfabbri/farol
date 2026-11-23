@@ -14,8 +14,8 @@ android {
         applicationId = "app.farol"
         minSdk = 26
         targetSdk = 34
-        versionCode = 3
-        versionName = "0.3.0"
+        versionCode = 4
+        versionName = "0.4.0"
         // Dados públicos publicados pelo GitHub Actions (sem autenticação, sem chaves no app).
         buildConfigField("String", "DATA_BASE_URL", "\"https://raw.githubusercontent.com/danielfabbri/farol/main/\"")
         // Usados pelo botão "Varrer agora" (dispara o workflow pelo token do próprio usuário).
@@ -64,6 +64,7 @@ dependencies {
     ksp("androidx.room:room-compiler:2.6.1")
 
     implementation("androidx.work:work-runtime-ktx:2.9.1")
+    implementation("io.coil-kt:coil-compose:2.7.0")
 
     implementation("com.squareup.retrofit2:retrofit:2.11.0")
     implementation("com.squareup.okhttp3:okhttp:4.12.0")

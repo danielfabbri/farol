@@ -53,6 +53,12 @@ data class UiState(
     val articlesById: Map<String, Article> by lazy { feed?.articles.orEmpty().associateBy { it.id } }
     val eventsById: Map<String, Event> by lazy { feed?.events.orEmpty().associateBy { it.id } }
     val savedIds: Set<String> get() = savedArticles.keys
+    val sectionLabels: Map<String, String> by lazy { feed?.sections.orEmpty().associate { it.id to it.label } }
+
+    /** Rótulo da notícia: subcategoria (quando a IA definiu) ou a seção a que ela pertence. */
+    fun labelFor(article: Article): String? =
+        article.subcategory?.takeIf { it != "other" }?.let { feed?.subcategories?.get(it) }
+            ?: sectionLabels[article.category]
 }
 
 /** Varredura sob demanda: dispara a coleta no GitHub Actions e acompanha até a nova edição chegar. */

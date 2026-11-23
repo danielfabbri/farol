@@ -122,6 +122,7 @@ data class Article(
     @SerialName("source_type") val sourceType: String = "press",
     @SerialName("source_url") val sourceUrl: String,
     @SerialName("discussion_url") val discussionUrl: String? = null,
+    @SerialName("image_url") val imageUrl: String? = null,
     @SerialName("published_at") val publishedAt: String? = null,
     @SerialName("collected_at") val collectedAt: String,
     val language: String = "en",

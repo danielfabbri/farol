@@ -23,6 +23,9 @@ class Source(BaseModel):
     max_items_per_run: int = Field(default=8, ge=1, le=50)
     require_keywords: bool = False
     exclude_keywords: list[str] = Field(default_factory=list)
+    # Feeds gerais: seção decidida pelo início do caminho da URL ("politica/" -> "politica").
+    # Itens que não casam com nenhuma regra são descartados (esporte, entretenimento...).
+    section_rules: dict[str, str] = Field(default_factory=dict)
     enabled: bool = True
     notes: str | None = None
 

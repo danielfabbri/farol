@@ -9,7 +9,7 @@
     <title>[EXAMPLE] Example Labs launches Atlas agent framework for enterprise automation</title>
     <link>https://example.com/news/atlas-agent-framework?utm_source=rss&amp;utm_medium=feed</link>
     <pubDate>__NOW_MINUS_2H__</pubDate>
-    <description><![CDATA[<p>Fictional item. <b>Example Labs</b> announced an AI agent framework for <a href="#">automation</a>.</p><script>alert(1)</script>]]></description>
+    <description><![CDATA[<p><img src="https://example.com/img/atlas.jpg" alt=""/>Fictional item. <b>Example Labs</b> announced an AI agent framework for <a href="#">automation</a>.</p><script>alert(1)</script>]]></description>
   </item>
   <item>
     <title>[EXAMPLE] Example Labs releases Orion 2 language model with longer context</title>

@@ -45,6 +45,8 @@ import app.farol.data.model.Article
 import app.farol.data.model.Event
 import app.farol.ui.components.EmptyState
 import app.farol.ui.components.Eyebrow
+import app.farol.ui.components.NewsImage
+import androidx.compose.foundation.layout.aspectRatio
 import app.farol.ui.components.ImportanceIndicator
 import app.farol.ui.components.NoticeCard
 import app.farol.ui.components.Pill
@@ -100,7 +102,16 @@ fun ArticleScreen(
                 .padding(horizontal = 22.dp)
                 .padding(bottom = 40.dp),
         ) {
-            Eyebrow(subcategoryLabel ?: "Tecnologia e IA")
+            article.imageUrl?.let {
+                NewsImage(it, Modifier.fillMaxWidth().aspectRatio(16f / 9f).clip(RoundedCornerShape(16.dp)))
+                Text(
+                    "Imagem: ${article.sourceName}",
+                    style = MaterialTheme.typography.labelSmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    modifier = Modifier.padding(top = 6.dp, bottom = 14.dp),
+                )
+            }
+            subcategoryLabel?.let { Eyebrow(it) }
             Spacer(Modifier.height(10.dp))
             Text(article.displayTitle, style = MaterialTheme.typography.headlineSmall, color = MaterialTheme.colorScheme.onBackground)
             if (article.titlePt != null && article.titlePt != article.originalTitle) {

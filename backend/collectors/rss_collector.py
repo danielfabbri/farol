@@ -6,6 +6,8 @@ import re
 from dataclasses import dataclass, field
 from datetime import datetime, timedelta
 
+from urllib.parse import urlsplit
+
 import feedparser
 import requests
 
@@ -19,6 +21,42 @@ from backend.models.article import Article
 
 log = logging.getLogger(__name__)
 EXCERPT_LIMIT = 600
+_IMG_RE = re.compile(r"<img[^>]+src=[\"']([^\"']+)[\"']", re.IGNORECASE)
+
+
+def extract_image(entry, html_text: str) -> str | None:
+    """Imagem de capa do item: media:content/thumbnail, enclosure ou primeira <img> do trecho.
+
+    Guardamos apenas o endereço (a imagem continua hospedada pelo veículo). Só HTTPS.
+    """
+    candidates: list[str] = []
+    for m in entry.get("media_content") or []:
+        if str(m.get("medium", "image")) == "image" or str(m.get("type", "")).startswith("image"):
+            candidates.append(m.get("url", ""))
+    candidates += [m.get("url", "") for m in entry.get("media_thumbnail") or []]
+    for link in entry.get("links") or []:
+        if link.get("rel") == "enclosure" and str(link.get("type", "")).startswith("image"):
+            candidates.append(link.get("href", ""))
+    m = _IMG_RE.search(html_text or "")
+    if m:
+        candidates.append(m.group(1))
+    for url in candidates:
+        url = (url or "").strip().replace("&amp;", "&")
+        if url.startswith("http://"):
+            url = "https://" + url[len("http://"):]
+        if url.startswith("https://") and not url.lower().split("?")[0].endswith((".gif", ".svg")):
+            return url[:1000]
+    return None
+
+
+def section_for(source: Source, link: str) -> str | None:
+    if not source.section_rules:
+        return source.category
+    path = urlsplit(link).path.lstrip("/")
+    for prefix, category in source.section_rules.items():
+        if path.startswith(prefix):
+            return category
+    return None
 
 
 @dataclass
@@ -44,10 +82,14 @@ def parse_entries(content: bytes, source: Source, collected_at: datetime, *, is_
         title = clean_text(entry.get("title"))
         if not link or not title:
             continue
+        category = section_for(source, link)
+        if category is None:  # feed geral: fora das seções de interesse
+            continue
         norm = normalize_url(link)
         summary_html = entry.get("summary") or ""
         if not summary_html and entry.get("content"):
             summary_html = entry["content"][0].get("value", "")
+        image = extract_image(entry, summary_html + " ".join(c.get("value", "") for c in entry.get("content") or []))
         excerpt = truncate(drop_repeated_prefix(clean_text(summary_html)), EXCERPT_LIMIT)
         # Hacker News e arXiv incluem textos padrão ("Comments", "Announce Type") sem valor.
         if excerpt.lower() in {"comments", ""}:
@@ -64,11 +106,12 @@ def parse_entries(content: bytes, source: Source, collected_at: datetime, *, is_
                 source_type=source.source_type,
                 source_url=link,
                 discussion_url=discussion,
+                image_url=image,
                 published_at=published,
                 collected_at=collected_at,
                 language=feed_lang,
                 excerpt=excerpt,
-                category=source.category,
+                category=category,
                 source_priority=source.priority,
                 is_sample=is_sample,
             )

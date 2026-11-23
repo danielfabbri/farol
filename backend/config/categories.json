@@ -202,6 +202,48 @@
       ]
     },
     {
+      "id": "ciencia_saude",
+      "label": "Ciência e Saúde",
+      "enabled": true,
+      "order": 5,
+      "ai_context": "Seção de HARD NEWS (Ciência e Saúde). Público: um cidadão brasileiro bem informado. relevance_score = impacto público do fato (alcance, consequências, ineditismo); 90+ só para fatos de grande repercussão nacional ou mundial. Trate com rigor declarações de autoridades: atribua sempre quem disse. Potenciais de negócios, carreira e estudo: avalie apenas quando houver relação clara; senão use \"low\".",
+      "keywords": [],
+      "exclude_keywords": [
+        "mega-sena",
+        "lotof[aá]cil",
+        "quina",
+        "lotomania",
+        "timemania",
+        "dupla sena",
+        "hor[oó]scopo",
+        "cupom",
+        "pr[eê]mio de jornalismo",
+        "dicas para aproveitar"
+      ],
+      "subcategories": [
+        {
+          "id": "cs_saude",
+          "label": "Saúde"
+        },
+        {
+          "id": "cs_ciencia",
+          "label": "Ciência e pesquisa"
+        },
+        {
+          "id": "cs_ambiente",
+          "label": "Meio ambiente e clima"
+        },
+        {
+          "id": "cs_espaco",
+          "label": "Espaço"
+        },
+        {
+          "id": "other",
+          "label": "Outros"
+        }
+      ]
+    },
+    {
       "id": "technology_ai",
       "label": "Tecnologia",
       "enabled": true,
@@ -305,7 +347,7 @@
         }
       ],
       "ai_context": "Seção de TECNOLOGIA E INTELIGÊNCIA ARTIFICIAL. Público: um profissional de tecnologia brasileiro que acompanha IA. relevance_score = importância para quem trabalha com tecnologia; potenciais de negócios, carreira e estudo fazem sentido aqui.",
-      "order": 5,
+      "order": 6,
       "exclude_keywords": [
         "cupom",
         "menor pre[cç]o",

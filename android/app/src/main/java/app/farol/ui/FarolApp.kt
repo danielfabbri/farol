@@ -82,11 +82,7 @@ fun FarolApp(vm: MainViewModel, state: UiState) {
             composable("today") {
                 TodayScreen(
                     state,
-                    update = update,
                     onRefresh = { vm.refresh(force = true) },
-                    onScan = vm::scanNow,
-                    onDismissScan = vm::dismissScanMessage,
-                    onOpenSettings = { nav.goTopLevel("settings") },
                     onOpenArticle = openArticle,
                     onOpenExplore = { nav.goTopLevel("explore") },
                 )
@@ -106,7 +102,8 @@ fun FarolApp(vm: MainViewModel, state: UiState) {
                     onDemoMode = vm::setDemoMode,
                     onClearCache = { vm.clearCache() },
                     onSaveToken = { vm.setGithubToken(it) },
-                    onScan = { vm.scanNow(); nav.goTopLevel("today") },
+                    onScan = { vm.scanNow() },
+                    onDismissScan = { vm.dismissScanMessage() },
                     update = update,
                     onCheckUpdate = { vm.checkForUpdate() },
                     onDownloadUpdate = { vm.downloadUpdate() },
@@ -120,7 +117,7 @@ fun FarolApp(vm: MainViewModel, state: UiState) {
                 ArticleScreen(
                     article = article,
                     event = event,
-                    subcategoryLabel = article?.subcategory?.let { state.feed?.subcategories?.get(it) },
+                    subcategoryLabel = article?.let { state.labelFor(it) },
                     saved = id in state.savedIds,
                     onBack = { nav.popBackStack() },
                     onToggleSave = { vm.toggleSave(it) },

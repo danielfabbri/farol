@@ -130,7 +130,7 @@ def test_sections_and_briefs(settings):
     run(settings, session=NoNetworkSession(), now=now)
     latest = load(settings.data_dir / "latest.json")
     secs = {s["id"]: s for s in latest["sections"]}
-    assert [s["id"] for s in latest["sections"]] == ["brasil", "politica", "economia", "mundo", "technology_ai"]
+    assert [s["id"] for s in latest["sections"]] == ["brasil", "politica", "economia", "mundo", "ciencia_saude", "technology_ai"]
     tech, pol = secs["technology_ai"], secs["politica"]
     assert tech["highlights"] and pol["highlights"]
     assert {"id": "agents", "label": "Agentes de IA"} in tech["filters"] and pol["filters"] == []

@@ -60,6 +60,9 @@
   .trendbars i { flex:1; background:var(--blue); border-radius:3px; display:block; }
   .trendbars i.z { background:var(--line); }
   .apk { display:none; }
+  .card .hero { width:calc(100% + 36px); margin:-18px -18px 14px; aspect-ratio:16/9; object-fit:cover; border-radius:20px 20px 0 0; display:block; background:var(--card2); }
+  .thumb { width:76px; height:76px; object-fit:cover; border-radius:12px; flex:none; background:var(--card2); }
+  .search { width:100%; padding:12px 16px; border-radius:28px; border:1px solid var(--line); background:var(--card); color:var(--text); font:inherit; margin-top:16px; }
 </style>
 </head>
 <body>
@@ -90,7 +93,7 @@ const store = {
   get(k, d) { try { const v = localStorage.getItem(k); return v === null ? d : JSON.parse(v); } catch { return d; } },
   set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} },
 };
-let feed = null, trends = null, tab = "hoje", filter = null, topic = null, section = null;
+let feed = null, trends = null, tab = "hoje", filter = null, topic = null, section = null, query = "", exSection = null, exSource = null;
 let read = new Set(store.get("farol.read", []));
 const $ = (s) => document.querySelector(s);
 const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
@@ -110,6 +113,8 @@ function bars(score) {
 const pot = (p) => ({ high: "Alto", medium: "Médio", low: "Baixo" }[p] || "—");
 const title = (a) => a.title_pt || a.original_title;
 const preview = (a) => a.summary || a.excerpt_pt || a.excerpt;
+const labelFor = (a) => (a.subcategory && a.subcategory !== "other" && feed.subcategories[a.subcategory]) || ((feed.sections || []).find(s => s.id === a.category) || {}).label || "";
+const img = (url, cls) => url ? `<img class="${cls}" src="${esc(url)}" loading="lazy" referrerpolicy="no-referrer" alt="" onerror="this.remove()">` : "";
 const byId = () => Object.fromEntries((feed?.articles || []).map(a => [a.id, a]));
 const evById = () => Object.fromEntries((feed?.events || []).map(e => [e.id, e]));
 function lead(ev, arts) {
@@ -149,8 +154,6 @@ function render() {
 function notices() {
   let h = "";
   if (feed.is_sample) h += `<div class="notice warn">🧪 ${esc(feed.notice || "Dados fictícios.")}</div>`;
-  const ai = feed.ai_status || {};
-  if (ai.message && !["ok", "idle", ""].includes(ai.state)) h += `<div class="notice">ℹ️ ${esc(ai.message)}</div>`;
   return h;
 }
 
@@ -160,8 +163,6 @@ function renderToday() {
   const sec = sections.find(s => s.id === section);
   const isRead = (ev) => ev.article_ids.some(i => read.has(i));
   let h = `<h1>${esc(sec ? sec.label : e.label)}</h1>
-    <div class="muted">${sec ? esc(e.label) + " · " : ""}Atualizada em ${fmt(feed.generated_at)}</div>
-    <div class="muted small">${e.article_count} notícias · ${e.ai_processed_count} analisadas pela IA · ${e.sources_ok} fontes</div>
     ${sectionBar(sections)}${notices()}`;
   if (sec) {
     if (sec.brief) h += briefCard(sec, true);
@@ -173,14 +174,14 @@ function renderToday() {
     const list = hlS.concat(inSec.filter(x => !hlS.includes(x)).sort((a, b) => b.score - a.score));
     const lbl = topic ? (sec.filters.find(f => f.id === topic)?.label || sec.label) : sec.label;
     h += `<h2>${esc(lbl)} <small>${list.length} acontecimentos</small></h2>`;
-    list.forEach((ev, i) => { const a = lead(ev, arts); if (!a) return; h += i < 3 ? card(a, ev, i, isRead(ev)) : itemRow(a, ev.source_count - 1); });
+    list.forEach((ev, i) => { const a = lead(ev, arts); if (!a) return; h += i < 3 ? card(a, ev, i, isRead(ev), labelFor(a)) : itemRow(a, ev.source_count - 1); });
     h += `<div class="end"><b>Fim de ${esc(lbl)}</b><div class="muted small" style="margin-top:6px">Isso é tudo nesta edição. A próxima sai ${nextEdition()}.</div></div>`;
     $("#view").innerHTML = h; return;
   }
   const hl = feed.highlights.map(i => evs[i]).filter(Boolean);
   const readCount = hl.filter(isRead).length;
   h += `<h2>Destaques <small>${readCount} de ${hl.length} lidos</small></h2>`;
-  hl.forEach((ev, i) => { const a = lead(ev, arts); if (a) h += card(a, ev, i, isRead(ev), sections.find(s => s.id === ev.category)?.label); });
+  hl.forEach((ev, i) => { const a = lead(ev, arts); if (a) h += card(a, ev, i, isRead(ev), labelFor(a)); });
   const withBriefs = sections.filter(s => s.brief);
   if (withBriefs.length) {
     h += `<h2>Resumo das seções <small>${withBriefs.length}</small></h2>`;
@@ -194,9 +195,9 @@ function renderToday() {
 
 function card(a, ev, i, isRd, label) {
   const extra = ev.source_count - 1;
-  return `<div class="card ${isRd ? "read" : ""}" data-open="${a.id}">
+  return `<div class="card ${isRd ? "read" : ""}" data-open="${a.id}">${img(a.image_url, "hero")}
     <div class="row"><span class="rank">${String(i + 1).padStart(2, "0")}</span>
-    <span class="eyebrow" style="flex:1">${esc(label || feed.subcategories[a.subcategory] || "")}</span>${bars(a.relevance_score)}</div>
+    <span class="eyebrow" style="flex:1">${esc(label || labelFor(a))}</span>${bars(a.relevance_score)}</div>
     <div class="title">${esc(title(a))}</div>
     <div class="summary">${esc(preview(a))}</div>
     <div class="meta">${esc(a.source_name)}${extra > 0 ? ` · +${extra} ${extra === 1 ? "fonte" : "fontes"}` : ""} · ${rel(a.published_at || a.collected_at)}${a.ai_processed ? "" : " · resumo da IA pendente"}</div>
@@ -228,21 +229,36 @@ function sectionBar(sections) {
 
 function itemRow(a, extra = 0) {
   return `<div class="item" data-open="${a.id}"><div style="flex:1">
-    <div class="eyebrow">${esc(feed.subcategories[a.subcategory] || "")}</div>
+    <div class="eyebrow">${esc(labelFor(a))}</div>
     <div class="t" style="${read.has(a.id) ? "color:var(--muted)" : ""}">${esc(title(a))}</div>
     <div class="meta" style="margin-top:4px">${esc(a.source_name)}${extra > 0 ? ` · +${extra} fontes` : ""} · ${rel(a.published_at || a.collected_at)}${a.ai_processed ? "" : " · resumo da IA pendente"}</div>
-  </div>${bars(a.relevance_score)}</div>`;
+  </div>${a.image_url ? img(a.image_url, "thumb") : bars(a.relevance_score)}</div>`;
 }
 
+function fold(t) { return (t || "").toLowerCase().normalize("NFD").replace(/\p{M}+/gu, ""); }
+
 function renderExplore() {
-  const list = feed.articles.filter(a => !filter || (a.tags || []).includes(filter))
-    .sort((a, b) => (b.relevance_score ?? -1) - (a.relevance_score ?? -1));
-  let h = `<h1>Explorar</h1><div class="muted">Notícias das últimas 48 horas, por tema.</div><div class="chips">
-    <span class="chip ${!filter ? "on" : ""}" data-filter="">Tudo</span>` +
-    feed.filters.map(f => `<span class="chip ${filter === f.id ? "on" : ""}" data-filter="${f.id}">${esc(f.label)}</span>`).join("") +
-    `</div><h2>${filter ? esc(feed.filters.find(f => f.id === filter)?.label) : "Todas as notícias"} <small>${list.length}</small></h2>`;
-  h += list.map(a => itemRow(a)).join("") || `<p class="muted">Nenhuma notícia recente neste tema.</p>`;
+  const sections = (feed.sections || []).slice().sort((a, b) => a.order - b.order);
+  const terms = fold(query).split(/\s+/).filter(t => t.length >= 2);
+  const hay = (a) => fold([a.title_pt, a.original_title, a.summary, a.excerpt_pt, a.excerpt, a.source_name, (a.entities || []).join(" ")].join(" "));
+  const base = feed.articles.filter(a => (!exSection || a.category === exSection) && terms.every(t => hay(a).includes(t)));
+  const counts = {}; base.forEach(a => { counts[a.source_name] = (counts[a.source_name] || 0) + 1; });
+  const srcs = Object.entries(counts).sort((a, b) => b[1] - a[1]);
+  if (exSource && !counts[exSource]) exSource = null;
+  const list = base.filter(a => !exSource || a.source_name === exSource)
+    .sort((a, b) => (b.relevance_score ?? -1) - (a.relevance_score ?? -1) || (b.published_at || "").localeCompare(a.published_at || ""));
+  let h = `<h1>Explorar</h1><div class="muted">Notícias das últimas 48 horas.</div>
+    <input id="q" class="search" type="search" placeholder="Buscar notícias, pessoas, empresas…" value="${esc(query)}">
+    <div class="chips" style="flex-wrap:nowrap;overflow-x:auto"><span class="chip ${!exSection ? "on" : ""}" data-exsection="" style="white-space:nowrap">Todas as seções</span>` +
+    sections.map(x => `<span class="chip ${exSection === x.id ? "on" : ""}" data-exsection="${x.id}" style="white-space:nowrap">${esc(x.label)}</span>`).join("") + `</div>
+    <div class="eyebrow" style="margin-top:14px">Fontes</div>
+    <div class="chips" style="flex-wrap:nowrap;overflow-x:auto;margin-top:6px"><span class="chip ${!exSource ? "on" : ""}" data-exsource="" style="white-space:nowrap">Todas</span>` +
+    srcs.map(([n, c]) => `<span class="chip ${exSource === n ? "on" : ""}" data-exsource="${esc(n)}" style="white-space:nowrap">${esc(n)} · ${c}</span>`).join("") + `</div>
+    <h2>${terms.length ? "Resultados" : esc(exSource || (sections.find(x => x.id === exSection) || {}).label || "Todas as notícias")} <small>${list.length}</small></h2>`;
+  h += list.map(a => itemRow(a)).join("") || `<p class="muted">Nada encontrado. A busca cobre as últimas 48 horas.</p>`;
   $("#view").innerHTML = h;
+  const q = $("#q");
+  q.oninput = () => { query = q.value; const pos = q.selectionStart; renderExplore(); const n = $("#q"); n.focus(); n.setSelectionRange(pos, pos); };
 }
 
 function renderTrends() {
@@ -271,7 +287,8 @@ function openArticle(id) {
   const list = (xs) => `<ul>${xs.map(x => `<li>${esc(x)}</li>`).join("")}</ul>`;
   const sec = (t, cap, body) => `<div class="sec"><h3>${t}</h3>${cap ? `<div class="eyebrow">${cap}</div>` : ""}${body}</div>`;
   let h = `<button id="back">← Voltar</button>
-    <div class="eyebrow" style="margin-top:18px;color:var(--blue)">${esc(feed.subcategories[a.subcategory] || "Tecnologia e IA")}</div>
+    ${a.image_url ? `<img src="${esc(a.image_url)}" referrerpolicy="no-referrer" onerror="this.remove()" style="width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:16px;margin-top:16px" alt=""><div class="muted small">Imagem: ${esc(a.source_name)}</div>` : ""}
+    <div class="eyebrow" style="margin-top:18px;color:var(--blue)">${esc(labelFor(a))}</div>
     <h1 style="font-size:24px">${esc(title(a))}</h1>
     ${a.title_pt && a.title_pt !== a.original_title ? `<div class="muted small"><i>Original: ${esc(a.original_title)}</i></div>` : ""}
     <div class="muted small" style="margin-top:10px">${esc(a.source_name)} · publicado em ${fmt(a.published_at || a.collected_at, { day: "numeric", month: "long", year: "numeric" })}</div>
@@ -304,6 +321,8 @@ function openArticle(id) {
 
 document.addEventListener("click", (ev) => {
   const o = ev.target.closest("[data-open]"); if (o) { ev.preventDefault(); return openArticle(o.dataset.open); }
+  const xs = ev.target.closest("[data-exsection]"); if (xs) { exSection = xs.dataset.exsection || null; exSource = null; return render(); }
+  const xo = ev.target.closest("[data-exsource]"); if (xo) { exSource = xo.dataset.exsource || null; return render(); }
   const sc = ev.target.closest("[data-section]"); if (sc) { section = sc.dataset.section || null; topic = null; window.scrollTo(0, 0); return render(); }
   const tp = ev.target.closest("[data-topic]"); if (tp) { topic = tp.dataset.topic || null; return render(); }
   const f = ev.target.closest("[data-filter]"); if (f) { filter = f.dataset.filter || null; return render(); }

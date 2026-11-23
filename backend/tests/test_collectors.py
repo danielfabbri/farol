@@ -134,3 +134,28 @@ def test_production_sources_are_valid_and_https():
 def test_source_rejects_plain_http():
     with pytest.raises(ValueError):
         src(url="http://insecure.example.com/feed")
+
+
+def test_extract_image_from_media_enclosure_and_img():
+    from backend.collectors.rss_collector import extract_image
+    assert extract_image({"media_content": [{"url": "https://img.example.com/a.jpg", "medium": "image"}]}, "") == "https://img.example.com/a.jpg"
+    assert extract_image({"media_thumbnail": [{"url": "http://img.example.com/t.jpg"}]}, "") == "https://img.example.com/t.jpg"
+    assert extract_image({"links": [{"rel": "enclosure", "type": "image/jpeg", "href": "https://x.com/e.jpg"}]}, "") == "https://x.com/e.jpg"
+    assert extract_image({}, '<p><img src="https://x.com/i.png?w=1&amp;h=2"> texto</p>') == "https://x.com/i.png?w=1&h=2"
+    assert extract_image({}, '<img src="https://x.com/pixel.gif">') is None
+    assert extract_image({}, "sem imagem") is None
+
+
+def test_section_rules_classify_general_feeds_and_drop_others():
+    from backend.collectors.rss_collector import section_for
+    s = src(url="https://example.com/feed", category="brasil",
+            section_rules={"politica/": "politica", "internacional/": "mundo"})
+    assert section_for(s, "https://www.cnnbrasil.com.br/politica/lula-stf/") == "politica"
+    assert section_for(s, "https://www.cnnbrasil.com.br/internacional/x/") == "mundo"
+    assert section_for(s, "https://www.cnnbrasil.com.br/esportes/futebol/x/") is None
+    assert section_for(src(), "https://example.com/qualquer") == "technology_ai"
+
+
+def test_rss_fixture_images_are_extracted():
+    arts = parse_entries(_load_fixture("sample_rss.xml", NOW), src(), NOW)
+    assert arts[0].image_url == "https://example.com/img/atlas.jpg"
