@@ -1,0 +1,2 @@
+# farol
+Central de inteligência
