@@ -1,7 +1,48 @@
 {
  "date": "2026-11-19",
- "count": 17,
+ "count": 18,
  "articles": [
+  {
+   "id": "2378ae13fc37c30d",
+   "event_id": "evt-2378ae13fc37c30d",
+   "original_title": "Relator do ajuste fiscal na Câmara mantém texto do Senado; projeto deve ser votado na segunda-feira",
+   "title_pt": null,
+   "source_id": "g1-politica",
+   "source_name": "g1 — Política",
+   "source_type": "press",
+   "source_url": "https://g1.globo.com/politica/noticia/2026/11/19/relator-do-ajuste-fiscal-na-camara-mantem-texto-do-senado-projeto-deve-ser-votado-segunda-feira.ghtml",
+   "discussion_url": null,
+   "image_url": "https://s2-g1.glbimg.com/RVoT4Zq20buzERW89XU9RfNr7Lk=/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2026/h/q/VYBfx7QyeiDzDUd6kiZw/kayo-magalhaes.jpg",
+   "image_checked": false,
+   "published_at": "2026-11-19T23:37:50Z",
+   "collected_at": "2026-11-23T23:17:10Z",
+   "language": "pt",
+   "excerpt": "Projeto de ajuste fiscal segue para Câmara dos Deputados O relator do projeto de ajuste fiscal do governo Lula (PT) na Câmara dos Deputados, Mauro Benevides (União Brasil-CE), apresentou nesta quinta-feira (19) seu parecer para a proposta. Benevides manteve o mesmo texto aprovado pelo Senado. Ministro afirma que pacote fiscal dará segurança ao mercado, mas admite possíveis novas medidas para cumprir metas O texto deve ser votado na noite de segunda-feira (23) na Câmara dos Deputados. Normalmente, os deputados não costumam fazer votações às segundas, mas o presidente da Câmara, Hugo Motta…",
+   "excerpt_pt": null,
+   "category": "politica",
+   "subcategory": null,
+   "summary": null,
+   "why_it_matters": null,
+   "key_points": [],
+   "potential_impacts": [],
+   "uncertainties": [],
+   "entities": [],
+   "technologies": [],
+   "tags": [],
+   "relevance_score": null,
+   "novelty_score": null,
+   "business_potential": null,
+   "career_potential": null,
+   "study_potential": null,
+   "off_topic": false,
+   "ai_processed": false,
+   "ai_model": null,
+   "ai_processed_at": null,
+   "ai_attempts": 0,
+   "digest_attempts": 0,
+   "source_priority": 4,
+   "is_sample": false
+  },
   {
    "id": "accb9ed785a6326e",
    "event_id": "evt-accb9ed785a6326e",
@@ -39,6 +80,7 @@
    "ai_model": null,
    "ai_processed_at": null,
    "ai_attempts": 0,
+   "digest_attempts": 0,
    "source_priority": 5,
    "is_sample": false
   },
@@ -79,6 +121,7 @@
    "ai_model": null,
    "ai_processed_at": null,
    "ai_attempts": 0,
+   "digest_attempts": 0,
    "source_priority": 5,
    "is_sample": false
   },
@@ -119,6 +162,7 @@
    "ai_model": null,
    "ai_processed_at": null,
    "ai_attempts": 0,
+   "digest_attempts": 0,
    "source_priority": 5,
    "is_sample": false
   },
@@ -159,6 +203,7 @@
    "ai_model": null,
    "ai_processed_at": null,
    "ai_attempts": 0,
+   "digest_attempts": 0,
    "source_priority": 3,
    "is_sample": false
   },
@@ -201,6 +246,7 @@
    "ai_model": null,
    "ai_processed_at": null,
    "ai_attempts": 0,
+   "digest_attempts": 0,
    "source_priority": 3,
    "is_sample": false
   },
@@ -241,6 +287,7 @@
    "ai_model": null,
    "ai_processed_at": null,
    "ai_attempts": 0,
+   "digest_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -283,6 +330,7 @@
    "ai_model": null,
    "ai_processed_at": null,
    "ai_attempts": 0,
+   "digest_attempts": 0,
    "source_priority": 3,
    "is_sample": false
   },
@@ -326,6 +374,7 @@
    "ai_model": null,
    "ai_processed_at": null,
    "ai_attempts": 0,
+   "digest_attempts": 0,
    "source_priority": 3,
    "is_sample": false
   },
@@ -366,6 +415,7 @@
    "ai_model": null,
    "ai_processed_at": null,
    "ai_attempts": 0,
+   "digest_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -409,6 +459,7 @@
    "ai_model": null,
    "ai_processed_at": null,
    "ai_attempts": 0,
+   "digest_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -449,6 +500,7 @@
    "ai_model": null,
    "ai_processed_at": null,
    "ai_attempts": 0,
+   "digest_attempts": 0,
    "source_priority": 5,
    "is_sample": false
   },
@@ -489,6 +541,7 @@
    "ai_model": null,
    "ai_processed_at": null,
    "ai_attempts": 0,
+   "digest_attempts": 0,
    "source_priority": 5,
    "is_sample": false
   },
@@ -532,6 +585,7 @@
    "ai_model": null,
    "ai_processed_at": null,
    "ai_attempts": 0,
+   "digest_attempts": 0,
    "source_priority": 5,
    "is_sample": false
   },
@@ -572,6 +626,7 @@
    "ai_model": null,
    "ai_processed_at": null,
    "ai_attempts": 0,
+   "digest_attempts": 0,
    "source_priority": 5,
    "is_sample": false
   },
@@ -612,6 +667,7 @@
    "ai_model": null,
    "ai_processed_at": null,
    "ai_attempts": 0,
+   "digest_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -656,6 +712,7 @@
    "ai_model": null,
    "ai_processed_at": null,
    "ai_attempts": 0,
+   "digest_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -698,6 +755,7 @@
    "ai_model": null,
    "ai_processed_at": null,
    "ai_attempts": 0,
+   "digest_attempts": 0,
    "source_priority": 5,
    "is_sample": false
   }

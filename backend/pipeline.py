@@ -202,6 +202,14 @@ def run(
          and len(a.excerpt or "") >= settings.digest_min_excerpt_chars and a.reference_time >= digest_cut),
         key=lambda a: a.reference_time, reverse=True,
     )
+    # Só as que vão aparecer no app: as mais recentes de cada seção (mesmo limite da edição publicada).
+    per_section: dict[str, int] = {}
+    shown_first = []
+    for a in digest_todo:
+        per_section[a.category] = per_section.get(a.category, 0) + 1
+        if per_section[a.category] <= settings.latest_max_articles_per_section:
+            shown_first.append(a)
+    digest_todo = shown_first
     translator = None
     if (untranslated or digest_todo) and client is not None:
         if ai_client is not None or settings.ai_mock:
