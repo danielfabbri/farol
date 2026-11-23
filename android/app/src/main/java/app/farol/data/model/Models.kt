@@ -153,7 +153,7 @@ data class Article(
     /** Momento da publicação em milissegundos (para ordenar: mais recente primeiro). */
     val timeMillis: Long get() = isoMillis(publishedOrCollected)
     /** Texto curto para listas: resumo da IA, senão trecho traduzido, senão trecho original. */
-    val preview: String? get() = summary ?: excerptPt ?: excerpt.takeIf { it.isNotBlank() }
+    val preview: String? get() = summary ?: excerptPt ?: excerpt.takeIf { it.isNotBlank() && language == "pt" }
     val isTranslatedOnly: Boolean get() = !aiProcessed && titlePt != null
 }
 

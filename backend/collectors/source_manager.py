@@ -26,6 +26,8 @@ class Source(BaseModel):
     # Feeds gerais: seção decidida pelo início do caminho da URL ("politica/" -> "politica").
     # Itens que não casam com nenhuma regra são descartados (esporte, entretenimento...).
     section_rules: dict[str, str] = Field(default_factory=dict)
+    # Etiqueta do feed (<category>) → seção; a primeira regra que bater vence.
+    tag_rules: dict[str, str] = Field(default_factory=dict)
     enabled: bool = True
     notes: str | None = None
 

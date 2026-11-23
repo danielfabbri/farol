@@ -68,7 +68,10 @@ def test_quota_exhausted_still_publishes_collected_data(settings):
     assert result.status == "partial"
     latest = load(settings.data_dir / "latest.json")
     assert latest["ai_status"]["state"] == "quota_exhausted"
-    assert len(latest["articles"]) == 9 and not any(a["ai_processed"] for a in latest["articles"])
+    arts = latest["articles"]
+    assert arts and not any(a["ai_processed"] for a in arts)
+    # Tudo em português: as estrangeiras sem tradução ficam guardadas até serem traduzidas.
+    assert all(a["language"] == "pt" or a["title_pt"] for a in arts) and len(arts) < 9
     assert latest["highlights"]  # edição continua sendo gerada sem IA
     usage = load(settings.data_dir / "state" / "ai_usage.json")
     assert usage["quota_exhausted"] is True

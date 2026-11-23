@@ -48,15 +48,20 @@ import app.farol.ui.ArchiveState
 import app.farol.ui.UiState
 import app.farol.ui.components.CompactArticleRow
 import app.farol.ui.components.EmptyState
+import app.farol.ui.components.ReadFilterButton
 import app.farol.ui.components.EndCard
 import app.farol.ui.components.NoticeCard
 import app.farol.ui.components.SectionHeader
 import app.farol.util.Fmt
 
 @Composable
-fun ScreenTitle(title: String, subtitle: String?) {
+fun ScreenTitle(title: String, subtitle: String?, trailing: @Composable () -> Unit = {}) {
     Column(Modifier.fillMaxWidth().padding(top = 20.dp)) {
-        Text(title, style = MaterialTheme.typography.displaySmall, color = MaterialTheme.colorScheme.onBackground)
+        androidx.compose.foundation.layout.Row(verticalAlignment = androidx.compose.ui.Alignment.CenterVertically) {
+            Text(title, style = MaterialTheme.typography.displaySmall, color = MaterialTheme.colorScheme.onBackground,
+                modifier = Modifier.weight(1f))
+            trailing()
+        }
         if (subtitle != null) {
             Spacer(Modifier.height(6.dp))
             Text(subtitle, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
@@ -74,7 +79,7 @@ private fun app.farol.data.model.Article.matches(terms: List<String>): Boolean {
 }
 
 @Composable
-fun ExploreScreen(state: UiState, onOpenArticle: (String) -> Unit, onOpenDay: (String) -> Unit, onUnreadOnly: (Boolean) -> Unit = {}) {
+fun ExploreScreen(state: UiState, onOpenArticle: (String) -> Unit, onOpenDay: (String) -> Unit, onReadFilter: (app.farol.data.prefs.ReadFilter) -> Unit = {}) {
     var query by rememberSaveable { mutableStateOf("") }
     var section by rememberSaveable { mutableStateOf<String?>(null) }
     var source by rememberSaveable { mutableStateOf<String?>(null) }
@@ -82,7 +87,7 @@ fun ExploreScreen(state: UiState, onOpenArticle: (String) -> Unit, onOpenDay: (S
     val sections = feed?.sections.orEmpty().sortedBy { it.order }
     val terms = fold(query).split(" ").filter { it.length >= 2 }
     val base = feed?.articles.orEmpty().filter {
-        (section == null || it.category == section) && it.matches(terms) && !(state.unreadOnly && it.id in state.readIds)
+        (section == null || it.category == section) && it.matches(terms) && state.readFilter.accepts(it.id in state.readIds)
     }
     val sourceCounts = base.groupingBy { it.sourceName }.eachCount().entries.sortedByDescending { it.value }.map { it.key to it.value }
     val activeSource = source?.takeIf { s -> sourceCounts.any { it.first == s } }
@@ -90,7 +95,13 @@ fun ExploreScreen(state: UiState, onOpenArticle: (String) -> Unit, onOpenDay: (S
         .sortedByDescending { it.timeMillis }
 
     LazyColumn(contentPadding = PaddingValues(vertical = 12.dp), modifier = Modifier.fillMaxSize()) {
-        item { Box(Modifier.padding(horizontal = 20.dp)) { ScreenTitle("Explorar", "Notícias das últimas 48 horas.") } }
+        item {
+            Box(Modifier.padding(horizontal = 20.dp)) {
+                ScreenTitle("Explorar", "Notícias das últimas 48 horas.") {
+                    if (feed != null) ReadFilterButton(state.readFilter, onReadFilter)
+                }
+            }
+        }
         if (feed == null) {
             item { EmptyState("Sem dados ainda", "Atualize a edição na tela Hoje.") }
             return@LazyColumn
@@ -115,7 +126,6 @@ fun ExploreScreen(state: UiState, onOpenArticle: (String) -> Unit, onOpenDay: (S
                 horizontalArrangement = Arrangement.spacedBy(8.dp),
                 modifier = Modifier.padding(top = 14.dp),
             ) {
-                item { FilterChip(selected = state.unreadOnly, onClick = { onUnreadOnly(!state.unreadOnly) }, label = { Text("Só não lidas") }) }
                 item { FilterChip(selected = section == null, onClick = { section = null }, label = { Text("Todas as seções") }) }
                 items(sections, key = { it.id }) { s ->
                     FilterChip(selected = section == s.id, onClick = { section = if (section == s.id) null else s.id }, label = { Text(s.label) })

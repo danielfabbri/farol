@@ -145,7 +145,7 @@ fun ArticleScreen(
             when {
                 !article.summary.isNullOrBlank() -> Block("Resumo", null) { Body(article.summary) }
                 !article.excerptPt.isNullOrBlank() -> Block("Trecho da fonte", "Traduzido automaticamente") { Body(article.excerptPt) }
-                article.excerpt.isNotBlank() -> Block("Trecho da fonte", null) { Body(article.excerpt) }
+                article.excerpt.isNotBlank() && article.language == "pt" -> Block("Trecho da fonte", null) { Body(article.excerpt) }
             }
 
             val chips = (article.entities + article.technologies).distinct()

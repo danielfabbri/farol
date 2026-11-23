@@ -644,10 +644,19 @@
       "category": "technology_ai",
       "source_type": "press",
       "language": "pt",
-      "priority": 3,
-      "max_items_per_run": 4,
+      "priority": 4,
+      "max_items_per_run": 10,
       "require_keywords": false,
-      "enabled": true
+      "enabled": true,
+      "tag_rules": {
+        "Astronomia": "espaco",
+        "Espaço": "espaco",
+        "Robótica": "robotica",
+        "Robôs": "robotica",
+        "Ciência e Espaço": "ciencia_saude",
+        "Medicina e Saúde": "ciencia_saude"
+      },
+      "notes": "Feed com 10 itens e texto completo. A seção vem das etiquetas do feed (tag_rules): Astronomia → Espaço, Robótica → Robótica, Ciência e Espaço → Ciência e Saúde; o resto fica em Tecnologia."
     },
     {
       "id": "canaltech",

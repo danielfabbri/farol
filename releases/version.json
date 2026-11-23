@@ -1,9 +1,9 @@
 {
-  "version_code": 10,
-  "version_name": "0.9.0",
+  "version_code": 11,
+  "version_name": "0.10.0",
   "apk": "releases/farol.apk",
-  "sha256": "45d4d34adfc8b4a42abc4e2a1b068607cc713f78abd09d315356edea02382a83",
+  "sha256": "95c36aafb84abd6446e25cc9a33b959ba6abdb4d452b4c25529b4d138c4079d1",
   "size": 1811024,
-  "notes": "Novas seções Robótica e Espaço, com fontes especializadas. Ordem corrigida: o card mostra e é ordenado pela notícia mais recente do grupo. Filtro 'Só não lidas' em Hoje e Explorar.",
-  "published_at": "2026-11-23T23:45:37Z"
+  "notes": "Filtro Todas / Não lidas / Lidas no topo de Hoje e Explorar, ao lado do título. Tudo em português: notícia estrangeira só aparece depois de traduzida. Olhar Digital com mais notícias e separado por seção.",
+  "published_at": "2026-11-23T23:54:24Z"
 }

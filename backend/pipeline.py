@@ -296,11 +296,13 @@ def run(
 
     # Janela da edição: limite por seção, para nenhuma seção engolir as outras.
     window_cut = now - timedelta(hours=settings.latest_window_hours)
-    visible = [a for a in working.values() if not a.off_topic]
+    # Tudo em português: notícia estrangeira só é publicada depois de ter o título traduzido.
+    visible = [a for a in working.values() if not a.off_topic and (a.language == "pt" or a.title_pt)]
     latest_articles = []
     for c in ordered_cats:
         in_window = [a for a in visible if a.category == c["id"] and (a.reference_time >= window_cut or a.event_id in highlight_ids)]
-        in_window.sort(key=lambda a: (a.event_id in highlight_ids, by_score.get(a.event_id, 0), a.relevance_score or 0), reverse=True)
+        # Destaques sempre entram; o restante são as mais recentes da seção.
+        in_window.sort(key=lambda a: (a.event_id in highlight_ids, a.reference_time), reverse=True)
         latest_articles += in_window[: settings.latest_max_articles_per_section]
     latest_event_ids = {a.event_id for a in latest_articles}
     latest_events = sorted((e for e in events if e.id in latest_event_ids), key=lambda e: e.score, reverse=True)

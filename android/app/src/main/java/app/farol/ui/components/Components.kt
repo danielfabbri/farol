@@ -14,6 +14,8 @@ import coil.compose.SubcomposeAsyncImage
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.material.icons.outlined.AccountBalance
+import androidx.compose.material.icons.outlined.Check
+import androidx.compose.material.icons.outlined.FilterList
 import androidx.compose.material.icons.outlined.Flag
 import androidx.compose.material.icons.outlined.Memory
 import androidx.compose.material.icons.outlined.Newspaper
@@ -36,6 +38,8 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -318,5 +322,32 @@ fun EmptyState(title: String, body: String, modifier: Modifier = Modifier) {
         Text(title, style = MaterialTheme.typography.titleMedium, color = MaterialTheme.colorScheme.onSurface)
         Spacer(Modifier.height(8.dp))
         Text(body, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+    }
+}
+
+/** Filtro de leitura no topo da tela: Todas / Não lidas / Lidas. */
+@Composable
+fun ReadFilterButton(value: app.farol.data.prefs.ReadFilter, onChange: (app.farol.data.prefs.ReadFilter) -> Unit) {
+    var open by androidx.compose.runtime.remember { androidx.compose.runtime.mutableStateOf(false) }
+    Box {
+        androidx.compose.material3.FilledTonalButton(
+            onClick = { open = true },
+            contentPadding = androidx.compose.foundation.layout.PaddingValues(horizontal = 14.dp, vertical = 6.dp),
+        ) {
+            Icon(androidx.compose.material.icons.Icons.Outlined.FilterList, contentDescription = null, modifier = Modifier.size(18.dp))
+            androidx.compose.foundation.layout.Spacer(Modifier.size(6.dp))
+            Text(value.label, style = MaterialTheme.typography.labelLarge)
+        }
+        androidx.compose.material3.DropdownMenu(expanded = open, onDismissRequest = { open = false }) {
+            app.farol.data.prefs.ReadFilter.entries.forEach { f ->
+                androidx.compose.material3.DropdownMenuItem(
+                    text = { Text(f.label) },
+                    onClick = { onChange(f); open = false },
+                    trailingIcon = if (f == value) {
+                        { Icon(androidx.compose.material.icons.Icons.Outlined.Check, contentDescription = null) }
+                    } else null,
+                )
+            }
+        }
     }
 }

@@ -69,6 +69,7 @@ import app.farol.ui.components.Eyebrow
 import app.farol.ui.components.HighlightCard
 import app.farol.ui.components.NoticeCard
 import app.farol.ui.components.NoticeTone
+import app.farol.ui.components.ReadFilterButton
 import app.farol.ui.components.SectionHeader
 import app.farol.util.Fmt
 import kotlinx.coroutines.delay
@@ -100,7 +101,7 @@ fun TodayScreen(
     onRefresh: () -> Unit,
     onOpenArticle: (String) -> Unit,
     onOpenExplore: () -> Unit,
-    onUnreadOnly: (Boolean) -> Unit = {},
+    onReadFilter: (app.farol.data.prefs.ReadFilter) -> Unit = {},
 ) {
     val feed = state.feed
     var sectionId by rememberSaveable { mutableStateOf<String?>(null) }
@@ -110,18 +111,9 @@ fun TodayScreen(
 
     PullToRefreshBox(isRefreshing = state.syncing, onRefresh = onRefresh, modifier = Modifier.fillMaxSize()) {
         LazyColumn(contentPadding = PaddingValues(vertical = 12.dp), modifier = Modifier.fillMaxSize()) {
-            item { TodayHeader(feed, section) }
+            item { TodayHeader(feed, section) { if (feed != null) ReadFilterButton(state.readFilter, onReadFilter) } }
             if (sections.isNotEmpty()) {
                 item { SectionBar(sections, sectionId) { sectionId = it; topic = null } }
-            }
-            if (feed != null) {
-                item {
-                    Box(HPad.padding(top = 8.dp)) {
-                        Chip("Só não lidas", state.unreadOnly, small = true) {
-                            onUnreadOnly(!state.unreadOnly)
-                        }
-                    }
-                }
             }
             item {
                 Column(HPad) { SyncNotices(state) }
@@ -152,7 +144,7 @@ fun TodayScreen(
                 }
                 // Sempre da mais recente para a mais antiga.
                 val ordered = feed.events
-                    .filter { it.category == section.id && it.matches(topic, arts) && !(state.unreadOnly && isRead(it)) }
+                    .filter { it.category == section.id && it.matches(topic, arts) && state.readFilter.accepts(isRead(it)) }
                     .sortedByDescending { it.shownMillis(arts) }
                 val shown = ordered.take(state.highlightLimit + state.otherLimit)
                 val label = topic?.let { t -> section.filters.firstOrNull { it.id == t }?.label } ?: section.label
@@ -188,10 +180,17 @@ fun TodayScreen(
             // ---------------- Capa ----------------
             val allHighlights = feed.highlights.mapNotNull { state.eventsById[it] }.take(state.highlightLimit)
             val readCount = allHighlights.count(isRead)
-            val highlights = allHighlights.filter { !(state.unreadOnly && isRead(it)) }.sortedByDescending { it.shownMillis(arts) }
+            val highlights = allHighlights.filter { state.readFilter.accepts(isRead(it)) }.sortedByDescending { it.shownMillis(arts) }
             item { SectionHeader("Destaques", "$readCount de ${allHighlights.size} lidos", HPad) }
             if (highlights.isEmpty() && allHighlights.isNotEmpty()) {
-                item { EmptyState("Nenhum destaque novo", "Você já leu todos os destaques desta edição.", HPad) }
+                item {
+                    EmptyState(
+                        if (state.readFilter == app.farol.data.prefs.ReadFilter.READ) "Nenhum destaque lido" else "Nenhum destaque novo",
+                        if (state.readFilter == app.farol.data.prefs.ReadFilter.READ) "Você ainda não abriu nenhum destaque desta edição."
+                        else "Você já leu todos os destaques desta edição.",
+                        HPad,
+                    )
+                }
             }
             itemsIndexed(highlights, key = { _, e -> e.id }) { i, event ->
                 val lead = leadArticle(event, arts)
@@ -237,15 +236,19 @@ fun TodayScreen(
 }
 
 @Composable
-private fun TodayHeader(feed: LatestFeed?, section: Section?) {
+private fun TodayHeader(feed: LatestFeed?, section: Section?, trailing: @Composable () -> Unit = {}) {
     Column(HPad.fillMaxWidth().padding(top = 8.dp)) {
         Text("FAROL", style = TextStyle(fontSize = 13.sp, letterSpacing = 5.sp), color = MaterialTheme.colorScheme.primary)
         Spacer(Modifier.height(8.dp))
-        Text(
-            section?.label ?: feed?.edition?.label ?: "Hoje",
-            style = MaterialTheme.typography.displaySmall,
-            color = MaterialTheme.colorScheme.onBackground,
-        )
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Text(
+                section?.label ?: feed?.edition?.label ?: "Hoje",
+                style = MaterialTheme.typography.displaySmall,
+                color = MaterialTheme.colorScheme.onBackground,
+                modifier = Modifier.weight(1f),
+            )
+            trailing()
+        }
     }
 }
 

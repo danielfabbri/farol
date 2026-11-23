@@ -85,11 +85,11 @@ fun FarolApp(vm: MainViewModel, state: UiState) {
                     onRefresh = { vm.refresh(force = true) },
                     onOpenArticle = openArticle,
                     onOpenExplore = { nav.goTopLevel("explore") },
-                    onUnreadOnly = vm::setUnreadOnly,
+                    onReadFilter = vm::setReadFilter,
                 )
             }
             composable("explore") {
-                ExploreScreen(state, onOpenArticle = openArticle, onOpenDay = { day -> nav.navigate("archive/$day") }, onUnreadOnly = vm::setUnreadOnly)
+                ExploreScreen(state, onOpenArticle = openArticle, onOpenDay = { day -> nav.navigate("archive/$day") }, onReadFilter = vm::setReadFilter)
             }
             composable("trends") { TrendsScreen(state, onOpenArticle = openArticle) }
             composable("saved") { SavedScreen(state, onOpenArticle = openArticle) }

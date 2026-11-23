@@ -50,7 +50,7 @@ data class UiState(
     val demoMode: Boolean = false,
     val hasToken: Boolean = false,
     val scan: ScanState = ScanState.Idle,
-    val unreadOnly: Boolean = false,
+    val readFilter: app.farol.data.prefs.ReadFilter = app.farol.data.prefs.ReadFilter.ALL,
 ) {
     val articlesById: Map<String, Article> by lazy { feed?.articles.orEmpty().associateBy { it.id } }
     val eventsById: Map<String, Event> by lazy { feed?.events.orEmpty().associateBy { it.id } }
@@ -148,7 +148,7 @@ class MainViewModel(
 
     private val sync = MutableStateFlow(SyncPart())
     private val scanState = MutableStateFlow<ScanState>(ScanState.Idle)
-    private val syncAndScan = combine(sync, scanState, prefs.githubToken, prefs.unreadOnly) { s, sc, t, u -> SyncScan(s, sc, t != null, u) }
+    private val syncAndScan = combine(sync, scanState, prefs.githubToken, prefs.readFilter) { s, sc, t, f -> SyncScan(s, sc, t != null, f) }
     private val _archive = MutableStateFlow<Map<String, ArchiveState>>(emptyMap())
     val archive: StateFlow<Map<String, ArchiveState>> = _archive.asStateFlow()
 
@@ -163,12 +163,12 @@ class MainViewModel(
         PrefsPart(t, h, o, d, l)
     }
 
-    val state: StateFlow<UiState> = combine(data, prefsFlow, syncAndScan) { d, p, (s, scan, hasToken, unreadOnly) ->
+    val state: StateFlow<UiState> = combine(data, prefsFlow, syncAndScan) { d, p, (s, scan, hasToken, readFilter) ->
         UiState(
             loaded = true, feed = d.feed, trends = d.trends, saved = d.saved, savedArticles = d.savedArticles,
             readIds = d.read, syncing = s.syncing, lastResult = s.result, lastSync = p.lastSync,
             theme = p.theme, highlightLimit = p.hl, otherLimit = p.other, demoMode = p.demo,
-            hasToken = hasToken, scan = scan, unreadOnly = unreadOnly,
+            hasToken = hasToken, scan = scan, readFilter = readFilter,
         )
     }.stateIn(viewModelScope, SharingStarted.Eagerly, UiState())
 
@@ -301,7 +301,7 @@ class MainViewModel(
     fun setTheme(mode: ThemeMode) = prefs.setTheme(mode)
     fun setHighlightLimit(n: Int) = prefs.setHighlightLimit(n)
     fun setOtherLimit(n: Int) = prefs.setOtherLimit(n)
-    fun setUnreadOnly(on: Boolean) = prefs.setUnreadOnly(on)
+    fun setReadFilter(f: app.farol.data.prefs.ReadFilter) = prefs.setReadFilter(f)
 
     fun setDemoMode(on: Boolean) {
         prefs.setDemoMode(on)
@@ -327,4 +327,4 @@ class MainViewModel(
     }
 }
 
-private data class SyncScan(val sync: SyncPart, val scan: ScanState, val hasToken: Boolean, val unreadOnly: Boolean)
+private data class SyncScan(val sync: SyncPart, val scan: ScanState, val hasToken: Boolean, val readFilter: app.farol.data.prefs.ReadFilter)

@@ -83,6 +83,12 @@ def parse_entries(content: bytes, source: Source, collected_at: datetime, *, is_
         if not link or not title:
             continue
         category = section_for(source, link)
+        if source.tag_rules:
+            tags = {(t.get("term") or "").strip().lower() for t in entry.get("tags", []) or []}
+            for tag, cat in source.tag_rules.items():
+                if tag.lower() in tags:
+                    category = cat
+                    break
         if category is None:  # feed geral: fora das seções de interesse
             continue
         norm = normalize_url(link)
