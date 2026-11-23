@@ -29,6 +29,7 @@ import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
@@ -174,9 +175,9 @@ class MainViewModel(
      * "Varrer agora": pede ao GitHub Actions uma coleta imediata e acompanha a execução.
      * Leva de 2 a 6 minutos (coleta + IA). Ao terminar, baixa a nova edição.
      */
-    fun scanNow() {
+    fun scanNow(automatic: Boolean = false) {
         val token = prefs.githubToken.value ?: run {
-            scanState.value = ScanState.Failed("Configure o token do GitHub em Ajustes para varrer as fontes.")
+            if (!automatic) scanState.value = ScanState.Failed("Configure o token do GitHub em Ajustes para varrer as fontes.")
             return
         }
         val current = scanState.value
@@ -185,7 +186,10 @@ class MainViewModel(
             scanState.value = ScanState.Starting
             val since = Instant.now()
             when (val r = github.dispatch(token)) {
-                is DispatchResult.Error -> { scanState.value = ScanState.Failed("Não foi possível iniciar: ${r.message}."); return@launch }
+                is DispatchResult.Error -> {
+                    scanState.value = if (automatic) ScanState.Idle else ScanState.Failed("Não foi possível iniciar: ${r.message}.")
+                    return@launch
+                }
                 DispatchResult.Ok -> Unit
             }
             val started = System.currentTimeMillis()
@@ -196,7 +200,7 @@ class MainViewModel(
                 val run = github.latestManualRun(token, since) ?: continue
                 when (run.status) {
                     "queued", "waiting", "pending", "requested" -> scanState.value = ScanState.Running("Na fila do GitHub…", started)
-                    "in_progress" -> scanState.value = ScanState.Running("Coletando fontes e analisando com IA…", started)
+                    "in_progress" -> scanState.value = ScanState.Running("Coletando e traduzindo as notícias…", started)
                     "completed" -> {
                         if (run.conclusion == "success" || run.conclusion == "failure") {
                             // "failure" pode ser só uma fonte fora do ar: os dados coletados são publicados mesmo assim.
@@ -205,20 +209,21 @@ class MainViewModel(
                             // Pelo SHA do commit: a CDN do GitHub ainda pode servir a edição anterior por alguns minutos.
                             val sha = github.latestMainSha(token)
                             val res = repo.refresh(force = true, commitSha = sha)
-                            scanState.value = when (res) {
+                            scanState.value = if (automatic) ScanState.Idle else when (res) {
                                 SyncResult.Updated -> ScanState.Done("Varredura concluída. Nova edição carregada.")
                                 SyncResult.NotModified -> ScanState.Done("Varredura concluída. Nenhuma novidade desde a última edição.")
                                 else -> ScanState.Done("Varredura concluída. Puxe a tela para atualizar.")
                             }
                             sync.value = SyncPart(syncing = false, result = res)
                         } else {
-                            scanState.value = ScanState.Failed("A varredura foi interrompida (${run.conclusion}).")
+                            scanState.value = if (automatic) ScanState.Idle else ScanState.Failed("A varredura foi interrompida (${run.conclusion}).")
                         }
                         return@launch
                     }
                 }
             }
-            scanState.value = ScanState.Failed("A varredura está demorando mais que o normal. Tente atualizar em alguns minutos.")
+            scanState.value = if (automatic) ScanState.Idle
+                else ScanState.Failed("A varredura está demorando mais que o normal. Tente atualizar em alguns minutos.")
         }
     }
 
@@ -229,17 +234,41 @@ class MainViewModel(
     fun setGithubToken(token: String?) = prefs.setGithubToken(token)
 
     init {
-        refresh(force = false) // atualização automática ao abrir o app
         checkForUpdate(silent = true)
     }
 
-    fun refresh(force: Boolean) {
-        if (sync.value.syncing) return
+    private var lastAutoScan = 0L
+
+    /**
+     * Chamado sempre que o app vem para a frente: baixa a edição mais recente e, se ela tiver mais de
+     * uma hora, pede uma coleta nova ao GitHub (sem nenhum toque do usuário). A nova edição aparece
+     * sozinha quando a coleta termina (2 a 4 minutos).
+     */
+    fun onAppForeground() {
+        if (prefs.demoMode.value) return
         viewModelScope.launch {
-            sync.update { it.copy(syncing = true) }
-            val result = repo.refresh(force)
-            sync.value = SyncPart(syncing = false, result = result)
+            refreshNow(force = true)
+            val generated = repo.latest.first()?.generatedAt?.let { runCatching { Instant.parse(it) }.getOrNull() }
+            val stale = generated == null || generated.isBefore(Instant.now().minusSeconds(AUTO_SCAN_AFTER_SECONDS))
+            val now = System.currentTimeMillis()
+            if (stale && now - lastAutoScan > AUTO_SCAN_COOLDOWN_MS) {
+                lastAutoScan = now
+                scanNow(automatic = true)
+            }
         }
+    }
+
+    fun refresh(force: Boolean) {
+        viewModelScope.launch { refreshNow(force) }
+    }
+
+    /** Baixa latest.json pelo SHA do último commit: nunca recebe a edição anterior da CDN. */
+    private suspend fun refreshNow(force: Boolean) {
+        if (sync.value.syncing) return
+        sync.update { it.copy(syncing = true) }
+        val sha = github.latestMainSha(prefs.githubToken.value)
+        val result = repo.refresh(force, commitSha = sha)
+        sync.value = SyncPart(syncing = false, result = result)
     }
 
     fun findArticle(id: String): Article? {
@@ -285,6 +314,8 @@ class MainViewModel(
     }
 
     companion object {
+        private const val AUTO_SCAN_AFTER_SECONDS = 60 * 60L      // edição com mais de 1 h → coleta nova
+        private const val AUTO_SCAN_COOLDOWN_MS = 20 * 60_000L     // no máximo uma coleta automática a cada 20 min
         val Factory: ViewModelProvider.Factory = viewModelFactory {
             initializer {
                 val app = this[ViewModelProvider.AndroidViewModelFactory.APPLICATION_KEY] as FarolApplication

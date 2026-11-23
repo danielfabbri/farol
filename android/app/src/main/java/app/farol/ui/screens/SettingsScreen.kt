@@ -146,7 +146,7 @@ fun SettingsScreen(
 
         Section("Varredura sob demanda")
         Text(
-            "O botão \"Varrer agora\" pede ao GitHub Actions uma coleta imediata em todas as fontes, com análise da IA. " +
+            "O botão \"Varrer agora\" pede ao GitHub Actions uma coleta imediata em todas as fontes. Com o token salvo, o app também faz isso sozinho ao ser aberto quando a edição tem mais de 1 hora. " +
                 "Para isso, o app precisa de um token pessoal do GitHub, que fica guardado só neste aparelho.",
             style = MaterialTheme.typography.bodySmall,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
@@ -190,7 +190,7 @@ fun SettingsScreen(
                 Text("Salvar token")
             }
         }
-        Hint("Cada varredura usa a mesma cota gratuita das edições automáticas; o próprio sistema limita as chamadas à IA por dia.")
+        Hint("A IA (Gemini, plano gratuito) só traduz títulos e trechos de fontes estrangeiras; o próprio sistema limita as chamadas por dia.")
 
         Section("Tema")
         Choice(
@@ -227,8 +227,8 @@ fun SettingsScreen(
 
         Section("Sobre")
         Text(
-            "Notícias coletadas de feeds RSS públicos e resumidas por IA (Gemini). Resumos podem conter erros: " +
-                "abra sempre a publicação original. Escores e potenciais são avaliações editoriais da IA, não fatos.",
+            "Notícias coletadas de feeds RSS públicos. Fontes estrangeiras são traduzidas automaticamente e a tradução pode conter erros: " +
+                "abra sempre a publicação original.",
             style = MaterialTheme.typography.bodySmall,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
         )
@@ -257,7 +257,7 @@ private fun ScanStatus(scan: app.farol.ui.ScanState, onDismiss: () -> Unit) {
     val (text, busy) = when (scan) {
         app.farol.ui.ScanState.Idle -> return
         app.farol.ui.ScanState.Starting -> "Pedindo a varredura ao GitHub…" to true
-        is app.farol.ui.ScanState.Running -> "${scan.step} (costuma levar de 2 a 6 minutos)" to true
+        is app.farol.ui.ScanState.Running -> "${scan.step} (costuma levar de 2 a 4 minutos)" to true
         is app.farol.ui.ScanState.Done -> scan.message to false
         is app.farol.ui.ScanState.Failed -> scan.message to false
     }

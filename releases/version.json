@@ -1,9 +1,9 @@
 {
-  "version_code": 6,
-  "version_name": "0.5.0",
+  "version_code": 7,
+  "version_name": "0.6.0",
   "apk": "releases/farol.apk",
-  "sha256": "fff15eb3cae70ebf0ed5222ccb3de3906de2f80e48b9cde36ee96c451e4d5847",
+  "sha256": "53be112095c46015ff550148ea4bef5191702724c669dd42c0d79e516f57731a",
   "size": 1811024,
-  "notes": "Imagens em praticamente todas as notícias: quando o feed não traz foto, o FAROL usa a imagem de destaque da página da notícia; sem foto, aparece a ilustração da seção.",
-  "published_at": "2026-11-23T18:12:24Z"
+  "notes": "Abriu, atualizou: o app busca a edição mais nova sempre que é aberto (sem esperar o cache) e, se ela tiver mais de 1 hora, pede uma coleta nova sozinho. Resumos das seções removidos.",
+  "published_at": "2026-11-23T22:15:42Z"
 }

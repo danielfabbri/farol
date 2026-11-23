@@ -49,7 +49,7 @@ O workflow já declara `permissions: contents: write`. Se o passo **Commit dos d
 2. No menu lateral, selecione **FAROL — coleta e inteligência**.
 3. Clique em **Run workflow** → branch `main` → **Run workflow**.
 4. Em 2 a 6 minutos, o commit `data: edição …` aparece no repositório e `data/latest.json` passa a existir.
-5. Depois disso, o agendamento roda sozinho por volta de 05h20, 11h20, 17h20 e 20h20 (Brasília). O GitHub às vezes atrasa ou descarta disparos agendados; por isso cada horário tem um disparo reserva 35 min depois, que só roda se o principal não tiver rodado.
+5. Depois disso, o agendamento roda sozinho a cada 2 horas, das ~05h às ~23h (Brasília). Com o token salvo no app, ao abrir o FAROL com a edição mais velha que 1 hora, o próprio app pede uma coleta nova. A IA só traduz fontes estrangeiras; análise completa e resumos de seção ficam desligados (FAROL_AI_ANALYSIS e FAROL_SECTION_BRIEFS religam).
 
 Confira se os dados estão acessíveis publicamente (é a URL usada pelo app):
 <https://raw.githubusercontent.com/danielfabbri/farol/main/data/latest.json>

@@ -152,7 +152,7 @@ def run(
         key=lambda a: (a.source_priority, a.reference_time), reverse=True,
     )
     ai_report = {"processed": 0, "failed": 0, "calls": 0, "errors": []}
-    if client is not None and pending:
+    if client is not None and pending and settings.analysis_enabled:
         recent_events = sorted(
             (e for e in build_events(working.values()) if e.last_seen >= pending_cut),
             key=lambda e: e.last_seen, reverse=True,
@@ -308,7 +308,8 @@ def run(
             highlights=[e.id for e in section_highlights[c["id"]]],
             filters=section_filters.get(c["id"], []),
             article_count=sum(1 for a in latest_articles if a.category == c["id"]),
-            brief=SectionBrief.model_validate(briefs_store[c["id"]]) if c["id"] in briefs_store else None,
+            brief=(SectionBrief.model_validate(briefs_store[c["id"]])
+                   if settings.briefs_enabled and c["id"] in briefs_store else None),
         )
         for c in ordered_cats
     ]

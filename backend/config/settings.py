@@ -54,6 +54,8 @@ class Settings:
     gemini_model: str = DEFAULT_MODEL
     gemini_fallback_models: tuple[str, ...] = DEFAULT_FALLBACKS
     ai_enabled: bool = True
+    # Análise completa de cada notícia (resumo, pontos-chave, notas). Desligada na publicação: a IA só traduz.
+    analysis_enabled: bool = True
     ai_mock: bool = False
     dev_mode: bool = False
     # Controle de cota da IA
@@ -69,7 +71,7 @@ class Settings:
     translation_models: tuple[str, ...] = DEFAULT_TRANSLATION_MODELS
     translation_batch_size: int = 25
     max_translation_calls_per_run: int = 2
-    max_translation_calls_per_day: int = 12
+    max_translation_calls_per_day: int = 40
     title_fallback_enabled: bool = True
     # Imagem de destaque da página da notícia quando o feed não traz foto
     image_enrichment_enabled: bool = True
@@ -121,6 +123,8 @@ def load_settings(*, dev: bool = False, mock_ai: bool = False, no_ai: bool = Fal
         ),
         ai_enabled=_bool("FAROL_AI_ENABLED", True) and not no_ai,
         ai_mock=mock_ai or dev or _bool("FAROL_AI_MOCK", False),
+        analysis_enabled=_bool("FAROL_AI_ANALYSIS", False),
+        briefs_enabled=_bool("FAROL_SECTION_BRIEFS", False),
         dev_mode=dev,
         max_ai_calls_per_run=_int("FAROL_MAX_AI_CALLS_PER_RUN", 10),
         max_ai_calls_per_day=_int("FAROL_MAX_AI_CALLS_PER_DAY", 30),

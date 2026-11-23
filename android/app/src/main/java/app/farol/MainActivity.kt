@@ -5,6 +5,8 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.runtime.getValue
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.compose.LifecycleEventEffect
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import app.farol.ui.FarolApp
@@ -18,6 +20,8 @@ class MainActivity : ComponentActivity() {
         setContent {
             val vm: MainViewModel = viewModel(factory = MainViewModel.Factory)
             val state by vm.state.collectAsStateWithLifecycle()
+            // Toda vez que o app é aberto ou volta para a frente: busca a edição mais nova.
+            LifecycleEventEffect(Lifecycle.Event.ON_START) { vm.onAppForeground() }
             FarolTheme(state.theme) {
                 FarolApp(vm, state)
             }

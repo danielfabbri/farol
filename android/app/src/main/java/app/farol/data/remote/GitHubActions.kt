@@ -62,10 +62,14 @@ class GitHubActions(private val http: OkHttpClient) {
         }
     }
 
-    /** SHA do commit mais recente do main (para baixar a edição recém-publicada sem esperar a CDN). */
-    suspend fun latestMainSha(token: String): String? = withContext(Dispatchers.IO) {
-        val req = Request.Builder().url("https://api.github.com/repos/${BuildConfig.GITHUB_REPO}/commits/main")
-            .auth(token).header("Accept", "application/vnd.github.sha").get().build()
+    /**
+     * SHA do commit mais recente do main (para baixar a edição recém-publicada sem esperar a CDN).
+     * Funciona sem token (repositório público, limite de 60 consultas/hora); com token o limite é maior.
+     */
+    suspend fun latestMainSha(token: String?): String? = withContext(Dispatchers.IO) {
+        val builder = Request.Builder().url("https://api.github.com/repos/${BuildConfig.GITHUB_REPO}/commits/main")
+        if (token != null) builder.auth(token) else builder.header("X-GitHub-Api-Version", "2022-11-28")
+        val req = builder.header("Accept", "application/vnd.github.sha").header("Cache-Control", "no-cache").get().build()
         try {
             http.newCall(req).execute().use { resp ->
                 resp.body?.string()?.trim()?.takeIf { resp.isSuccessful && it.matches(Regex("[0-9a-f]{40}")) }

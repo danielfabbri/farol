@@ -2,22 +2,14 @@ name: FAROL — coleta e inteligência
 
 on:
   schedule:
-    # Horários de Brasília (UTC-3): ~05h20, ~11h20, ~17h20, ~20h20.
-    # O GitHub Actions atrasa ou até descarta disparos agendados em horários de pico (minutos :00 e :30),
-    # por isso usamos minutos "quebrados" e um disparo reserva 35 min depois de cada horário.
-    # A reserva só roda de fato se a principal não tiver rodado (proteção de 100 min no pipeline).
-    - cron: "17 8 * * *"
-    - cron: "52 8 * * *"
-    - cron: "17 14 * * *"
-    - cron: "52 14 * * *"
-    - cron: "17 20 * * *"
-    - cron: "52 20 * * *"
-    - cron: "17 23 * * *"
-    - cron: "52 23 * * *"
+    # A cada 2 horas, das ~05h às ~23h de Brasília (UTC-3). Minuto "quebrado" porque o GitHub atrasa
+    # ou descarta disparos agendados nos minutos :00 e :30. Se um horário for perdido, o próximo cobre,
+    # e o app dispara uma coleta sozinho ao ser aberto quando a edição está velha.
+    - cron: "17 0,2,8,10,12,14,16,18,20,22 * * *"
   workflow_dispatch:
     inputs:
       no_ai:
-        description: "Executar somente a coleta, sem IA"
+        description: "Executar somente a coleta, sem tradução pela IA"
         type: boolean
         default: false
 
@@ -58,8 +50,8 @@ jobs:
           GEMINI_FALLBACK_MODELS: ${{ vars.GEMINI_FALLBACK_MODELS }}
           FAROL_MAX_AI_CALLS_PER_DAY: ${{ vars.FAROL_MAX_AI_CALLS_PER_DAY }}
           FAROL_MAX_AI_CALLS_PER_RUN: ${{ vars.FAROL_MAX_AI_CALLS_PER_RUN }}
-          # Agendada: ignora se já houve edição há menos de 100 min (disparo reserva). Manual: sempre roda.
-          FAROL_MIN_MINUTES_BETWEEN_RUNS: ${{ github.event_name == 'schedule' && '100' || '0' }}
+          # Agendada: ignora se o app acabou de pedir uma coleta (menos de 40 min). Manual: sempre roda.
+          FAROL_MIN_MINUTES_BETWEEN_RUNS: ${{ github.event_name == 'schedule' && '40' || '0' }}
           PYTHONIOENCODING: utf-8
         run: python -m backend.main ${{ inputs.no_ai && '--no-ai' || '' }}
 

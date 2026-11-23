@@ -58,7 +58,6 @@ import app.farol.data.model.Event
 import app.farol.data.model.FilterInfo
 import app.farol.data.model.LatestFeed
 import app.farol.data.model.Section
-import app.farol.data.model.SectionBrief
 import app.farol.ui.ScanState
 import app.farol.ui.UiState
 import app.farol.ui.UpdateState
@@ -116,7 +115,7 @@ fun TodayScreen(
                     } else {
                         EmptyState(
                             "Nenhuma edição disponível",
-                            "Conecte-se à internet e puxe para atualizar. As edições são publicadas às 05h30, 11h30, 17h30 e 20h30.",
+                            "Conecte-se à internet e puxe para atualizar.",
                             HPad,
                         )
                     }
@@ -129,9 +128,6 @@ fun TodayScreen(
 
             if (section != null) {
                 // ---------------- Seção ----------------
-                section.brief?.let { brief ->
-                    item { BriefCard(section, brief, expanded = true, state = state, onOpenArticle = onOpenArticle) }
-                }
                 if (section.filters.isNotEmpty()) {
                     item { TopicChips(section.filters, topic) { topic = it } }
                 }
@@ -163,7 +159,7 @@ fun TodayScreen(
                 item {
                     EndCard(
                         "Fim de $label",
-                        "Isso é tudo nesta edição. A próxima sai ${Fmt.nextEdition()}.",
+                        "Isso é tudo nesta edição.",
                         HPad,
                         action = { TextButton(onClick = { sectionId = null; topic = null }) { Text("Voltar à capa") } },
                     )
@@ -189,15 +185,7 @@ fun TodayScreen(
                 }
             }
 
-            val withBriefs = sections.filter { it.brief != null }
-            if (withBriefs.isNotEmpty()) {
-                item { SectionHeader("Resumo das seções", "${withBriefs.size}", HPad) }
-                items(withBriefs, key = { "b-" + it.id }) { sec ->
-                    BriefCard(sec, sec.brief!!, expanded = false, state = state, onOpenArticle = onOpenArticle) {
-                        sectionId = sec.id
-                    }
-                }
-            } else if (sections.isNotEmpty()) {
+            if (sections.isNotEmpty()) {
                 item { SectionHeader("Seções", null, HPad) }
                 items(sections, key = { "n-" + it.id }) { sec ->
                     Row(
@@ -216,7 +204,7 @@ fun TodayScreen(
                 EndCard(
                     title = if (allRead) "Você está em dia" else "Fim da capa",
                     body = (if (allRead) "Você leu todos os destaques. " else "") +
-                        "Abra uma seção acima para ver o resto. A próxima edição sai ${Fmt.nextEdition()}.",
+                        "Abra uma seção acima para ver o resto.",
                     modifier = HPad,
                     action = { TextButton(onClick = onOpenExplore) { Text("Ver arquivo histórico") } },
                 )
@@ -224,68 +212,6 @@ fun TodayScreen(
         }
     }
 
-}
-
-/** Resumo da seção: tópicos ligados às notícias de origem. Na capa aparece resumido e leva à seção. */
-@Composable
-private fun BriefCard(
-    section: Section,
-    brief: SectionBrief,
-    expanded: Boolean,
-    state: UiState,
-    onOpenArticle: (String) -> Unit,
-    onOpenSection: (() -> Unit)? = null,
-) {
-    Surface(
-        shape = CardShape,
-        color = MaterialTheme.colorScheme.primaryContainer.copy(alpha = if (expanded) 0.45f else 0.3f),
-        modifier = HPad.fillMaxWidth().padding(top = if (expanded) 16.dp else 0.dp, bottom = 12.dp)
-            .then(if (onOpenSection != null) Modifier.clickable(onClick = onOpenSection) else Modifier),
-    ) {
-        Column(Modifier.padding(18.dp)) {
-            Row(verticalAlignment = Alignment.CenterVertically) {
-                Eyebrow(if (expanded) "Resumo da seção" else section.label, modifier = Modifier.weight(1f))
-                if (!expanded) Icon(Icons.AutoMirrored.Outlined.KeyboardArrowRight, null, tint = MaterialTheme.colorScheme.primary)
-            }
-            Spacer(Modifier.height(8.dp))
-            Text(brief.headline, style = MaterialTheme.typography.titleLarge, color = MaterialTheme.colorScheme.onSurface)
-            Spacer(Modifier.height(8.dp))
-            Text(
-                brief.overview,
-                style = MaterialTheme.typography.bodyMedium,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                maxLines = if (expanded) Int.MAX_VALUE else 3,
-                overflow = TextOverflow.Ellipsis,
-            )
-            if (expanded) {
-                Spacer(Modifier.height(12.dp))
-                brief.points.forEach { p ->
-                    val target = p.eventIds.firstNotNullOfOrNull { id -> state.eventsById[id]?.let { leadArticle(it, state.articlesById) } }
-                    Row(
-                        Modifier.fillMaxWidth().clickable(enabled = target != null) { target?.let { onOpenArticle(it.id) } }.padding(vertical = 6.dp),
-                    ) {
-                        Text("—", color = MaterialTheme.colorScheme.primary, style = MaterialTheme.typography.bodyMedium)
-                        Spacer(Modifier.width(10.dp))
-                        Text(p.text, style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurface, modifier = Modifier.weight(1f))
-                        if (target != null) Icon(Icons.AutoMirrored.Outlined.KeyboardArrowRight, null, tint = MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.size(18.dp))
-                    }
-                }
-                brief.watch?.let {
-                    Spacer(Modifier.height(8.dp))
-                    Eyebrow("O que acompanhar", color = MaterialTheme.colorScheme.onSurfaceVariant)
-                    Text(it, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurface)
-                }
-            }
-            Spacer(Modifier.height(10.dp))
-            Text(
-                "Resumo por ${brief.author}${brief.model?.let { " ($it)" } ?: ""} · ${Fmt.dateTime(brief.generatedAt)}" +
-                    (if (brief.stale) " · a seção mudou desde então" else "") +
-                    (if (expanded) ". Toque num tópico para ver a notícia de origem." else ""),
-                style = MaterialTheme.typography.labelMedium,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-            )
-        }
-    }
 }
 
 @Composable
@@ -341,6 +267,15 @@ private fun Chip(label: String, selected: Boolean, small: Boolean = false, onCli
 private fun SyncNotices(state: UiState) {
     val feed = state.feed
     Column {
+        if (state.scan is ScanState.Starting || state.scan is ScanState.Running) {
+            Text(
+                "Buscando notícias novas…",
+                style = MaterialTheme.typography.labelMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                modifier = Modifier.padding(top = 4.dp, bottom = 6.dp),
+            )
+            LinearProgressIndicator(Modifier.fillMaxWidth().padding(bottom = 8.dp))
+        }
         if (state.demoMode || feed?.isSample == true) {
             NoticeCard(
                 feed?.notice ?: "Modo demonstração: dados fictícios, sem valor informativo.",
