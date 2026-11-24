@@ -16,7 +16,7 @@ from backend.ai.gemini_client import (
     FatalGeminiError, GeminiError, JsonGenerator, QuotaExceeded, SchemaRejected, ServiceUnavailable,
 )
 from backend.ai.prompts import build_batch_prompt, response_schema, system_prompt
-from backend.collectors.normalization import truncate
+from backend.collectors.normalization import is_bad_translation, looks_english, truncate
 from backend.models.analysis import ArticleAnalysis
 from backend.models.article import Article
 
@@ -120,6 +120,8 @@ def translate_articles(
             except ValidationError:
                 continue
             art = refs[tr.ref]
+            if is_bad_translation(art.original_title, tr.title_pt):
+                continue  # devolveu o título em inglês: fica para a próxima tentativa
             if not art.ai_processed:  # nunca sobrescreve a análise completa
                 art.title_pt = tr.title_pt.strip()
                 art.excerpt_pt = tr.excerpt_pt.strip() or None
@@ -147,7 +149,8 @@ def summarize_articles(
             return done, "budget_reached"
         batch = articles[start:start + batch_size]
         refs = {f"d{i + 1}": a for i, a in enumerate(batch)}
-        items = [{"ref": r, "title": a.original_title, "excerpt": truncate(a.excerpt, excerpt_chars)} for r, a in refs.items()]
+        items = [{"ref": r, "lang": a.language, "title": a.original_title, "excerpt": truncate(a.excerpt, excerpt_chars)}
+                 for r, a in refs.items()]
         before = getattr(client, "calls_made", None)
         try:
             data = client.generate_json(DIGEST_SYSTEM_PROMPT, build_digest_prompt(items), DIGEST_SCHEMA)
@@ -175,8 +178,10 @@ def summarize_articles(
             art = refs[dg.ref]
             if art.ai_processed:
                 continue  # nunca sobrescreve a análise completa
+            if looks_english(dg.summary):
+                continue  # resumo tem de vir em português
             art.summary = dg.summary.strip()
-            if art.language != "pt" and not art.title_pt:
+            if art.language != "pt" and not art.title_pt and not is_bad_translation(art.original_title, dg.title_pt):
                 art.title_pt = dg.title_pt.strip()
             done += 1
     return done, None

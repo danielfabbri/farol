@@ -13,7 +13,7 @@ import requests
 
 from backend.collectors.http_client import FetchError, FetchResult, fetch
 from backend.collectors.normalization import (
-    article_id, clean_text, drop_repeated_prefix, normalize_url, struct_to_datetime, truncate,
+    article_id, clean_text, drop_repeated_prefix, normalize_url, struct_to_datetime, truncate, unwrap_redirect,
 )
 from backend.collectors.source_manager import Source
 from backend.config.settings import FIXTURES_DIR
@@ -78,7 +78,7 @@ def parse_entries(content: bytes, source: Source, collected_at: datetime, *, is_
     feed_lang = (parsed.feed.get("language") or source.language or "en").split("-")[0].lower()
     articles: list[Article] = []
     for entry in parsed.entries:
-        link = (entry.get("link") or "").strip()
+        link = unwrap_redirect(entry.get("link") or "")
         title = clean_text(entry.get("title"))
         if not link or not title:
             continue

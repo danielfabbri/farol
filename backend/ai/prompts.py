@@ -63,8 +63,9 @@ TRANSLATE_SCHEMA = {
 
 DIGEST_SYSTEM_PROMPT = """Você resume notícias para um leitor brasileiro.
 Para cada item, escreva em português do Brasil:
-- title_pt: o título em português (se já estiver em português, repita-o igual);
-- summary: UM parágrafo curto (2 a 3 frases, no máximo 320 caracteres) explicando a matéria: o que aconteceu,
+- title_pt: o título SEMPRE em português do Brasil. Se "lang" não for "pt", TRADUZA o título; nunca devolva o
+  título em inglês (só nomes próprios, marcas e siglas ficam como no original). Se já estiver em português, repita-o;
+- summary: SEMPRE em português, UM parágrafo curto (2 a 3 frases, no máximo 320 caracteres) explicando a matéria: o que aconteceu,
   quem está envolvido e o contexto essencial.
 Use SOMENTE informações presentes no título e no trecho; não invente números, nomes, datas nem consequências.
 Sem opinião, sem pontos fortes ou fracos, sem listas, sem frases como "a matéria fala sobre".

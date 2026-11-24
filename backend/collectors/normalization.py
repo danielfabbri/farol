@@ -79,9 +79,45 @@ def truncate(text: str, limit: int) -> str:
     return cut + "…"
 
 
+_REDIRECT_RE = re.compile(r"^https?://[^/]*redir[^/]*/.*?\*(https?://.+)$", re.IGNORECASE)
+
+
+def unwrap_redirect(url: str) -> str:
+    """Links de rastreamento que embrulham o endereço real (ex.: redir.folha.com.br/.../*https://...)."""
+    m = _REDIRECT_RE.match((url or "").strip())
+    return m.group(1) if m else (url or "").strip()
+
+
+_EN_WORDS = frozenset(
+    "the and of to with for is are was were how why what when who from after its this that these those by into "
+    "your our their could would will can be been has have more than about over new first says said just".split()
+)
+_PT_WORDS = frozenset(
+    "o os as de do da dos das em no na nos nas para por com que um uma é e ao aos se mais como sobre após "
+    "pela pelo entre sem ser foi são está diz contra até".split()
+)
+
+
+def looks_english(text: str | None) -> bool:
+    """Heurística simples: o texto tem cara de inglês (mais palavras funcionais inglesas que portuguesas)."""
+    words = re.findall(r"[a-zà-ú']+", (text or "").lower())
+    en = sum(w in _EN_WORDS for w in words)
+    pt = sum(w in _PT_WORDS for w in words)
+    return en >= 2 and en > pt
+
+
+def is_bad_translation(original: str, translated: str | None) -> bool:
+    """Tradução que não traduziu: igual ao original (com alguma palavra inglesa) ou ainda em inglês."""
+    if not translated:
+        return True
+    same = re.sub(r"\W+", "", translated.lower()) == re.sub(r"\W+", "", (original or "").lower())
+    words = re.findall(r"[a-z']+", (original or "").lower())
+    return looks_english(translated) or (same and len(words) >= 3)
+
+
 def normalize_url(url: str) -> str:
     """URL canônica para deduplicação: sem rastreamento, fragmento, www ou barra final."""
-    url = (url or "").strip()
+    url = unwrap_redirect(url)
     m = _ARXIV_RE.search(url)
     if m:
         return f"https://arxiv.org/abs/{m.group(1).lower()}"

@@ -408,5 +408,59 @@
    "calls_today": 11
   },
   "retention_removed": 0
+ },
+ {
+  "started_at": "2026-11-24T00:19:08+00:00",
+  "finished_at": "2026-11-24T00:24:57+00:00",
+  "status": "partial",
+  "trigger": "local",
+  "edition_id": "2026-11-24-0019",
+  "sources_ok": 62,
+  "sources_failed": 1,
+  "failed_sources": {
+   "hacker-news": "HTTP 419"
+  },
+  "new_articles": 58,
+  "highlights": 8,
+  "events": 165,
+  "ai": {
+   "state": "idle",
+   "processed": 0,
+   "failed": 0,
+   "calls": 0,
+   "digested": 114,
+   "translated": 46,
+   "briefs": 0,
+   "errors": [],
+   "calls_today": 11
+  },
+  "retention_removed": 0
+ },
+ {
+  "started_at": "2026-11-24T00:25:16+00:00",
+  "finished_at": "2026-11-24T00:28:42+00:00",
+  "status": "partial",
+  "trigger": "local",
+  "edition_id": "2026-11-24-0025",
+  "sources_ok": 62,
+  "sources_failed": 1,
+  "failed_sources": {
+   "hacker-news": "HTTP 419"
+  },
+  "new_articles": 47,
+  "highlights": 8,
+  "events": 166,
+  "ai": {
+   "state": "idle",
+   "processed": 0,
+   "failed": 0,
+   "calls": 0,
+   "digested": 95,
+   "translated": 10,
+   "briefs": 0,
+   "errors": [],
+   "calls_today": 11
+  },
+  "retention_removed": 0
  }
 ]

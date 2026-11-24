@@ -11,7 +11,7 @@ import logging
 import requests
 
 from backend.collectors.http_client import USER_AGENT
-from backend.collectors.normalization import clean_text, looks_corrupted
+from backend.collectors.normalization import clean_text, looks_corrupted, is_bad_translation
 from backend.models.article import Article
 
 log = logging.getLogger(__name__)
@@ -49,7 +49,7 @@ def translate_titles(
             log.warning("Cota diária da tradução de reserva atingida")
             used_today = daily_char_limit
             break
-        if data.get("responseStatus") != 200 or not text or looks_corrupted(text) or text.lower() == title.lower():
+        if data.get("responseStatus") != 200 or not text or looks_corrupted(text) or is_bad_translation(title, text):
             continue
         art.title_pt = text[:240]
         done += 1

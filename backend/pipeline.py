@@ -21,7 +21,7 @@ from backend.ai.section_briefer import generate_brief, signature, top_events
 from backend.ai.gemini_client import FatalGeminiError, GeminiError, QuotaExceeded, ServiceUnavailable
 from backend.models.edition import Section, SectionBrief
 from backend.collectors.image_enricher import enrich_images
-from backend.collectors.normalization import keyword_pattern, utcnow
+from backend.collectors.normalization import is_bad_translation, looks_english, normalize_url, keyword_pattern, utcnow
 from backend.collectors.rss_collector import collect_source
 from backend.collectors.source_manager import load_sources
 from backend.config.settings import Settings
@@ -109,8 +109,15 @@ def run(
     working: dict[str, Article] = repo.load_recent_articles(now.date(), settings.working_window_days)
     for a in working.values():
         claim(a)  # vale também para notícias coletadas antes de a seção existir
+        # Traduções que ficaram em inglês são descartadas e refeitas (a notícia aguarda fora da edição).
+        if a.language != "pt" and a.title_pt and is_bad_translation(a.original_title, a.title_pt):
+            a.title_pt = None
+        if a.summary and not a.ai_processed and looks_english(a.summary):
+            a.summary, a.digest_attempts = None, 0
 
     # 1) Coleta
+    # Mesma notícia por outro caderno/feed (ou link embrulhado de outra forma): compara pelo endereço real.
+    working_urls = {normalize_url(a.source_url) for a in working.values()}
     new_articles: list[Article] = []
     source_report: dict[str, dict] = {}
     for src in sources:
@@ -125,8 +132,9 @@ def run(
         fresh = [
             a for a in res.articles
             if a.category in categories and not (cat_ex_re.get(a.category) and cat_ex_re[a.category].search(a.original_title))
-            and a.id not in working and not dedup.is_duplicate(a)
+            and a.id not in working and normalize_url(a.source_url) not in working_urls and not dedup.is_duplicate(a)
         ]
+        working_urls.update(normalize_url(a.source_url) for a in fresh[: src.max_items_per_run])
         taken = fresh[: src.max_items_per_run]
         for a in taken:
             dedup.register(a)

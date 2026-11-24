@@ -38,15 +38,15 @@ class MockGeminiClient:
         if "<<DIGEST>>" in prompt:
             payload = json.loads(prompt[prompt.index("<<DIGEST>>") + 10:prompt.index("<</DIGEST>>")])
             return {"items": [
-                {"ref": it["ref"], "title_pt": f"{SAMPLE_MARK} {it['title']}",
-                 "summary": f"{SAMPLE_MARK} Parágrafo simulado explicando a notícia: {it['title']}."}
+                {"ref": it["ref"], "title_pt": f"{SAMPLE_MARK} Título traduzido de exemplo {it['ref']}",
+                 "summary": f"{SAMPLE_MARK} Parágrafo simulado que explica a notícia de exemplo {it['ref']}, sem dados reais."}
                 for it in payload
             ]}
         if "<<TRANSLATE>>" in prompt:
             payload = json.loads(prompt[prompt.index("<<TRANSLATE>>") + 13:prompt.index("<</TRANSLATE>>")])
             return {"items": [
-                {"ref": it["ref"], "title_pt": f"{SAMPLE_MARK} {it['title']}",
-                 "excerpt_pt": f"{SAMPLE_MARK} {it['excerpt']}" if it.get("excerpt") else ""}
+                {"ref": it["ref"], "title_pt": f"{SAMPLE_MARK} Título traduzido de exemplo {it['ref']}",
+                 "excerpt_pt": f"{SAMPLE_MARK} Trecho traduzido de exemplo {it['ref']}" if it.get("excerpt") else ""}
                 for it in payload
             ]}
         payload = json.loads(prompt[prompt.index("<<ARTICLES>>") + len("<<ARTICLES>>"):prompt.index("<</ARTICLES>>")])
@@ -61,7 +61,7 @@ class MockGeminiClient:
                 "is_on_topic": True,
                 "category": "technology_ai",
                 "subcategory": sub,
-                "title_pt": f"{SAMPLE_MARK} {title}",
+                "title_pt": f"{SAMPLE_MARK} Título analisado de exemplo {art['ref']}",
                 "summary": f"{SAMPLE_MARK} Resumo simulado gerado sem IA real para: {title}.",
                 "key_points": [f"{SAMPLE_MARK} Ponto simulado 1", f"{SAMPLE_MARK} Ponto simulado 2"],
                 "why_it_matters": f"{SAMPLE_MARK} Texto simulado para testes da interface.",
