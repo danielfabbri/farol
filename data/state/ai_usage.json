@@ -4,6 +4,6 @@
  "quota_exhausted": false,
  "digest_calls": 24,
  "exhausted_models": [],
- "translation_calls": 2,
+ "translation_calls": 4,
  "fallback_chars": 2492
 }
