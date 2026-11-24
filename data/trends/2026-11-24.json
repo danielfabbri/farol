@@ -1,0 +1,33 @@
+{
+ "generated_at": "2026-11-24T00:02:57Z",
+ "is_sample": false,
+ "window_days": 7,
+ "disclaimer": "Sinais baseados em contagem de menções entre fontes. Não são previsões.",
+ "trends": [
+  {
+   "key": "entity:senado",
+   "label": "Senado",
+   "kind": "entity",
+   "first_seen": "2026-11-21T17:12:00Z",
+   "last_seen": "2026-11-23T22:02:00Z",
+   "article_count": 3,
+   "source_count": 3,
+   "event_count": 3,
+   "daily_counts": {
+    "2026-11-21": 1,
+    "2026-11-23": 2
+   },
+   "related_entities": [
+    "Câmara dos Deputados",
+    "Luiz Inácio Lula da Silva",
+    "Câmara"
+   ],
+   "event_ids": [
+    "evt-d24766f7e0c35fbb",
+    "evt-293dd53625559149",
+    "evt-630c7c3fa4b33f08"
+   ],
+   "status": "rising"
+  }
+ ]
+}

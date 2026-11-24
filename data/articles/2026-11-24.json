@@ -1,0 +1,50 @@
+{
+ "date": "2026-11-24",
+ "count": 1,
+ "articles": [
+  {
+   "id": "9244cb17bec5b643",
+   "event_id": "evt-9244cb17bec5b643",
+   "original_title": "Google alternative Kagi launches an email service",
+   "title_pt": "Google alternative Kagi launches an email service",
+   "source_id": "the-verge",
+   "source_name": "The Verge",
+   "source_type": "press",
+   "source_url": "https://www.theverge.com/tech/1041000/kagi-mail-email-google-gmail-alternative",
+   "discussion_url": null,
+   "image_url": "https://platform.theverge.com/wp-content/uploads/sites/2/2026/11/mail-inbox-overview.RlzZ8Gtt.png?quality=90&#038;strip=all&#038;crop=0,0,100,100",
+   "image_checked": false,
+   "published_at": "2026-11-24T00:02:52Z",
+   "collected_at": "2026-11-24T00:02:57Z",
+   "language": "en",
+   "excerpt": "Kagi, which already offers a paid alternative to Google Search and its own Orion browser as a rival to Chrome, is taking on another Google service: Gmail. Today, Kagi announced a public beta of Kagi Mail, a new email service that has \"no surveillance, no ads, open standards, and no lock-in.\" With Kagi Mail, you […]",
+   "excerpt_pt": null,
+   "category": "technology_ai",
+   "subcategory": null,
+   "summary": "A Kagi lancou um servico de e-mail em beta publico chamado Kagi Mail. A nova ferramenta promete zero anuncios e nenhuma vigilancia, competindo diretamente com o Gmail.",
+   "why_it_matters": null,
+   "key_points": [],
+   "potential_impacts": [],
+   "uncertainties": [],
+   "entities": [],
+   "technologies": [],
+   "tags": [
+    "google",
+    "products"
+   ],
+   "relevance_score": null,
+   "novelty_score": null,
+   "business_potential": null,
+   "career_potential": null,
+   "study_potential": null,
+   "off_topic": false,
+   "ai_processed": false,
+   "ai_model": null,
+   "ai_processed_at": null,
+   "ai_attempts": 0,
+   "digest_attempts": 1,
+   "source_priority": 3,
+   "is_sample": false
+  }
+ ]
+}
