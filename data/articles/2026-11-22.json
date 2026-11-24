@@ -1,6 +1,6 @@
 {
  "date": "2026-11-22",
- "count": 142,
+ "count": 143,
  "articles": [
   {
    "id": "5ffa2f889a7315ce",
@@ -2268,6 +2268,49 @@
    "ai_attempts": 0,
    "digest_attempts": 1,
    "source_priority": 4,
+   "is_sample": false
+  },
+  {
+   "id": "c6cf24f7a08676e6",
+   "event_id": "evt-c6cf24f7a08676e6",
+   "original_title": "Quando a One UI 9.5 será lançada?",
+   "title_pt": null,
+   "source_id": "canaltech",
+   "source_name": "Canaltech",
+   "source_type": "press",
+   "source_url": "https://canaltech.com.br/apps/quando-one-ui-95-sera-lancada/",
+   "discussion_url": null,
+   "image_url": "https://tl.ctcdn.com.br/Gkeg81UdGKXciLNrSjD3m6Uda8E=/0x0/filters:format(webp):quality(85)/eeafbfb6-47a4-4c49-a579-3eff299a25bc.jpg",
+   "image_checked": false,
+   "published_at": "2026-11-22T18:00:00Z",
+   "collected_at": "2026-11-24T08:51:02Z",
+   "language": "pt",
+   "excerpt": "A One UI 9.5 é a próxima atualização da interface da Samsung para celulares e tablets Galaxy. Baseada no Android 17, a nova versão deve trazer mudanças visuais, melhorias em aplicativos nativos e novos recursos de inteligência artificial (IA). A extensão “.5” começou a ser usada na geração anterior , com a One UI 8.5, após mudanças no calendário de lançamentos do Google. Como as novas versões do Android começaram a chegar no primeiro semestre, a Samsung adotou um cronograma com uma atualização principal e outra intermediária, baseada na mesma geração do sistema operacional. Vale lembrar que a…",
+   "excerpt_pt": null,
+   "category": "technology_ai",
+   "subcategory": null,
+   "summary": null,
+   "why_it_matters": null,
+   "key_points": [],
+   "potential_impacts": [],
+   "uncertainties": [],
+   "entities": [],
+   "technologies": [],
+   "tags": [
+    "google"
+   ],
+   "relevance_score": null,
+   "novelty_score": null,
+   "business_potential": null,
+   "career_potential": null,
+   "study_potential": null,
+   "off_topic": false,
+   "ai_processed": false,
+   "ai_model": null,
+   "ai_processed_at": null,
+   "ai_attempts": 0,
+   "digest_attempts": 0,
+   "source_priority": 2,
    "is_sample": false
   },
   {
