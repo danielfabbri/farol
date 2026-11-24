@@ -545,5 +545,32 @@
    "calls_today": 0
   },
   "retention_removed": 0
+ },
+ {
+  "started_at": "2026-11-24T11:26:39+00:00",
+  "finished_at": "2026-11-24T11:34:42+00:00",
+  "status": "partial",
+  "trigger": "workflow_dispatch",
+  "edition_id": "2026-11-24-1126",
+  "sources_ok": 62,
+  "sources_failed": 1,
+  "failed_sources": {
+   "hacker-news": "HTTP 419"
+  },
+  "new_articles": 68,
+  "highlights": 8,
+  "events": 156,
+  "ai": {
+   "state": "idle",
+   "processed": 0,
+   "failed": 0,
+   "calls": 0,
+   "digested": 80,
+   "translated": 1,
+   "briefs": 0,
+   "errors": [],
+   "calls_today": 0
+  },
+  "retention_removed": 0
  }
 ]
