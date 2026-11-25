@@ -1,9 +1,9 @@
 {
-  "version_code": 11,
-  "version_name": "0.10.0",
+  "version_code": 12,
+  "version_name": "0.10.1",
   "apk": "releases/farol.apk",
-  "sha256": "95c36aafb84abd6446e25cc9a33b959ba6abdb4d452b4c25529b4d138c4079d1",
+  "sha256": "098ff403deb2c61a8d69de668adb035bcbb91e4fec69e7b1b60e8cec7aada466",
   "size": 1811024,
-  "notes": "Filtro Todas / Não lidas / Lidas no topo de Hoje e Explorar, ao lado do título. Tudo em português: notícia estrangeira só aparece depois de traduzida. Olhar Digital com mais notícias e separado por seção.",
-  "published_at": "2026-11-23T23:54:24Z"
+  "notes": "Capa nunca fica vazia: com o filtro Não lidas, a capa é completada com os próximos acontecimentos mais importantes que você ainda não leu.",
+  "published_at": "2026-11-25T13:10:20Z"
 }

@@ -180,7 +180,17 @@ fun TodayScreen(
             // ---------------- Capa ----------------
             val allHighlights = feed.highlights.mapNotNull { state.eventsById[it] }.take(state.highlightLimit)
             val readCount = allHighlights.count(isRead)
-            val highlights = allHighlights.filter { state.readFilter.accepts(isRead(it)) }.sortedByDescending { it.shownMillis(arts) }
+            // Os destaques da edição mudam pouco de uma edição para outra. Filtrar só eles esvaziava a capa
+            // em "Não lidas"; então a capa é completada com os destaques das seções e, depois, com os
+            // demais acontecimentos por importância, até preencher o limite.
+            val highlightIds = (feed.highlights + sections.flatMap { it.highlights }).distinct()
+            val candidates = (highlightIds.mapNotNull { state.eventsById[it] } +
+                feed.events.filter { it.id !in highlightIds }.sortedByDescending { it.score })
+                .filter { leadArticle(it, arts) != null }
+            val highlights = candidates
+                .filter { state.readFilter.accepts(isRead(it)) }
+                .take(state.highlightLimit)
+                .sortedByDescending { it.shownMillis(arts) }
             item { SectionHeader("Destaques", "$readCount de ${allHighlights.size} lidos", HPad) }
             if (highlights.isEmpty() && allHighlights.isNotEmpty()) {
                 item {
