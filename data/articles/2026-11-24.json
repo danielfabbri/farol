@@ -1,6 +1,6 @@
 {
  "date": "2026-11-24",
- "count": 1197,
+ "count": 1198,
  "articles": [
   {
    "id": "f78791dfb7f2666d",
@@ -27696,6 +27696,50 @@
    "ai_attempts": 0,
    "digest_attempts": 1,
    "source_priority": 4,
+   "is_sample": false
+  },
+  {
+   "id": "f14a6f6dfd19f4ca",
+   "event_id": "evt-f14a6f6dfd19f4ca",
+   "original_title": "From spectrum to structure: Identifying molecules with Mass Spec Skills for Google Antigravity",
+   "title_pt": "Do espectro à estrutura: Identificando moléculas com Mass Spec Skills para o Google Antigravity",
+   "source_id": "google-deepmind",
+   "source_name": "Google DeepMind",
+   "source_type": "primary",
+   "source_url": "https://deepmind.google/blog/interpreting-mass-spectra-with-google-antigravity/",
+   "discussion_url": null,
+   "image_url": "https://lh3.googleusercontent.com/CtAfS_JWygw2R9cuDNty3xd0S4WFRzVew1vtNDiPaN1ZOGa88hCwTiCLxtgCtpSFER2t3jFO-moRkPnQYPjXziNgMvKHVc0wkOkzBTdGRoOYL3Ld=w528-h297-n-nu-rw-lo",
+   "image_checked": false,
+   "published_at": "2026-11-24T13:07:53Z",
+   "collected_at": "2026-11-25T18:11:54Z",
+   "language": "en",
+   "excerpt": "Mass Spec Skills empowers scientists using Google Antigravity to interpret tandem mass spectra.",
+   "excerpt_pt": "O Mass Spec Skills capacita cientistas que utilizam o Google Antigravity a interpretar espectros de massa em tandem.",
+   "category": "technology_ai",
+   "subcategory": null,
+   "summary": null,
+   "why_it_matters": null,
+   "key_points": [],
+   "potential_impacts": [],
+   "uncertainties": [],
+   "entities": [],
+   "technologies": [],
+   "tags": [
+    "google",
+    "careers"
+   ],
+   "relevance_score": null,
+   "novelty_score": null,
+   "business_potential": null,
+   "career_potential": null,
+   "study_potential": null,
+   "off_topic": false,
+   "ai_processed": false,
+   "ai_model": null,
+   "ai_processed_at": null,
+   "ai_attempts": 0,
+   "digest_attempts": 0,
+   "source_priority": 5,
    "is_sample": false
   },
   {
