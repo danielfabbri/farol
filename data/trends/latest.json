@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-24T23:54:31Z",
+ "generated_at": "2026-11-25T01:04:27Z",
  "is_sample": false,
  "window_days": 7,
  "disclaimer": "Sinais baseados em contagem de menções entre fontes. Não são previsões.",
@@ -27,7 +27,7 @@
     "evt-293dd53625559149",
     "evt-630c7c3fa4b33f08"
    ],
-   "status": "rising"
+   "status": "steady"
   }
  ]
 }

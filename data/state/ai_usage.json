@@ -2,8 +2,8 @@
  "day": "2026-11-24",
  "calls": 0,
  "quota_exhausted": false,
- "digest_calls": 70,
+ "digest_calls": 79,
  "exhausted_models": [],
- "translation_calls": 8,
+ "translation_calls": 9,
  "fallback_chars": 3732
 }
