@@ -1,9 +1,7 @@
 {
- "day": "2026-11-24",
+ "day": "2026-11-25",
  "calls": 0,
  "quota_exhausted": false,
- "digest_calls": 94,
- "exhausted_models": [],
- "translation_calls": 11,
- "fallback_chars": 3732
+ "digest_calls": 9,
+ "exhausted_models": []
 }
