@@ -519,7 +519,12 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 3,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "nvidia",
+    "jensen huang",
+    "governança corporativa"
+   ]
   },
   {
    "id": "7e742ddee7070f3b",
@@ -736,7 +741,12 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "redes sociais",
+    "relacionamentos",
+    "bloqueio"
+   ]
   },
   {
    "id": "e4e6aaa217782ff1",
@@ -1942,7 +1952,12 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "mpox",
+    "vacinação",
+    "são paulo"
+   ]
   },
   {
    "id": "8cd99ed8e3c91be5",
@@ -2503,7 +2518,12 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "jensen huang",
+    "nvidia",
+    "terapia"
+   ]
   },
   {
    "id": "74bc59040af0fb35",
@@ -3626,7 +3646,13 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "idosos",
+    "convivência",
+    "cognição",
+    "envelhecimento"
+   ]
   },
   {
    "id": "540725c22d4e2d86",
@@ -4101,7 +4127,13 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "jensen huang",
+    "nvidia",
+    "terapia",
+    "escândalo de espionagem"
+   ]
   },
   {
    "id": "008e8ca424bf9e57",
@@ -5313,7 +5345,12 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "tráfico de bebês",
+    "tráfico internacional",
+    "prisão"
+   ]
   },
   {
    "id": "71d4b76828412423",
@@ -6958,7 +6995,13 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "jensen huang",
+    "nvidia",
+    "donald trump",
+    "plano de sucessão"
+   ]
   },
   {
    "id": "83bd84d691db4422",
@@ -8728,7 +8771,12 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "logitech",
+    "teclados",
+    "periféricos gamer"
+   ]
   },
   {
    "id": "5561a33fbc20b91a",
@@ -8945,7 +8993,13 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 3,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "colômbia",
+    "reféns",
+    "assalto",
+    "supermercado"
+   ]
   },
   {
    "id": "1caf294d8b60a49d",
@@ -9721,7 +9775,12 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 3,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "cuba",
+    "expectativa de vida",
+    "crise em cuba"
+   ]
   },
   {
    "id": "13ba1e268af4b7bd",
@@ -10626,7 +10685,12 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "jensen huang",
+    "nvidia",
+    "donald trump"
+   ]
   },
   {
    "id": "069304e878318f39",
@@ -13048,7 +13112,12 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "cuba",
+    "expectativa de vida",
+    "oms"
+   ]
   },
   {
    "id": "1cf89af4e94f9d3e",
@@ -13222,7 +13291,12 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 2,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "unitree",
+    "cães-robô",
+    "robótica"
+   ]
   },
   {
    "id": "486a4d896fa85b3a",
@@ -13744,7 +13818,12 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 3,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "jensen huang",
+    "nvidia",
+    "ceos"
+   ]
   },
   {
    "id": "0201f2236f8f8ae2",
@@ -14652,7 +14731,12 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "robotics summit",
+    "robótica",
+    "eventos"
+   ]
   },
   {
    "id": "0f4b31a4e37f64bc",
@@ -15561,7 +15645,12 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 3,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "jensen huang",
+    "nvidia",
+    "funcionários"
+   ]
   },
   {
    "id": "cb966c524dd782ad",
@@ -16468,7 +16557,13 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "tempestade",
+    "rio grande do sul",
+    "tupanciretã",
+    "aulas suspensas"
+   ]
   },
   {
    "id": "c18c82b4a5a6dae8",
@@ -17203,7 +17298,13 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "colômbia",
+    "cartagena",
+    "reféns",
+    "carro-bomba"
+   ]
   },
   {
    "id": "62b90988b29c0e38",
@@ -17246,7 +17347,13 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "colômbia",
+    "cartagena",
+    "reféns",
+    "assalto"
+   ]
   },
   {
    "id": "bf7e5c1261b7eb35",
@@ -17420,7 +17527,13 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "nvidia",
+    "ações da nvidia",
+    "jensen huang",
+    "mercado financeiro"
+   ]
   },
   {
    "id": "62344f1efcc8f931",
@@ -17897,7 +18010,12 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "nvidia",
+    "jensen huang",
+    "ações da nvidia"
+   ]
   },
   {
    "id": "6a8be647f5c4ac04",
@@ -18026,7 +18144,14 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "jensen huang",
+    "nvidia",
+    "xi jinping",
+    "donald trump",
+    "china"
+   ]
   },
   {
    "id": "d329a3ec1dfa6269",
@@ -22234,7 +22359,13 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 3,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "donald trump",
+    "nvidia",
+    "jensen huang",
+    "ações da nvidia"
+   ]
   },
   {
    "id": "b18adeb6fd2e5a1f",
@@ -24139,7 +24270,13 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 3,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "donald trump",
+    "vale do silício",
+    "nvidia",
+    "jensen huang"
+   ]
   },
   {
    "id": "37d485f25525ff1c",
@@ -24703,7 +24840,13 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "softbank",
+    "marc raibert",
+    "robótica",
+    "inteligência artificial"
+   ]
   },
   {
    "id": "741dde6282ca1539",
@@ -24877,7 +25020,12 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 3,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "jensen huang",
+    "nvidia",
+    "donald trump"
+   ]
   },
   {
    "id": "d4cd1d1cf81e6df1",
@@ -27949,7 +28097,11 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 3,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "jensen huang",
+    "nvidia"
+   ]
   },
   {
    "id": "2f27b8c0dd66c41e",
@@ -28474,7 +28626,13 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 3,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "donald trump",
+    "nvidia",
+    "jensen huang",
+    "ações da nvidia"
+   ]
   },
   {
    "id": "46092fbbf86d13c4",
@@ -29823,7 +29981,14 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 3,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "uber",
+    "nuro",
+    "lucid",
+    "robotáxis",
+    "veículos autônomos"
+   ]
   },
   {
    "id": "ca7d7a5ebdb69d81",
@@ -33065,7 +33230,13 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "donald trump",
+    "nvidia",
+    "jensen huang",
+    "ações da nvidia"
+   ]
   },
   {
    "id": "d8af282be6c3297f",
@@ -34101,7 +34272,13 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "jensen huang",
+    "nvidia",
+    "bolsas",
+    "ações de tecnologia"
+   ]
   },
   {
    "id": "511ff59c7ee1c031",
@@ -36387,7 +36564,12 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "donald trump",
+    "jensen huang",
+    "nvidia"
+   ]
   },
   {
    "id": "a31fcdc9174f7b05",
@@ -38247,7 +38429,13 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 3,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "congresso dos eua",
+    "nvidia",
+    "jensen huang",
+    "donald trump"
+   ]
   },
   {
    "id": "53ffe0066264ea86",
@@ -38726,7 +38914,13 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "partido republicano",
+    "jensen huang",
+    "nvidia",
+    "donald trump"
+   ]
   },
   {
    "id": "76952f7cb035875e",
@@ -38902,7 +39096,12 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "donald trump",
+    "jensen huang",
+    "nvidia"
+   ]
   },
   {
    "id": "b5ae42ceaf25e36e",
@@ -39944,7 +40143,13 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "congresso dos eua",
+    "nvidia",
+    "jensen huang",
+    "donald trump"
+   ]
   },
   {
    "id": "37c0ca117f188c26",
@@ -50267,7 +50472,13 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "donald trump",
+    "nvidia",
+    "ações da nvidia",
+    "jensen huang"
+   ]
   },
   {
    "id": "6e242bd1dfa27ef6",

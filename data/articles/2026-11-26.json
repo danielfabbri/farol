@@ -43,7 +43,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 3,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "flávio bolsonaro",
+    "tarcísio de freitas",
+    "eleições 2030",
+    "direita"
+   ]
   },
   {
    "id": "3ff546d1cca7c69a",
@@ -86,7 +92,14 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "eleição espanhola",
+    "espanha",
+    "lula",
+    "esquerda",
+    "redes sociais"
+   ]
   },
   {
    "id": "0736085939468a4d",
@@ -129,7 +142,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 3,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "grupo fictor",
+    "banco master",
+    "operação policial",
+    "são paulo"
+   ]
   },
   {
    "id": "4376897460a89e78",
@@ -172,7 +191,12 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 5,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "aviação",
+    "incidente em voo",
+    "eua"
+   ]
   },
   {
    "id": "7a2757b1965280e6",
@@ -215,7 +239,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 5,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "cartão de crédito",
+    "inadimplência",
+    "crédito rotativo",
+    "banco central"
+   ]
   },
   {
    "id": "7d203cb3f4fa47bc",
@@ -258,7 +288,12 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 3,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "economistas estrangeiros",
+    "fórum econômico",
+    "brasília"
+   ]
   },
   {
    "id": "4b0340d6c1ec786f",
@@ -301,7 +336,12 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 3,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "grupo fictor",
+    "banco master",
+    "operação policial"
+   ]
   },
   {
    "id": "c30792c848411c3c",
@@ -344,7 +384,12 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "grupo fictor",
+    "fraude financeira",
+    "ministério público de são paulo"
+   ]
   },
   {
    "id": "14189e3c19fe3aef",
@@ -387,7 +432,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "união europeia",
+    "orçamento europeu",
+    "guerra na ucrânia",
+    "cúpula da ue"
+   ]
   },
   {
    "id": "cb86240e0f60b931",
@@ -430,7 +481,14 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 5,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "china",
+    "tarifaço",
+    "guerra comercial",
+    "trégua comercial",
+    "donald trump"
+   ]
   },
   {
    "id": "847b772061f250b4",
@@ -473,7 +531,14 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "rússia",
+    "ucrânia",
+    "guerra na ucrânia",
+    "navio de guerra",
+    "áfrica"
+   ]
   },
   {
    "id": "7eb0f5b2bd2a0752",
@@ -516,7 +581,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 3,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "ibovespa",
+    "mercado financeiro",
+    "inflação",
+    "ação de graças"
+   ]
   },
   {
    "id": "8fabc29b0c0517ab",
@@ -561,7 +632,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "donald trump",
+    "nvidia",
+    "lei de guerra",
+    "jensen huang"
+   ]
   },
   {
    "id": "8b76b89f639b4d5d",
@@ -604,7 +681,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 3,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "fifa",
+    "gianni infantino",
+    "eleição da fifa",
+    "futebol"
+   ]
   },
   {
    "id": "0f85164bb1c6b6a1",
@@ -647,7 +730,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 3,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "star trek",
+    "paramount+",
+    "streaming",
+    "ação de graças"
+   ]
   },
   {
    "id": "6cb55bfba9f7c825",
@@ -690,7 +779,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "alemanha",
+    "tráfico de migrantes",
+    "imigração",
+    "botes"
+   ]
   },
   {
    "id": "19665682ac6afd30",
@@ -733,7 +828,12 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 5,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "anvisa",
+    "emagrecedores",
+    "produtos irregulares"
+   ]
   },
   {
    "id": "b1fc71cead187461",
@@ -776,7 +876,12 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 3,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "colômbia",
+    "brics",
+    "banco do brics"
+   ]
   },
   {
    "id": "19b3c4a207d1e485",
@@ -819,7 +924,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 3,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "dólar",
+    "minidólar",
+    "day trade",
+    "mercado financeiro"
+   ]
   },
   {
    "id": "2fd7f034194a9b85",
@@ -862,7 +973,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 3,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "mini-índice",
+    "ibovespa",
+    "day trade",
+    "mercado financeiro"
+   ]
   },
   {
    "id": "91569fcbf0558a1c",
@@ -905,7 +1022,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 5,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "grupo fictor",
+    "banco master",
+    "bloqueio de bens",
+    "operação policial"
+   ]
   },
   {
    "id": "8619a8b83bf7eadd",
@@ -948,7 +1071,14 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 5,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "navio",
+    "ibiza",
+    "vazamento de óleo",
+    "diesel",
+    "acidente marítimo"
+   ]
   },
   {
    "id": "7197fabe153b8140",
@@ -991,7 +1121,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 2,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "lenovo",
+    "cabos",
+    "acessórios",
+    "gadgets"
+   ]
   },
   {
    "id": "2abe69f73e7699cd",
@@ -1034,7 +1170,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 3,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "day trade",
+    "ibovespa",
+    "dólar",
+    "mercado financeiro"
+   ]
   },
   {
    "id": "55b27b45aa262217",
@@ -1077,7 +1219,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 5,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "alckmin",
+    "ministério da segurança pública",
+    "lula",
+    "novo governo"
+   ]
   },
   {
    "id": "03afb53a89fbfdba",
@@ -1120,7 +1268,14 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 5,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "fintechs",
+    "lavagem de dinheiro",
+    "apostas ilegais",
+    "golpes",
+    "operação policial"
+   ]
   },
   {
    "id": "d70de548427b7047",
@@ -1165,7 +1320,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 5,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "grupo fictor",
+    "ministério público de são paulo",
+    "fraude financeira",
+    "operação policial"
+   ]
   },
   {
    "id": "a850f74a2eca2043",
@@ -1208,7 +1369,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 2,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "toyota",
+    "indústria automotiva",
+    "são paulo",
+    "fábricas"
+   ]
   },
   {
    "id": "42f7f8507b9324ae",
@@ -1251,7 +1418,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 5,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "claro",
+    "geodata",
+    "cidades inteligentes",
+    "dados"
+   ]
   },
   {
    "id": "ca4b14b0003c7715",
@@ -1294,7 +1467,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "black friday",
+    "compras internacionais",
+    "dólar",
+    "meios de pagamento"
+   ]
   },
   {
    "id": "467364f0e16a8819",
@@ -1337,7 +1516,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "orestes quércia",
+    "livro",
+    "campinas",
+    "história política"
+   ]
   },
   {
    "id": "096a1b7a66459719",
@@ -1380,7 +1565,12 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "grupo fictor",
+    "banco master",
+    "bloqueio de bens"
+   ]
   },
   {
    "id": "e15bd3df4022bb70",
@@ -1423,7 +1613,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "usaflex",
+    "mercado de trabalho",
+    "bolsa família",
+    "indústria calçadista"
+   ]
   },
   {
    "id": "cb15149d40d3db70",
@@ -1466,7 +1662,12 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 3,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "previdência privada",
+    "imposto de renda",
+    "finanças pessoais"
+   ]
   },
   {
    "id": "8ce044d9697f0fea",
@@ -1509,7 +1710,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 3,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "copom",
+    "renda fixa",
+    "juros",
+    "investimentos"
+   ]
   },
   {
    "id": "3f730afc0c3895e9",
@@ -1552,7 +1759,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 3,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "governo lula",
+    "pauta econômica",
+    "congresso nacional",
+    "projetos de lei"
+   ]
   },
   {
    "id": "029c6ec918ff2555",
@@ -1595,7 +1808,12 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "religião",
+    "humor",
+    "evangélicos"
+   ]
   },
   {
    "id": "5fe4e3814eb20c58",
@@ -1638,7 +1856,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 3,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "luiz carlos trabuco",
+    "ministério da fazenda",
+    "lula",
+    "novo governo"
+   ]
   },
   {
    "id": "a3f361ce7bd2d9da",
@@ -1681,7 +1905,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 5,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "luiz carlos trabuco",
+    "ministério da fazenda",
+    "mercado financeiro",
+    "novo governo"
+   ]
   },
   {
    "id": "20c8cb4d8a28152d",
@@ -1724,7 +1954,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 5,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "black friday",
+    "golpes",
+    "segurança digital",
+    "consumo"
+   ]
   },
   {
    "id": "3f71f85f34beefb5",
@@ -1767,7 +2003,12 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 3,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "diabetes",
+    "fraturas ósseas",
+    "saúde óssea"
+   ]
   },
   {
    "id": "c2f5cd157c4a5f9c",
@@ -1810,7 +2051,12 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 3,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "chuvas",
+    "rio de janeiro",
+    "previsão do tempo"
+   ]
   },
   {
    "id": "d735635591862bb8",
@@ -1855,7 +2101,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 3,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "character.ai",
+    "privacidade de dados",
+    "chatbots",
+    "procuradores estaduais"
+   ]
   },
   {
    "id": "414f4f78d225d117",
@@ -1900,7 +2152,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 3,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "jd vance",
+    "jensen huang",
+    "nvidia",
+    "perdão presidencial"
+   ]
   },
   {
    "id": "7f07475206940073",
@@ -1943,7 +2201,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "rússia",
+    "força aeroespacial russa",
+    "prisão",
+    "militares"
+   ]
   },
   {
    "id": "03d2d4648812e2bd",
@@ -1986,7 +2250,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "grupo fictor",
+    "bloqueio de bens",
+    "fraude financeira",
+    "ministério público de são paulo"
+   ]
   },
   {
    "id": "881386074ef26991",
@@ -2029,7 +2299,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 5,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "azeite gallo",
+    "azeite",
+    "consumo",
+    "indústria de alimentos"
+   ]
   },
   {
    "id": "a579e4dd1e476136",
@@ -2072,7 +2348,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 3,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "josé guimarães",
+    "ministros",
+    "ajuste fiscal",
+    "governo lula"
+   ]
   },
   {
    "id": "1a83ff5163f2527f",
@@ -2115,7 +2397,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 3,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "tarifaço",
+    "donald trump",
+    "guerra comercial",
+    "aliados dos eua"
+   ]
   },
   {
    "id": "d1013d419a907d2b",
@@ -2160,7 +2448,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 3,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "universe today",
+    "política de ia",
+    "inteligência artificial",
+    "jornalismo"
+   ]
   },
   {
    "id": "753fd6b17a99a768",
@@ -2203,7 +2497,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 3,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "china",
+    "tarifaço",
+    "donald trump",
+    "guerra comercial"
+   ]
   },
   {
    "id": "7860bda458da1365",
@@ -2248,7 +2548,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 3,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "google",
+    "anúncios",
+    "transparência",
+    "regulação de plataformas"
+   ]
   },
   {
    "id": "151839e8562d3d13",
@@ -2377,7 +2683,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 3,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "flamengo",
+    "bap",
+    "finanças de clubes",
+    "futebol"
+   ]
   },
   {
    "id": "6f64e2dcf05c066e",
@@ -2506,7 +2818,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 5,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "egito",
+    "caminhão-tanque",
+    "incêndio",
+    "mortes"
+   ]
   },
   {
    "id": "649714380261ae64",
@@ -2549,7 +2867,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 3,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "ipca-15",
+    "ajuste fiscal",
+    "agenda econômica",
+    "mercado financeiro"
+   ]
   },
   {
    "id": "52dab778769d8051",
@@ -2592,7 +2916,12 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 3,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "coreia do norte",
+    "kim jong-un",
+    "armas nucleares"
+   ]
   },
   {
    "id": "e7826d69ffe9c263",
@@ -2635,7 +2964,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "spacex",
+    "elon musk",
+    "satélites",
+    "data centers no espaço"
+   ]
   },
   {
    "id": "2601d761404348f0",
@@ -2678,7 +3013,12 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 5,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "polônia",
+    "vandalismo",
+    "patrimônio público"
+   ]
   },
   {
    "id": "b0c1837dac8200ba",
@@ -2764,7 +3104,12 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 3,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "fernando haddad",
+    "usp",
+    "ciência política"
+   ]
   },
   {
    "id": "1e2fe869b3d984cf",
@@ -2850,7 +3195,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "quênia",
+    "ebola",
+    "saúde pública",
+    "eua"
+   ]
   },
   {
    "id": "7e6ea3c6f70aaabc",
@@ -2893,7 +3244,12 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 3,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "stf",
+    "pauta do stf",
+    "julgamentos"
+   ]
   },
   {
    "id": "841b218696d6ee30",
@@ -2936,7 +3292,12 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 3,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "congresso nacional",
+    "pauta do congresso",
+    "votações"
+   ]
   },
   {
    "id": "f8b69e3e9b90b101",
@@ -2979,7 +3340,11 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 3,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "lula",
+    "agenda presidencial"
+   ]
   },
   {
    "id": "1bfeb1f339127cea",
@@ -3022,7 +3387,12 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 3,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "ministros",
+    "agenda do governo",
+    "governo lula"
+   ]
   },
   {
    "id": "e923c7d53222a11b",
@@ -3065,7 +3435,12 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 3,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "bolsas da ásia",
+    "tarifaço",
+    "mercado financeiro"
+   ]
   },
   {
    "id": "7a894f7eb7d93edd",
@@ -3108,7 +3483,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 3,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "golpes digitais",
+    "lojas falsas",
+    "inteligência artificial",
+    "segurança digital"
+   ]
   },
   {
    "id": "73cfe93755e2e9c3",
@@ -3151,7 +3532,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "ação de graças",
+    "voos atrasados",
+    "aviação",
+    "eua"
+   ]
   },
   {
    "id": "f79456762a8ad2b1",
@@ -3194,7 +3581,12 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 3,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "bolsas dos eua",
+    "tarifaço",
+    "mercado financeiro"
+   ]
   },
   {
    "id": "9705b6519da47fec",
@@ -3237,7 +3629,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "aviação",
+    "avião de carga",
+    "miami",
+    "acidente aéreo"
+   ]
   },
   {
    "id": "17ba2dc78d487664",
@@ -3280,7 +3678,13 @@
    "digest_version": 1,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "frança",
+    "protestos",
+    "greve",
+    "professores"
+   ]
   },
   {
    "id": "5cb0eaed1168a868",
@@ -3323,7 +3727,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 3,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "lula",
+    "novo governo",
+    "ministérios",
+    "esplanada"
+   ]
   },
   {
    "id": "2e1f4f2e0f8aa6fe",
@@ -3366,7 +3776,12 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 3,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "indicadores econômicos",
+    "balanços",
+    "agenda econômica"
+   ]
   },
   {
    "id": "2f03d75769e8242c",
@@ -3409,7 +3824,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 3,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "frança",
+    "gasto social",
+    "déficit público",
+    "dívida pública"
+   ]
   },
   {
    "id": "1ddab425de2210d4",
@@ -3452,7 +3873,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "direitos humanos",
+    "empresas",
+    "governo lula",
+    "transparência"
+   ]
   },
   {
    "id": "5ccdc6f311a4a0f0",
@@ -3495,7 +3922,14 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "ford",
+    "carros elétricos",
+    "ranger",
+    "bronco",
+    "indústria automotiva"
+   ]
   },
   {
    "id": "b03d8d4875103d4e",
@@ -3538,7 +3972,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 3,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "pt",
+    "carta ao povo brasileiro",
+    "lula",
+    "eleições 2026"
+   ]
   },
   {
    "id": "ac2e0824d61d6c52",
@@ -3581,7 +4021,12 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "eua",
+    "monumentos",
+    "curiosidades"
+   ]
   },
   {
    "id": "d565d416949562b6",
@@ -3624,7 +4069,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "vestibular",
+    "fuvest",
+    "unicamp",
+    "educação"
+   ]
   },
   {
    "id": "f2a2d7b2669a2318",
@@ -3710,7 +4161,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "ebola",
+    "vírus",
+    "letalidade",
+    "pesquisa científica"
+   ]
   },
   {
    "id": "2198ea2dd8a36d71",
@@ -3753,7 +4210,12 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "inteligência artificial",
+    "futebol",
+    "fantasy game"
+   ]
   },
   {
    "id": "b74b4fb14f21ea24",
@@ -3796,7 +4258,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "nasa",
+    "asteroide",
+    "defesa planetária",
+    "missão dart"
+   ]
   },
   {
    "id": "8f7f9fae3db545d8",
@@ -3882,7 +4350,12 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 3,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "fernando haddad",
+    "usp",
+    "pós-graduação"
+   ]
   },
   {
    "id": "43936c7b3f991871",
@@ -3925,7 +4398,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "nasa",
+    "asteroide",
+    "defesa planetária",
+    "missão dart"
+   ]
   },
   {
    "id": "ce0cd1680555ca78",
@@ -4011,7 +4490,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "tse",
+    "jogo do bicho",
+    "deputado condenado",
+    "inelegibilidade"
+   ]
   },
   {
    "id": "d13546f1c2908c27",
@@ -4054,7 +4539,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "pcc",
+    "crime organizado",
+    "contratos públicos",
+    "propina"
+   ]
   },
   {
    "id": "ccca75dc773432d3",
@@ -4097,7 +4588,12 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "nasa",
+    "tecnologia espacial",
+    "inovação"
+   ]
   },
   {
    "id": "cedab4ded9ff7209",
@@ -4183,7 +4679,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 5,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "príncipe harry",
+    "meghan markle",
+    "família real britânica",
+    "reino unido"
+   ]
   },
   {
    "id": "12cad72ed8076749",
@@ -4226,7 +4728,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 5,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "amazônia",
+    "el niño",
+    "seca",
+    "poluição de rios"
+   ]
   },
   {
    "id": "beff714de74649e6",
@@ -4358,7 +4866,12 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 5,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "alemanha",
+    "confiança do consumidor",
+    "economia alemã"
+   ]
   },
   {
    "id": "61d84b394bb3f26d",
@@ -4401,7 +4914,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "astronomia",
+    "jensen huang",
+    "china",
+    "eua"
+   ]
   },
   {
    "id": "b6f1182748c26768",
@@ -4444,7 +4963,13 @@
    "digest_version": 1,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "tarifaço",
+    "donald trump",
+    "guerra comercial",
+    "governo lula"
+   ]
   },
   {
    "id": "f744eb84f6047aa3",
@@ -4616,7 +5141,12 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 5,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "pt",
+    "disputa interna",
+    "partidos"
+   ]
   },
   {
    "id": "5c15ee5bed13cb5b",
@@ -4702,7 +5232,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 5,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "antidumping",
+    "justiça",
+    "prescrição",
+    "comércio exterior"
+   ]
   },
   {
    "id": "83de0e8103c4f220",
@@ -4788,7 +5324,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 5,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "ajuste fiscal",
+    "despesas obrigatórias",
+    "lula",
+    "contas públicas"
+   ]
   },
   {
    "id": "efbe39b148421150",
@@ -5003,7 +5545,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 5,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "saúde mental",
+    "psiquiatria",
+    "influenciadora",
+    "mulheres"
+   ]
   },
   {
    "id": "3b1751fab6f4ab7d",
@@ -5046,7 +5594,14 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 5,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "polícia federal",
+    "caso master",
+    "stf",
+    "pgr",
+    "banco master"
+   ]
   },
   {
    "id": "bafd842b467c7611",
@@ -5175,7 +5730,12 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 5,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "pib dos eua",
+    "inflação",
+    "economia americana"
+   ]
   },
   {
    "id": "9e227469f7e8a5ae",
@@ -5390,7 +5950,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 5,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "gustavo gayer",
+    "pgr",
+    "desvio de verba",
+    "cota parlamentar"
+   ]
   },
   {
    "id": "d714ae1271532288",
@@ -5863,7 +6429,14 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "psiu",
+    "poluição sonora",
+    "são paulo",
+    "câmara municipal",
+    "shows"
+   ]
   },
   {
    "id": "5b9d05cb6057d8c3",
@@ -5906,7 +6479,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "tempestade",
+    "litoral paulista",
+    "alerta meteorológico",
+    "chuvas"
+   ]
   },
   {
    "id": "a8bb2daaba57af8c",
@@ -5992,7 +6571,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "são paulo fc",
+    "remo",
+    "brasileirão",
+    "futebol"
+   ]
   },
   {
    "id": "75ca96a8807529a6",
@@ -6209,7 +6794,14 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 5,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "republicanos",
+    "hugo motta",
+    "presidência da câmara",
+    "pl",
+    "lupion"
+   ]
   },
   {
    "id": "60810e65d98b80e1",
@@ -6252,7 +6844,12 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 5,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "cirurgia plástica",
+    "pálpebras",
+    "estética"
+   ]
   },
   {
    "id": "a82d59b7d07dc27e",
@@ -6295,7 +6892,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 5,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "pl",
+    "hugo motta",
+    "comissões da câmara",
+    "câmara dos deputados"
+   ]
   },
   {
    "id": "4ab1e44c0c90574b",
@@ -6338,7 +6941,14 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 5,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "stf",
+    "indicação ao stf",
+    "alcolumbre",
+    "mulheres no judiciário",
+    "lula"
+   ]
   },
   {
    "id": "50bc05a63715587c",
@@ -6381,7 +6991,12 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 5,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "comportamento",
+    "psicologia",
+    "redes sociais"
+   ]
   },
   {
    "id": "6fb7f4513ef05c9b",
@@ -6424,7 +7039,12 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 5,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "fernando haddad",
+    "usp",
+    "taxação de bilionários"
+   ]
   },
   {
    "id": "c908c7b571685b7b",
@@ -6467,7 +7087,12 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 5,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "felicidade",
+    "psicologia",
+    "bem-estar"
+   ]
   },
   {
    "id": "ae808ca2d57568d3",
@@ -6510,7 +7135,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "pl",
+    "hugo motta",
+    "câmara dos deputados",
+    "presidência da câmara"
+   ]
   },
   {
    "id": "c736c00612b6ff49",
@@ -6553,7 +7184,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "trens metropolitanos",
+    "trivia trens",
+    "são paulo",
+    "cptm"
+   ]
   },
   {
    "id": "8c59dd5e540f6914",
@@ -6940,7 +7577,12 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "cuidadores familiares",
+    "finanças pessoais",
+    "envelhecimento"
+   ]
   },
   {
    "id": "f1126b3ac56594ac",
@@ -6983,7 +7625,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 5,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "mpox",
+    "surto",
+    "saúde pública",
+    "epidemiologia"
+   ]
   },
   {
    "id": "98c049bac3f37e40",
@@ -7026,7 +7674,12 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 5,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "nutrição",
+    "ferro",
+    "alimentação vegetariana"
+   ]
   },
   {
    "id": "b9ef8af7439d6924",
@@ -7069,7 +7722,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 5,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "demência",
+    "declínio cognitivo",
+    "diagnóstico",
+    "envelhecimento"
+   ]
   },
   {
    "id": "dee64f5483041a79",
@@ -7112,7 +7771,12 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 5,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "higiene doméstica",
+    "contaminação",
+    "panos de prato"
+   ]
   },
   {
    "id": "4ea69a2875ec2021",
@@ -7241,7 +7905,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 5,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "tubarão",
+    "rio amazonas",
+    "amazônia",
+    "vida marinha"
+   ]
   },
   {
    "id": "b486e9bd24c4998a",
@@ -7800,7 +8470,14 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "cosan",
+    "rumo",
+    "compass",
+    "moove",
+    "venda de participação"
+   ]
   },
   {
    "id": "c67d97af6d1578d0",
@@ -7886,7 +8563,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "el niño",
+    "seca",
+    "roraima",
+    "racionamento de água"
+   ]
   },
   {
    "id": "fc763234ea09d015",
@@ -7929,7 +8612,12 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "envelhecimento",
+    "keith richards",
+    "longevidade"
+   ]
   },
   {
    "id": "a7904a5c156b353e",
@@ -7972,7 +8660,12 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "canetas emagrecedoras",
+    "obesidade",
+    "saúde pública"
+   ]
   },
   {
    "id": "d115f837f96266fc",
@@ -8058,7 +8751,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "lula",
+    "novo governo",
+    "ministérios",
+    "aliados"
+   ]
   },
   {
    "id": "ad752b7926b5e2f5",
@@ -8101,7 +8800,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 5,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "indonésia",
+    "mineração ilegal",
+    "inundação",
+    "mortes"
+   ]
   },
   {
    "id": "0d33a91693a949c3",
@@ -8144,7 +8849,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "alerta meteorológico",
+    "tempestade",
+    "centro-oeste",
+    "sudeste"
+   ]
   },
   {
    "id": "1550e3e8bdac1101",
@@ -8273,7 +8984,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 5,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "enchentes",
+    "ibge",
+    "prevenção de desastres",
+    "cidades"
+   ]
   },
   {
    "id": "f33629d04e83ae40",
@@ -8402,7 +9119,14 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 5,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "pcc",
+    "crime organizado",
+    "centro de são paulo",
+    "hotéis",
+    "exploração sexual"
+   ]
   },
   {
    "id": "ce881cdf6a745924",
@@ -8746,7 +9470,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 3,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "interfaces de voz",
+    "agentes de ia",
+    "inteligência artificial",
+    "trabalho"
+   ]
   },
   {
    "id": "4aec8e52a66ea500",
@@ -8789,7 +9519,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "violência",
+    "professores",
+    "rio de janeiro",
+    "ministério público"
+   ]
   },
   {
    "id": "97df33208b6f4112",
@@ -8918,7 +9654,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 3,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "trens metropolitanos",
+    "tic trens",
+    "linha 7-rubi",
+    "são paulo"
+   ]
   },
   {
    "id": "125dca1bb67287f1",
@@ -8961,7 +9703,14 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 5,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "tarifaço",
+    "donald trump",
+    "exportações",
+    "aviões",
+    "açúcar"
+   ]
   },
   {
    "id": "dc33b3bfdbb581d5",
@@ -9007,7 +9756,12 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "jensen huang",
+    "nvidia",
+    "donald trump"
+   ]
   },
   {
    "id": "d1b6dddb364b9600",
@@ -9093,7 +9847,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "tiangong",
+    "estação espacial chinesa",
+    "astronautas",
+    "china"
+   ]
   },
   {
    "id": "a4e9d21e9d7184e8",
@@ -9265,7 +10025,12 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "via láctea",
+    "lençóis maranhenses",
+    "astrofotografia"
+   ]
   },
   {
    "id": "e49d8b3f8222492a",
@@ -9312,7 +10077,14 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 3,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "chatgpt",
+    "claude",
+    "gemini",
+    "inteligência artificial",
+    "produtividade"
+   ]
   },
   {
    "id": "f5dc828dd630a226",
@@ -9357,7 +10129,12 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 3,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "inteligência artificial",
+    "superinteligência",
+    "segurança de ia"
+   ]
   },
   {
    "id": "c203e3484048b324",
@@ -9400,7 +10177,12 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "ilha resolution",
+    "viagem",
+    "natureza"
+   ]
   },
   {
    "id": "29bcea4bdcbdd9e4",
@@ -9529,7 +10311,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "indonésia",
+    "mineração",
+    "inundação",
+    "mortes"
+   ]
   },
   {
    "id": "3a3aea74e3c355a7",
@@ -9658,7 +10446,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "egito",
+    "caminhão-tanque",
+    "explosão",
+    "mortes"
+   ]
   },
   {
    "id": "6ca953ec52f3c127",
@@ -10002,7 +10796,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "cartão de crédito",
+    "crédito rotativo",
+    "banco central",
+    "endividamento"
+   ]
   },
   {
    "id": "4a85174bef227ea7",
@@ -10088,7 +10888,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "enchentes",
+    "piracicaba",
+    "interior paulista",
+    "chuvas"
+   ]
   },
   {
    "id": "643158fe7e8992e5",
@@ -10260,7 +11066,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "inteligência artificial",
+    "exoplanetas",
+    "nasa",
+    "astronomia amadora"
+   ]
   },
   {
    "id": "2f4b2c1e1b242fbd",
@@ -10346,7 +11158,12 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "demência",
+    "declínio cognitivo",
+    "diagnóstico"
+   ]
   },
   {
    "id": "79cfdd747dc4b65c",
@@ -10389,7 +11206,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 5,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "tempestade",
+    "tupanciretã",
+    "rio grande do sul",
+    "agronegócio"
+   ]
   },
   {
    "id": "87b7e32697e3f3d9",
@@ -10475,7 +11298,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "sabesp",
+    "qualidade da água",
+    "bactéria",
+    "fake news"
+   ]
   },
   {
    "id": "e6fe734b7da90eee",
@@ -11208,7 +12037,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "stf",
+    "edilene lobo",
+    "indicação ao stf",
+    "mulheres no judiciário"
+   ]
   },
   {
    "id": "0ee63b66070cc180",
@@ -11251,7 +12086,12 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "educação sexual",
+    "laura muller",
+    "sexualidade"
+   ]
   },
   {
    "id": "79d77012e94dc59c",
@@ -11294,7 +12134,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "idosos",
+    "casas de repouso",
+    "prefeitura de são paulo",
+    "câmara municipal"
+   ]
   },
   {
    "id": "a48312182001c133",
@@ -11337,7 +12183,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "nasa",
+    "europa clipper",
+    "lua europa",
+    "júpiter"
+   ]
   },
   {
    "id": "3b878338bd231f17",
@@ -11380,7 +12232,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 5,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "chuvas",
+    "paraná",
+    "enchentes",
+    "mortes"
+   ]
   },
   {
    "id": "1b7d3782bb0cc084",
@@ -11552,7 +12410,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "megaoperação policial",
+    "rio de janeiro",
+    "segurança pública",
+    "foragidos"
+   ]
   },
   {
    "id": "066baba7f3220bb3",
@@ -11638,7 +12502,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 5,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "ibge",
+    "prevenção de desastres",
+    "desastres naturais",
+    "cidades"
+   ]
   },
   {
    "id": "ef0cda5e70045e73",
@@ -11681,7 +12551,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "enxurrada",
+    "ubatuba",
+    "chuvas",
+    "bombeiros"
+   ]
   },
   {
    "id": "b631cc620d8aea44",
@@ -11724,7 +12600,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "gustavo gayer",
+    "pgr",
+    "desvio de verba",
+    "cota parlamentar"
+   ]
   },
   {
    "id": "ff7515226c9a6228",
@@ -11767,7 +12649,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "data centers",
+    "poluição",
+    "inteligência artificial",
+    "meio ambiente"
+   ]
   },
   {
    "id": "0cbbc2999f228740",
@@ -11902,7 +12790,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 5,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "exército dos eua",
+    "produtos tóxicos",
+    "explosão",
+    "meio ambiente"
+   ]
   },
   {
    "id": "b53f12a1b0834bf3",
@@ -12034,7 +12928,14 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 3,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "spacex",
+    "fcc",
+    "satélites",
+    "data centers no espaço",
+    "starmind"
+   ]
   },
   {
    "id": "b8c97272ec8defe3",
@@ -12206,7 +13107,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "alckmin",
+    "ministério da segurança pública",
+    "lula",
+    "novo governo"
+   ]
   },
   {
    "id": "8f1cd6dd8af48662",
@@ -12249,7 +13156,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 5,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "polícia federal",
+    "mineração ilegal",
+    "minério de ferro",
+    "crime organizado"
+   ]
   },
   {
    "id": "6063b01b51e88e1c",
@@ -12464,7 +13377,14 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 5,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "dias toffoli",
+    "polícia federal",
+    "stf",
+    "resort tayayá",
+    "vorcaro"
+   ]
   },
   {
    "id": "366090bf4e3a9fdf",
@@ -12550,7 +13470,12 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "elon musk",
+    "spacex",
+    "doação de ações"
+   ]
   },
   {
    "id": "b367e93a450243b5",
@@ -12722,7 +13647,12 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 5,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "argentina",
+    "recessão",
+    "economia argentina"
+   ]
   },
   {
    "id": "0d2782598f7d42ae",
@@ -12894,7 +13824,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 5,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "tarifaço",
+    "bolsas dos eua",
+    "inteligência artificial",
+    "mercado financeiro"
+   ]
   },
   {
    "id": "29cd8f492522256e",
@@ -12937,7 +13873,14 @@
    "digest_version": 2,
    "rich_attempts": 1,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "el niño",
+    "dengue",
+    "chikungunya",
+    "zika",
+    "rio de janeiro"
+   ]
   },
   {
    "id": "9bc37c968253b911",
@@ -13023,7 +13966,12 @@
    "digest_version": 2,
    "rich_attempts": 1,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "mpox",
+    "surto",
+    "saúde pública"
+   ]
   },
   {
    "id": "dbaa0f4f1b85d6ae",
@@ -13195,7 +14143,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 5,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "tarifaço",
+    "donald trump",
+    "dias toffoli",
+    "polícia federal"
+   ]
   },
   {
    "id": "1f3b241e7e3d5f32",
@@ -13367,7 +14321,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 5,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "black friday",
+    "varejo",
+    "comércio",
+    "consumo"
+   ]
   },
   {
    "id": "9252c5a89a6ef096",
@@ -13711,7 +14671,14 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 5,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "ibovespa",
+    "dólar",
+    "contas públicas",
+    "ajuste fiscal",
+    "mercado financeiro"
+   ]
   },
   {
    "id": "c11576f2b622e4f0",
@@ -13842,7 +14809,14 @@
    "digest_version": 2,
    "rich_attempts": 1,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "donald trump",
+    "jensen huang",
+    "nvidia",
+    "perdão presidencial",
+    "congresso dos eua"
+   ]
   },
   {
    "id": "ffa2b35c63db0c0a",
@@ -14014,7 +14988,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 5,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "gustavo gayer",
+    "pgr",
+    "cota parlamentar",
+    "desvio de verba"
+   ]
   },
   {
    "id": "a7aad45b398429de",
@@ -14575,7 +15555,13 @@
    "digest_version": 2,
    "rich_attempts": 1,
    "source_priority": 3,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "google",
+    "reconhecimento facial",
+    "casa inteligente",
+    "walmart"
+   ]
   },
   {
    "id": "28cecd9a45387b15",
@@ -14790,7 +15776,13 @@
    "digest_version": 2,
    "rich_attempts": 1,
    "source_priority": 3,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "gustavo gayer",
+    "pgr",
+    "desvio de verba",
+    "câmara dos deputados"
+   ]
   }
  ]
 }

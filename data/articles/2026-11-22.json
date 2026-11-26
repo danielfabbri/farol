@@ -1210,7 +1210,12 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "tesouro dos eua",
+    "jensen huang",
+    "nvidia"
+   ]
   },
   {
    "id": "1b4206a3e1e50308",
@@ -2478,7 +2483,13 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 5,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "jair bolsonaro",
+    "saúde de bolsonaro",
+    "uti",
+    "internação"
+   ]
   },
   {
    "id": "656772401f0691b1",
@@ -2609,7 +2620,12 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "jair bolsonaro",
+    "saúde de bolsonaro",
+    "uti"
+   ]
   },
   {
    "id": "2c873866ae069801",

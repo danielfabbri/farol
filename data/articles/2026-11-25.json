@@ -90,7 +90,12 @@
    "digest_version": 2,
    "rich_attempts": 1,
    "source_priority": 3,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "amazon",
+    "recall",
+    "segurança do consumidor"
+   ]
   },
   {
    "id": "8032fdf6028eacfd",
@@ -219,7 +224,15 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 5,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "tarifaço",
+    "donald trump",
+    "guerra comercial",
+    "comércio exterior",
+    "china",
+    "união europeia"
+   ]
   },
   {
    "id": "d89b2f139bbfb41a",
@@ -737,7 +750,11 @@
    "digest_version": 2,
    "rich_attempts": 1,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "lotofácil",
+    "loterias"
+   ]
   },
   {
    "id": "2083849ab7be5dc2",
@@ -780,7 +797,14 @@
    "digest_version": 2,
    "rich_attempts": 1,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "trens metropolitanos",
+    "cptm",
+    "trivia trens",
+    "são paulo",
+    "incêndio"
+   ]
   },
   {
    "id": "32353b49ea721631",
@@ -1167,7 +1191,14 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 5,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "gustavo gayer",
+    "pgr",
+    "stf",
+    "desvio de verba",
+    "associação criminosa"
+   ]
   },
   {
    "id": "98c1caeb70a9cb84",
@@ -1255,7 +1286,12 @@
    "digest_version": 2,
    "rich_attempts": 1,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "desenvolvedores",
+    "competição",
+    "programação"
+   ]
   },
   {
    "id": "e8c263c23b018f6a",
@@ -1343,7 +1379,12 @@
    "digest_version": 2,
    "rich_attempts": 1,
    "source_priority": 2,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "intel arc",
+    "placas de vídeo",
+    "hardware"
+   ]
   },
   {
    "id": "7146340104c2ba93",
@@ -1601,7 +1642,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 5,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "egito",
+    "caminhão-tanque",
+    "incêndio",
+    "mortes"
+   ]
   },
   {
    "id": "e4c1826d63fe0dbf",
@@ -1730,7 +1777,12 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "gta 6",
+    "games",
+    "rockstar"
+   ]
   },
   {
    "id": "7cf92a833ed87f56",
@@ -1988,7 +2040,13 @@
    "digest_version": 2,
    "rich_attempts": 1,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "gustavo gayer",
+    "pgr",
+    "stf",
+    "cota parlamentar"
+   ]
   },
   {
    "id": "5ef781660f63d0b3",
@@ -2031,7 +2089,12 @@
    "digest_version": 2,
    "rich_attempts": 1,
    "source_priority": 3,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "covid-19",
+    "casos graves",
+    "saúde pública"
+   ]
   },
   {
    "id": "a453e73207ee74b2",
@@ -2074,7 +2137,13 @@
    "digest_version": 2,
    "rich_attempts": 1,
    "source_priority": 3,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "quasar",
+    "telescópio euclid",
+    "buracos negros",
+    "astronomia"
+   ]
   },
   {
    "id": "a0d96ff964cdc534",
@@ -2418,7 +2487,12 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "whatsapp",
+    "inteligência artificial",
+    "atendimento ao cliente"
+   ]
   },
   {
    "id": "39f69a9d42acd2fa",
@@ -2547,7 +2621,12 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 5,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "cartão de crédito",
+    "crédito rotativo",
+    "banco central"
+   ]
   },
   {
    "id": "59a304c460e1da48",
@@ -2936,7 +3015,13 @@
    "digest_version": 2,
    "rich_attempts": 1,
    "source_priority": 3,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "missão artemis",
+    "lua",
+    "agricultura espacial",
+    "batatas"
+   ]
   },
   {
    "id": "7dc341c3990b177c",
@@ -3110,7 +3195,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "claude",
+    "anthropic",
+    "vulnerabilidade",
+    "segurança digital"
+   ]
   },
   {
    "id": "69d7dcb75efba106",
@@ -3241,7 +3332,13 @@
    "digest_version": 2,
    "rich_attempts": 1,
    "source_priority": 3,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "s&p",
+    "nvidia",
+    "rating de crédito",
+    "governança corporativa"
+   ]
   },
   {
    "id": "f4cdf4e422acb5f1",
@@ -3327,7 +3424,12 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "educação em tempo integral",
+    "escolas públicas",
+    "câmara dos deputados"
+   ]
   },
   {
    "id": "4c1f9c1f78a11803",
@@ -3499,7 +3601,12 @@
    "digest_version": 2,
    "rich_attempts": 1,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "missão hera",
+    "asteroide",
+    "agência espacial europeia"
+   ]
   },
   {
    "id": "09eae1fb3e448925",
@@ -3800,7 +3907,13 @@
    "digest_version": 2,
    "rich_attempts": 1,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "fernando haddad",
+    "usp",
+    "lula",
+    "novo governo"
+   ]
   },
   {
    "id": "fc8e200b7e486772",
@@ -4015,7 +4128,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 5,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "banco central",
+    "crédito rotativo",
+    "endividamento",
+    "cartão de crédito"
+   ]
   },
   {
    "id": "c2dde989c7a0bce8",
@@ -4316,7 +4435,14 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 3,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "cosan",
+    "rumo",
+    "compass",
+    "moove",
+    "venda de participação"
+   ]
   },
   {
    "id": "a75432109a255911",
@@ -4402,7 +4528,13 @@
    "digest_version": 2,
    "rich_attempts": 1,
    "source_priority": 2,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "the witcher 4",
+    "cd projekt red",
+    "games",
+    "gta 6"
+   ]
   },
   {
    "id": "060ef2c2293d3390",
@@ -4574,7 +4706,12 @@
    "digest_version": 2,
    "rich_attempts": 1,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "educação em tempo integral",
+    "marco regulatório",
+    "câmara dos deputados"
+   ]
   },
   {
    "id": "652f3b0ee6ee4eb4",
@@ -4617,7 +4754,13 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 3,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "cosan",
+    "rumo",
+    "dívida corporativa",
+    "venda de participação"
+   ]
   },
   {
    "id": "5a9eb8fbd8ef4d38",
@@ -4832,7 +4975,13 @@
    "digest_version": 2,
    "rich_attempts": 1,
    "source_priority": 5,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "chuvas",
+    "rio de janeiro",
+    "alerta meteorológico",
+    "aulas suspensas"
+   ]
   },
   {
    "id": "8a3279266ebf3e5f",
@@ -4918,7 +5067,12 @@
    "digest_version": 2,
    "rich_attempts": 1,
    "source_priority": 3,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "pirataria",
+    "sky",
+    "justiça"
+   ]
   },
   {
    "id": "7f871d90d462fccf",
@@ -5004,7 +5158,13 @@
    "digest_version": 2,
    "rich_attempts": 1,
    "source_priority": 3,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "samsung",
+    "galaxy book",
+    "notebooks",
+    "black friday"
+   ]
   },
   {
    "id": "d594593333c6838d",
@@ -5133,7 +5293,12 @@
    "digest_version": 2,
    "rich_attempts": 1,
    "source_priority": 3,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "lua cheia",
+    "astronomia",
+    "observação do céu"
+   ]
   },
   {
    "id": "ef08a502dc7a79d8",
@@ -5176,7 +5341,12 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "celular seguro",
+    "imei",
+    "roubo de celulares"
+   ]
   },
   {
    "id": "7a7861c7967d2359",
@@ -5262,7 +5432,12 @@
    "digest_version": 2,
    "rich_attempts": 1,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "educação em tempo integral",
+    "marco regulatório",
+    "câmara dos deputados"
+   ]
   },
   {
    "id": "c0be1d637b084564",
@@ -5606,7 +5781,13 @@
    "digest_version": 2,
    "rich_attempts": 1,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "china",
+    "huawei",
+    "eua",
+    "guerra comercial"
+   ]
   },
   {
    "id": "e5b3f41dbade394c",
@@ -5737,7 +5918,13 @@
    "digest_version": 2,
    "rich_attempts": 1,
    "source_priority": 3,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "google",
+    "patente",
+    "vídeos gerados por ia",
+    "entretenimento"
+   ]
   },
   {
    "id": "8607f06ec887833b",
@@ -6124,7 +6311,12 @@
    "digest_version": 2,
    "rich_attempts": 1,
    "source_priority": 3,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "presentes de natal",
+    "viagem",
+    "gadgets"
+   ]
   },
   {
    "id": "cf6d92d7573d83ef",
@@ -6425,7 +6617,13 @@
    "digest_version": 2,
    "rich_attempts": 1,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "vacina contra câncer",
+    "linfoma",
+    "câncer de estômago",
+    "pesquisa clínica"
+   ]
   },
   {
    "id": "db27f612b9589e45",
@@ -6726,7 +6924,13 @@
    "digest_version": 2,
    "rich_attempts": 1,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "didymos",
+    "dimorphos",
+    "asteroide",
+    "eclipse"
+   ]
   },
   {
    "id": "4d0c85d9c17872ce",
@@ -6855,7 +7059,12 @@
    "digest_version": 2,
    "rich_attempts": 1,
    "source_priority": 3,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "sabesp",
+    "qualidade da água",
+    "saneamento"
+   ]
   },
   {
    "id": "13fbf97ae8a6d512",
@@ -7244,7 +7453,12 @@
    "digest_version": 2,
    "rich_attempts": 1,
    "source_priority": 3,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "nasa",
+    "história da aviação",
+    "aeronaves experimentais"
+   ]
   },
   {
    "id": "9682801d21214a8c",
@@ -7287,7 +7501,13 @@
    "digest_version": 2,
    "rich_attempts": 1,
    "source_priority": 3,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "samsung",
+    "galaxy tab",
+    "tablets",
+    "black friday"
+   ]
   },
   {
    "id": "d72050210bb2c24c",
@@ -7416,7 +7636,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 5,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "fernando haddad",
+    "usp",
+    "lula",
+    "novo governo"
+   ]
   },
   {
    "id": "845a9a970b3574b8",
@@ -7459,7 +7685,13 @@
    "digest_version": 2,
    "rich_attempts": 1,
    "source_priority": 2,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "gta 6",
+    "rockstar",
+    "games",
+    "acordo de sigilo"
+   ]
   },
   {
    "id": "b5b45851ecff9234",
@@ -7631,7 +7863,12 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "exoprimal",
+    "capcom",
+    "games"
+   ]
   },
   {
    "id": "9c1db696feab98a7",
@@ -7717,7 +7954,13 @@
    "digest_version": 2,
    "rich_attempts": 1,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "alexandre de moraes",
+    "penduricalhos",
+    "pgr",
+    "ministério público da união"
+   ]
   },
   {
    "id": "eee5136e439969f8",
@@ -8190,7 +8433,12 @@
    "digest_version": 2,
    "rich_attempts": 1,
    "source_priority": 3,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "huawei",
+    "smartwatch",
+    "black friday"
+   ]
   },
   {
    "id": "2d5d0ce9f120d54b",
@@ -8491,7 +8739,13 @@
    "digest_version": 2,
    "rich_attempts": 1,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "neuralink",
+    "interface cérebro-computador",
+    "gta 6",
+    "games"
+   ]
   },
   {
    "id": "7f2c7580de142717",
@@ -8878,7 +9132,12 @@
    "digest_version": 2,
    "rich_attempts": 1,
    "source_priority": 3,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "alexandre de moraes",
+    "penduricalhos",
+    "stf"
+   ]
   },
   {
    "id": "6bbe3033a10440fa",
@@ -9354,7 +9613,12 @@
    "digest_version": 2,
    "rich_attempts": 1,
    "source_priority": 3,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "missão hera",
+    "asteroide",
+    "nasa"
+   ]
   },
   {
    "id": "52e7ebc82702d7ff",
@@ -9743,7 +10007,12 @@
    "digest_version": 2,
    "rich_attempts": 1,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "asteroides",
+    "defesa planetária",
+    "dinossauros"
+   ]
   },
   {
    "id": "0e8a8be236d83332",
@@ -9786,7 +10055,12 @@
    "digest_version": 2,
    "rich_attempts": 1,
    "source_priority": 2,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "samsung health",
+    "galaxy watch",
+    "saúde digital"
+   ]
   },
   {
    "id": "969c58de9ebb9f06",
@@ -9829,7 +10103,13 @@
    "digest_version": 2,
    "rich_attempts": 1,
    "source_priority": 2,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "starlink",
+    "spacex",
+    "satélites",
+    "internet via satélite"
+   ]
   },
   {
    "id": "01f27b44a6e4bb66",
@@ -10044,7 +10324,13 @@
    "digest_version": 2,
    "rich_attempts": 1,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "tráfico de bebês",
+    "tráfico internacional",
+    "rio de janeiro",
+    "prisão"
+   ]
   },
   {
    "id": "540c6d2633166c58",
@@ -10130,7 +10416,12 @@
    "digest_version": 0,
    "rich_attempts": 1,
    "source_priority": 3,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "telescópio de horizonte de eventos",
+    "buracos negros",
+    "astronomia"
+   ]
   },
   {
    "id": "24c363e588c48167",
@@ -10259,7 +10550,13 @@
    "digest_version": 2,
    "rich_attempts": 1,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "planeta nove",
+    "sistema solar",
+    "netuno",
+    "astronomia"
+   ]
   },
   {
    "id": "66ef786cb6a740b3",
@@ -10822,7 +11119,12 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "spacex",
+    "satélites",
+    "data centers no espaço"
+   ]
   },
   {
    "id": "c00a1b74b88721f5",
@@ -11082,7 +11384,13 @@
    "digest_version": 2,
    "rich_attempts": 1,
    "source_priority": 3,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "jensen huang",
+    "nvidia",
+    "código de conduta",
+    "funcionários"
+   ]
   },
   {
    "id": "ded04cf5f5dac5a5",
@@ -11340,7 +11648,13 @@
    "digest_version": 2,
    "rich_attempts": 1,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "egito",
+    "caminhão-tanque",
+    "acidente",
+    "mortes"
+   ]
   },
   {
    "id": "175786996ccc4ffc",
@@ -11560,7 +11874,13 @@
    "digest_version": 2,
    "rich_attempts": 1,
    "source_priority": 2,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "missão hera",
+    "didymos",
+    "dimorphos",
+    "asteroide"
+   ]
   },
   {
    "id": "0fbaff0540e72f91",
@@ -11648,7 +11968,12 @@
    "digest_version": 2,
    "rich_attempts": 1,
    "source_priority": 3,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "data centers no espaço",
+    "inteligência artificial",
+    "satélites"
+   ]
   },
   {
    "id": "31fd047988605fcb",
@@ -12338,7 +12663,13 @@
    "digest_version": 2,
    "rich_attempts": 1,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "alexandre de moraes",
+    "penduricalhos",
+    "ministério público da união",
+    "stf"
+   ]
   },
   {
    "id": "cfaae2c254c2c35e",
@@ -12469,7 +12800,11 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "astronomia",
+    "ciência brasileira"
+   ]
   },
   {
    "id": "0fdf887351a12c5a",
@@ -12512,7 +12847,12 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "spacex",
+    "satélites",
+    "inteligência artificial"
+   ]
   },
   {
    "id": "47bf20ccb0a047eb",
@@ -12643,7 +12983,12 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "nasa",
+    "fornecedores",
+    "indústria espacial"
+   ]
   },
   {
    "id": "c50caffe4969f4ab",
@@ -12772,7 +13117,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 5,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "colômbia",
+    "cartagena",
+    "reféns",
+    "assalto"
+   ]
   },
   {
    "id": "ea057d04c58d1924",
@@ -12949,7 +13300,12 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 3,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "starship",
+    "spacex",
+    "arte"
+   ]
   },
   {
    "id": "c6d7ee74f2d8ddf4",
@@ -13121,7 +13477,13 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "nasa",
+    "asteroide",
+    "cratera",
+    "defesa planetária"
+   ]
   },
   {
    "id": "fc825b64a7681583",
@@ -13424,7 +13786,13 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 3,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "spacex",
+    "starmind",
+    "satélites",
+    "inteligência artificial"
+   ]
   },
   {
    "id": "c84ba02ac72fb7b0",
@@ -13811,7 +14179,13 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "egito",
+    "caminhão-tanque",
+    "incêndio",
+    "mortes"
+   ]
   },
   {
    "id": "b844539bcd894e7c",
@@ -14071,7 +14445,13 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "vention",
+    "automação industrial",
+    "robótica",
+    "programação de fábricas"
+   ]
   },
   {
    "id": "4ce8d1b279b5ea70",
@@ -14114,7 +14494,12 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "spacex",
+    "fcc",
+    "satélites"
+   ]
   },
   {
    "id": "3ba2329053720d8e",
@@ -15063,7 +15448,12 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 3,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "blade runner",
+    "ficção científica",
+    "séries"
+   ]
   },
   {
    "id": "7383158f5066ffd3",
@@ -15106,7 +15496,12 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 3,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "telescópios",
+    "astrofotografia",
+    "nebulosas"
+   ]
   },
   {
    "id": "413d39ccaf9bec3b",
@@ -15323,7 +15718,12 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "nasa",
+    "culturas espaciais",
+    "alimentação espacial"
+   ]
   },
   {
    "id": "359bfc5e2e8b8080",
@@ -15540,7 +15940,14 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "trens metropolitanos",
+    "são paulo",
+    "incêndio",
+    "falha elétrica",
+    "trivia trens"
+   ]
   },
   {
    "id": "4340d347955d6d6b",
@@ -15712,7 +16119,12 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "whatsapp",
+    "agendamento de mensagens",
+    "aplicativos"
+   ]
   },
   {
    "id": "1343f7f3b4352e4c",
@@ -15758,7 +16170,13 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 3,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "spacex",
+    "fcc",
+    "satélites",
+    "data centers no espaço"
+   ]
   },
   {
    "id": "fb412b4c68ce090f",
@@ -16919,7 +17337,13 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 3,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "cuba",
+    "expectativa de vida",
+    "oms",
+    "crise em cuba"
+   ]
   },
   {
    "id": "7c7ca57bc30aaa05",
@@ -17306,7 +17730,13 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 3,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "jair bolsonaro",
+    "saúde de bolsonaro",
+    "uti",
+    "internação"
+   ]
   },
   {
    "id": "c7fd8f3741776032",
@@ -17869,7 +18299,12 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "jair bolsonaro",
+    "saúde de bolsonaro",
+    "internação"
+   ]
   },
   {
    "id": "3847f7f5bf1804ac",
@@ -17957,7 +18392,13 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "fcc",
+    "robôs",
+    "segurança de robôs",
+    "regulação"
+   ]
   },
   {
    "id": "86444d2c9fe6219c",
@@ -18129,7 +18570,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "austrália",
+    "big techs",
+    "regulação de plataformas",
+    "conteúdo nocivo"
+   ]
   },
   {
    "id": "bf8e0d858b3d667a",
@@ -18258,7 +18705,12 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "whatsapp",
+    "agendamento de mensagens",
+    "aplicativos"
+   ]
   },
   {
    "id": "5f354440dd7c0b73",
@@ -18776,7 +19228,12 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 3,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "robótica espacial",
+    "iros 2026",
+    "robótica"
+   ]
   },
   {
    "id": "b4a42b84b76e250e",
@@ -20156,7 +20613,12 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "cuba",
+    "expectativa de vida",
+    "crise em cuba"
+   ]
   },
   {
    "id": "a9a329f9ecdf9248",
@@ -20457,7 +20919,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 5,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "austrália",
+    "regulação de plataformas",
+    "conteúdo nocivo",
+    "big techs"
+   ]
   },
   {
    "id": "e584f272ecf04152",
@@ -20676,7 +21144,12 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "black friday",
+    "consumo",
+    "comportamento do consumidor"
+   ]
   },
   {
    "id": "04515a2f63e8af8c",
@@ -21020,7 +21493,13 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "donald trump",
+    "tarifaço",
+    "guerra comercial",
+    "china"
+   ]
   },
   {
    "id": "912f613b813b0ce9",
@@ -21106,7 +21585,12 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "logitech",
+    "teclados",
+    "periféricos gamer"
+   ]
   },
   {
    "id": "dd0f932aa4648eec",
@@ -21278,7 +21762,14 @@
    "digest_version": 2,
    "rich_attempts": 0,
    "source_priority": 5,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "chuvas",
+    "paraná",
+    "enchentes",
+    "mortes",
+    "desastres naturais"
+   ]
   },
   {
    "id": "7c068d7a91ad512a",
@@ -21624,7 +22115,13 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "darpa",
+    "robôs de resgate",
+    "desastres",
+    "robótica"
+   ]
   },
   {
    "id": "69d97d55932576b5",
@@ -21839,7 +22336,11 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 3,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "spacex",
+    "satélites"
+   ]
   },
   {
    "id": "c9c0e347405683ff",
@@ -23866,7 +24367,13 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "natureza",
+    "bem-estar",
+    "saúde mental",
+    "cidades"
+   ]
   },
   {
    "id": "daf37d4f7bfea121",
@@ -24127,7 +24634,13 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "indonésia",
+    "mineração ilegal",
+    "inundação",
+    "ouro"
+   ]
   },
   {
    "id": "ccc54386233e4673",
@@ -25421,7 +25934,13 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 3,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "donald trump",
+    "tarifaço",
+    "guerra comercial",
+    "china"
+   ]
   },
   {
    "id": "861ef96103b852a6",
@@ -27540,7 +28059,12 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "celulares",
+    "olfato digital",
+    "inovação"
+   ]
   },
   {
    "id": "1714ec1783205f42",
@@ -28231,7 +28755,12 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "cuba",
+    "expectativa de vida",
+    "oms"
+   ]
   },
   {
    "id": "c806f788893f2df6",
@@ -30213,7 +30742,12 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 3,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "donald trump",
+    "tarifaço",
+    "guerra comercial"
+   ]
   },
   {
    "id": "9dfb3636594fd5b4",
@@ -30344,7 +30878,13 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "sexualidade",
+    "jovens",
+    "telas",
+    "comportamento"
+   ]
   },
   {
    "id": "7b88493d6857afd6",
@@ -30649,7 +31189,12 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 3,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "orçamento",
+    "contas públicas",
+    "meta fiscal"
+   ]
   },
   {
    "id": "933bbe09e4e3add2",
@@ -30780,7 +31325,12 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "tiangong",
+    "estação espacial chinesa",
+    "astronautas"
+   ]
   },
   {
    "id": "513cbe1ad57a3917",
@@ -31384,7 +31934,13 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 3,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "esporotricose",
+    "gatos",
+    "rio grande do sul",
+    "zoonoses"
+   ]
   },
   {
    "id": "5b1e83f34d371c06",
@@ -31644,7 +32200,13 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 3,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "macacos-uivadores",
+    "novas espécies",
+    "amazônia",
+    "biodiversidade"
+   ]
   },
   {
    "id": "4de1f1995685b6ba",
@@ -31950,7 +32512,12 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "jensen huang",
+    "nvidia",
+    "donald trump"
+   ]
   },
   {
    "id": "ac697e39254fb103",
@@ -32382,7 +32949,13 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 3,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "canetas emagrecedoras",
+    "envelhecimento",
+    "longevidade",
+    "medicamentos"
+   ]
   },
   {
    "id": "3e6a52f5d9b53aa7",
@@ -33201,7 +33774,13 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 3,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "hertuzo",
+    "câncer de mama",
+    "anvisa",
+    "medicamentos"
+   ]
   },
   {
    "id": "72b2ae405581a0e2",
@@ -33416,7 +33995,13 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 3,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "quasar",
+    "big bang",
+    "astronomia",
+    "universo primitivo"
+   ]
   },
   {
    "id": "d0a3a7f662b58965",
@@ -33977,7 +34562,12 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 3,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "sarampo",
+    "memória imunológica",
+    "vacinação"
+   ]
   },
   {
    "id": "58a7c5229df13d29",
@@ -34065,7 +34655,12 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 5,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "orçamento",
+    "ajuste fiscal",
+    "contas públicas"
+   ]
   },
   {
    "id": "b3538c842ca081e7",
@@ -34323,7 +34918,12 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 3,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "covid-19",
+    "casos de covid",
+    "saúde pública"
+   ]
   },
   {
    "id": "08c3140873ae1710",
@@ -34927,7 +35527,12 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "jensen huang",
+    "nvidia",
+    "donald trump"
+   ]
   },
   {
    "id": "781b5177120f79e6",
@@ -36094,7 +36699,12 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 3,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "jensen huang",
+    "nvidia",
+    "plano de sucessão"
+   ]
   },
   {
    "id": "45c102995d324936",
@@ -37341,7 +37951,12 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "próteses de silicone",
+    "cirurgia plástica",
+    "estética"
+   ]
   },
   {
    "id": "31b05a1cca1f9312",
@@ -37771,7 +38386,12 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "memória",
+    "concentração",
+    "neurociência"
+   ]
   },
   {
    "id": "8ce53c85d733759b",
@@ -37814,7 +38434,13 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "sus",
+    "saúde pública",
+    "norte e nordeste",
+    "boa vista"
+   ]
   },
   {
    "id": "a6453f9a709e7bd3",
@@ -38332,7 +38958,13 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "chuvas",
+    "paraná",
+    "enchentes",
+    "mortes"
+   ]
   },
   {
    "id": "b2524e4aa71a5556",
@@ -38779,7 +39411,12 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 1,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "robôs sociais",
+    "computação evolutiva",
+    "robótica"
+   ]
   },
   {
    "id": "a7fd7f765a1d95b9",
@@ -38822,7 +39459,12 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 1,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "aprendizado por preferências",
+    "correções humanas",
+    "aprendizado de robôs"
+   ]
   },
   {
    "id": "bc1d896f2583f108",
@@ -39134,7 +39776,12 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 1,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "asa voadora",
+    "controle geométrico",
+    "aeronaves"
+   ]
   },
   {
    "id": "6e39442a883a181f",
@@ -39180,7 +39827,12 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 1,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "sistemas autônomos",
+    "saúde",
+    "certificação"
+   ]
   },
   {
    "id": "6d2a8f9c18b10d89",
@@ -39494,7 +40146,12 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 1,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "ia neuro-simbólica",
+    "robótica",
+    "segurança de ia"
+   ]
   },
   {
    "id": "674f003803fe0ce0",
@@ -39539,7 +40196,12 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 1,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "modelos vla",
+    "visão 3d",
+    "robótica"
+   ]
   },
   {
    "id": "d97bcf0fef09cc95",
@@ -39858,7 +40520,12 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 1,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "otimização de trajetória",
+    "sistemas multiagente",
+    "robótica"
+   ]
   },
   {
    "id": "49601c4ab9b3a745",
@@ -39904,7 +40571,12 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 1,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "manipulação de tecidos",
+    "benchmark",
+    "robótica"
+   ]
   },
   {
    "id": "1d8eb48ffeed97b8",
@@ -40212,7 +40884,12 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 1,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "robôs subaquáticos",
+    "enxame de robôs",
+    "robótica"
+   ]
   },
   {
    "id": "ee6668a9b9080968",
@@ -40257,7 +40934,12 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 1,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "planejamento de trajetória",
+    "gpu",
+    "robótica"
+   ]
   },
   {
    "id": "45d0a75ba29ceb6a",
@@ -40574,7 +41256,12 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 1,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "veículos autônomos",
+    "sensores",
+    "falhas"
+   ]
   },
   {
    "id": "d6520ba9e6ccfe81",
@@ -40619,7 +41306,12 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 1,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "simulação diferenciável",
+    "colisões",
+    "robótica"
+   ]
   },
   {
    "id": "e85d829d86743667",
@@ -40929,7 +41621,12 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 1,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "modelos de linguagem",
+    "tomada de decisão",
+    "robótica"
+   ]
   },
   {
    "id": "5e21d7c85afb7c75",
@@ -40974,7 +41671,12 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 1,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "manipulação robótica",
+    "modelos de mundo",
+    "robótica"
+   ]
   },
   {
    "id": "4d3997d08c3531ef",
@@ -41287,7 +41989,12 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 1,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "modelos de fundação",
+    "robótica",
+    "programação"
+   ]
   },
   {
    "id": "2db117103baf9a8e",
@@ -41330,7 +42037,12 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 1,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "drones de entrega",
+    "sistemas autônomos",
+    "prevenção de colisões"
+   ]
   },
   {
    "id": "60604a1190b5578c",
@@ -41648,7 +42360,12 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 1,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "manipulação bimanual",
+    "aprendizado multimodal",
+    "robótica"
+   ]
   },
   {
    "id": "b1dadc1515078abb",
@@ -41694,7 +42411,12 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 1,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "veículos autônomos",
+    "condução autônoma",
+    "benchmark"
+   ]
   },
   {
    "id": "880413964b7dc0bb",
@@ -42515,7 +43237,13 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "orçamento",
+    "meta fiscal",
+    "governo lula",
+    "contas públicas"
+   ]
   },
   {
    "id": "79242249d354a288",
@@ -42859,7 +43587,11 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "matemática",
+    "missionários"
+   ]
   },
   {
    "id": "40d0122147cbd9d6",
@@ -42902,7 +43634,12 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "redes sociais",
+    "comportamento",
+    "exposição online"
+   ]
   },
   {
    "id": "42841eafca81c515",
@@ -43721,7 +44458,13 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "ondas de calor",
+    "mulheres",
+    "saúde",
+    "clima"
+   ]
   },
   {
    "id": "61e11d040b547cb2",
@@ -44545,7 +45288,12 @@
    "digest_version": 0,
    "rich_attempts": 0,
    "source_priority": 4,
-   "is_sample": false
+   "is_sample": false,
+   "keywords": [
+    "câncer de mama",
+    "anvisa",
+    "medicamentos"
+   ]
   },
   {
    "id": "7f787c7771ccff12",

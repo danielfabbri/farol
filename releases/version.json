@@ -1,9 +1,9 @@
 {
-  "version_code": 16,
-  "version_name": "0.13.0",
+  "version_code": 17,
+  "version_name": "0.14.0",
   "apk": "releases/farol.apk",
-  "sha256": "4e0b76567c1f0a579b19a36168a4b9d0daddd822c9ba20c5013ddf4d78164f2e",
+  "sha256": "49028f2c797494b6960ee3ea16e140f8724642c0fb8ef6f8498fca3a4f190835",
   "size": 1860256,
-  "notes": "Arrastar para a direita = gostei, para a esquerda = não gostei: o feed aprende e destaca o que você curte. Ícone de som na foto para ouvir cada notícia (no feed e dentro da notícia). Nova área Ajustes → Vozes: 1 ou 2 repórteres, com voz, velocidade e tom. A busca por notícias novas não aparece mais no feed (só em Ajustes).",
-  "published_at": "2026-11-26T10:13:34Z"
+  "notes": "Gostei/não gostei agora aprendem pelo TEMA da notícia (palavras-chave separadas pela IA), não pela seção. Puxar para atualizar a capa troca as notícias exibidas. Na tela da notícia, dá para marcar como não lida: ela volta ao feed e ao filtro Não lidas.",
+  "published_at": "2026-11-26T11:02:09Z"
 }
