@@ -128,7 +128,7 @@ class Digest(BaseModel):
 
     ref: str
     title_pt: str = Field(min_length=3, max_length=240)
-    summary: str = Field(min_length=40, max_length=1100)
+    summary: str = Field(min_length=40, max_length=1400)
 
     @model_validator(mode="before")
     @classmethod

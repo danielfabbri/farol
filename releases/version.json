@@ -1,9 +1,9 @@
 {
-  "version_code": 14,
-  "version_name": "0.12.0",
+  "version_code": 15,
+  "version_name": "0.12.1",
   "apk": "releases/farol.apk",
-  "sha256": "2e5ff84f8345d68c703c807cc10685e942860715be0694cb1ebdc44ee9ebbd85",
+  "sha256": "2e9508862187fd1d3e448c546b1df88c1a84d337fa1451377fc17bba2aca35f5",
   "size": 1843872,
-  "notes": "Leitura automática: o botão de alto-falante ao lado do filtro lê em voz alta o título e o resumo de cada notícia, alternando voz masculina e feminina. Ao fim de cada uma, o card sai para a esquerda e fica como lido. Tocar numa notícia (ou no botão) para a leitura. Usa a voz do próprio aparelho, sem custo.",
-  "published_at": "2026-11-26T01:01:10Z"
+  "notes": "Mais notícias por seção (até 30 além dos destaques; ajuste em Ajustes). Junto com esta versão, o servidor passou a ler o texto completo das matérias para fazer resumos com os fatos principais, e entraram O Globo, Valor, Estadão, g1 (geral e Tecnologia), Folha Tec, TecMundo e BBC Tecnologia.",
+  "published_at": "2026-11-26T01:22:47Z"
 }

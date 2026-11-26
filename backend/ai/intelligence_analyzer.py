@@ -36,10 +36,14 @@ def score_event(event: Event, articles: dict[str, Article], now: datetime) -> fl
         base = float(event.relevance_score)
     else:  # sem IA: prioridade editorial da fonte
         base = 30.0 + 6.0 * max((a.source_priority for a in items), default=3)
-    coverage = min(18.0, 6.0 * (event.source_count - 1))
+    # Assunto que vários veículos estão cobrindo é o assunto do dia: é o sinal mais forte de relevância.
+    coverage = min(32.0, 8.0 * (event.source_count - 1))
+    # Imprensa à frente de blogs de empresas e artigos acadêmicos (estes só sobem se a imprensa repercutir).
+    types = {a.source_type for a in items}
+    kind = 0.0 if ("press" in types or not types) else (-8.0 if "primary" in types else -14.0)
     age_h = max(0.0, (now - event.last_seen).total_seconds() / 3600)
     decay = max(0.0, age_h - 12) * 0.6
-    return round(base + coverage - decay, 2)
+    return round(base + coverage + kind - decay, 2)
 
 
 def select_highlights(events: list[Event], now: datetime, limit: int, window_hours: int = 36) -> list[Event]:

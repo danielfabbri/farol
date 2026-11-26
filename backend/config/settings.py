@@ -79,6 +79,8 @@ class Settings:
     max_digest_calls_per_run: int = 12
     max_digest_calls_per_day: int = 120
     digest_min_excerpt_chars: int = 60
+    article_text_enabled: bool = True  # lê o texto da matéria para o resumo (não é publicado)
+    max_article_text_fetches_per_run: int = 150
     # Imagem de destaque da página da notícia quando o feed não traz foto
     image_enrichment_enabled: bool = True
     max_image_lookups_per_run: int = 80
@@ -93,7 +95,7 @@ class Settings:
     highlights_per_edition: int = 8
     section_highlights: int = 5
     latest_max_articles: int = 60
-    latest_max_articles_per_section: int = 25
+    latest_max_articles_per_section: int = 40
     latest_window_hours: int = 48
     # Retenção
     retention_article_days: int = 120

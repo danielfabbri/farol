@@ -1,5 +1,5 @@
 {
-  "_doc": "Fontes RSS/Atom do FAROL. Todos os endereços foram verificados (HTTP 200 com itens) em 2026-11-23. Para desativar uma fonte, use \"enabled\": false. Detalhes em docs/SOURCES.md.",
+  "_doc": "Fontes RSS/Atom do FAROL. Todos os endereços foram verificados (HTTP 200 com itens) em 2026-11-23 (novas fontes em 2026-11-26). Para desativar uma fonte, use \"enabled\": false. Detalhes em docs/SOURCES.md.",
   "sources": [
     {
       "id": "agenciabrasil-politica",
@@ -10,7 +10,7 @@
       "source_type": "press",
       "language": "pt",
       "priority": 5,
-      "max_items_per_run": 5,
+      "max_items_per_run": 8,
       "require_keywords": false,
       "enabled": true,
       "notes": "Agência pública (EBC). Conteúdo sob licença Creative Commons BY."
@@ -24,7 +24,7 @@
       "source_type": "press",
       "language": "pt",
       "priority": 4,
-      "max_items_per_run": 6,
+      "max_items_per_run": 10,
       "require_keywords": false,
       "enabled": true
     },
@@ -37,7 +37,7 @@
       "source_type": "press",
       "language": "pt",
       "priority": 4,
-      "max_items_per_run": 6,
+      "max_items_per_run": 10,
       "require_keywords": false,
       "enabled": true
     },
@@ -50,7 +50,7 @@
       "source_type": "press",
       "language": "pt",
       "priority": 3,
-      "max_items_per_run": 5,
+      "max_items_per_run": 8,
       "require_keywords": false,
       "enabled": true,
       "notes": "Feed geral, majoritariamente política."
@@ -64,7 +64,7 @@
       "source_type": "press",
       "language": "pt",
       "priority": 5,
-      "max_items_per_run": 5,
+      "max_items_per_run": 8,
       "require_keywords": false,
       "enabled": true,
       "notes": "Agência pública (EBC). Conteúdo sob licença Creative Commons BY."
@@ -78,7 +78,7 @@
       "source_type": "press",
       "language": "pt",
       "priority": 4,
-      "max_items_per_run": 6,
+      "max_items_per_run": 10,
       "require_keywords": false,
       "enabled": true
     },
@@ -91,7 +91,7 @@
       "source_type": "press",
       "language": "pt",
       "priority": 4,
-      "max_items_per_run": 6,
+      "max_items_per_run": 10,
       "require_keywords": false,
       "enabled": true
     },
@@ -104,7 +104,7 @@
       "source_type": "press",
       "language": "pt",
       "priority": 3,
-      "max_items_per_run": 5,
+      "max_items_per_run": 8,
       "require_keywords": false,
       "enabled": true
     },
@@ -117,7 +117,7 @@
       "source_type": "press",
       "language": "pt",
       "priority": 4,
-      "max_items_per_run": 4,
+      "max_items_per_run": 8,
       "require_keywords": false,
       "enabled": true,
       "notes": "Agência pública (EBC). Conteúdo sob licença Creative Commons BY."
@@ -131,7 +131,7 @@
       "source_type": "press",
       "language": "pt",
       "priority": 4,
-      "max_items_per_run": 6,
+      "max_items_per_run": 10,
       "require_keywords": false,
       "enabled": true
     },
@@ -144,7 +144,7 @@
       "source_type": "press",
       "language": "pt",
       "priority": 4,
-      "max_items_per_run": 6,
+      "max_items_per_run": 10,
       "require_keywords": false,
       "enabled": true
     },
@@ -157,7 +157,7 @@
       "source_type": "press",
       "language": "pt",
       "priority": 4,
-      "max_items_per_run": 5,
+      "max_items_per_run": 8,
       "require_keywords": false,
       "enabled": true,
       "notes": "Cobertura internacional e nacional em português."
@@ -171,7 +171,7 @@
       "source_type": "press",
       "language": "pt",
       "priority": 5,
-      "max_items_per_run": 5,
+      "max_items_per_run": 8,
       "require_keywords": false,
       "enabled": true,
       "notes": "Agência pública (EBC). Conteúdo sob licença Creative Commons BY."
@@ -185,7 +185,7 @@
       "source_type": "press",
       "language": "pt",
       "priority": 4,
-      "max_items_per_run": 6,
+      "max_items_per_run": 10,
       "require_keywords": false,
       "enabled": true
     },
@@ -198,7 +198,7 @@
       "source_type": "press",
       "language": "pt",
       "priority": 3,
-      "max_items_per_run": 5,
+      "max_items_per_run": 8,
       "require_keywords": false,
       "enabled": true,
       "notes": "Tecnologia em português."
@@ -211,8 +211,8 @@
       "category": "technology_ai",
       "source_type": "primary",
       "language": "en",
-      "priority": 5,
-      "max_items_per_run": 8,
+      "priority": 3,
+      "max_items_per_run": 3,
       "require_keywords": false,
       "enabled": true,
       "notes": "Substitui o antigo feed blogs.microsoft.com/ai/feed/, que retorna HTTP 410 (Gone)."
@@ -225,8 +225,8 @@
       "category": "technology_ai",
       "source_type": "primary",
       "language": "en",
-      "priority": 4,
-      "max_items_per_run": 6,
+      "priority": 3,
+      "max_items_per_run": 3,
       "require_keywords": true,
       "enabled": true
     },
@@ -241,7 +241,8 @@
       "priority": 4,
       "max_items_per_run": 6,
       "require_keywords": true,
-      "enabled": true
+      "enabled": false,
+      "notes": "Desativada em 2026-11-26: preferência por veículos de imprensa."
     },
     {
       "id": "microsoft-research",
@@ -254,7 +255,8 @@
       "priority": 4,
       "max_items_per_run": 5,
       "require_keywords": true,
-      "enabled": true
+      "enabled": false,
+      "notes": "Desativada em 2026-11-26: preferência por veículos de imprensa."
     },
     {
       "id": "openai-news",
@@ -264,8 +266,8 @@
       "category": "technology_ai",
       "source_type": "primary",
       "language": "en",
-      "priority": 5,
-      "max_items_per_run": 8,
+      "priority": 3,
+      "max_items_per_run": 3,
       "require_keywords": false,
       "enabled": true,
       "notes": "O feed contém o arquivo completo (mais de mil itens); o filtro max_age_days limita aos recentes."
@@ -278,8 +280,8 @@
       "category": "technology_ai",
       "source_type": "primary",
       "language": "en",
-      "priority": 5,
-      "max_items_per_run": 8,
+      "priority": 3,
+      "max_items_per_run": 3,
       "require_keywords": false,
       "enabled": true
     },
@@ -294,7 +296,8 @@
       "priority": 4,
       "max_items_per_run": 5,
       "require_keywords": false,
-      "enabled": true
+      "enabled": false,
+      "notes": "Desativada em 2026-11-26: preferência por veículos de imprensa."
     },
     {
       "id": "google-deepmind",
@@ -304,8 +307,8 @@
       "category": "technology_ai",
       "source_type": "primary",
       "language": "en",
-      "priority": 5,
-      "max_items_per_run": 6,
+      "priority": 3,
+      "max_items_per_run": 3,
       "require_keywords": false,
       "enabled": true
     },
@@ -317,8 +320,8 @@
       "category": "technology_ai",
       "source_type": "primary",
       "language": "en",
-      "priority": 4,
-      "max_items_per_run": 6,
+      "priority": 3,
+      "max_items_per_run": 3,
       "require_keywords": false,
       "enabled": true
     },
@@ -333,8 +336,8 @@
       "priority": 4,
       "max_items_per_run": 5,
       "require_keywords": false,
-      "enabled": true,
-      "notes": "O feed contém o arquivo completo; o filtro max_age_days limita aos recentes."
+      "enabled": false,
+      "notes": "O feed contém o arquivo completo; o filtro max_age_days limita aos recentes. Desativada em 2026-11-26: preferência por veículos de imprensa."
     },
     {
       "id": "mit-tech-review-ai",
@@ -399,8 +402,8 @@
       "priority": 2,
       "max_items_per_run": 5,
       "require_keywords": true,
-      "enabled": true,
-      "notes": "Feed oficial da primeira página. Filtrado por palavras-chave; o link aponta para a publicação original e o debate fica em discussion_url."
+      "enabled": false,
+      "notes": "Feed oficial da primeira página. Filtrado por palavras-chave; o link aponta para a publicação original e o debate fica em discussion_url. Desativada em 2026-11-26: preferência por veículos de imprensa."
     },
     {
       "id": "arxiv-cs-ai",
@@ -413,8 +416,8 @@
       "priority": 1,
       "max_items_per_run": 3,
       "require_keywords": false,
-      "enabled": true,
-      "notes": "Cerca de 300 artigos por dia. Prioridade baixa e limite pequeno para não consumir a cota da IA."
+      "enabled": false,
+      "notes": "Cerca de 300 artigos por dia. Prioridade baixa e limite pequeno para não consumir a cota da IA. Desativada em 2026-11-26: preferência por veículos de imprensa."
     },
     {
       "id": "arxiv-cs-lg",
@@ -427,8 +430,8 @@
       "priority": 1,
       "max_items_per_run": 3,
       "require_keywords": false,
-      "enabled": true,
-      "notes": "Cerca de 300 artigos por dia. Prioridade baixa e limite pequeno para não consumir a cota da IA."
+      "enabled": false,
+      "notes": "Cerca de 300 artigos por dia. Prioridade baixa e limite pequeno para não consumir a cota da IA. Desativada em 2026-11-26: preferência por veículos de imprensa."
     },
     {
       "id": "camara-noticias",
@@ -453,7 +456,7 @@
       "source_type": "press",
       "language": "pt",
       "priority": 4,
-      "max_items_per_run": 5,
+      "max_items_per_run": 10,
       "require_keywords": false,
       "enabled": true
     },
@@ -466,7 +469,7 @@
       "source_type": "press",
       "language": "pt",
       "priority": 4,
-      "max_items_per_run": 8,
+      "max_items_per_run": 15,
       "require_keywords": false,
       "enabled": true,
       "section_rules": {
@@ -487,7 +490,7 @@
       "source_type": "press",
       "language": "pt",
       "priority": 3,
-      "max_items_per_run": 6,
+      "max_items_per_run": 10,
       "require_keywords": false,
       "enabled": true,
       "section_rules": {
@@ -509,7 +512,7 @@
       "source_type": "press",
       "language": "pt",
       "priority": 3,
-      "max_items_per_run": 6,
+      "max_items_per_run": 8,
       "require_keywords": false,
       "enabled": true,
       "section_rules": {
@@ -529,7 +532,7 @@
       "source_type": "press",
       "language": "pt",
       "priority": 3,
-      "max_items_per_run": 6,
+      "max_items_per_run": 10,
       "require_keywords": false,
       "enabled": true,
       "section_rules": {
@@ -553,7 +556,7 @@
       "source_type": "press",
       "language": "pt",
       "priority": 3,
-      "max_items_per_run": 5,
+      "max_items_per_run": 6,
       "require_keywords": false,
       "enabled": true
     },
@@ -566,7 +569,7 @@
       "source_type": "press",
       "language": "pt",
       "priority": 4,
-      "max_items_per_run": 5,
+      "max_items_per_run": 6,
       "require_keywords": false,
       "enabled": true
     },
@@ -579,7 +582,7 @@
       "source_type": "press",
       "language": "pt",
       "priority": 4,
-      "max_items_per_run": 5,
+      "max_items_per_run": 6,
       "require_keywords": false,
       "enabled": true,
       "notes": "Cobertura internacional e sobre o Brasil; sem imagens no feed."
@@ -593,7 +596,7 @@
       "source_type": "press",
       "language": "pt",
       "priority": 3,
-      "max_items_per_run": 4,
+      "max_items_per_run": 5,
       "require_keywords": false,
       "enabled": true
     },
@@ -606,7 +609,7 @@
       "source_type": "press",
       "language": "pt",
       "priority": 4,
-      "max_items_per_run": 5,
+      "max_items_per_run": 6,
       "require_keywords": false,
       "enabled": true
     },
@@ -619,7 +622,7 @@
       "source_type": "press",
       "language": "pt",
       "priority": 4,
-      "max_items_per_run": 5,
+      "max_items_per_run": 6,
       "require_keywords": false,
       "enabled": true
     },
@@ -632,7 +635,7 @@
       "source_type": "press",
       "language": "pt",
       "priority": 4,
-      "max_items_per_run": 5,
+      "max_items_per_run": 6,
       "require_keywords": false,
       "enabled": true
     },
@@ -667,7 +670,7 @@
       "source_type": "press",
       "language": "pt",
       "priority": 2,
-      "max_items_per_run": 4,
+      "max_items_per_run": 6,
       "require_keywords": false,
       "enabled": true,
       "notes": "Muitas ofertas: filtradas pelos exclude_keywords da seção Tecnologia."
@@ -865,8 +868,8 @@
       "priority": 1,
       "max_items_per_run": 2,
       "require_keywords": false,
-      "enabled": true,
-      "notes": "Mais de 100 artigos por dia. Prioridade baixa e limite pequeno."
+      "enabled": false,
+      "notes": "Mais de 100 artigos por dia. Prioridade baixa e limite pequeno. Desativada em 2026-11-26: preferência por veículos de imprensa."
     },
     {
       "id": "g1-ciencia",
@@ -877,9 +880,179 @@
       "source_type": "press",
       "language": "pt",
       "priority": 4,
-      "max_items_per_run": 5,
+      "max_items_per_run": 8,
       "require_keywords": false,
       "enabled": true
+    },
+    {
+      "id": "g1-principal",
+      "name": "g1",
+      "url": "https://g1.globo.com/rss/g1/",
+      "homepage": "https://g1.globo.com/",
+      "category": "brasil",
+      "source_type": "press",
+      "language": "pt",
+      "priority": 5,
+      "max_items_per_run": 12,
+      "require_keywords": false,
+      "enabled": true,
+      "section_rules": {
+        "politica/": "politica",
+        "economia/": "economia",
+        "mundo/": "mundo",
+        "ciencia/": "ciencia_saude",
+        "saude/": "ciencia_saude",
+        "tecnologia/": "technology_ai",
+        "inovacao/": "technology_ai",
+        "jornal-nacional/": "brasil",
+        "educacao/": "brasil"
+      },
+      "notes": "Feed geral do g1; regionais, esporte e entretenimento ficam de fora pelas regras de seção."
+    },
+    {
+      "id": "g1-tecnologia",
+      "name": "g1 — Tecnologia",
+      "url": "https://g1.globo.com/rss/g1/tecnologia/",
+      "homepage": "https://g1.globo.com/tecnologia/",
+      "category": "technology_ai",
+      "source_type": "press",
+      "language": "pt",
+      "priority": 5,
+      "max_items_per_run": 10,
+      "require_keywords": false,
+      "enabled": true,
+      "notes": "Voltou a ter itens (verificado em 2026-11-26)."
+    },
+    {
+      "id": "oglobo",
+      "name": "O Globo",
+      "url": "https://oglobo.globo.com/rss/oglobo",
+      "homepage": "https://oglobo.globo.com/",
+      "category": "brasil",
+      "source_type": "press",
+      "language": "pt",
+      "priority": 5,
+      "max_items_per_run": 12,
+      "require_keywords": false,
+      "enabled": true,
+      "section_rules": {
+        "brasil/": "brasil",
+        "politica/": "politica",
+        "economia/": "economia",
+        "mundo/": "mundo",
+        "saude/": "ciencia_saude",
+        "ciencia/": "ciencia_saude"
+      },
+      "notes": "Adicionada em 2026-11-26 (veículo de grande circulação)."
+    },
+    {
+      "id": "valor",
+      "name": "Valor Econômico",
+      "url": "https://valor.globo.com/rss/valor",
+      "homepage": "https://valor.globo.com/",
+      "category": "economia",
+      "source_type": "press",
+      "language": "pt",
+      "priority": 5,
+      "max_items_per_run": 10,
+      "require_keywords": false,
+      "enabled": true,
+      "section_rules": {
+        "financas/": "economia",
+        "empresas/": "economia",
+        "brasil/": "economia",
+        "politica/": "politica",
+        "legislacao/": "politica",
+        "mundo/": "mundo"
+      },
+      "notes": "Adicionada em 2026-11-26 (veículo de grande circulação)."
+    },
+    {
+      "id": "estadao-economia",
+      "name": "Estadão — Economia",
+      "url": "https://www.estadao.com.br/arc/outboundfeeds/feeds/rss/sections/economia/",
+      "homepage": "https://www.estadao.com.br/economia/",
+      "category": "economia",
+      "source_type": "press",
+      "language": "pt",
+      "priority": 5,
+      "max_items_per_run": 8,
+      "require_keywords": false,
+      "enabled": true,
+      "notes": "Adicionada em 2026-11-26 (veículo de grande circulação)."
+    },
+    {
+      "id": "estadao-internacional",
+      "name": "Estadão — Internacional",
+      "url": "https://www.estadao.com.br/arc/outboundfeeds/feeds/rss/sections/internacional/",
+      "homepage": "https://www.estadao.com.br/internacional/",
+      "category": "mundo",
+      "source_type": "press",
+      "language": "pt",
+      "priority": 5,
+      "max_items_per_run": 8,
+      "require_keywords": false,
+      "enabled": true,
+      "notes": "Adicionada em 2026-11-26 (veículo de grande circulação)."
+    },
+    {
+      "id": "estadao-brasil",
+      "name": "Estadão — Brasil",
+      "url": "https://www.estadao.com.br/arc/outboundfeeds/feeds/rss/sections/brasil/",
+      "homepage": "https://www.estadao.com.br/brasil/",
+      "category": "brasil",
+      "source_type": "press",
+      "language": "pt",
+      "priority": 5,
+      "max_items_per_run": 8,
+      "require_keywords": false,
+      "enabled": true,
+      "notes": "Adicionada em 2026-11-26 (veículo de grande circulação)."
+    },
+    {
+      "id": "folha-tec",
+      "name": "Folha — Tec",
+      "url": "https://feeds.folha.uol.com.br/tec/rss091.xml",
+      "homepage": "https://www1.folha.uol.com.br/tec/",
+      "category": "technology_ai",
+      "source_type": "press",
+      "language": "pt",
+      "priority": 5,
+      "max_items_per_run": 8,
+      "require_keywords": false,
+      "enabled": true,
+      "notes": "Adicionada em 2026-11-26 (veículo de grande circulação)."
+    },
+    {
+      "id": "tecmundo",
+      "name": "TecMundo",
+      "url": "https://rss.tecmundo.com.br/feed",
+      "homepage": "https://www.tecmundo.com.br/",
+      "category": "technology_ai",
+      "source_type": "press",
+      "language": "pt",
+      "priority": 4,
+      "max_items_per_run": 6,
+      "require_keywords": false,
+      "enabled": true,
+      "notes": "Adicionada em 2026-11-26 (veículo de grande circulação)."
+    },
+    {
+      "id": "bbc-technology",
+      "name": "BBC News — Technology",
+      "url": "https://feeds.bbci.co.uk/news/technology/rss.xml",
+      "homepage": "https://www.bbc.com/news/technology",
+      "category": "technology_ai",
+      "source_type": "press",
+      "language": "en",
+      "priority": 4,
+      "max_items_per_run": 5,
+      "require_keywords": false,
+      "enabled": true,
+      "section_rules": {
+        "news/": "technology_ai"
+      },
+      "notes": "Adicionada em 2026-11-26 (veículo de grande circulação)."
     }
   ],
   "unavailable": [
@@ -897,11 +1070,6 @@
       "name": "CNN Brasil",
       "homepage": "https://www.cnnbrasil.com.br/",
       "reason": "Os feeds por editoria (/politica/feed/, /economia/feed/, /internacional/feed/, /nacional/feed/) retornam 404 (verificado em 2026-11-23)."
-    },
-    {
-      "name": "g1 — Brasil e g1 — Tecnologia",
-      "homepage": "https://g1.globo.com/",
-      "reason": "Os endereços /rss/g1/brasil/ e /rss/g1/tecnologia/ respondem 200, mas sem itens (verificado em 2026-11-23)."
     },
     {
       "name": "Metrópoles",
@@ -922,6 +1090,26 @@
       "name": "VentureBeat — AI",
       "homepage": "https://venturebeat.com/category/ai/",
       "reason": "Recusa clientes automatizados com HTTP 429."
+    },
+    {
+      "name": "g1 — Brasil",
+      "homepage": "https://g1.globo.com/",
+      "reason": "/rss/g1/brasil/ responde 200, mas sem itens (verificado em 2026-11-23). O feed geral do g1 cobre a seção."
+    },
+    {
+      "name": "The Guardian (Technology, Space, Robots)",
+      "homepage": "https://www.theguardian.com/",
+      "reason": "Os feeds respondem 403 para coletores automáticos (verificado em 2026-11-26)."
+    },
+    {
+      "name": "Estadão — Link e Ciência",
+      "homepage": "https://www.estadao.com.br/link/",
+      "reason": "Feeds desatualizados: itens de 2015 a 2025 (verificado em 2026-11-26)."
+    },
+    {
+      "name": "CNBC — Technology",
+      "homepage": "https://www.cnbc.com/technology/",
+      "reason": "O feed mistura bolsas e mercados com tecnologia (verificado em 2026-11-26)."
     }
   ]
 }

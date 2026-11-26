@@ -20,6 +20,7 @@ from backend.ai.news_processor import AiUsage, NewsProcessor, summarize_articles
 from backend.ai.section_briefer import generate_brief, signature, top_events
 from backend.ai.gemini_client import FatalGeminiError, GeminiError, QuotaExceeded, ServiceUnavailable
 from backend.models.edition import Section, SectionBrief
+from backend.collectors.article_text import fetch_article_texts
 from backend.collectors.image_enricher import enrich_images
 from backend.collectors.normalization import is_bad_translation, looks_english, normalize_url, keyword_pattern, utcnow
 from backend.collectors.rss_collector import collect_source
@@ -218,13 +219,15 @@ def run(
          and a.language != "pt" and a.reference_time >= pending_cut),
         key=lambda a: (a.source_priority, a.reference_time), reverse=True,
     )
-    # Resumo curto (um parágrafo) das notícias da janela publicada, mais recentes primeiro.
+    # Resumo das notícias da janela publicada, feito a partir do texto da matéria. Primeiro as que não têm
+    # resumo; depois as que só têm um resumo raso (feito com a chamada do feed), mais recentes primeiro.
     digest_cut = now - timedelta(hours=settings.latest_window_hours)
     digest_todo = sorted(
         (a for a in working.values()
-         if settings.digest_enabled and not a.summary and not a.off_topic and a.digest_attempts < 2
-         and len(a.excerpt or "") >= settings.digest_min_excerpt_chars and a.reference_time >= digest_cut),
-        key=lambda a: a.reference_time, reverse=True,
+         if settings.digest_enabled and not a.off_topic and a.reference_time >= digest_cut
+         and ((not a.summary and a.digest_attempts < 2 and len(a.excerpt or "") >= settings.digest_min_excerpt_chars)
+              or (a.summary and a.digest_version < 2 and a.rich_attempts < 2))),
+        key=lambda a: (not a.summary, a.reference_time), reverse=True,
     )
     # Só as que vão aparecer no app: as mais recentes de cada seção (mesmo limite da edição publicada).
     per_section: dict[str, int] = {}
@@ -233,7 +236,15 @@ def run(
         per_section[a.category] = per_section.get(a.category, 0) + 1
         if per_section[a.category] <= settings.latest_max_articles_per_section:
             shown_first.append(a)
-    digest_todo = shown_first
+    digest_todo = shown_first[: settings.digest_batch_size * settings.max_digest_calls_per_run]
+    bodies: dict[str, str] = {}
+    if digest_todo and settings.article_text_enabled and not settings.dev_mode and not settings.ai_mock:
+        # Feeds que já trazem o texto (g1, O Globo, Valor) dispensam abrir a página.
+        long_feed = {a.id: a.excerpt for a in digest_todo if len(a.excerpt or "") >= 1200}
+        to_fetch = [a for a in digest_todo if a.id not in long_feed]
+        bodies = {**long_feed, **fetch_article_texts(to_fetch, session, max_items=settings.max_article_text_fetches_per_run)}
+    # Sem texto novo, não adianta refazer um resumo que já existe.
+    digest_todo = [a for a in digest_todo if not a.summary or a.id in bodies]
     translator = None
     if (untranslated or digest_todo) and client is not None:
         if ai_client is not None or settings.ai_mock:
@@ -250,8 +261,9 @@ def run(
         digested, dg_stop = summarize_articles(
             translator, digest_todo, usage, batch_size=settings.digest_batch_size,
             daily_limit=settings.max_digest_calls_per_day, run_limit=settings.max_digest_calls_per_run,
+            bodies=bodies,
         )
-        log.info("Resumos curtos: %d de %d%s", digested, len(digest_todo), f" (parou: {dg_stop})" if dg_stop else "")
+        log.info("Resumos: %d de %d%s", digested, len(digest_todo), f" (parou: {dg_stop})" if dg_stop else "")
         untranslated = [a for a in untranslated if not a.title_pt]
     ai_report["digested"] = digested
     if translator is not None and untranslated and dg_stop != "quota_exhausted":

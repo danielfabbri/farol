@@ -51,6 +51,9 @@ class Article(BaseModel):
     ai_processed_at: datetime | None = None
     ai_attempts: int = 0
     digest_attempts: int = 0  # tentativas do resumo curto (parágrafo)
+    # 0 = sem resumo / resumo antigo; 1 = resumo feito só com a chamada do feed; 2 = com o texto da matéria.
+    digest_version: int = 0
+    rich_attempts: int = 0  # tentativas de refazer o resumo a partir do texto da matéria
     source_priority: int = 3
     is_sample: bool = False
 

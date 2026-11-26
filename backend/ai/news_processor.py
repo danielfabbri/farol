@@ -138,6 +138,7 @@ def summarize_articles(
     daily_limit: int,
     run_limit: int,
     excerpt_chars: int = 1500,
+    bodies: dict[str, str] | None = None,
 ) -> tuple[int, str | None]:
     """Um ou dois parágrafos explicando cada notícia (e o título em português). Retorna (resumidas, motivo_de_parada)."""
     from backend.ai.prompts import DIGEST_SCHEMA, DIGEST_SYSTEM_PROMPT, build_digest_prompt
@@ -149,7 +150,10 @@ def summarize_articles(
             return done, "budget_reached"
         batch = articles[start:start + batch_size]
         refs = {f"d{i + 1}": a for i, a in enumerate(batch)}
-        items = [{"ref": r, "lang": a.language, "title": a.original_title, "excerpt": truncate(a.excerpt, excerpt_chars)}
+        bodies = bodies or {}
+        # Texto da matéria quando conseguimos ler a página; senão, a chamada do feed.
+        items = [{"ref": r, "lang": a.language, "title": a.original_title,
+                  "text": bodies.get(a.id) or truncate(a.excerpt, excerpt_chars)}
                  for r, a in refs.items()]
         before = getattr(client, "calls_made", None)
         try:
@@ -168,6 +172,8 @@ def summarize_articles(
         run_calls += n
         for a in batch:
             a.digest_attempts += 1
+            if a.summary:
+                a.rich_attempts += 1
         for raw in (data.get("items") if isinstance(data, dict) else None) or []:
             if not isinstance(raw, dict) or raw.get("ref") not in refs:
                 continue
@@ -176,11 +182,15 @@ def summarize_articles(
             except ValidationError:
                 continue
             art = refs[dg.ref]
-            if art.ai_processed:
-                continue  # nunca sobrescreve a análise completa
+            from_body = art.id in bodies
+            if art.ai_processed and not from_body:
+                continue  # só substitui o resumo da análise completa por um feito com o texto da matéria
             if looks_english(dg.summary):
                 continue  # resumo tem de vir em português
+            if art.summary and not from_body:
+                continue  # sem o texto da matéria, não há o que melhorar
             art.summary = dg.summary.strip()
+            art.digest_version = 2 if from_body else 1
             if art.language != "pt" and not art.title_pt and not is_bad_translation(art.original_title, dg.title_pt):
                 art.title_pt = dg.title_pt.strip()
             done += 1

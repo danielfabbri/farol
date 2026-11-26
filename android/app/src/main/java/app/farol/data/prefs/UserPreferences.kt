@@ -19,7 +19,7 @@ class UserPreferences(context: Context) {
     private val _highlightLimit = MutableStateFlow(sp.getInt(KEY_HIGHLIGHTS, 7))
     val highlightLimit: StateFlow<Int> = _highlightLimit.asStateFlow()
 
-    private val _otherLimit = MutableStateFlow(sp.getInt(KEY_OTHERS, 15))
+    private val _otherLimit = MutableStateFlow(sp.getInt(KEY_OTHERS, 30))
     val otherLimit: StateFlow<Int> = _otherLimit.asStateFlow()
 
     private val _demoMode = MutableStateFlow(sp.getBoolean(KEY_DEMO, false))

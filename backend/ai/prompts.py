@@ -65,12 +65,14 @@ DIGEST_SYSTEM_PROMPT = """Você resume notícias para um leitor brasileiro.
 Para cada item, escreva em português do Brasil:
 - title_pt: o título SEMPRE em português do Brasil. Se "lang" não for "pt", TRADUZA o título; nunca devolva o
   título em inglês (só nomes próprios, marcas e siglas ficam como no original). Se já estiver em português, repita-o;
-- summary: SEMPRE em português, um parágrafo de 4 a 5 frases (cerca de 450 a 650 caracteres) explicando a matéria: o que
-  aconteceu, quem está envolvido, os números e detalhes relevantes do trecho e o contexto essencial. Se o trecho trouxer
-  material suficiente, use DOIS parágrafos (separados por uma linha em branco; no máximo 900 caracteres no total):
-  o primeiro com o fato principal, o segundo com detalhes, contexto e próximos passos citados pela fonte. Se o trecho for
-  curto, escreva menos — é melhor um resumo curto do que encher com frases genéricas ou informações inventadas.
-Use SOMENTE informações presentes no título e no trecho; não invente números, nomes, datas nem consequências.
+- summary: SEMPRE em português, DOIS parágrafos (separados por uma linha em branco; 600 a 950 caracteres no total)
+  que dispensem abrir a matéria. A primeira frase responde direto: o que aconteceu, quem fez, quando e onde.
+  Primeiro parágrafo: o fato principal com os dados concretos (números, valores, datas, nomes, cargos, votações, locais).
+  Segundo parágrafo: por que aconteceu, contexto e antecedentes, reações citadas e o que acontece a seguir (prazos, próximos
+  passos). Priorize informação concreta; evite frases vagas ("o tema gera debate", "a medida pode ter impactos").
+  O campo "text" costuma ser o texto da matéria (pode trazer restos de legenda, crédito ou menu: ignore-os). Se ele for só
+  uma chamada curta, escreva um parágrafo apenas, com o que houver — nunca encha com generalidades.
+Use SOMENTE informações presentes no título e no texto; não invente números, nomes, datas nem consequências.
 Sem opinião, sem pontos fortes ou fracos, sem listas, sem frases como "a matéria fala sobre".
 Mantenha nomes de pessoas, empresas, produtos e siglas como no original.
 Escreva os acentos diretamente (á, ç, ã, ó...), nunca como códigos ou sequências de escape.

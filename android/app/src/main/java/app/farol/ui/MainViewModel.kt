@@ -46,7 +46,7 @@ data class UiState(
     val lastSync: Long = 0L,
     val theme: ThemeMode = ThemeMode.DARK,
     val highlightLimit: Int = 7,
-    val otherLimit: Int = 15,
+    val otherLimit: Int = 30,
     val demoMode: Boolean = false,
     val hasToken: Boolean = false,
     val scan: ScanState = ScanState.Idle,
