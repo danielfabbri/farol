@@ -28,7 +28,7 @@
   "last_modified": "Wed, 25 Nov 2026 17:10:27 GMT"
  },
  "google-deepmind": {
-  "etag": "\"k_X4ig\"",
+  "etag": "\"Hqyv_w\"",
   "last_modified": null
  },
  "nvidia-blog": {
@@ -56,32 +56,32 @@
   "last_modified": "Wed, 25 Nov 2026 23:03:31 GMT"
  },
  "agenciabrasil-geral": {
-  "etag": "\"1795655054-1\"",
-  "last_modified": "Thu, 26 Nov 2026 01:04:14 GMT"
+  "etag": "\"1795658030-1\"",
+  "last_modified": "Thu, 26 Nov 2026 01:53:50 GMT"
  },
  "agenciabrasil-politica": {
-  "etag": "\"1795654955-1\"",
-  "last_modified": "Thu, 26 Nov 2026 01:02:35 GMT"
+  "etag": "\"1795658047-1\"",
+  "last_modified": "Thu, 26 Nov 2026 01:54:07 GMT"
  },
  "poder360": {
-  "etag": "\"7a70c094539bc34d0d507463a6cb9a85-gzip\"",
-  "last_modified": "Thu, 26 Nov 2026 01:29:12 GMT"
+  "etag": "\"9aa3916fbacfe5430f27b87ea7a71e30-gzip\"",
+  "last_modified": "Thu, 26 Nov 2026 02:48:03 GMT"
  },
  "agenciabrasil-economia": {
-  "etag": "\"1795654940-1\"",
-  "last_modified": "Thu, 26 Nov 2026 01:02:20 GMT"
+  "etag": "\"1795658018-1\"",
+  "last_modified": "Thu, 26 Nov 2026 01:53:38 GMT"
  },
  "infomoney": {
   "etag": "W/\"cc845fb924198cad8bf2ee0b35abce0f\"",
   "last_modified": "Thu, 26 Nov 2026 01:18:32 GMT"
  },
  "agenciabrasil-internacional": {
-  "etag": "\"1795655043-1\"",
-  "last_modified": "Thu, 26 Nov 2026 01:04:03 GMT"
+  "etag": "\"1795658145-1\"",
+  "last_modified": "Thu, 26 Nov 2026 01:55:45 GMT"
  },
  "cartacapital": {
-  "etag": "\"3a1af2fe86330e47af85352894fddfe7-gzip\"",
-  "last_modified": "Thu, 26 Nov 2026 00:25:19 GMT"
+  "etag": "\"1da195324840c7b2bc6a36e0d5b040eb-gzip\"",
+  "last_modified": "Thu, 26 Nov 2026 02:06:43 GMT"
  },
  "moneytimes": {
   "etag": "\"39f0e67cfb7888695db36af682242c3d\"",
@@ -96,7 +96,7 @@
   "last_modified": "Wed, 25 Nov 2026 21:06:27 GMT"
  },
  "the-verge": {
-  "etag": "W/\"522a17b9538d825ff253561fe5df1fa9\"",
+  "etag": "W/\"5faa35a59613c09ce33a29521a22395f\"",
   "last_modified": null
  },
  "wired-ai": {
@@ -112,36 +112,36 @@
   "last_modified": "Wed, 25 Nov 2026 22:18:02 GMT"
  },
  "veja": {
-  "etag": "W/\"1477a4d430a19d4895f55a1917a926e3\"",
-  "last_modified": "Thu, 26 Nov 2026 01:23:02 GMT"
+  "etag": "W/\"7d6b93dacc6575fcb0f980c7e6372d80\"",
+  "last_modified": "Thu, 26 Nov 2026 01:49:43 GMT"
  },
  "exame": {
   "etag": null,
   "last_modified": null
  },
  "folha-ambiente": {
-  "etag": "W/\"fb2f82-1df49-661215d190600\"",
-  "last_modified": "Wed, 25 Nov 2026 22:29:44 GMT"
+  "etag": "W/\"fb80f9-1df49-66124fd7fec00\"",
+  "last_modified": "Thu, 26 Nov 2026 02:49:20 GMT"
  },
  "olhar-digital": {
-  "etag": "W/\"1a598fe3ac408bb64072eda97a28a71c\"",
-  "last_modified": "Thu, 26 Nov 2026 00:22:58 GMT"
+  "etag": "W/\"439bc8c489d90cac5a35dd9a272c095c\"",
+  "last_modified": "Thu, 26 Nov 2026 02:27:23 GMT"
  },
  "g1-politica": {
   "etag": "W/\"d79bfeb5726437bfddd9d0cdb0b319f8ddf4d9d4\"",
   "last_modified": null
  },
  "camara-noticias": {
-  "etag": "W/\"1d7a7-PmUXwEPWKVRk4kZ0gRAAyRbqeyg\"",
+  "etag": "W/\"1d7a7-21RXiZw+XrvdxlfK4E0Z3f6AinQ\"",
   "last_modified": null
  },
  "estadao-politica": {
-  "etag": "W/\"1d4c9-HYKYgpUEKnPf0AGYwNpPWDWxuSE\"",
-  "last_modified": "Thu, 26 Nov 2026 01:16:30 GMT"
+  "etag": "W/\"1bc9c-Xm7DWgi4wC1b6ZdrRQ67WMjhE5s\"",
+  "last_modified": "Thu, 26 Nov 2026 02:50:44 GMT"
  },
  "cnn-brasil": {
-  "etag": "W/\"599d01dd7fcd324a4ea766c475d731f1\"",
-  "last_modified": "Wed, 25 Nov 2026 03:10:20 GMT"
+  "etag": "W/\"dfdc4734827122cf4b846aab7165e7c7\"",
+  "last_modified": "Thu, 26 Nov 2026 02:38:53 GMT"
  },
  "rfi-brasil": {
   "etag": null,
@@ -152,12 +152,12 @@
   "last_modified": null
  },
  "folha-mundo": {
-  "etag": "W/\"f25501-1ebff-66122a8245680\"",
-  "last_modified": "Thu, 26 Nov 2026 00:02:18 GMT"
+  "etag": "W/\"eb9d06-1eb05-6612456aa9240\"",
+  "last_modified": "Thu, 26 Nov 2026 02:02:41 GMT"
  },
  "folha-saude": {
-  "etag": "W/\"fb4828-1f7c1-66123636b7400\"",
-  "last_modified": "Thu, 26 Nov 2026 00:54:40 GMT"
+  "etag": "W/\"daf0e2-1f817-6612488141b80\"",
+  "last_modified": "Thu, 26 Nov 2026 02:16:30 GMT"
  },
  "spacenews": {
   "etag": "W/\"49fe9bace3c2e5327705c34125c7ac99\"",
@@ -204,12 +204,12 @@
   "last_modified": null
  },
  "nasa-news": {
-  "etag": "W/\"749b8218df76bf5b39d29bb14ef243bd\"",
-  "last_modified": "Wed, 25 Nov 2026 21:05:34 GMT"
+  "etag": "W/\"2eb44635dc8d81db0b5372d392a0e21d\"",
+  "last_modified": "Thu, 26 Nov 2026 02:40:15 GMT"
  },
  "folha-poder": {
-  "etag": "W/\"fb6710-1e9d5-661233ae37a00\"",
-  "last_modified": "Thu, 26 Nov 2026 00:43:20 GMT"
+  "etag": "W/\"fb76e2-1eb4c-66124715e8240\"",
+  "last_modified": "Thu, 26 Nov 2026 02:10:09 GMT"
  },
  "arxiv-cs-ai": {
   "etag": "30aa23a8d387a2295df3c290292171a77be36bc2613e031eec3a299ac7b2bb3d",
@@ -220,15 +220,15 @@
   "last_modified": null
  },
  "universe-today": {
-  "etag": "W/\"6b078051-7527\"",
-  "last_modified": "Thu, 26 Nov 2026 00:41:53 GMT"
+  "etag": "W/\"6b079c58-7527\"",
+  "last_modified": "Thu, 26 Nov 2026 02:41:28 GMT"
  },
  "arxiv-cs-ro": {
   "etag": "00e18e47b401ec34686fe92bdc3555602c6c48ca4bd336d50abd973dd894053d",
   "last_modified": null
  },
  "canaltech": {
-  "etag": "W/\"a7668-44/SLlgONFmqYDxDwf4ohbyilbs\"",
+  "etag": "W/\"923fb-0XU4jsb24pf35dRaJue6n2CFFnw\"",
   "last_modified": null
  },
  "g1-mundo": {
@@ -240,15 +240,15 @@
   "last_modified": null
  },
  "folha-cotidiano": {
-  "etag": "W/\"fb012a-1dec4-66123d126e240\"",
-  "last_modified": "Thu, 26 Nov 2026 01:25:21 GMT"
+  "etag": "W/\"f9fed4-1df5e-66124ffe24600\"",
+  "last_modified": "Thu, 26 Nov 2026 02:50:00 GMT"
  },
  "folha-mercado": {
   "etag": "W/\"fb7542-1db83-6611876f2d8c0\"",
   "last_modified": "Wed, 25 Nov 2026 11:52:43 GMT"
  },
  "g1-principal": {
-  "etag": "W/\"545acffc7b78a205f34c366d320d85df69f04775\"",
+  "etag": "\"5c0b7a5322850033de0bec90f902976dd4b62d2c\"",
   "last_modified": null
  },
  "g1-tecnologia": {
