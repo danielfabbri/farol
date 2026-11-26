@@ -23,6 +23,8 @@ import androidx.compose.material.icons.outlined.Paid
 import androidx.compose.material.icons.outlined.Public
 import androidx.compose.material.icons.outlined.RocketLaunch
 import androidx.compose.material.icons.outlined.Science
+import androidx.compose.material.icons.outlined.Stop
+import androidx.compose.material.icons.automirrored.outlined.VolumeUp
 import androidx.compose.material.icons.outlined.SmartToy
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -121,6 +123,8 @@ fun HighlightCard(
     lead: Article?,
     subcategoryLabel: String?,
     read: Boolean,
+    speaking: Boolean = false,
+    onSpeak: (() -> Unit)? = null,
     onClick: () -> Unit,
 ) {
     val title = lead?.displayTitle ?: event.title
@@ -132,7 +136,12 @@ fun HighlightCard(
         modifier = Modifier.fillMaxWidth().padding(bottom = 12.dp),
     ) {
         Column {
-        NewsImage(lead?.imageUrl, event.category, Modifier.fillMaxWidth().aspectRatio(16f / 9f))
+        Box {
+            NewsImage(lead?.imageUrl, event.category, Modifier.fillMaxWidth().aspectRatio(16f / 9f))
+            if (onSpeak != null) {
+                SpeakButton(speaking, onSpeak, Modifier.align(Alignment.BottomEnd).padding(10.dp))
+            }
+        }
         Column(Modifier.padding(18.dp)) {
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Text(
@@ -230,7 +239,15 @@ fun SourceLine(primary: String, extraSources: Int, time: String, aiProcessed: Bo
 }
 
 @Composable
-fun CompactArticleRow(article: Article, subcategoryLabel: String?, read: Boolean, extraSources: Int = 0, onClick: () -> Unit) {
+fun CompactArticleRow(
+    article: Article,
+    subcategoryLabel: String?,
+    read: Boolean,
+    extraSources: Int = 0,
+    speaking: Boolean = false,
+    onSpeak: (() -> Unit)? = null,
+    onClick: () -> Unit,
+) {
     Row(
         Modifier
             .fillMaxWidth()
@@ -255,7 +272,33 @@ fun CompactArticleRow(article: Article, subcategoryLabel: String?, read: Boolean
             SourceLine(article.sourceName, extraSources, Fmt.relative(article.publishedOrCollected), article.aiProcessed)
         }
         Spacer(Modifier.width(12.dp))
-        NewsImage(article.imageUrl, article.category, Modifier.size(76.dp).clip(RoundedCornerShape(12.dp)), compact = true)
+        Box {
+            NewsImage(article.imageUrl, article.category, Modifier.size(76.dp).clip(RoundedCornerShape(12.dp)), compact = true)
+            if (onSpeak != null) {
+                SpeakButton(speaking, onSpeak, Modifier.align(Alignment.BottomEnd).padding(4.dp), small = true)
+            }
+        }
+    }
+}
+
+/** Ícone de som sobre a foto: lê a notícia em voz alta; tocando de novo, para. */
+@Composable
+fun SpeakButton(speaking: Boolean, onClick: () -> Unit, modifier: Modifier = Modifier, small: Boolean = false) {
+    val size = if (small) 30.dp else 40.dp
+    Surface(
+        onClick = onClick,
+        shape = CircleShape,
+        color = if (speaking) MaterialTheme.colorScheme.primary else Color.Black.copy(alpha = 0.55f),
+        contentColor = if (speaking) MaterialTheme.colorScheme.onPrimary else Color.White,
+        modifier = modifier.size(size),
+    ) {
+        Box(contentAlignment = Alignment.Center) {
+            Icon(
+                if (speaking) Icons.Outlined.Stop else Icons.AutoMirrored.Outlined.VolumeUp,
+                contentDescription = if (speaking) "Parar leitura" else "Ouvir esta notícia",
+                modifier = Modifier.size(if (small) 16.dp else 22.dp),
+            )
+        }
     }
 }
 

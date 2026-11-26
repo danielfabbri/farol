@@ -1,9 +1,9 @@
 {
-  "version_code": 15,
-  "version_name": "0.12.1",
+  "version_code": 16,
+  "version_name": "0.13.0",
   "apk": "releases/farol.apk",
-  "sha256": "2e9508862187fd1d3e448c546b1df88c1a84d337fa1451377fc17bba2aca35f5",
-  "size": 1843872,
-  "notes": "Mais notícias por seção (até 30 além dos destaques; ajuste em Ajustes). Junto com esta versão, o servidor passou a ler o texto completo das matérias para fazer resumos com os fatos principais, e entraram O Globo, Valor, Estadão, g1 (geral e Tecnologia), Folha Tec, TecMundo e BBC Tecnologia.",
-  "published_at": "2026-11-26T01:22:47Z"
+  "sha256": "4e0b76567c1f0a579b19a36168a4b9d0daddd822c9ba20c5013ddf4d78164f2e",
+  "size": 1860256,
+  "notes": "Arrastar para a direita = gostei, para a esquerda = não gostei: o feed aprende e destaca o que você curte. Ícone de som na foto para ouvir cada notícia (no feed e dentro da notícia). Nova área Ajustes → Vozes: 1 ou 2 repórteres, com voz, velocidade e tom. A busca por notícias novas não aparece mais no feed (só em Ajustes).",
+  "published_at": "2026-11-26T10:13:34Z"
 }

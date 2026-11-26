@@ -52,6 +52,9 @@ data class UiState(
     val scan: ScanState = ScanState.Idle,
     val readFilter: app.farol.data.prefs.ReadFilter = app.farol.data.prefs.ReadFilter.ALL,
     val dismissed: Set<String> = emptySet(),
+    val affinity: Map<String, Float> = emptyMap(),
+    val reactions: Int = 0,
+    val voice: app.farol.data.prefs.VoiceSettings = app.farol.data.prefs.VoiceSettings(),
 ) {
     val articlesById: Map<String, Article> by lazy { feed?.articles.orEmpty().associateBy { it.id } }
     val eventsById: Map<String, Event> by lazy { feed?.events.orEmpty().associateBy { it.id } }
@@ -103,6 +106,7 @@ class MainViewModel(
     private val prefs: UserPreferences,
     private val github: GitHubActions,
     private val updater: AppUpdater,
+    val reader: NewsReader,
 ) : ViewModel() {
 
     private val _update = MutableStateFlow<UpdateState>(UpdateState.Idle)
@@ -166,12 +170,15 @@ class MainViewModel(
         PrefsPart(t, h, o, d, l)
     }
 
-    val state: StateFlow<UiState> = combine(data, prefsFlow, syncAndScan) { d, p, (s, scan, hasToken, readFilter, dismissed) ->
+    private val tastes = combine(prefs.affinity, prefs.reactions, prefs.voice) { a, r, v -> Triple(a, r, v) }
+
+    val state: StateFlow<UiState> = combine(data, prefsFlow, syncAndScan, tastes) { d, p, (s, scan, hasToken, readFilter, dismissed), (aff, reactions, voice) ->
         UiState(
             loaded = true, feed = d.feed, trends = d.trends, saved = d.saved, savedArticles = d.savedArticles,
             readIds = d.read, syncing = s.syncing, lastResult = s.result, lastSync = p.lastSync,
             theme = p.theme, highlightLimit = p.hl, otherLimit = p.other, demoMode = p.demo,
             hasToken = hasToken, scan = scan, readFilter = readFilter, dismissed = dismissed,
+            affinity = aff, reactions = reactions, voice = voice,
         )
     }.stateIn(viewModelScope, SharingStarted.Eagerly, UiState())
 
@@ -302,10 +309,25 @@ class MainViewModel(
     fun toggleSave(article: Article) = viewModelScope.launch { repo.toggleSave(article) }
     fun markRead(id: String) = viewModelScope.launch { repo.markRead(id) }
 
-    /** Arrastar para o lado: a notícia vira "lida" e sai do feed. */
-    fun dismiss(eventId: String, articleId: String) {
+    /**
+     * Arrastar para o lado: a notícia vira "lida" e sai do feed. Direita = gostei, esquerda = não gostei
+     * ([liked] nulo: saiu sozinha, pela leitura automática, sem opinião).
+     */
+    fun dismiss(eventId: String, articleId: String, liked: Boolean? = null) {
+        if (liked != null) {
+            val s = state.value
+            val event = s.eventsById[eventId]
+            if (event != null) prefs.react(app.farol.data.Affinity.features(event, s.articlesById[articleId]), liked)
+        }
         prefs.dismiss(eventId)
         markRead(articleId)
+    }
+
+    fun resetTastes() = prefs.resetAffinity()
+    fun setVoiceSettings(v: app.farol.data.prefs.VoiceSettings) = prefs.setVoiceSettings(v)
+
+    override fun onCleared() {
+        reader.stop()
     }
     fun setTheme(mode: ThemeMode) = prefs.setTheme(mode)
     fun setHighlightLimit(n: Int) = prefs.setHighlightLimit(n)
@@ -330,7 +352,7 @@ class MainViewModel(
         val Factory: ViewModelProvider.Factory = viewModelFactory {
             initializer {
                 val app = this[ViewModelProvider.AndroidViewModelFactory.APPLICATION_KEY] as FarolApplication
-                MainViewModel(app.container.repository, app.container.prefs, app.container.gitHubActions, app.container.updater)
+                MainViewModel(app.container.repository, app.container.prefs, app.container.gitHubActions, app.container.updater, app.container.reader)
             }
         }
     }

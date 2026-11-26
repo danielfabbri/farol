@@ -86,7 +86,8 @@ fun FarolApp(vm: MainViewModel, state: UiState) {
                     onOpenArticle = openArticle,
                     onOpenExplore = { nav.goTopLevel("explore") },
                     onReadFilter = vm::setReadFilter,
-                    onDismiss = vm::dismiss,
+                    reader = vm.reader,
+                    onDismiss = { eventId, articleId, liked -> vm.dismiss(eventId, articleId, liked) },
                 )
             }
             composable("explore") {
@@ -110,6 +111,9 @@ fun FarolApp(vm: MainViewModel, state: UiState) {
                     onCheckUpdate = { vm.checkForUpdate() },
                     onDownloadUpdate = { vm.downloadUpdate() },
                     onInstallUpdate = { vm.installIntent()?.let { context.startActivity(it) } },
+                    reader = vm.reader,
+                    onVoiceSettings = vm::setVoiceSettings,
+                    onResetTastes = { vm.resetTastes() },
                 )
             }
             composable("article/{id}") { entry ->
@@ -124,6 +128,7 @@ fun FarolApp(vm: MainViewModel, state: UiState) {
                     onBack = { nav.popBackStack() },
                     onToggleSave = { vm.toggleSave(it) },
                     onMarkRead = { vm.markRead(it) },
+                    reader = vm.reader,
                 )
             }
             composable("archive/{day}") { entry ->

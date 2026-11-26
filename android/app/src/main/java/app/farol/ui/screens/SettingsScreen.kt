@@ -42,6 +42,21 @@ import app.farol.data.SyncResult
 import app.farol.data.prefs.ThemeMode
 import app.farol.ui.UiState
 import app.farol.util.Fmt
+import app.farol.ui.NewsReader
+import app.farol.ui.VoiceOption
+import app.farol.data.prefs.ReporterVoice
+import app.farol.data.prefs.VoiceSettings
+import androidx.compose.foundation.layout.Box
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.ArrowDropDown
+import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.DropdownMenuItem
+import androidx.compose.material3.Icon
+import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.rememberCoroutineScope
+import kotlinx.coroutines.launch
 
 @Composable
 fun SettingsScreen(
@@ -59,8 +74,12 @@ fun SettingsScreen(
     onCheckUpdate: () -> Unit,
     onDownloadUpdate: () -> Unit,
     onInstallUpdate: () -> Unit,
+    reader: NewsReader,
+    onVoiceSettings: (VoiceSettings) -> Unit,
+    onResetTastes: () -> Unit,
 ) {
     var confirmClear by remember { mutableStateOf(false) }
+    var confirmResetTastes by remember { mutableStateOf(false) }
     var tokenInput by remember { mutableStateOf("") }
     val uri = LocalUriHandler.current
     Column(
@@ -199,6 +218,28 @@ fun SettingsScreen(
             onSelect = onTheme,
         )
 
+        VoiceSection(state.voice, reader, onVoiceSettings)
+
+        Section("Seus gostos")
+        Text(
+            if (state.reactions == 0) "Arraste um card para a direita (gostei) ou para a esquerda (não gostei). " +
+                "O FAROL aprende e passa a destacar mais o que você gosta."
+            else "${state.reactions} ${if (state.reactions == 1) "reação registrada" else "reações registradas"}. " +
+                "Direita = gostei, esquerda = não gostei: a capa e as seções destacam o que você curte e escondem o resto.",
+            style = MaterialTheme.typography.bodySmall,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+        )
+        val top = state.affinity.entries.filter { it.key.startsWith("cat:") || it.key.startsWith("sub:") }
+            .sortedByDescending { it.value }
+        val liked = top.filter { it.value > 0.5f }.take(4).mapNotNull { tasteLabel(state, it.key) }
+        val disliked = top.filter { it.value < -0.5f }.takeLast(4).mapNotNull { tasteLabel(state, it.key) }
+        if (liked.isNotEmpty()) Hint("Mais destaque: ${liked.joinToString(", ")}")
+        if (disliked.isNotEmpty()) Hint("Menos destaque: ${disliked.joinToString(", ")}")
+        if (state.reactions > 0) {
+            Spacer(Modifier.height(8.dp))
+            OutlinedButton(onClick = { confirmResetTastes = true }) { Text("Zerar gostos") }
+        }
+
         Section("Limite de notícias")
         Text("Destaques por edição", style = MaterialTheme.typography.bodyMedium)
         Spacer(Modifier.height(8.dp))
@@ -248,6 +289,106 @@ fun SettingsScreen(
             confirmButton = { TextButton(onClick = { confirmClear = false; onClearCache() }) { Text("Limpar") } },
             dismissButton = { TextButton(onClick = { confirmClear = false }) { Text("Cancelar") } },
         )
+    }
+    if (confirmResetTastes) {
+        AlertDialog(
+            onDismissRequest = { confirmResetTastes = false },
+            title = { Text("Zerar gostos?") },
+            text = { Text("O feed volta a ordenar só pela relevância e pelo horário, sem considerar suas reações.") },
+            confirmButton = { TextButton(onClick = { confirmResetTastes = false; onResetTastes() }) { Text("Zerar") } },
+            dismissButton = { TextButton(onClick = { confirmResetTastes = false }) { Text("Cancelar") } },
+        )
+    }
+}
+
+private fun tasteLabel(state: UiState, key: String): String? {
+    val id = key.substringAfter(':')
+    return when {
+        key.startsWith("cat:") -> state.sectionLabels[id]
+        key.startsWith("sub:") -> state.feed?.subcategories?.get(id)
+        else -> null
+    }
+}
+
+private val RATES = listOf(0.8f to "0,8×", 1.0f to "1×", 1.2f to "1,2×", 1.5f to "1,5×", 1.8f to "1,8×")
+private val PITCHES = listOf(0.8f to "Grave", 1.0f to "Normal", 1.2f to "Agudo")
+private fun nearest(options: List<Pair<Float, String>>, v: Float) = options.minBy { kotlin.math.abs(it.first - v) }.first
+
+/** Ajustes → Vozes: 1 ou 2 repórteres, cada um com voz, velocidade e tom. */
+@Composable
+private fun VoiceSection(voice: VoiceSettings, reader: NewsReader, onChange: (VoiceSettings) -> Unit) {
+    var options by remember { mutableStateOf<List<VoiceOption>?>(null) }
+    LaunchedEffect(Unit) { options = reader.voiceOptions() }
+    val available by reader.available.collectAsState()
+    val speakingKey by reader.speakingKey.collectAsState()
+    val scope = rememberCoroutineScope()
+    DisposableEffect(Unit) { onDispose { reader.stop() } }
+
+    Section("Vozes")
+    if (!available || options?.isEmpty() == true) {
+        Text(
+            "Este aparelho não tem voz em português instalada. Instale em Configurações do Android → Acessibilidade → Saída de texto para fala.",
+            style = MaterialTheme.typography.bodySmall,
+            color = MaterialTheme.colorScheme.error,
+        )
+        Spacer(Modifier.height(10.dp))
+    }
+    Text("Quem lê as notícias", style = MaterialTheme.typography.bodyMedium)
+    Spacer(Modifier.height(8.dp))
+    Choice(listOf(1 to "1 repórter", 2 to "2 repórteres"), voice.reporters) { onChange(voice.copy(reporters = it)) }
+    Hint(
+        if (voice.reporters == 2) "Na leitura automática, os dois se alternam a cada notícia. O ícone de som na foto usa o Repórter 1."
+        else "Todas as leituras usam a voz do Repórter 1."
+    )
+    val count = voice.reporters
+    for (idx in 0 until count) {
+        val cfg = if (idx == 0) voice.r1 else voice.r2
+        val update = { c: ReporterVoice -> onChange(if (idx == 0) voice.copy(r1 = c) else voice.copy(r2 = c)) }
+        val key = "preview-$idx"
+        Spacer(Modifier.height(18.dp))
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Text("Repórter ${idx + 1}", style = MaterialTheme.typography.titleSmall, modifier = Modifier.weight(1f))
+            TextButton(
+                enabled = available,
+                onClick = {
+                    if (speakingKey == key) reader.stop()
+                    else scope.launch {
+                        reader.speak("Olá! Eu sou o Repórter ${idx + 1} do Farol. Estas são as notícias de agora.", idx, key)
+                    }
+                },
+            ) { Text(if (speakingKey == key) "Parar" else "Ouvir") }
+        }
+        Spacer(Modifier.height(6.dp))
+        VoicePicker(cfg.voiceName, options.orEmpty(), automaticLabel = if (idx == 0) "Automática (masculina)" else "Automática (feminina)") {
+            update(cfg.copy(voiceName = it))
+        }
+        Spacer(Modifier.height(12.dp))
+        Text("Velocidade", style = MaterialTheme.typography.bodyMedium)
+        Spacer(Modifier.height(6.dp))
+        Choice(RATES, nearest(RATES, cfg.rate)) { update(cfg.copy(rate = it)) }
+        Spacer(Modifier.height(12.dp))
+        Text("Tom", style = MaterialTheme.typography.bodyMedium)
+        Spacer(Modifier.height(6.dp))
+        Choice(PITCHES, nearest(PITCHES, cfg.pitch)) { update(cfg.copy(pitch = it)) }
+    }
+    Hint("As vozes são as do próprio aparelho (gratuitas). Para ter mais opções, instale vozes em português no app \"Serviços de voz do Google\".")
+}
+
+@Composable
+private fun VoicePicker(selected: String?, options: List<VoiceOption>, automaticLabel: String, onSelect: (String?) -> Unit) {
+    var open by remember { mutableStateOf(false) }
+    val label = options.firstOrNull { it.name == selected }?.label ?: automaticLabel
+    Box {
+        OutlinedButton(onClick = { open = true }, modifier = Modifier.fillMaxWidth()) {
+            Text("Voz: $label", modifier = Modifier.weight(1f))
+            Icon(Icons.Outlined.ArrowDropDown, contentDescription = null)
+        }
+        DropdownMenu(expanded = open, onDismissRequest = { open = false }) {
+            DropdownMenuItem(text = { Text(automaticLabel) }, onClick = { onSelect(null); open = false })
+            options.forEach { o ->
+                DropdownMenuItem(text = { Text(o.label) }, onClick = { onSelect(o.name); open = false })
+            }
+        }
     }
 }
 

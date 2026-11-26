@@ -33,6 +33,8 @@ class AppContainer(context: Context) {
     val repository = FarolRepository(api, db, prefs, context.assets, httpCache)
     // Sem cache HTTP: o estado da execução precisa vir sempre fresco.
     val gitHubActions = GitHubActions(okHttp.newBuilder().cache(null).build())
+    /** Leitura em voz alta: uma só para o app inteiro (feed, notícia e Ajustes). */
+    val reader = app.farol.ui.NewsReader(context.applicationContext) { prefs.voice.value }
     val updater = AppUpdater(context.applicationContext, okHttp.newBuilder().cache(null).readTimeout(60, TimeUnit.SECONDS).build())
 }
 

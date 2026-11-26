@@ -7,6 +7,12 @@ import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.border
 import app.farol.ui.NewsReader
+import app.farol.ui.spokenText
+import app.farol.data.Affinity
+import androidx.compose.runtime.rememberCoroutineScope
+import kotlinx.coroutines.launch
+import androidx.compose.material.icons.outlined.ThumbDown
+import androidx.compose.material.icons.outlined.ThumbUp
 import androidx.compose.material.icons.outlined.Stop
 import androidx.compose.material.icons.automirrored.outlined.VolumeUp
 import androidx.compose.foundation.clickable
@@ -105,6 +111,9 @@ private fun Event.matches(topic: String?, articles: Map<String, Article>): Boole
 
 private val HPad = Modifier.padding(horizontal = 20.dp)
 
+/** Quanto o gosto desloca uma notícia na ordem cronológica: até 6 horas para cima ou para baixo. */
+private const val TASTE_SHIFT_MS = 6 * 3_600_000.0
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TodayScreen(
@@ -113,7 +122,8 @@ fun TodayScreen(
     onOpenArticle: (String) -> Unit,
     onOpenExplore: () -> Unit,
     onReadFilter: (app.farol.data.prefs.ReadFilter) -> Unit = {},
-    onDismiss: (eventId: String, articleId: String) -> Unit = { _, _ -> },
+    reader: NewsReader,
+    onDismiss: (eventId: String, articleId: String, liked: Boolean?) -> Unit = { _, _, _ -> },
 ) {
     val feed = state.feed
     var sectionId by rememberSaveable { mutableStateOf<String?>(null) }
@@ -127,62 +137,74 @@ fun TodayScreen(
     // Arrastada para o lado = lida e fora do feed (só volta no filtro "Lidas").
     val visible = { e: Event -> state.readFilter.accepts(isRead(e)) && (readOnly || e.id !in state.dismissed) }
 
-    // Seção: sempre da mais recente para a mais antiga.
+    // Gostos aprendidos com o gesto de arrastar: de -1 (não gosta) a 1 (gosta).
+    val taste = { e: Event -> Affinity.score(state.affinity, e, leadArticle(e, arts)) }
+
+    // Seção: da mais recente para a mais antiga; o que você gosta sobe (até ~6 h) e o que não gosta desce.
     val sectionOrdered = if (feed != null && section != null) {
         feed.events
             .filter { it.category == section.id && it.matches(topic, arts) && visible(it) }
-            .sortedByDescending { it.shownMillis(arts) }
+            .sortedByDescending { it.shownMillis(arts) + (taste(it) * TASTE_SHIFT_MS).toLong() }
     } else emptyList()
     val sectionShown = sectionOrdered.take(state.highlightLimit + state.otherLimit)
 
     // Capa. Os destaques da edição mudam pouco de uma edição para outra. Filtrar só eles esvaziava a capa
     // em "Não lidas"; então a capa é completada com os destaques das seções e, depois, com os
-    // demais acontecimentos por importância, até preencher o limite.
+    // demais acontecimentos por importância, até preencher o limite. Seus gostos mudam quem entra na capa.
     val allHighlights = feed?.highlights.orEmpty().mapNotNull { state.eventsById[it] }.take(state.highlightLimit)
     val capa = if (feed != null && section == null) {
-        val highlightIds = (feed.highlights + sections.flatMap { it.highlights }).distinct()
-        (highlightIds.mapNotNull { state.eventsById[it] } +
-            feed.events.filter { it.id !in highlightIds }.sortedByDescending { it.score })
+        val highlightIds = (feed.highlights + sections.flatMap { it.highlights }).toSet()
+        feed.events
             .filter { leadArticle(it, arts) != null }
             .filter(visible)
+            .sortedByDescending { (if (it.id in highlightIds) 100.0 else 0.0) + it.score + taste(it) * 60.0 }
             .take(state.highlightLimit)
-            .sortedByDescending { it.shownMillis(arts) }
+            .sortedByDescending { it.shownMillis(arts) + (taste(it) * TASTE_SHIFT_MS).toLong() }
     } else emptyList()
 
     // ---------------- Leitura automática ----------------
     // Lê título e resumo da primeira notícia da lista (voz masculina e feminina alternadas); ao terminar,
     // o card é jogado para a esquerda e vira "lida", e a próxima assume o topo.
     val queue = (if (section != null) sectionShown else capa).mapNotNull { e -> leadArticle(e, arts)?.let { e to it } }
-    val context = LocalContext.current
-    val reader = remember { NewsReader(context) }
-    DisposableEffect(reader) { onDispose { reader.shutdown() } }
     val ttsAvailable by reader.available.collectAsState()
+    val speakingKey by reader.speakingKey.collectAsState()
     var autoRead by remember { mutableStateOf(false) }
-    var speakingId by remember { mutableStateOf<String?>(null) }
     var swipingId by remember { mutableStateOf<String?>(null) }
     var turn by remember { mutableIntStateOf(0) }
     val listState = rememberLazyListState()
-    val stopReading = { autoRead = false; speakingId = null; reader.stop() }
+    val scope = rememberCoroutineScope()
+    val stopReading = { autoRead = false; reader.stop() }
     val openArticle = { id: String -> stopReading(); onOpenArticle(id) }
+    // Ícone de som na foto: lê só aquela notícia (Repórter 1). Tocar de novo para.
+    val speakOne = { event: Event, lead: Article ->
+        val wasThis = speakingKey == lead.id
+        stopReading()
+        if (!wasThis) scope.launch { reader.speak(spokenText(lead.displayTitle, lead.preview ?: event.summary), 0, lead.id) }
+        Unit
+    }
+    DisposableEffect(Unit) { onDispose { reader.stop() } }
+    // Atualização automática não aparece no feed; só a puxada feita por você mostra o indicador.
+    var pulled by remember { mutableStateOf(false) }
+    LaunchedEffect(state.syncing) { if (!state.syncing) pulled = false }
     // Posição do primeiro card na lista (cabeçalho, seções, avisos, cabeçalho da lista).
     val firstCardIndex = 3 + (if (sections.isNotEmpty()) 1 else 0) +
         (if (section != null && section.filters.isNotEmpty()) 1 else 0)
     val nextId = queue.firstOrNull()?.first?.id
     LaunchedEffect(autoRead, nextId) {
         if (!autoRead) return@LaunchedEffect
-        val (event, lead) = queue.firstOrNull() ?: run { autoRead = false; speakingId = null; return@LaunchedEffect }
-        speakingId = event.id
+        val (event, lead) = queue.firstOrNull() ?: run { autoRead = false; return@LaunchedEffect }
         runCatching { listState.animateScrollToItem(firstCardIndex) }
-        val title = lead.displayTitle.trim().trimEnd('.')
-        val text = listOfNotNull(title, (lead.preview ?: event.summary)?.trim()?.takeIf { it.isNotEmpty() })
-            .joinToString(". ")
-        val ok = reader.speak(text, male = turn % 2 == 0)
-        if (!ok) { autoRead = false; speakingId = null; return@LaunchedEffect }
+        val ok = reader.speak(spokenText(lead.displayTitle, lead.preview ?: event.summary), turn % 2, lead.id)
+        if (!ok) { autoRead = false; return@LaunchedEffect }
         turn++
         swipingId = event.id // o card anima para a esquerda e é marcado como lido; a fila anda.
     }
 
-    PullToRefreshBox(isRefreshing = state.syncing, onRefresh = onRefresh, modifier = Modifier.fillMaxSize()) {
+    PullToRefreshBox(
+        isRefreshing = pulled && state.syncing,
+        onRefresh = { pulled = true; onRefresh() },
+        modifier = Modifier.fillMaxSize(),
+    ) {
         LazyColumn(state = listState, contentPadding = PaddingValues(vertical = 12.dp), modifier = Modifier.fillMaxSize()) {
             item {
                 TodayHeader(feed, section) {
@@ -234,15 +256,20 @@ fun TodayScreen(
                 itemsIndexed(shown, key = { _, e -> "s-" + e.id }) { i, event ->
                     val lead = leadArticle(event, arts) ?: return@itemsIndexed
                     val sub = state.labelFor(lead)
+                    val speaking = speakingKey == lead.id
+                    val onSpeak: (() -> Unit)? = if (ttsAvailable) ({ speakOne(event, lead) }) else null
                     SwipeToRead(
-                        !readOnly, { onDismiss(event.id, lead.id) }, Modifier.animateItem().then(HPad),
-                        speaking = speakingId == event.id, autoSwipe = swipingId == event.id,
+                        !readOnly, { liked -> onDismiss(event.id, lead.id, liked) }, Modifier.animateItem().then(HPad),
+                        speaking = speaking, autoSwipe = swipingId == event.id,
                     ) {
                         if (i < 3) {
-                            HighlightCard(i + 1, event, lead, sub, isRead(event)) { openArticle(lead.id) }
+                            HighlightCard(i + 1, event, lead, sub, isRead(event), speaking = speaking, onSpeak = onSpeak) { openArticle(lead.id) }
                         } else {
                             Column {
-                                CompactArticleRow(lead, sub, isRead(event), (event.sourceCount - 1).coerceAtLeast(0)) { openArticle(lead.id) }
+                                CompactArticleRow(
+                                    lead, sub, isRead(event), (event.sourceCount - 1).coerceAtLeast(0),
+                                    speaking = speaking, onSpeak = onSpeak,
+                                ) { openArticle(lead.id) }
                                 HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
                             }
                         }
@@ -275,9 +302,10 @@ fun TodayScreen(
             }
             itemsIndexed(highlights, key = { _, e -> e.id }) { i, event ->
                 val lead = leadArticle(event, arts) ?: return@itemsIndexed
+                val speaking = speakingKey == lead.id
                 SwipeToRead(
-                    !readOnly, { onDismiss(event.id, lead.id) }, Modifier.animateItem().then(HPad),
-                    speaking = speakingId == event.id, autoSwipe = swipingId == event.id,
+                    !readOnly, { liked -> onDismiss(event.id, lead.id, liked) }, Modifier.animateItem().then(HPad),
+                    speaking = speaking, autoSwipe = swipingId == event.id,
                 ) {
                     HighlightCard(
                         rank = i + 1,
@@ -285,6 +313,8 @@ fun TodayScreen(
                         lead = lead,
                         subcategoryLabel = state.labelFor(lead) ?: state.sectionLabels[event.category],
                         read = isRead(event),
+                        speaking = speaking,
+                        onSpeak = if (ttsAvailable) ({ speakOne(event, lead) }) else null,
                         onClick = { openArticle(lead.id) },
                     )
                 }
@@ -319,30 +349,40 @@ fun TodayScreen(
 
 }
 
-/** Arrastar o card para qualquer lado marca a notícia como lida; ela sai e a de baixo sobe. */
+/**
+ * Arrastar o card marca a notícia como lida; ela sai e a de baixo sobe.
+ * Para a direita = gostei, para a esquerda = não gostei: isso ensina o feed o que destacar.
+ * [onRead] recebe nulo quando o card sai sozinho (leitura automática), sem opinião.
+ */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun SwipeToRead(
     enabled: Boolean,
-    onRead: () -> Unit,
+    onRead: (liked: Boolean?) -> Unit,
     modifier: Modifier = Modifier,
     speaking: Boolean = false,
     autoSwipe: Boolean = false,
     content: @Composable () -> Unit,
 ) {
     val current by androidx.compose.runtime.rememberUpdatedState(onRead)
+    var automatic by remember { mutableStateOf(false) }
+    var done by remember { mutableStateOf(false) }
     val swipe = androidx.compose.material3.rememberSwipeToDismissBoxState(
         confirmValueChange = { value ->
-            if (value != androidx.compose.material3.SwipeToDismissBoxValue.Settled) current()
+            if (value != androidx.compose.material3.SwipeToDismissBoxValue.Settled && !automatic && !done) {
+                done = true // uma reação só por card
+                current(value == androidx.compose.material3.SwipeToDismissBoxValue.StartToEnd)
+            }
             true
         },
         positionalThreshold = { it * 0.35f },
     )
-    // Leitura automática: ao terminar de ler, o card é jogado para a esquerda.
+    // Leitura automática: ao terminar de ler, o card sai para a esquerda (sem contar como "não gostei").
     LaunchedEffect(autoSwipe) {
         if (autoSwipe) {
+            automatic = true
             swipe.dismiss(androidx.compose.material3.SwipeToDismissBoxValue.EndToStart)
-            current()
+            current(null)
         }
     }
     androidx.compose.material3.SwipeToDismissBox(
@@ -352,20 +392,24 @@ private fun SwipeToRead(
         backgroundContent = {
             val dir = swipe.dismissDirection
             if (dir == androidx.compose.material3.SwipeToDismissBoxValue.Settled) return@SwipeToDismissBox
-            val toEnd = dir == androidx.compose.material3.SwipeToDismissBoxValue.StartToEnd
+            val liked = dir == androidx.compose.material3.SwipeToDismissBoxValue.StartToEnd
+            val (icon, label, color) = when {
+                automatic -> Triple(Icons.Outlined.Done, "Lida", MaterialTheme.colorScheme.primary)
+                liked -> Triple(Icons.Outlined.ThumbUp, "Gostei", MaterialTheme.colorScheme.primary)
+                else -> Triple(Icons.Outlined.ThumbDown, "Não gostei", MaterialTheme.colorScheme.tertiary)
+            }
             Row(
                 Modifier.fillMaxSize().padding(bottom = 12.dp).padding(horizontal = 24.dp),
                 verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = if (toEnd) androidx.compose.foundation.layout.Arrangement.Start
-                else androidx.compose.foundation.layout.Arrangement.End,
+                horizontalArrangement = if (liked) Arrangement.Start else Arrangement.End,
             ) {
-                Icon(Icons.Outlined.Done, null, tint = MaterialTheme.colorScheme.primary)
+                Icon(icon, null, tint = color)
                 Spacer(Modifier.width(8.dp))
-                Text("Lida", style = MaterialTheme.typography.labelLarge, color = MaterialTheme.colorScheme.primary)
+                Text(label, style = MaterialTheme.typography.labelLarge, color = color)
             }
         },
     ) {
-        // Fundo opaco: o aviso "Lida" só aparece no espaço que o card deixa ao ser arrastado.
+        // Fundo opaco: o aviso só aparece no espaço que o card deixa ao ser arrastado.
         Box(Modifier.background(MaterialTheme.colorScheme.background)) {
             content()
             // Contorno no card que está sendo lido em voz alta.
@@ -448,15 +492,7 @@ private fun Chip(label: String, selected: Boolean, small: Boolean = false, onCli
 private fun SyncNotices(state: UiState) {
     val feed = state.feed
     Column {
-        if (state.scan is ScanState.Starting || state.scan is ScanState.Running) {
-            Text(
-                "Buscando notícias novas…",
-                style = MaterialTheme.typography.labelMedium,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                modifier = Modifier.padding(top = 4.dp, bottom = 6.dp),
-            )
-            LinearProgressIndicator(Modifier.fillMaxWidth().padding(bottom = 8.dp))
-        }
+        // A busca por notícias novas acontece em silêncio; o andamento aparece só em Ajustes.
         if (state.demoMode || feed?.isSample == true) {
             NoticeCard(
                 feed?.notice ?: "Modo demonstração: dados fictícios, sem valor informativo.",

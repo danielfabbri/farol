@@ -44,6 +44,17 @@ import androidx.compose.ui.unit.dp
 import app.farol.data.model.Article
 import app.farol.data.model.Event
 import app.farol.ui.components.EmptyState
+import app.farol.ui.components.SpeakButton
+import app.farol.ui.NewsReader
+import app.farol.ui.spokenText
+import androidx.compose.foundation.layout.Box
+import androidx.compose.material.icons.automirrored.outlined.VolumeUp
+import androidx.compose.material.icons.outlined.Stop
+import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.rememberCoroutineScope
+import kotlinx.coroutines.launch
 import app.farol.ui.components.Eyebrow
 import app.farol.ui.components.NewsImage
 import androidx.compose.foundation.layout.aspectRatio
@@ -62,8 +73,23 @@ fun ArticleScreen(
     onBack: () -> Unit,
     onToggleSave: (Article) -> Unit,
     onMarkRead: (String) -> Unit,
+    reader: NewsReader,
 ) {
     val uri = LocalUriHandler.current
+    val ttsAvailable by reader.available.collectAsState()
+    val speakingKey by reader.speakingKey.collectAsState()
+    val scope = rememberCoroutineScope()
+    val speaking = article != null && speakingKey == article.id
+    DisposableEffect(Unit) { onDispose { reader.stop() } }
+    // Lê título e o texto completo exibido nesta tela (resumo ou trecho da fonte).
+    val toggleSpeak: (() -> Unit)? = if (article != null && ttsAvailable) ({
+        if (speaking) reader.stop()
+        else {
+            val body = article.summary?.takeIf { it.isNotBlank() } ?: article.excerptPt?.takeIf { it.isNotBlank() }
+                ?: article.excerpt.takeIf { it.isNotBlank() && article.language == "pt" }
+            scope.launch { reader.speak(spokenText(article.displayTitle, body), 0, article.id) }
+        }
+    }) else null
     Scaffold(
         contentWindowInsets = WindowInsets(0.dp),
         topBar = {
@@ -75,6 +101,16 @@ fun ArticleScreen(
                     IconButton(onClick = onBack) { Icon(Icons.AutoMirrored.Outlined.ArrowBack, contentDescription = "Voltar") }
                 },
                 actions = {
+                    // Sem foto, o botão de ouvir fica na barra do topo.
+                    if (article != null && article.imageUrl == null && toggleSpeak != null) {
+                        IconButton(onClick = toggleSpeak) {
+                            Icon(
+                                if (speaking) Icons.Outlined.Stop else Icons.AutoMirrored.Outlined.VolumeUp,
+                                contentDescription = if (speaking) "Parar leitura" else "Ouvir esta notícia",
+                                tint = if (speaking) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurfaceVariant,
+                            )
+                        }
+                    }
                     if (article != null) {
                         IconButton(onClick = { onToggleSave(article) }) {
                             Icon(
@@ -103,7 +139,12 @@ fun ArticleScreen(
                 .padding(bottom = 40.dp),
         ) {
             article.imageUrl?.let {
-                NewsImage(it, article.category, Modifier.fillMaxWidth().aspectRatio(16f / 9f).clip(RoundedCornerShape(16.dp)))
+                Box {
+                    NewsImage(it, article.category, Modifier.fillMaxWidth().aspectRatio(16f / 9f).clip(RoundedCornerShape(16.dp)))
+                    if (toggleSpeak != null) {
+                        SpeakButton(speaking, toggleSpeak, Modifier.align(Alignment.BottomEnd).padding(12.dp))
+                    }
+                }
                 Text(
                     "Imagem: ${article.sourceName}",
                     style = MaterialTheme.typography.labelSmall,
