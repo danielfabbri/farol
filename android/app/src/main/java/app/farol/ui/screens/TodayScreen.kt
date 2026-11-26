@@ -1,5 +1,14 @@
 package app.farol.ui.screens
 
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.foundation.border
+import app.farol.ui.NewsReader
+import androidx.compose.material.icons.outlined.Stop
+import androidx.compose.material.icons.automirrored.outlined.VolumeUp
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -112,11 +121,84 @@ fun TodayScreen(
     val sections = feed?.sections.orEmpty().sortedBy { it.order }
     val section = sections.firstOrNull { it.id == sectionId }
 
+    val arts = state.articlesById
+    val isRead = { e: Event -> e.articleIds.any { it in state.readIds } }
+    val readOnly = state.readFilter == app.farol.data.prefs.ReadFilter.READ
+    // Arrastada para o lado = lida e fora do feed (só volta no filtro "Lidas").
+    val visible = { e: Event -> state.readFilter.accepts(isRead(e)) && (readOnly || e.id !in state.dismissed) }
+
+    // Seção: sempre da mais recente para a mais antiga.
+    val sectionOrdered = if (feed != null && section != null) {
+        feed.events
+            .filter { it.category == section.id && it.matches(topic, arts) && visible(it) }
+            .sortedByDescending { it.shownMillis(arts) }
+    } else emptyList()
+    val sectionShown = sectionOrdered.take(state.highlightLimit + state.otherLimit)
+
+    // Capa. Os destaques da edição mudam pouco de uma edição para outra. Filtrar só eles esvaziava a capa
+    // em "Não lidas"; então a capa é completada com os destaques das seções e, depois, com os
+    // demais acontecimentos por importância, até preencher o limite.
+    val allHighlights = feed?.highlights.orEmpty().mapNotNull { state.eventsById[it] }.take(state.highlightLimit)
+    val capa = if (feed != null && section == null) {
+        val highlightIds = (feed.highlights + sections.flatMap { it.highlights }).distinct()
+        (highlightIds.mapNotNull { state.eventsById[it] } +
+            feed.events.filter { it.id !in highlightIds }.sortedByDescending { it.score })
+            .filter { leadArticle(it, arts) != null }
+            .filter(visible)
+            .take(state.highlightLimit)
+            .sortedByDescending { it.shownMillis(arts) }
+    } else emptyList()
+
+    // ---------------- Leitura automática ----------------
+    // Lê título e resumo da primeira notícia da lista (voz masculina e feminina alternadas); ao terminar,
+    // o card é jogado para a esquerda e vira "lida", e a próxima assume o topo.
+    val queue = (if (section != null) sectionShown else capa).mapNotNull { e -> leadArticle(e, arts)?.let { e to it } }
+    val context = LocalContext.current
+    val reader = remember { NewsReader(context) }
+    DisposableEffect(reader) { onDispose { reader.shutdown() } }
+    val ttsAvailable by reader.available.collectAsState()
+    var autoRead by remember { mutableStateOf(false) }
+    var speakingId by remember { mutableStateOf<String?>(null) }
+    var swipingId by remember { mutableStateOf<String?>(null) }
+    var turn by remember { mutableIntStateOf(0) }
+    val listState = rememberLazyListState()
+    val stopReading = { autoRead = false; speakingId = null; reader.stop() }
+    val openArticle = { id: String -> stopReading(); onOpenArticle(id) }
+    // Posição do primeiro card na lista (cabeçalho, seções, avisos, cabeçalho da lista).
+    val firstCardIndex = 3 + (if (sections.isNotEmpty()) 1 else 0) +
+        (if (section != null && section.filters.isNotEmpty()) 1 else 0)
+    val nextId = queue.firstOrNull()?.first?.id
+    LaunchedEffect(autoRead, nextId) {
+        if (!autoRead) return@LaunchedEffect
+        val (event, lead) = queue.firstOrNull() ?: run { autoRead = false; speakingId = null; return@LaunchedEffect }
+        speakingId = event.id
+        runCatching { listState.animateScrollToItem(firstCardIndex) }
+        val title = lead.displayTitle.trim().trimEnd('.')
+        val text = listOfNotNull(title, (lead.preview ?: event.summary)?.trim()?.takeIf { it.isNotEmpty() })
+            .joinToString(". ")
+        val ok = reader.speak(text, male = turn % 2 == 0)
+        if (!ok) { autoRead = false; speakingId = null; return@LaunchedEffect }
+        turn++
+        swipingId = event.id // o card anima para a esquerda e é marcado como lido; a fila anda.
+    }
+
     PullToRefreshBox(isRefreshing = state.syncing, onRefresh = onRefresh, modifier = Modifier.fillMaxSize()) {
-        LazyColumn(contentPadding = PaddingValues(vertical = 12.dp), modifier = Modifier.fillMaxSize()) {
-            item { TodayHeader(feed, section) { if (feed != null) ReadFilterButton(state.readFilter, onReadFilter) } }
+        LazyColumn(state = listState, contentPadding = PaddingValues(vertical = 12.dp), modifier = Modifier.fillMaxSize()) {
+            item {
+                TodayHeader(feed, section) {
+                    if (feed != null) {
+                        ReadAloudButton(
+                            playing = autoRead,
+                            enabled = autoRead || (!readOnly && queue.isNotEmpty() && ttsAvailable),
+                        ) {
+                            if (autoRead) stopReading() else { turn = 0; swipingId = null; autoRead = true }
+                        }
+                        ReadFilterButton(state.readFilter) { stopReading(); onReadFilter(it) }
+                    }
+                }
+            }
             if (sections.isNotEmpty()) {
-                item { SectionBar(sections, sectionId) { sectionId = it; topic = null } }
+                item { SectionBar(sections, sectionId) { stopReading(); sectionId = it; topic = null } }
             }
             item {
                 Column(HPad) { SyncNotices(state) }
@@ -137,22 +219,13 @@ fun TodayScreen(
                 return@LazyColumn
             }
 
-            val arts = state.articlesById
-            val isRead = { e: Event -> e.articleIds.any { it in state.readIds } }
-            val readOnly = state.readFilter == app.farol.data.prefs.ReadFilter.READ
-            // Arrastada para o lado = lida e fora do feed (só volta no filtro "Lidas").
-            val visible = { e: Event -> state.readFilter.accepts(isRead(e)) && (readOnly || e.id !in state.dismissed) }
-
             if (section != null) {
                 // ---------------- Seção ----------------
                 if (section.filters.isNotEmpty()) {
-                    item { TopicChips(section.filters, topic) { topic = it } }
+                    item { TopicChips(section.filters, topic) { stopReading(); topic = it } }
                 }
-                // Sempre da mais recente para a mais antiga.
-                val ordered = feed.events
-                    .filter { it.category == section.id && it.matches(topic, arts) && visible(it) }
-                    .sortedByDescending { it.shownMillis(arts) }
-                val shown = ordered.take(state.highlightLimit + state.otherLimit)
+                val ordered = sectionOrdered
+                val shown = sectionShown
                 val label = topic?.let { t -> section.filters.firstOrNull { it.id == t }?.label } ?: section.label
                 item { SectionHeader(label, "${shown.size} de ${ordered.size}", HPad) }
                 if (shown.isEmpty()) {
@@ -161,12 +234,15 @@ fun TodayScreen(
                 itemsIndexed(shown, key = { _, e -> "s-" + e.id }) { i, event ->
                     val lead = leadArticle(event, arts) ?: return@itemsIndexed
                     val sub = state.labelFor(lead)
-                    SwipeToRead(!readOnly, { onDismiss(event.id, lead.id) }, Modifier.animateItem().then(HPad)) {
+                    SwipeToRead(
+                        !readOnly, { onDismiss(event.id, lead.id) }, Modifier.animateItem().then(HPad),
+                        speaking = speakingId == event.id, autoSwipe = swipingId == event.id,
+                    ) {
                         if (i < 3) {
-                            HighlightCard(i + 1, event, lead, sub, isRead(event)) { onOpenArticle(lead.id) }
+                            HighlightCard(i + 1, event, lead, sub, isRead(event)) { openArticle(lead.id) }
                         } else {
                             Column {
-                                CompactArticleRow(lead, sub, isRead(event), (event.sourceCount - 1).coerceAtLeast(0)) { onOpenArticle(lead.id) }
+                                CompactArticleRow(lead, sub, isRead(event), (event.sourceCount - 1).coerceAtLeast(0)) { openArticle(lead.id) }
                                 HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
                             }
                         }
@@ -184,19 +260,8 @@ fun TodayScreen(
             }
 
             // ---------------- Capa ----------------
-            val allHighlights = feed.highlights.mapNotNull { state.eventsById[it] }.take(state.highlightLimit)
             val readCount = allHighlights.count(isRead)
-            // Os destaques da edição mudam pouco de uma edição para outra. Filtrar só eles esvaziava a capa
-            // em "Não lidas"; então a capa é completada com os destaques das seções e, depois, com os
-            // demais acontecimentos por importância, até preencher o limite.
-            val highlightIds = (feed.highlights + sections.flatMap { it.highlights }).distinct()
-            val candidates = (highlightIds.mapNotNull { state.eventsById[it] } +
-                feed.events.filter { it.id !in highlightIds }.sortedByDescending { it.score })
-                .filter { leadArticle(it, arts) != null }
-            val highlights = candidates
-                .filter(visible)
-                .take(state.highlightLimit)
-                .sortedByDescending { it.shownMillis(arts) }
+            val highlights = capa
             item { SectionHeader("Destaques", "$readCount de ${allHighlights.size} lidos", HPad) }
             if (highlights.isEmpty() && allHighlights.isNotEmpty()) {
                 item {
@@ -210,14 +275,17 @@ fun TodayScreen(
             }
             itemsIndexed(highlights, key = { _, e -> e.id }) { i, event ->
                 val lead = leadArticle(event, arts) ?: return@itemsIndexed
-                SwipeToRead(!readOnly, { onDismiss(event.id, lead.id) }, Modifier.animateItem().then(HPad)) {
+                SwipeToRead(
+                    !readOnly, { onDismiss(event.id, lead.id) }, Modifier.animateItem().then(HPad),
+                    speaking = speakingId == event.id, autoSwipe = swipingId == event.id,
+                ) {
                     HighlightCard(
                         rank = i + 1,
                         event = event,
                         lead = lead,
                         subcategoryLabel = state.labelFor(lead) ?: state.sectionLabels[event.category],
                         read = isRead(event),
-                        onClick = { onOpenArticle(lead.id) },
+                        onClick = { openArticle(lead.id) },
                     )
                 }
             }
@@ -254,7 +322,14 @@ fun TodayScreen(
 /** Arrastar o card para qualquer lado marca a notícia como lida; ela sai e a de baixo sobe. */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-private fun SwipeToRead(enabled: Boolean, onRead: () -> Unit, modifier: Modifier = Modifier, content: @Composable () -> Unit) {
+private fun SwipeToRead(
+    enabled: Boolean,
+    onRead: () -> Unit,
+    modifier: Modifier = Modifier,
+    speaking: Boolean = false,
+    autoSwipe: Boolean = false,
+    content: @Composable () -> Unit,
+) {
     val current by androidx.compose.runtime.rememberUpdatedState(onRead)
     val swipe = androidx.compose.material3.rememberSwipeToDismissBoxState(
         confirmValueChange = { value ->
@@ -263,6 +338,13 @@ private fun SwipeToRead(enabled: Boolean, onRead: () -> Unit, modifier: Modifier
         },
         positionalThreshold = { it * 0.35f },
     )
+    // Leitura automática: ao terminar de ler, o card é jogado para a esquerda.
+    LaunchedEffect(autoSwipe) {
+        if (autoSwipe) {
+            swipe.dismiss(androidx.compose.material3.SwipeToDismissBoxValue.EndToStart)
+            current()
+        }
+    }
     androidx.compose.material3.SwipeToDismissBox(
         state = swipe,
         modifier = modifier,
@@ -284,7 +366,28 @@ private fun SwipeToRead(enabled: Boolean, onRead: () -> Unit, modifier: Modifier
         },
     ) {
         // Fundo opaco: o aviso "Lida" só aparece no espaço que o card deixa ao ser arrastado.
-        Box(Modifier.background(MaterialTheme.colorScheme.background)) { content() }
+        Box(Modifier.background(MaterialTheme.colorScheme.background)) {
+            content()
+            // Contorno no card que está sendo lido em voz alta.
+            if (speaking) {
+                Box(
+                    Modifier.matchParentSize().padding(bottom = 12.dp)
+                        .border(2.dp, MaterialTheme.colorScheme.primary, CardShape)
+                )
+            }
+        }
+    }
+}
+
+/** Liga e desliga a leitura automática em voz alta. */
+@Composable
+private fun ReadAloudButton(playing: Boolean, enabled: Boolean, onClick: () -> Unit) {
+    androidx.compose.material3.IconButton(onClick = onClick, enabled = enabled) {
+        Icon(
+            if (playing) Icons.Outlined.Stop else Icons.AutoMirrored.Outlined.VolumeUp,
+            contentDescription = if (playing) "Parar leitura" else "Ler em voz alta",
+            tint = if (playing) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurfaceVariant,
+        )
     }
 }
 

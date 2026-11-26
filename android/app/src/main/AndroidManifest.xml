@@ -6,6 +6,13 @@
     <!-- Atualização do próprio app (Ajustes → Atualizar app); o Android pede confirmação a cada instalação. -->
     <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
 
+    <!-- Leitura em voz alta: permite encontrar o motor de voz do aparelho (Android 11+). -->
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.TTS_SERVICE" />
+        </intent>
+    </queries>
+
     <application
         android:name=".FarolApplication"
         android:allowBackup="true"
