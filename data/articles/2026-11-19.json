@@ -29,6 +29,7 @@
    "entities": [],
    "technologies": [],
    "tags": [],
+   "keywords": [],
    "relevance_score": null,
    "novelty_score": null,
    "business_potential": null,
@@ -72,6 +73,7 @@
    "entities": [],
    "technologies": [],
    "tags": [],
+   "keywords": [],
    "relevance_score": null,
    "novelty_score": null,
    "business_potential": null,
@@ -115,6 +117,7 @@
    "entities": [],
    "technologies": [],
    "tags": [],
+   "keywords": [],
    "relevance_score": null,
    "novelty_score": null,
    "business_potential": null,
@@ -158,6 +161,7 @@
    "entities": [],
    "technologies": [],
    "tags": [],
+   "keywords": [],
    "relevance_score": null,
    "novelty_score": null,
    "business_potential": null,
@@ -201,6 +205,7 @@
    "entities": [],
    "technologies": [],
    "tags": [],
+   "keywords": [],
    "relevance_score": null,
    "novelty_score": null,
    "business_potential": null,
@@ -246,6 +251,7 @@
    "tags": [
     "agents"
    ],
+   "keywords": [],
    "relevance_score": null,
    "novelty_score": null,
    "business_potential": null,
@@ -289,6 +295,7 @@
    "entities": [],
    "technologies": [],
    "tags": [],
+   "keywords": [],
    "relevance_score": null,
    "novelty_score": null,
    "business_potential": null,
@@ -334,6 +341,7 @@
    "tags": [
     "policy"
    ],
+   "keywords": [],
    "relevance_score": null,
    "novelty_score": null,
    "business_potential": null,
@@ -380,6 +388,7 @@
     "nvidia",
     "policy"
    ],
+   "keywords": [],
    "relevance_score": null,
    "novelty_score": null,
    "business_potential": null,
@@ -423,6 +432,7 @@
    "entities": [],
    "technologies": [],
    "tags": [],
+   "keywords": [],
    "relevance_score": null,
    "novelty_score": null,
    "business_potential": null,
@@ -469,6 +479,7 @@
     "microsoft",
     "nvidia"
    ],
+   "keywords": [],
    "relevance_score": null,
    "novelty_score": null,
    "business_potential": null,
@@ -512,6 +523,7 @@
    "entities": [],
    "technologies": [],
    "tags": [],
+   "keywords": [],
    "relevance_score": null,
    "novelty_score": null,
    "business_potential": null,
@@ -555,6 +567,7 @@
    "entities": [],
    "technologies": [],
    "tags": [],
+   "keywords": [],
    "relevance_score": null,
    "novelty_score": null,
    "business_potential": null,
@@ -601,6 +614,7 @@
     "google",
     "products"
    ],
+   "keywords": [],
    "relevance_score": null,
    "novelty_score": null,
    "business_potential": null,
@@ -644,6 +658,7 @@
    "entities": [],
    "technologies": [],
    "tags": [],
+   "keywords": [],
    "relevance_score": null,
    "novelty_score": null,
    "business_potential": null,
@@ -687,6 +702,7 @@
    "entities": [],
    "technologies": [],
    "tags": [],
+   "keywords": [],
    "relevance_score": null,
    "novelty_score": null,
    "business_potential": null,
@@ -734,6 +750,7 @@
     "agents",
     "dev"
    ],
+   "keywords": [],
    "relevance_score": null,
    "novelty_score": null,
    "business_potential": null,
@@ -779,6 +796,7 @@
    "tags": [
     "google"
    ],
+   "keywords": [],
    "relevance_score": null,
    "novelty_score": null,
    "business_potential": null,
