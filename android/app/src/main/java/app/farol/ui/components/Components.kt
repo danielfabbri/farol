@@ -124,7 +124,7 @@ fun HighlightCard(
     onClick: () -> Unit,
 ) {
     val title = lead?.displayTitle ?: event.title
-    val summary = lead?.preview ?: event.summary
+    // Abaixo da foto, só o título: o resumo fica na tela da notícia.
     Surface(
         onClick = onClick,
         shape = CardShape,
@@ -152,16 +152,6 @@ fun HighlightCard(
                 style = MaterialTheme.typography.titleLarge,
                 color = if (read) MaterialTheme.colorScheme.onSurfaceVariant else MaterialTheme.colorScheme.onSurface,
             )
-            if (!summary.isNullOrBlank()) {
-                Spacer(Modifier.height(8.dp))
-                Text(
-                    summary,
-                    style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    maxLines = 3,
-                    overflow = TextOverflow.Ellipsis,
-                )
-            }
             Spacer(Modifier.height(12.dp))
             SourceLine(
                 primary = lead?.sourceName ?: event.sources.firstOrNull()?.sourceName.orEmpty(),

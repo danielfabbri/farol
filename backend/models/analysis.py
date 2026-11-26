@@ -122,13 +122,13 @@ class Translation(BaseModel):
 
 
 class Digest(BaseModel):
-    """Resumo curto (um parágrafo) + título em português."""
+    """Resumo (um ou dois parágrafos) + título em português."""
 
     model_config = ConfigDict(extra="ignore")
 
     ref: str
     title_pt: str = Field(min_length=3, max_length=240)
-    summary: str = Field(min_length=40, max_length=600)
+    summary: str = Field(min_length=40, max_length=1100)
 
     @model_validator(mode="before")
     @classmethod

@@ -1,9 +1,9 @@
 {
-  "version_code": 12,
-  "version_name": "0.10.1",
+  "version_code": 13,
+  "version_name": "0.11.0",
   "apk": "releases/farol.apk",
-  "sha256": "098ff403deb2c61a8d69de668adb035bcbb91e4fec69e7b1b60e8cec7aada466",
-  "size": 1811024,
-  "notes": "Capa nunca fica vazia: com o filtro Não lidas, a capa é completada com os próximos acontecimentos mais importantes que você ainda não leu.",
-  "published_at": "2026-11-25T13:10:20Z"
+  "sha256": "36d5fc167f14f407992250d6e3a6cf6f91e255cbb3e9e0b35a8fa2be76060e9f",
+  "size": 1827408,
+  "notes": "Cards da capa e das seções só com foto e título (o resumo fica ao abrir a notícia). Arraste uma notícia para o lado para marcá-la como lida: ela sai do feed e a de baixo sobe (no filtro Lidas ela continua aparecendo). Resumos da IA mais completos, com um ou dois parágrafos, nas notícias novas.",
+  "published_at": "2026-11-26T00:43:14Z"
 }

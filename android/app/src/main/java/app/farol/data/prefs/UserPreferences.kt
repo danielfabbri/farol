@@ -35,6 +35,12 @@ class UserPreferences(context: Context) {
     )
     val readFilter: StateFlow<ReadFilter> = _readFilter.asStateFlow()
 
+    /** Acontecimentos dispensados com o gesto de arrastar (mais recentes por último; guardamos os últimos 2000). */
+    private val _dismissed = MutableStateFlow(
+        sp.getString(KEY_DISMISSED, "").orEmpty().split(',').filter { it.isNotBlank() }
+    )
+    val dismissed: StateFlow<List<String>> = _dismissed.asStateFlow()
+
     private val _lastSync = MutableStateFlow(sp.getLong(KEY_LAST_SYNC, 0L))
     val lastSync: StateFlow<Long> = _lastSync.asStateFlow()
 
@@ -48,6 +54,11 @@ class UserPreferences(context: Context) {
         _githubToken.value = clean
     }
     fun setReadFilter(f: ReadFilter) { sp.edit().putString(KEY_READ_FILTER, f.name).apply(); _readFilter.value = f }
+    fun dismiss(eventId: String) {
+        val list = (_dismissed.value - eventId + eventId).takeLast(2000)
+        sp.edit().putString(KEY_DISMISSED, list.joinToString(",")).apply()
+        _dismissed.value = list
+    }
     fun setLastSync(ts: Long) { sp.edit().putLong(KEY_LAST_SYNC, ts).apply(); _lastSync.value = ts }
 
     private companion object {
@@ -57,6 +68,7 @@ class UserPreferences(context: Context) {
         const val KEY_DEMO = "demo_mode"
         const val KEY_READ_FILTER = "read_filter"
         const val KEY_LAST_SYNC = "last_sync"
+        const val KEY_DISMISSED = "dismissed_events"
         const val KEY_TOKEN = "github_token"
     }
 }

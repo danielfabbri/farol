@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -21,6 +22,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.outlined.KeyboardArrowRight
 import androidx.compose.material.icons.outlined.CloudOff
+import androidx.compose.material.icons.outlined.Done
 import androidx.compose.material.icons.outlined.Radar
 import androidx.compose.material.icons.outlined.Science
 import androidx.compose.material.icons.outlined.SystemUpdate
@@ -102,6 +104,7 @@ fun TodayScreen(
     onOpenArticle: (String) -> Unit,
     onOpenExplore: () -> Unit,
     onReadFilter: (app.farol.data.prefs.ReadFilter) -> Unit = {},
+    onDismiss: (eventId: String, articleId: String) -> Unit = { _, _ -> },
 ) {
     val feed = state.feed
     var sectionId by rememberSaveable { mutableStateOf<String?>(null) }
@@ -136,6 +139,9 @@ fun TodayScreen(
 
             val arts = state.articlesById
             val isRead = { e: Event -> e.articleIds.any { it in state.readIds } }
+            val readOnly = state.readFilter == app.farol.data.prefs.ReadFilter.READ
+            // Arrastada para o lado = lida e fora do feed (só volta no filtro "Lidas").
+            val visible = { e: Event -> state.readFilter.accepts(isRead(e)) && (readOnly || e.id !in state.dismissed) }
 
             if (section != null) {
                 // ---------------- Seção ----------------
@@ -144,7 +150,7 @@ fun TodayScreen(
                 }
                 // Sempre da mais recente para a mais antiga.
                 val ordered = feed.events
-                    .filter { it.category == section.id && it.matches(topic, arts) && state.readFilter.accepts(isRead(it)) }
+                    .filter { it.category == section.id && it.matches(topic, arts) && visible(it) }
                     .sortedByDescending { it.shownMillis(arts) }
                 val shown = ordered.take(state.highlightLimit + state.otherLimit)
                 val label = topic?.let { t -> section.filters.firstOrNull { it.id == t }?.label } ?: section.label
@@ -155,7 +161,7 @@ fun TodayScreen(
                 itemsIndexed(shown, key = { _, e -> "s-" + e.id }) { i, event ->
                     val lead = leadArticle(event, arts) ?: return@itemsIndexed
                     val sub = state.labelFor(lead)
-                    Box(HPad) {
+                    SwipeToRead(!readOnly, { onDismiss(event.id, lead.id) }, Modifier.animateItem().then(HPad)) {
                         if (i < 3) {
                             HighlightCard(i + 1, event, lead, sub, isRead(event)) { onOpenArticle(lead.id) }
                         } else {
@@ -188,7 +194,7 @@ fun TodayScreen(
                 feed.events.filter { it.id !in highlightIds }.sortedByDescending { it.score })
                 .filter { leadArticle(it, arts) != null }
             val highlights = candidates
-                .filter { state.readFilter.accepts(isRead(it)) }
+                .filter(visible)
                 .take(state.highlightLimit)
                 .sortedByDescending { it.shownMillis(arts) }
             item { SectionHeader("Destaques", "$readCount de ${allHighlights.size} lidos", HPad) }
@@ -203,15 +209,15 @@ fun TodayScreen(
                 }
             }
             itemsIndexed(highlights, key = { _, e -> e.id }) { i, event ->
-                val lead = leadArticle(event, arts)
-                Box(HPad) {
+                val lead = leadArticle(event, arts) ?: return@itemsIndexed
+                SwipeToRead(!readOnly, { onDismiss(event.id, lead.id) }, Modifier.animateItem().then(HPad)) {
                     HighlightCard(
                         rank = i + 1,
                         event = event,
                         lead = lead,
-                        subcategoryLabel = lead?.let { state.labelFor(it) } ?: state.sectionLabels[event.category],
+                        subcategoryLabel = state.labelFor(lead) ?: state.sectionLabels[event.category],
                         read = isRead(event),
-                        onClick = { lead?.let { onOpenArticle(it.id) } },
+                        onClick = { onOpenArticle(lead.id) },
                     )
                 }
             }
@@ -243,6 +249,43 @@ fun TodayScreen(
         }
     }
 
+}
+
+/** Arrastar o card para qualquer lado marca a notícia como lida; ela sai e a de baixo sobe. */
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+private fun SwipeToRead(enabled: Boolean, onRead: () -> Unit, modifier: Modifier = Modifier, content: @Composable () -> Unit) {
+    val current by androidx.compose.runtime.rememberUpdatedState(onRead)
+    val swipe = androidx.compose.material3.rememberSwipeToDismissBoxState(
+        confirmValueChange = { value ->
+            if (value != androidx.compose.material3.SwipeToDismissBoxValue.Settled) current()
+            true
+        },
+        positionalThreshold = { it * 0.35f },
+    )
+    androidx.compose.material3.SwipeToDismissBox(
+        state = swipe,
+        modifier = modifier,
+        gesturesEnabled = enabled,
+        backgroundContent = {
+            val dir = swipe.dismissDirection
+            if (dir == androidx.compose.material3.SwipeToDismissBoxValue.Settled) return@SwipeToDismissBox
+            val toEnd = dir == androidx.compose.material3.SwipeToDismissBoxValue.StartToEnd
+            Row(
+                Modifier.fillMaxSize().padding(bottom = 12.dp).padding(horizontal = 24.dp),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = if (toEnd) androidx.compose.foundation.layout.Arrangement.Start
+                else androidx.compose.foundation.layout.Arrangement.End,
+            ) {
+                Icon(Icons.Outlined.Done, null, tint = MaterialTheme.colorScheme.primary)
+                Spacer(Modifier.width(8.dp))
+                Text("Lida", style = MaterialTheme.typography.labelLarge, color = MaterialTheme.colorScheme.primary)
+            }
+        },
+    ) {
+        // Fundo opaco: o aviso "Lida" só aparece no espaço que o card deixa ao ser arrastado.
+        Box(Modifier.background(MaterialTheme.colorScheme.background)) { content() }
+    }
 }
 
 @Composable

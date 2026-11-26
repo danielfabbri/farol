@@ -86,6 +86,7 @@ fun FarolApp(vm: MainViewModel, state: UiState) {
                     onOpenArticle = openArticle,
                     onOpenExplore = { nav.goTopLevel("explore") },
                     onReadFilter = vm::setReadFilter,
+                    onDismiss = vm::dismiss,
                 )
             }
             composable("explore") {

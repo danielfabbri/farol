@@ -137,9 +137,9 @@ def summarize_articles(
     batch_size: int,
     daily_limit: int,
     run_limit: int,
-    excerpt_chars: int = 700,
+    excerpt_chars: int = 1500,
 ) -> tuple[int, str | None]:
-    """Um parágrafo curto explicando cada notícia (e o título em português). Retorna (resumidas, motivo_de_parada)."""
+    """Um ou dois parágrafos explicando cada notícia (e o título em português). Retorna (resumidas, motivo_de_parada)."""
     from backend.ai.prompts import DIGEST_SCHEMA, DIGEST_SYSTEM_PROMPT, build_digest_prompt
     from backend.models.analysis import Digest
 

@@ -20,7 +20,7 @@ from backend.config.settings import FIXTURES_DIR
 from backend.models.article import Article
 
 log = logging.getLogger(__name__)
-EXCERPT_LIMIT = 600
+EXCERPT_LIMIT = 1500
 _IMG_RE = re.compile(r"<img[^>]+src=[\"']([^\"']+)[\"']", re.IGNORECASE)
 
 

@@ -51,6 +51,7 @@ data class UiState(
     val hasToken: Boolean = false,
     val scan: ScanState = ScanState.Idle,
     val readFilter: app.farol.data.prefs.ReadFilter = app.farol.data.prefs.ReadFilter.ALL,
+    val dismissed: Set<String> = emptySet(),
 ) {
     val articlesById: Map<String, Article> by lazy { feed?.articles.orEmpty().associateBy { it.id } }
     val eventsById: Map<String, Event> by lazy { feed?.events.orEmpty().associateBy { it.id } }
@@ -148,7 +149,9 @@ class MainViewModel(
 
     private val sync = MutableStateFlow(SyncPart())
     private val scanState = MutableStateFlow<ScanState>(ScanState.Idle)
-    private val syncAndScan = combine(sync, scanState, prefs.githubToken, prefs.readFilter) { s, sc, t, f -> SyncScan(s, sc, t != null, f) }
+    private val syncAndScan = combine(sync, scanState, prefs.githubToken, prefs.readFilter, prefs.dismissed) { s, sc, t, f, dm ->
+        SyncScan(s, sc, t != null, f, dm.toSet())
+    }
     private val _archive = MutableStateFlow<Map<String, ArchiveState>>(emptyMap())
     val archive: StateFlow<Map<String, ArchiveState>> = _archive.asStateFlow()
 
@@ -163,12 +166,12 @@ class MainViewModel(
         PrefsPart(t, h, o, d, l)
     }
 
-    val state: StateFlow<UiState> = combine(data, prefsFlow, syncAndScan) { d, p, (s, scan, hasToken, readFilter) ->
+    val state: StateFlow<UiState> = combine(data, prefsFlow, syncAndScan) { d, p, (s, scan, hasToken, readFilter, dismissed) ->
         UiState(
             loaded = true, feed = d.feed, trends = d.trends, saved = d.saved, savedArticles = d.savedArticles,
             readIds = d.read, syncing = s.syncing, lastResult = s.result, lastSync = p.lastSync,
             theme = p.theme, highlightLimit = p.hl, otherLimit = p.other, demoMode = p.demo,
-            hasToken = hasToken, scan = scan, readFilter = readFilter,
+            hasToken = hasToken, scan = scan, readFilter = readFilter, dismissed = dismissed,
         )
     }.stateIn(viewModelScope, SharingStarted.Eagerly, UiState())
 
@@ -298,6 +301,12 @@ class MainViewModel(
 
     fun toggleSave(article: Article) = viewModelScope.launch { repo.toggleSave(article) }
     fun markRead(id: String) = viewModelScope.launch { repo.markRead(id) }
+
+    /** Arrastar para o lado: a notícia vira "lida" e sai do feed. */
+    fun dismiss(eventId: String, articleId: String) {
+        prefs.dismiss(eventId)
+        markRead(articleId)
+    }
     fun setTheme(mode: ThemeMode) = prefs.setTheme(mode)
     fun setHighlightLimit(n: Int) = prefs.setHighlightLimit(n)
     fun setOtherLimit(n: Int) = prefs.setOtherLimit(n)
@@ -327,4 +336,4 @@ class MainViewModel(
     }
 }
 
-private data class SyncScan(val sync: SyncPart, val scan: ScanState, val hasToken: Boolean, val readFilter: app.farol.data.prefs.ReadFilter)
+private data class SyncScan(val sync: SyncPart, val scan: ScanState, val hasToken: Boolean, val readFilter: app.farol.data.prefs.ReadFilter, val dismissed: Set<String>)

@@ -65,8 +65,11 @@ DIGEST_SYSTEM_PROMPT = """Você resume notícias para um leitor brasileiro.
 Para cada item, escreva em português do Brasil:
 - title_pt: o título SEMPRE em português do Brasil. Se "lang" não for "pt", TRADUZA o título; nunca devolva o
   título em inglês (só nomes próprios, marcas e siglas ficam como no original). Se já estiver em português, repita-o;
-- summary: SEMPRE em português, UM parágrafo curto (2 a 3 frases, no máximo 320 caracteres) explicando a matéria: o que aconteceu,
-  quem está envolvido e o contexto essencial.
+- summary: SEMPRE em português, um parágrafo de 4 a 5 frases (cerca de 450 a 650 caracteres) explicando a matéria: o que
+  aconteceu, quem está envolvido, os números e detalhes relevantes do trecho e o contexto essencial. Se o trecho trouxer
+  material suficiente, use DOIS parágrafos (separados por uma linha em branco; no máximo 900 caracteres no total):
+  o primeiro com o fato principal, o segundo com detalhes, contexto e próximos passos citados pela fonte. Se o trecho for
+  curto, escreva menos — é melhor um resumo curto do que encher com frases genéricas ou informações inventadas.
 Use SOMENTE informações presentes no título e no trecho; não invente números, nomes, datas nem consequências.
 Sem opinião, sem pontos fortes ou fracos, sem listas, sem frases como "a matéria fala sobre".
 Mantenha nomes de pessoas, empresas, produtos e siglas como no original.
