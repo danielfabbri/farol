@@ -43,5 +43,14 @@ object Affinity {
             .sortedBy { if (liked) -it.value else it.value }
             .take(n).map { it.key.removePrefix(KEYWORD) }
 
-    private fun norm(s: String) = s.trim().lowercase(Locale.ROOT)
+    /** Chave guardada para uma palavra digitada ou exibida ("NVIDIA " → "kw:nvidia"). */
+    fun key(word: String): String = KEYWORD + norm(word.removePrefix(KEYWORD))
+
+    /** Todas as palavras guardadas, das mais fortes para as mais fracas. */
+    fun all(weights: Map<String, Float>): List<Pair<String, Float>> =
+        weights.entries.filter { it.key.startsWith(KEYWORD) }
+            .sortedByDescending { kotlin.math.abs(it.value) }
+            .map { it.key.removePrefix(KEYWORD) to it.value }
+
+    private fun norm(s: String) = s.trim().replace(Regex("\\s+"), " ").lowercase(Locale.ROOT)
 }

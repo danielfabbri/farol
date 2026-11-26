@@ -30,6 +30,7 @@ import app.farol.ui.screens.ArchiveDayScreen
 import app.farol.ui.screens.ArticleScreen
 import app.farol.ui.screens.ExploreScreen
 import app.farol.ui.screens.SavedScreen
+import app.farol.ui.screens.SettingsPage
 import app.farol.ui.screens.SettingsScreen
 import app.farol.ui.screens.TodayScreen
 import app.farol.ui.screens.TrendsScreen
@@ -95,9 +96,13 @@ fun FarolApp(vm: MainViewModel, state: UiState) {
             }
             composable("trends") { TrendsScreen(state, onOpenArticle = openArticle) }
             composable("saved") { SavedScreen(state, onOpenArticle = openArticle) }
-            composable("settings") {
+            // Ajustes: o menu e cada área numa tela própria (sem a barra de baixo, como no Android).
+            val settings: @Composable (SettingsPage?) -> Unit = { page ->
                 SettingsScreen(
                     state,
+                    page = page,
+                    onOpenPage = { nav.navigate("settings/${it.route}") },
+                    onBack = { nav.popBackStack() },
                     onRefresh = { vm.refresh(force = true) },
                     onTheme = vm::setTheme,
                     onHighlightLimit = vm::setHighlightLimit,
@@ -113,8 +118,14 @@ fun FarolApp(vm: MainViewModel, state: UiState) {
                     onInstallUpdate = { vm.installIntent()?.let { context.startActivity(it) } },
                     reader = vm.reader,
                     onVoiceSettings = vm::setVoiceSettings,
+                    onSetTaste = { word, weight -> vm.setTaste(word, weight) },
                     onResetTastes = { vm.resetTastes() },
                 )
+            }
+            composable("settings") { settings(null) }
+            composable("settings/{page}") { entry ->
+                val page = SettingsPage.of(entry.arguments?.getString("page"))
+                if (page == null) settings(null) else settings(page)
             }
             composable("article/{id}") { entry ->
                 val id = entry.arguments?.getString("id").orEmpty()
@@ -131,6 +142,8 @@ fun FarolApp(vm: MainViewModel, state: UiState) {
                     reader = vm.reader,
                     read = article != null && ((event?.articleIds.orEmpty() + id).any { it in state.readIds }),
                     onMarkUnread = { vm.markUnread(it) },
+                    reaction = event?.let { state.eventReactions[it.id] } ?: 0,
+                    onReact = event?.let { ev -> { v: Int -> vm.react(ev.id, id, v) } },
                 )
             }
             composable("archive/{day}") { entry ->

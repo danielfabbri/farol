@@ -50,6 +50,10 @@ import app.farol.ui.spokenText
 import androidx.compose.foundation.layout.Box
 import androidx.compose.material.icons.automirrored.outlined.VolumeUp
 import androidx.compose.material.icons.outlined.Stop
+import androidx.compose.material.icons.filled.ThumbDown
+import androidx.compose.material.icons.filled.ThumbUp
+import androidx.compose.material.icons.outlined.ThumbDown
+import androidx.compose.material.icons.outlined.ThumbUp
 import androidx.compose.material.icons.outlined.MarkEmailRead
 import androidx.compose.material.icons.outlined.MarkEmailUnread
 import androidx.compose.runtime.DisposableEffect
@@ -78,6 +82,10 @@ fun ArticleScreen(
     reader: NewsReader,
     read: Boolean = false,
     onMarkUnread: (String) -> Unit = {},
+    /** 1 = gostei, -1 = não gostei, 0 = sem opinião. */
+    reaction: Int = 0,
+    /** Nulo quando a notícia não está na edição atual (não dá para aprender o tema). */
+    onReact: ((Int) -> Unit)? = null,
 ) {
     val context = androidx.compose.ui.platform.LocalContext.current
     val uri = LocalUriHandler.current
@@ -113,6 +121,23 @@ fun ArticleScreen(
                                 if (speaking) Icons.Outlined.Stop else Icons.AutoMirrored.Outlined.VolumeUp,
                                 contentDescription = if (speaking) "Parar leitura" else "Ouvir esta notícia",
                                 tint = if (speaking) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurfaceVariant,
+                            )
+                        }
+                    }
+                    if (article != null && onReact != null) {
+                        // Gostei / não gostei: a mãozinha fica preenchida e a notícia continua aqui.
+                        IconButton(onClick = { onReact(if (reaction == 1) 0 else 1) }) {
+                            Icon(
+                                if (reaction == 1) Icons.Filled.ThumbUp else Icons.Outlined.ThumbUp,
+                                contentDescription = if (reaction == 1) "Desfazer gostei" else "Gostei",
+                                tint = if (reaction == 1) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurfaceVariant,
+                            )
+                        }
+                        IconButton(onClick = { onReact(if (reaction == -1) 0 else -1) }) {
+                            Icon(
+                                if (reaction == -1) Icons.Filled.ThumbDown else Icons.Outlined.ThumbDown,
+                                contentDescription = if (reaction == -1) "Desfazer não gostei" else "Não gostei",
+                                tint = if (reaction == -1) MaterialTheme.colorScheme.tertiary else MaterialTheme.colorScheme.onSurfaceVariant,
                             )
                         }
                     }

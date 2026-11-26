@@ -1,9 +1,9 @@
 {
-  "version_code": 17,
-  "version_name": "0.14.0",
+  "version_code": 18,
+  "version_name": "0.15.0",
   "apk": "releases/farol.apk",
-  "sha256": "49028f2c797494b6960ee3ea16e140f8724642c0fb8ef6f8498fca3a4f190835",
-  "size": 1860256,
-  "notes": "Gostei/não gostei agora aprendem pelo TEMA da notícia (palavras-chave separadas pela IA), não pela seção. Puxar para atualizar a capa troca as notícias exibidas. Na tela da notícia, dá para marcar como não lida: ela volta ao feed e ao filtro Não lidas.",
-  "published_at": "2026-11-26T11:02:09Z"
+  "sha256": "279233e355e5119805c8b3f8e0c7c6c1db15e48df2bdd670ed303d9ac5634648",
+  "size": 1876640,
+  "notes": "Ajustes em menu (estilo Android): cada área abre numa tela própria; Varrer no topo, Verificar atualização por último. Seus gostos: até 100 palavras, editáveis (trocar gosto/não gosto, apagar, adicionar, limpar tudo). Dentro da notícia: mãozinhas de gostei/não gostei, que ficam preenchidas sem tirar a notícia do feed.",
+  "published_at": "2026-11-26T12:20:36Z"
 }

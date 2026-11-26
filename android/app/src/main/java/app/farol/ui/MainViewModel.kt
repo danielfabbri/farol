@@ -54,6 +54,8 @@ data class UiState(
     val dismissed: Set<String> = emptySet(),
     val affinity: Map<String, Float> = emptyMap(),
     val reactions: Int = 0,
+    /** Reação por acontecimento: 1 = gostei, -1 = não gostei. */
+    val eventReactions: Map<String, Int> = emptyMap(),
     val voice: app.farol.data.prefs.VoiceSettings = app.farol.data.prefs.VoiceSettings(),
 ) {
     val articlesById: Map<String, Article> by lazy { feed?.articles.orEmpty().associateBy { it.id } }
@@ -170,15 +172,15 @@ class MainViewModel(
         PrefsPart(t, h, o, d, l)
     }
 
-    private val tastes = combine(prefs.affinity, prefs.reactions, prefs.voice) { a, r, v -> Triple(a, r, v) }
+    private val tastes = combine(prefs.affinity, prefs.reactions, prefs.voice, prefs.eventReactions) { a, r, v, er -> Tastes(a, r, v, er) }
 
-    val state: StateFlow<UiState> = combine(data, prefsFlow, syncAndScan, tastes) { d, p, (s, scan, hasToken, readFilter, dismissed), (aff, reactions, voice) ->
+    val state: StateFlow<UiState> = combine(data, prefsFlow, syncAndScan, tastes) { d, p, (s, scan, hasToken, readFilter, dismissed), (aff, reactions, voice, eventReactions) ->
         UiState(
             loaded = true, feed = d.feed, trends = d.trends, saved = d.saved, savedArticles = d.savedArticles,
             readIds = d.read, syncing = s.syncing, lastResult = s.result, lastSync = p.lastSync,
             theme = p.theme, highlightLimit = p.hl, otherLimit = p.other, demoMode = p.demo,
             hasToken = hasToken, scan = scan, readFilter = readFilter, dismissed = dismissed,
-            affinity = aff, reactions = reactions, voice = voice,
+            affinity = aff, reactions = reactions, voice = voice, eventReactions = eventReactions,
         )
     }.stateIn(viewModelScope, SharingStarted.Eagerly, UiState())
 
@@ -314,11 +316,7 @@ class MainViewModel(
      * ([liked] nulo: saiu sozinha, pela leitura automática, sem opinião).
      */
     fun dismiss(eventId: String, articleId: String, liked: Boolean? = null) {
-        if (liked != null) {
-            val s = state.value
-            val event = s.eventsById[eventId]
-            if (event != null) prefs.react(app.farol.data.Affinity.features(event, s.articlesById[articleId]), liked)
-        }
+        if (liked != null) react(eventId, articleId, if (liked) 1 else -1)
         prefs.dismiss(eventId)
         markRead(articleId)
     }
@@ -331,6 +329,17 @@ class MainViewModel(
         repo.markUnread((event?.articleIds.orEmpty() + articleId).distinct())
         event?.let { prefs.undismiss(it.id) }
     }
+
+    /** Gostei (1) / não gostei (-1) / sem opinião (0), sem tirar a notícia do feed. */
+    fun react(eventId: String, articleId: String, value: Int) {
+        val s = state.value
+        val event = s.eventsById[eventId] ?: return
+        val lead = s.articlesById[articleId] ?: findArticle(articleId)
+        prefs.setReaction(eventId, app.farol.data.Affinity.features(event, lead), value)
+    }
+
+    /** Ajustes → Seus gostos: muda o peso de uma palavra (nulo apaga). */
+    fun setTaste(word: String, weight: Float?) = prefs.setTaste(app.farol.data.Affinity.key(word), weight)
 
     fun resetTastes() = prefs.resetAffinity()
     fun setVoiceSettings(v: app.farol.data.prefs.VoiceSettings) = prefs.setVoiceSettings(v)
@@ -366,5 +375,12 @@ class MainViewModel(
         }
     }
 }
+
+private data class Tastes(
+    val affinity: Map<String, Float>,
+    val reactions: Int,
+    val voice: app.farol.data.prefs.VoiceSettings,
+    val eventReactions: Map<String, Int>,
+)
 
 private data class SyncScan(val sync: SyncPart, val scan: ScanState, val hasToken: Boolean, val readFilter: app.farol.data.prefs.ReadFilter, val dismissed: Set<String>)
