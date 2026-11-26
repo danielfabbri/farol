@@ -39,7 +39,8 @@ class MockGeminiClient:
             payload = json.loads(prompt[prompt.index("<<DIGEST>>") + 10:prompt.index("<</DIGEST>>")])
             return {"items": [
                 {"ref": it["ref"], "title_pt": f"{SAMPLE_MARK} Título traduzido de exemplo {it['ref']}",
-                 "summary": f"{SAMPLE_MARK} Parágrafo simulado que explica a notícia de exemplo {it['ref']}, sem dados reais."}
+                 "summary": f"{SAMPLE_MARK} Parágrafo simulado que explica a notícia de exemplo {it['ref']}, sem dados reais.",
+                 "keywords": ["Tema Simulado", "notícia", f"exemplo {it['ref']}"]}
                 for it in payload
             ]}
         if "<<TRANSLATE>>" in prompt:

@@ -69,6 +69,9 @@ interface ReadDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun markRead(item: ReadArticle)
 
+    @Query("DELETE FROM read_articles WHERE id IN (:ids)")
+    suspend fun markUnread(ids: List<String>)
+
     @Query("DELETE FROM read_articles")
     suspend fun clear()
 

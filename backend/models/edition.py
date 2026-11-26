@@ -32,6 +32,7 @@ class Event(BaseModel):
     entities: list[str] = Field(default_factory=list)
     technologies: list[str] = Field(default_factory=list)
     tags: list[str] = Field(default_factory=list)
+    keywords: list[str] = Field(default_factory=list)
     relevance_score: int | None = None
     score: float = 0.0
     ai_processed: bool = False

@@ -129,6 +129,22 @@ def translate_articles(
     return done, None
 
 
+GENERIC_KEYWORDS = {
+    "notícia", "notícias", "brasil", "governo", "política", "economia", "tecnologia", "mundo", "internacional",
+    "news", "sociedade", "geral",
+}
+
+
+def clean_keywords(raw: list[str] | None, limit: int = 6) -> list[str]:
+    """Normaliza as palavras-chave: minúsculas, sem repetição, sem genéricas, curtas."""
+    out: list[str] = []
+    for k in raw or []:
+        k = " ".join(str(k).strip().strip(".,;:#\"'").lower().split())
+        if 2 <= len(k) <= 40 and k not in GENERIC_KEYWORDS and k not in out:
+            out.append(k)
+    return out[:limit]
+
+
 def summarize_articles(
     client: JsonGenerator,
     articles: list[Article],
@@ -182,6 +198,9 @@ def summarize_articles(
             except ValidationError:
                 continue
             art = refs[dg.ref]
+            kws = clean_keywords(dg.keywords)
+            if kws and (not art.keywords or art.id in bodies):
+                art.keywords = kws  # o tema vale mesmo quando o resumo existente é mantido
             from_body = art.id in bodies
             if art.ai_processed and not from_body:
                 continue  # só substitui o resumo da análise completa por um feito com o texto da matéria
@@ -257,6 +276,8 @@ class NewsProcessor:
         article.uncertainties = analysis.uncertainties
         article.entities = analysis.entities
         article.technologies = analysis.technologies
+        if not article.keywords:
+            article.keywords = clean_keywords(analysis.entities + analysis.technologies)
         article.subcategory = analysis.subcategory if analysis.subcategory in self.sub_ids else "other"
         article.relevance_score = analysis.relevance_score
         article.novelty_score = analysis.novelty_score

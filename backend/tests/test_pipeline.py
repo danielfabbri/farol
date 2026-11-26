@@ -182,6 +182,10 @@ def test_digest_writes_short_paragraph_for_recent_articles(settings):
     with_text = [a for a in latest["articles"] if len(a["excerpt"]) >= s.digest_min_excerpt_chars]
     assert with_text and all(a["summary"].startswith("[FICTÍCIO] Parágrafo") for a in with_text)
     assert all(not a["ai_processed"] for a in latest["articles"])
+    # Palavras-chave do tema: normalizadas (minúsculas) e sem as genéricas ("notícia").
+    assert all(a["keywords"][0] == "tema simulado" and "notícia" not in a["keywords"] for a in with_text)
+    evt = next(e for e in latest["events"] if set(e["article_ids"]) & {a["id"] for a in with_text})
+    assert "tema simulado" in evt["keywords"]
 
 
 def test_digest_disabled_leaves_summary_empty(settings):

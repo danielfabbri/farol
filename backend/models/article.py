@@ -40,6 +40,8 @@ class Article(BaseModel):
     entities: list[str] = Field(default_factory=list)
     technologies: list[str] = Field(default_factory=list)
     tags: list[str] = Field(default_factory=list)
+    # Palavras-chave do tema da notícia (IA), usadas pelo app para aprender os gostos do leitor.
+    keywords: list[str] = Field(default_factory=list)
     relevance_score: int | None = None
     novelty_score: int | None = None
     business_potential: Potential | None = None

@@ -323,6 +323,15 @@ class MainViewModel(
         markRead(articleId)
     }
 
+    /** Desfaz a leitura: o acontecimento volta a contar como não lido e reaparece no feed. */
+    fun markUnread(articleId: String) = viewModelScope.launch {
+        val s = state.value
+        val article = findArticle(articleId)
+        val event = article?.eventId?.let { s.eventsById[it] }
+        repo.markUnread((event?.articleIds.orEmpty() + articleId).distinct())
+        event?.let { prefs.undismiss(it.id) }
+    }
+
     fun resetTastes() = prefs.resetAffinity()
     fun setVoiceSettings(v: app.farol.data.prefs.VoiceSettings) = prefs.setVoiceSettings(v)
 

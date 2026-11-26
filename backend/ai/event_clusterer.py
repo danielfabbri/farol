@@ -119,6 +119,7 @@ def build_events(articles: Iterable[Article]) -> list[Event]:
             entities=union("entities"),
             technologies=union("technologies"),
             tags=union("tags"),
+            keywords=union("keywords"),
             relevance_score=max(scores) if scores else None,
             ai_processed=any(a.ai_processed for a in items),
         ))

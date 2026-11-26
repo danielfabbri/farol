@@ -6,33 +6,42 @@ import java.util.Locale
 
 /**
  * Gostos do leitor aprendidos com o gesto de arrastar (direita = gostei, esquerda = não gostei).
- * Cada notícia vira um conjunto de traços — seção, tema, tags, empresas/pessoas, fonte — e cada
- * reação soma ou subtrai peso desses traços. Tudo fica só no aparelho.
+ * O que conta é o TEMA da notícia: as palavras-chave que a IA separa ao resumir (ex.: "nvidia",
+ * "reforma tributária", "spacex"). Cada reação soma ou subtrai peso dessas palavras; notícias com
+ * palavras de que você gosta ganham destaque. A seção (Política, Economia…) não entra na conta.
+ * Tudo fica só no aparelho.
  */
 object Affinity {
-    /** Traços da notícia e quanto cada um pesa numa reação. */
+    const val KEYWORD = "kw:"
+
+    /** Palavras-chave do tema e quanto cada uma pesa numa reação. */
     fun features(event: Event, lead: Article?): Map<String, Float> {
-        val out = LinkedHashMap<String, Float>()
-        fun put(key: String, w: Float) { if (key.isNotBlank()) out[key] = maxOf(out[key] ?: 0f, w) }
-        val category = event.category.ifBlank { lead?.category.orEmpty() }
-        if (category.isNotBlank()) put("cat:$category", 1f)
-        (event.subcategory ?: lead?.subcategory)?.takeIf { it != "other" }?.let { put("sub:$it", 1f) }
-        val tags = (event.tags + lead?.tags.orEmpty()).map(::norm).distinct()
-        tags.forEach { put("tag:$it", 0.8f / kotlin.math.sqrt(tags.size.toFloat())) }
-        val names = (event.entities + event.technologies + lead?.entities.orEmpty() + lead?.technologies.orEmpty())
-            .map(::norm).distinct().take(8)
-        names.forEach { put("ent:$it", 0.8f / kotlin.math.sqrt(names.size.toFloat())) }
-        (lead?.sourceName ?: event.sources.firstOrNull()?.sourceName)?.let { put("src:${norm(it)}", 0.5f) }
-        return out
+        // Palavras da IA; sem elas (notícia ainda não resumida), nomes e tags servem de tema.
+        val words = (lead?.keywords.orEmpty() + event.keywords).map(::norm).filter { it.isNotBlank() }.distinct()
+            .ifEmpty {
+                (lead?.entities.orEmpty() + lead?.technologies.orEmpty() + event.entities + event.technologies + event.tags)
+                    .map(::norm).filter { it.isNotBlank() }.distinct()
+            }
+            .take(8)
+        if (words.isEmpty()) return emptyMap()
+        // Notícias com muitas palavras não pesam mais que as com poucas.
+        val w = 1.5f / kotlin.math.sqrt(words.size.toFloat())
+        return words.associate { "$KEYWORD$it" to w }
     }
 
-    /** Afinidade de -1 (não gosta) a 1 (gosta); 0 sem histórico. */
+    /** Afinidade de -1 (não gosta) a 1 (gosta); 0 sem histórico ou tema desconhecido. */
     fun score(weights: Map<String, Float>, event: Event, lead: Article?): Float {
         if (weights.isEmpty()) return 0f
         val raw = features(event, lead).entries.sumOf { (k, w) -> ((weights[k] ?: 0f) * w).toDouble() }.toFloat()
-        // Satura suavemente: 3–4 reações no mesmo sentido já pesam bastante.
-        return (raw / (2.5f + kotlin.math.abs(raw))).coerceIn(-1f, 1f)
+        // Satura suavemente: 2–3 reações sobre o mesmo tema já pesam bastante.
+        return (raw / (2.0f + kotlin.math.abs(raw))).coerceIn(-1f, 1f)
     }
+
+    /** Palavras-chave com mais peso (positivo ou negativo), para mostrar em Ajustes. */
+    fun top(weights: Map<String, Float>, liked: Boolean, n: Int = 8): List<String> =
+        weights.entries.filter { it.key.startsWith(KEYWORD) && if (liked) it.value > 0.4f else it.value < -0.4f }
+            .sortedBy { if (liked) -it.value else it.value }
+            .take(n).map { it.key.removePrefix(KEYWORD) }
 
     private fun norm(s: String) = s.trim().lowercase(Locale.ROOT)
 }

@@ -71,12 +71,17 @@ Para cada item, escreva em português do Brasil:
   Segundo parágrafo: por que aconteceu, contexto e antecedentes, reações citadas e o que acontece a seguir (prazos, próximos
   passos). Priorize informação concreta; evite frases vagas ("o tema gera debate", "a medida pode ter impactos").
   O campo "text" costuma ser o texto da matéria (pode trazer restos de legenda, crédito ou menu: ignore-os). Se ele for só
-  uma chamada curta, escreva um parágrafo apenas, com o que houver — nunca encha com generalidades.
+  uma chamada curta, escreva um parágrafo apenas, com o que houver — nunca encha com generalidades;
+- keywords: 3 a 6 palavras-chave do TEMA específico da notícia, em minúsculas e em português (nomes próprios e
+  siglas como no original, mas em minúsculas): o assunto concreto, pessoas, empresas, instituições, lugares,
+  produtos e conceitos centrais. Ex.: ["reforma tributária", "haddad", "imposto de renda", "câmara dos deputados"].
+  Prefira termos que reapareceriam em outras notícias do mesmo tema. Evite palavras genéricas ("notícia", "brasil",
+  "governo", "política", "economia", "tecnologia", "mundo") a menos que sejam o próprio assunto.
 Use SOMENTE informações presentes no título e no texto; não invente números, nomes, datas nem consequências.
 Sem opinião, sem pontos fortes ou fracos, sem listas, sem frases como "a matéria fala sobre".
 Mantenha nomes de pessoas, empresas, produtos e siglas como no original.
 Escreva os acentos diretamente (á, ç, ã, ó...), nunca como códigos ou sequências de escape.
-Responda apenas com JSON no formato {"items": [{"ref": ..., "title_pt": ..., "summary": ...}]}, preservando o "ref"."""
+Responda apenas com JSON no formato {"items": [{"ref": ..., "title_pt": ..., "summary": ..., "keywords": [...]}]}, preservando o "ref"."""
 
 DIGEST_SCHEMA = {
     "type": "object",
@@ -89,8 +94,9 @@ DIGEST_SCHEMA = {
                     "ref": {"type": "string"},
                     "title_pt": {"type": "string"},
                     "summary": {"type": "string"},
+                    "keywords": {"type": "array", "items": {"type": "string"}},
                 },
-                "required": ["ref", "title_pt", "summary"],
+                "required": ["ref", "title_pt", "summary", "keywords"],
             },
         }
     },

@@ -106,6 +106,8 @@ data class Event(
     val entities: List<String> = emptyList(),
     val technologies: List<String> = emptyList(),
     val tags: List<String> = emptyList(),
+    /** Palavras-chave do tema (IA): base do aprendizado de gostos. */
+    val keywords: List<String> = emptyList(),
     @SerialName("relevance_score") val relevanceScore: Int? = null,
     val score: Double = 0.0,
     @SerialName("ai_processed") val aiProcessed: Boolean = false,
@@ -138,6 +140,8 @@ data class Article(
     val entities: List<String> = emptyList(),
     val technologies: List<String> = emptyList(),
     val tags: List<String> = emptyList(),
+    /** Palavras-chave do tema (IA): base do aprendizado de gostos. */
+    val keywords: List<String> = emptyList(),
     @SerialName("relevance_score") val relevanceScore: Int? = null,
     @SerialName("novelty_score") val noveltyScore: Int? = null,
     @SerialName("business_potential") val businessPotential: String? = null,

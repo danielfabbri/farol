@@ -152,15 +152,28 @@ fun TodayScreen(
     // em "Não lidas"; então a capa é completada com os destaques das seções e, depois, com os
     // demais acontecimentos por importância, até preencher o limite. Seus gostos mudam quem entra na capa.
     val allHighlights = feed?.highlights.orEmpty().mapNotNull { state.eventsById[it] }.take(state.highlightLimit)
-    val capa = if (feed != null && section == null) {
+    val capaRanked = if (feed != null && section == null) {
         val highlightIds = (feed.highlights + sections.flatMap { it.highlights }).toSet()
         feed.events
             .filter { leadArticle(it, arts) != null }
             .filter(visible)
             .sortedByDescending { (if (it.id in highlightIds) 100.0 else 0.0) + it.score + taste(it) * 60.0 }
+    } else emptyList()
+    // Cada atualização da capa troca as notícias: as já exibidas vão para o fim da fila
+    // (voltam só quando todas as outras já tiverem passado pela capa).
+    var capaSkip by rememberSaveable { mutableStateOf(listOf<String>()) }
+    val capa = run {
+        val skip = capaSkip.toSet()
+        (capaRanked.filter { it.id !in skip } + capaRanked.filter { it.id in skip })
             .take(state.highlightLimit)
             .sortedByDescending { it.shownMillis(arts) + (taste(it) * TASTE_SHIFT_MS).toLong() }
-    } else emptyList()
+    }
+    val rotateCapa = {
+        val shown = capa.map { it.id }
+        var next = (capaSkip + shown).distinct()
+        if (capaRanked.all { it.id in next }) next = shown // todas já passaram: recomeça o rodízio
+        capaSkip = next
+    }
 
     // ---------------- Leitura automática ----------------
     // Lê título e resumo da primeira notícia da lista (voz masculina e feminina alternadas); ao terminar,
@@ -202,7 +215,11 @@ fun TodayScreen(
 
     PullToRefreshBox(
         isRefreshing = pulled && state.syncing,
-        onRefresh = { pulled = true; onRefresh() },
+        onRefresh = {
+            pulled = true
+            if (section == null) { stopReading(); rotateCapa() }
+            onRefresh()
+        },
         modifier = Modifier.fillMaxSize(),
     ) {
         LazyColumn(state = listState, contentPadding = PaddingValues(vertical = 12.dp), modifier = Modifier.fillMaxSize()) {

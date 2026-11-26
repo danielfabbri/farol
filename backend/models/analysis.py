@@ -129,6 +129,7 @@ class Digest(BaseModel):
     ref: str
     title_pt: str = Field(min_length=3, max_length=240)
     summary: str = Field(min_length=40, max_length=1400)
+    keywords: list[str] = Field(default_factory=list)
 
     @model_validator(mode="before")
     @classmethod

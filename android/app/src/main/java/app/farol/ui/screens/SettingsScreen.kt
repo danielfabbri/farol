@@ -223,18 +223,17 @@ fun SettingsScreen(
         Section("Seus gostos")
         Text(
             if (state.reactions == 0) "Arraste um card para a direita (gostei) ou para a esquerda (não gostei). " +
-                "O FAROL aprende e passa a destacar mais o que você gosta."
+                "O FAROL guarda as palavras-chave do tema da notícia e passa a destacar os temas de que você gosta."
             else "${state.reactions} ${if (state.reactions == 1) "reação registrada" else "reações registradas"}. " +
-                "Direita = gostei, esquerda = não gostei: a capa e as seções destacam o que você curte e escondem o resto.",
+                "Direita = gostei, esquerda = não gostei: o FAROL guarda as palavras-chave do tema de cada notícia, " +
+                "destaca os temas de que você gosta e afasta os outros.",
             style = MaterialTheme.typography.bodySmall,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
         )
-        val top = state.affinity.entries.filter { it.key.startsWith("cat:") || it.key.startsWith("sub:") }
-            .sortedByDescending { it.value }
-        val liked = top.filter { it.value > 0.5f }.take(4).mapNotNull { tasteLabel(state, it.key) }
-        val disliked = top.filter { it.value < -0.5f }.takeLast(4).mapNotNull { tasteLabel(state, it.key) }
-        if (liked.isNotEmpty()) Hint("Mais destaque: ${liked.joinToString(", ")}")
-        if (disliked.isNotEmpty()) Hint("Menos destaque: ${disliked.joinToString(", ")}")
+        val liked = app.farol.data.Affinity.top(state.affinity, liked = true)
+        val disliked = app.farol.data.Affinity.top(state.affinity, liked = false)
+        if (liked.isNotEmpty()) Hint("👍 Mais destaque: ${liked.joinToString(", ")}")
+        if (disliked.isNotEmpty()) Hint("👎 Menos destaque: ${disliked.joinToString(", ")}")
         if (state.reactions > 0) {
             Spacer(Modifier.height(8.dp))
             OutlinedButton(onClick = { confirmResetTastes = true }) { Text("Zerar gostos") }
@@ -298,15 +297,6 @@ fun SettingsScreen(
             confirmButton = { TextButton(onClick = { confirmResetTastes = false; onResetTastes() }) { Text("Zerar") } },
             dismissButton = { TextButton(onClick = { confirmResetTastes = false }) { Text("Cancelar") } },
         )
-    }
-}
-
-private fun tasteLabel(state: UiState, key: String): String? {
-    val id = key.substringAfter(':')
-    return when {
-        key.startsWith("cat:") -> state.sectionLabels[id]
-        key.startsWith("sub:") -> state.feed?.subcategories?.get(id)
-        else -> null
     }
 }
 

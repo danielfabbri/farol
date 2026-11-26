@@ -50,6 +50,8 @@ import app.farol.ui.spokenText
 import androidx.compose.foundation.layout.Box
 import androidx.compose.material.icons.automirrored.outlined.VolumeUp
 import androidx.compose.material.icons.outlined.Stop
+import androidx.compose.material.icons.outlined.MarkEmailRead
+import androidx.compose.material.icons.outlined.MarkEmailUnread
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -74,7 +76,10 @@ fun ArticleScreen(
     onToggleSave: (Article) -> Unit,
     onMarkRead: (String) -> Unit,
     reader: NewsReader,
+    read: Boolean = false,
+    onMarkUnread: (String) -> Unit = {},
 ) {
+    val context = androidx.compose.ui.platform.LocalContext.current
     val uri = LocalUriHandler.current
     val ttsAvailable by reader.available.collectAsState()
     val speakingKey by reader.speakingKey.collectAsState()
@@ -112,6 +117,22 @@ fun ArticleScreen(
                         }
                     }
                     if (article != null) {
+                        // Lida ↔ não lida: "não lida" volta para o feed e para o filtro "Não lidas".
+                        IconButton(onClick = {
+                            if (read) {
+                                onMarkUnread(article.id)
+                                android.widget.Toast.makeText(context, "Marcada como não lida: continua no feed", android.widget.Toast.LENGTH_SHORT).show()
+                            } else {
+                                onMarkRead(article.id)
+                                android.widget.Toast.makeText(context, "Marcada como lida", android.widget.Toast.LENGTH_SHORT).show()
+                            }
+                        }) {
+                            Icon(
+                                if (read) Icons.Outlined.MarkEmailUnread else Icons.Outlined.MarkEmailRead,
+                                contentDescription = if (read) "Marcar como não lida" else "Marcar como lida",
+                                tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                            )
+                        }
                         IconButton(onClick = { onToggleSave(article) }) {
                             Icon(
                                 if (saved) Icons.Outlined.Bookmark else Icons.Outlined.BookmarkBorder,

@@ -129,6 +129,8 @@ fun FarolApp(vm: MainViewModel, state: UiState) {
                     onToggleSave = { vm.toggleSave(it) },
                     onMarkRead = { vm.markRead(it) },
                     reader = vm.reader,
+                    read = article != null && ((event?.articleIds.orEmpty() + id).any { it in state.readIds }),
+                    onMarkUnread = { vm.markUnread(it) },
                 )
             }
             composable("archive/{day}") { entry ->

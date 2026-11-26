@@ -142,6 +142,10 @@ class FarolRepository(
         db.readDao().markRead(ReadArticle(id, System.currentTimeMillis()))
     }
 
+    suspend fun markUnread(ids: List<String>) = withContext(Dispatchers.IO) {
+        db.readDao().markUnread(ids)
+    }
+
     suspend fun clearCache() = withContext(Dispatchers.IO) {
         db.cacheDao().clear()
         db.readDao().clear()

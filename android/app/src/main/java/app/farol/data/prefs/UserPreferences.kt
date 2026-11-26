@@ -60,7 +60,8 @@ class UserPreferences(context: Context) {
         _dismissed.value = list
     }
     /** Gostos aprendidos com o gesto de arrastar: traço da notícia (seção, tema, fonte…) → peso. */
-    private val _affinity = MutableStateFlow(decodeAffinity(sp.getString(KEY_AFFINITY, null)))
+    // Só palavras-chave de tema ("kw:"); pesos antigos por seção/fonte (versão 0.13.0) são descartados.
+    private val _affinity = MutableStateFlow(decodeAffinity(sp.getString(KEY_AFFINITY, null)).filterKeys { it.startsWith("kw:") })
     val affinity: StateFlow<Map<String, Float>> = _affinity.asStateFlow()
 
     private val _reactions = MutableStateFlow(sp.getInt(KEY_REACTIONS, 0))
@@ -106,6 +107,14 @@ class UserPreferences(context: Context) {
             .putFloat(KEY_R2_RATE, v.r2.rate).putFloat(KEY_R2_PITCH, v.r2.pitch)
             .apply()
         _voice.value = v
+    }
+
+    /** Volta a mostrar no feed um acontecimento dispensado (marcado de novo como não lido). */
+    fun undismiss(eventId: String) {
+        if (eventId !in _dismissed.value) return
+        val list = _dismissed.value - eventId
+        sp.edit().putString(KEY_DISMISSED, list.joinToString(",")).apply()
+        _dismissed.value = list
     }
 
     fun setLastSync(ts: Long) { sp.edit().putLong(KEY_LAST_SYNC, ts).apply(); _lastSync.value = ts }
