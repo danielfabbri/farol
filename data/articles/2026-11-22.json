@@ -1,6 +1,6 @@
 {
  "date": "2026-11-22",
- "count": 147,
+ "count": 148,
  "articles": [
   {
    "id": "5ffa2f889a7315ce",
@@ -40,6 +40,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -81,6 +83,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -122,6 +126,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -163,6 +169,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 0,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 3,
    "is_sample": false
   },
@@ -204,6 +212,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -245,6 +255,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -286,6 +298,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -327,6 +341,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -368,6 +384,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 2,
    "is_sample": false
   },
@@ -409,6 +427,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -450,6 +470,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -491,6 +513,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -532,6 +556,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -573,6 +599,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 2,
    "is_sample": false
   },
@@ -614,6 +642,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -657,6 +687,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 3,
    "is_sample": false
   },
@@ -698,6 +730,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -739,6 +773,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 0,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -780,6 +816,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -821,6 +859,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 3,
    "is_sample": false
   },
@@ -864,6 +904,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 3,
    "is_sample": false
   },
@@ -905,6 +947,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -946,6 +990,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -987,6 +1033,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -1028,6 +1076,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -1069,6 +1119,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 2,
    "is_sample": false
   },
@@ -1110,6 +1162,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -1153,6 +1207,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -1194,6 +1250,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -1235,6 +1293,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -1276,6 +1336,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -1317,6 +1379,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -1358,6 +1422,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 2,
    "is_sample": false
   },
@@ -1399,6 +1465,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -1440,6 +1508,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -1481,6 +1551,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -1522,6 +1594,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -1563,6 +1637,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -1606,6 +1682,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 0,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 2,
    "is_sample": false
   },
@@ -1650,6 +1728,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -1691,6 +1771,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -1732,6 +1814,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 0,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 2,
    "is_sample": false
   },
@@ -1773,6 +1857,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -1814,6 +1900,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -1855,6 +1943,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -1896,6 +1986,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -1939,6 +2031,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -1980,6 +2074,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -2021,6 +2117,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -2062,6 +2160,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -2103,6 +2203,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -2144,6 +2246,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -2185,6 +2289,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 0,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 3,
    "is_sample": false
   },
@@ -2226,6 +2332,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -2267,6 +2375,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -2310,6 +2420,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 0,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 2,
    "is_sample": false
   },
@@ -2363,6 +2475,8 @@
    "ai_processed_at": "2026-11-23T22:06:36Z",
    "ai_attempts": 1,
    "digest_attempts": 0,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 5,
    "is_sample": false
   },
@@ -2404,6 +2518,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -2447,6 +2563,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -2488,6 +2606,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 0,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -2529,6 +2649,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -2570,6 +2692,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -2611,6 +2735,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -2652,6 +2778,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -2693,6 +2821,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -2734,6 +2864,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -2775,6 +2907,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -2816,6 +2950,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -2857,6 +2993,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -2900,6 +3038,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 3,
    "is_sample": false
   },
@@ -2941,6 +3081,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -2982,6 +3124,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -3023,6 +3167,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -3064,6 +3210,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -3105,6 +3253,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -3146,6 +3296,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -3187,6 +3339,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -3228,6 +3382,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -3269,6 +3425,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -3310,6 +3468,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 3,
    "is_sample": false
   },
@@ -3351,6 +3511,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -3392,6 +3554,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -3433,6 +3597,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -3474,6 +3640,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 0,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 3,
    "is_sample": false
   },
@@ -3517,7 +3685,52 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 3,
+   "is_sample": false
+  },
+  {
+   "id": "292a3a4936274b8d",
+   "event_id": "evt-292a3a4936274b8d",
+   "original_title": "Prevenir é melhor que remediar: o porquê de uma lei de competição em mercados digitais",
+   "title_pt": null,
+   "source_id": "folha-tec",
+   "source_name": "Folha — Tec",
+   "source_type": "press",
+   "source_url": "https://c-level.folha.uol.com.br/negocios/2026/11/prevenir-e-melhor-que-remediar-o-porque-de-uma-lei-de-competicao-em-mercados-digitais.shtml",
+   "discussion_url": null,
+   "image_url": "https://f.i.uol.com.br/fotografia/2026/10/30/17933719166ae4af0cb4372_1793371916_3x2_rt.jpg",
+   "image_checked": true,
+   "published_at": "2026-11-22T14:10:00Z",
+   "collected_at": "2026-11-26T01:29:38Z",
+   "language": "pt",
+   "excerpt": "O Pix foi construído a partir de uma série de consultas públicas feitas pelo BC (Banco Central) à sociedade e tem três características que levaram ao seu sucesso : 1) a infraestrutura na qual opera é aberta, 2) pode-se fazer Pix entre quaisquer duas contas (ele é \"interoperável\") e 3) suas regras, definidas pelo BC, são claras e isonômicas. Leia mais (11/22/2026 - 11h10)",
+   "excerpt_pt": null,
+   "category": "technology_ai",
+   "subcategory": null,
+   "summary": null,
+   "why_it_matters": null,
+   "key_points": [],
+   "potential_impacts": [],
+   "uncertainties": [],
+   "entities": [],
+   "technologies": [],
+   "tags": [],
+   "relevance_score": null,
+   "novelty_score": null,
+   "business_potential": null,
+   "career_potential": null,
+   "study_potential": null,
+   "off_topic": false,
+   "ai_processed": false,
+   "ai_model": null,
+   "ai_processed_at": null,
+   "ai_attempts": 0,
+   "digest_attempts": 0,
+   "digest_version": 0,
+   "rich_attempts": 0,
+   "source_priority": 5,
    "is_sample": false
   },
   {
@@ -3558,6 +3771,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -3599,6 +3814,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -3640,6 +3857,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -3681,6 +3900,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -3722,6 +3943,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -3763,6 +3986,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -3804,6 +4029,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -3845,6 +4072,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -3886,6 +4115,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -3927,6 +4158,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -3968,6 +4201,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 5,
    "is_sample": false
   },
@@ -4009,6 +4244,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -4050,6 +4287,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -4091,6 +4330,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -4132,6 +4373,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -4173,6 +4416,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -4214,6 +4459,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 0,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -4255,6 +4502,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -4298,6 +4547,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 0,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 3,
    "is_sample": false
   },
@@ -4339,6 +4590,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 3,
    "is_sample": false
   },
@@ -4380,6 +4633,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -4421,6 +4676,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -4462,6 +4719,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -4503,6 +4762,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -4544,6 +4805,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -4585,6 +4848,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -4626,6 +4891,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -4667,6 +4934,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 0,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -4708,6 +4977,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -4749,6 +5020,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 0,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -4790,6 +5063,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -4831,6 +5106,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -4872,6 +5149,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -4913,6 +5192,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 0,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -4954,6 +5235,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 0,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -4995,6 +5278,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -5036,6 +5321,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -5077,6 +5364,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 0,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -5118,6 +5407,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -5159,6 +5450,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -5200,6 +5493,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -5241,6 +5536,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 3,
    "is_sample": false
   },
@@ -5282,6 +5579,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -5323,6 +5622,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -5364,6 +5665,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -5405,6 +5708,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -5446,6 +5751,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -5487,6 +5794,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -5528,6 +5837,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -5569,6 +5880,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -5610,6 +5923,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -5651,6 +5966,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -5692,6 +6009,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -5733,6 +6052,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -5774,6 +6095,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -5815,6 +6138,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -5858,6 +6183,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -5901,6 +6228,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 0,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -5942,6 +6271,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 1,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -5983,6 +6314,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 0,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -6040,6 +6373,8 @@
    "ai_processed_at": "2026-11-23T22:06:36Z",
    "ai_attempts": 0,
    "digest_attempts": 0,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 5,
    "is_sample": false
   },
@@ -6081,6 +6416,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 0,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   }

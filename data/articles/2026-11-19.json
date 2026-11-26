@@ -40,6 +40,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 0,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -81,6 +83,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 0,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 5,
    "is_sample": false
   },
@@ -122,6 +126,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 0,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 5,
    "is_sample": false
   },
@@ -163,6 +169,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 0,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 5,
    "is_sample": false
   },
@@ -204,6 +212,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 0,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 3,
    "is_sample": false
   },
@@ -247,6 +257,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 0,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 3,
    "is_sample": false
   },
@@ -288,6 +300,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 0,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -331,6 +345,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 0,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 3,
    "is_sample": false
   },
@@ -375,6 +391,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 0,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 3,
    "is_sample": false
   },
@@ -416,6 +434,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 0,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -460,6 +480,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 0,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -501,6 +523,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 0,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 5,
    "is_sample": false
   },
@@ -542,6 +566,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 0,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 5,
    "is_sample": false
   },
@@ -586,6 +612,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 0,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 5,
    "is_sample": false
   },
@@ -627,6 +655,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 0,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 5,
    "is_sample": false
   },
@@ -668,6 +698,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 0,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -713,6 +745,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 0,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 4,
    "is_sample": false
   },
@@ -756,6 +790,8 @@
    "ai_processed_at": null,
    "ai_attempts": 0,
    "digest_attempts": 0,
+   "digest_version": 0,
+   "rich_attempts": 0,
    "source_priority": 5,
    "is_sample": false
   }
