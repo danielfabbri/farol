@@ -28,7 +28,7 @@
   "last_modified": "Wed, 25 Nov 2026 17:10:27 GMT"
  },
  "google-deepmind": {
-  "etag": "\"xepXdw\"",
+  "etag": "\"lW-vAg\"",
   "last_modified": null
  },
  "nvidia-blog": {
@@ -44,40 +44,40 @@
   "last_modified": "Thu, 26 Nov 2026 13:10:04 GMT"
  },
  "ars-technica-ai": {
-  "etag": "\"0ab33d834ae8e9f509dd2a5b1550cad7\"",
-  "last_modified": "Thu, 26 Nov 2026 12:49:35 GMT"
+  "etag": "\"70f158c11f09b3dbdad61a943016a79e\"",
+  "last_modified": "Thu, 26 Nov 2026 18:00:29 GMT"
  },
  "ars-technica-tech": {
-  "etag": "\"0ab33d834ae8e9f509dd2a5b1550cad7\"",
-  "last_modified": "Thu, 26 Nov 2026 12:49:35 GMT"
+  "etag": "\"70f158c11f09b3dbdad61a943016a79e\"",
+  "last_modified": "Thu, 26 Nov 2026 18:00:29 GMT"
  },
  "techcrunch-ai": {
-  "etag": "W/\"a94217dbb0849b1c9c1d60002ae773c6\"",
-  "last_modified": "Thu, 26 Nov 2026 02:52:56 GMT"
+  "etag": "W/\"6f3e2cf3a85db982fdb837cebeeba99e\"",
+  "last_modified": "Thu, 26 Nov 2026 17:00:33 GMT"
  },
  "agenciabrasil-geral": {
-  "etag": "\"1795703327-1\"",
-  "last_modified": "Thu, 26 Nov 2026 14:28:47 GMT"
+  "etag": "\"1795717447-1\"",
+  "last_modified": "Thu, 26 Nov 2026 18:24:07 GMT"
  },
  "agenciabrasil-politica": {
-  "etag": "\"1795703232-1\"",
-  "last_modified": "Thu, 26 Nov 2026 14:27:12 GMT"
+  "etag": "\"1795717425-1\"",
+  "last_modified": "Thu, 26 Nov 2026 18:23:45 GMT"
  },
  "poder360": {
   "etag": "\"87c8f0dd11059cdc54d7b7e53dbaa0ad-gzip\"",
   "last_modified": "Thu, 26 Nov 2026 12:04:33 GMT"
  },
  "agenciabrasil-economia": {
-  "etag": "\"1795703316-1\"",
-  "last_modified": "Thu, 26 Nov 2026 14:28:36 GMT"
+  "etag": "\"1795717443-1\"",
+  "last_modified": "Thu, 26 Nov 2026 18:24:03 GMT"
  },
  "infomoney": {
   "etag": "W/\"7533cc0c5b62bb4c99a95451d0f21bb5\"",
   "last_modified": "Thu, 26 Nov 2026 09:31:42 GMT"
  },
  "agenciabrasil-internacional": {
-  "etag": "\"1795703321-1\"",
-  "last_modified": "Thu, 26 Nov 2026 14:28:41 GMT"
+  "etag": "\"1795717482-1\"",
+  "last_modified": "Thu, 26 Nov 2026 18:24:42 GMT"
  },
  "cartacapital": {
   "etag": "\"8bd124fd360633399c9afd581790845a-gzip\"",
@@ -88,15 +88,15 @@
   "last_modified": "Thu, 26 Nov 2026 12:08:12 GMT"
  },
  "g1-educacao": {
-  "etag": "W/\"0ab5252c1c19d69cbefaf1f63dfb8ddbd621268b\"",
+  "etag": "W/\"125f4fa3e2f7933ac535f67b85d04e64305a3cf4\"",
   "last_modified": null
  },
  "folha-ciencia": {
-  "etag": "W/\"fb7b08-1b95b-6612d8855a240\"",
-  "last_modified": "Thu, 26 Nov 2026 13:00:49 GMT"
+  "etag": "W/\"fb6cef-1b919-66130d6d6f4c0\"",
+  "last_modified": "Thu, 26 Nov 2026 16:57:31 GMT"
  },
  "the-verge": {
-  "etag": "W/\"aa64b4cf635088458068dcb34d37718b\"",
+  "etag": "W/\"056d9e6fc15fbb83db75812a2dae3afa\"",
   "last_modified": null
  },
  "wired-ai": {
@@ -108,8 +108,8 @@
   "last_modified": null
  },
  "tecnoblog": {
-  "etag": "W/\"7228e5a937383604d8e1137eb7cd75ed\"",
-  "last_modified": "Thu, 26 Nov 2026 14:30:10 GMT"
+  "etag": "W/\"366ca1a6dd43c5323f8da62f867c6c47\"",
+  "last_modified": "Thu, 26 Nov 2026 17:56:11 GMT"
  },
  "veja": {
   "etag": "W/\"65f3bd9cdf5302d8197ce8cb96dae85e\"",
@@ -120,24 +120,24 @@
   "last_modified": null
  },
  "folha-ambiente": {
-  "etag": "W/\"fb7b28-1de92-6612ce5da2cc0\"",
-  "last_modified": "Thu, 26 Nov 2026 12:15:23 GMT"
+  "etag": "W/\"fb0e71-1e05e-661310aa2d800\"",
+  "last_modified": "Thu, 26 Nov 2026 17:12:00 GMT"
  },
  "olhar-digital": {
-  "etag": "W/\"361ad46ff065e475a7c1c46b2c1208ba\"",
-  "last_modified": "Thu, 26 Nov 2026 14:00:00 GMT"
+  "etag": "W/\"b0917d2e95ece258f1fc86ef30a07c9f\"",
+  "last_modified": "Thu, 26 Nov 2026 18:00:00 GMT"
  },
  "g1-politica": {
-  "etag": "W/\"b33bcfeb37a37ee2955633ebc5f5547720997cab\"",
+  "etag": "W/\"adccfb9127ee95bb35414fcbf56b76e2a3ac61d0\"",
   "last_modified": null
  },
  "camara-noticias": {
-  "etag": "W/\"1c680-jZskUTAWC/S4KWXK/olmE50yhhM\"",
+  "etag": "W/\"1abd0-2jMvYHUZiH83AclSguqfY4QWkho\"",
   "last_modified": null
  },
  "estadao-politica": {
-  "etag": "W/\"20b7f-3i+DA6rbe5RvmutWziB/GRrzx8I\"",
-  "last_modified": "Thu, 26 Nov 2026 14:10:24 GMT"
+  "etag": "W/\"1d0fb-F81PpxoH8W4F+allyALijo26OGE\"",
+  "last_modified": "Thu, 26 Nov 2026 18:17:51 GMT"
  },
  "cnn-brasil": {
   "etag": "W/\"7c1862be729e075fc55b235f1d10b23f\"",
@@ -152,16 +152,16 @@
   "last_modified": null
  },
  "folha-mundo": {
-  "etag": "W/\"fb69b9-1e5f4-6612ea7de0840\"",
-  "last_modified": "Thu, 26 Nov 2026 14:21:13 GMT"
+  "etag": "W/\"fb6a05-1e726-66131a68fd600\"",
+  "last_modified": "Thu, 26 Nov 2026 17:55:36 GMT"
  },
  "folha-saude": {
-  "etag": "W/\"fb3abc-1f488-6612ece5f35c0\"",
-  "last_modified": "Thu, 26 Nov 2026 14:31:59 GMT"
+  "etag": "W/\"fb3a94-1f90f-66131e619b480\"",
+  "last_modified": "Thu, 26 Nov 2026 18:13:22 GMT"
  },
  "spacenews": {
-  "etag": "W/\"49fe9bace3c2e5327705c34125c7ac99\"",
-  "last_modified": "Wed, 25 Nov 2026 23:06:29 GMT"
+  "etag": "W/\"60dfe706e22d9cf0e4841a5c6bd2feea\"",
+  "last_modified": "Thu, 26 Nov 2026 18:03:10 GMT"
  },
  "esa-news": {
   "etag": null,
@@ -176,12 +176,12 @@
   "last_modified": "Wed, 25 Nov 2026 20:53:46 GMT"
  },
  "techcrunch-robotics": {
-  "etag": "W/\"a94217dbb0849b1c9c1d60002ae773c6\"",
-  "last_modified": "Thu, 26 Nov 2026 02:52:56 GMT"
+  "etag": "W/\"6f3e2cf3a85db982fdb837cebeeba99e\"",
+  "last_modified": "Thu, 26 Nov 2026 17:00:33 GMT"
  },
  "ars-technica-space": {
-  "etag": "\"0ab33d834ae8e9f509dd2a5b1550cad7\"",
-  "last_modified": "Thu, 26 Nov 2026 12:49:35 GMT"
+  "etag": "\"70f158c11f09b3dbdad61a943016a79e\"",
+  "last_modified": "Thu, 26 Nov 2026 18:00:29 GMT"
  },
  "spaceflight-now": {
   "etag": "W/\"07e3f2769b0824f18f93f76be6ff4bb6\"",
@@ -200,7 +200,7 @@
   "last_modified": null
  },
  "g1-economia": {
-  "etag": "W/\"044aa79c32d9550c7770d95be15420b91bb24733\"",
+  "etag": "W/\"63c4408992b5b7b7fe64dc5a8a63d04c58ccbba4\"",
   "last_modified": null
  },
  "nasa-news": {
@@ -208,8 +208,8 @@
   "last_modified": "Thu, 26 Nov 2026 12:46:13 GMT"
  },
  "folha-poder": {
-  "etag": "W/\"dc3c78-1eedd-6612e8cfc5180\"",
-  "last_modified": "Thu, 26 Nov 2026 14:13:42 GMT"
+  "etag": "W/\"fa2b23-1ebca-66131c6640780\"",
+  "last_modified": "Thu, 26 Nov 2026 18:04:30 GMT"
  },
  "arxiv-cs-ai": {
   "etag": "30aa23a8d387a2295df3c290292171a77be36bc2613e031eec3a299ac7b2bb3d",
@@ -220,8 +220,8 @@
   "last_modified": null
  },
  "universe-today": {
-  "etag": "W/\"6b08385f-75c2\"",
-  "last_modified": "Thu, 26 Nov 2026 13:47:11 GMT"
+  "etag": "W/\"6b087092-7415\"",
+  "last_modified": "Thu, 26 Nov 2026 17:46:58 GMT"
  },
  "arxiv-cs-ro": {
   "etag": "00e18e47b401ec34686fe92bdc3555602c6c48ca4bd336d50abd973dd894053d",
@@ -232,7 +232,7 @@
   "last_modified": null
  },
  "g1-mundo": {
-  "etag": "W/\"a0a0b91e3281ca25f391bccc271767b95d8d8383\"",
+  "etag": "W/\"22936f735199b9f10557bbe3c43c9179287aed80\"",
   "last_modified": null
  },
  "space-com": {
@@ -240,24 +240,24 @@
   "last_modified": null
  },
  "folha-cotidiano": {
-  "etag": "W/\"fb7ad5-1dccf-6612ecd1ec680\"",
-  "last_modified": "Thu, 26 Nov 2026 14:31:38 GMT"
+  "etag": "W/\"fb750c-1e0f6-66132118d5cc0\"",
+  "last_modified": "Thu, 26 Nov 2026 18:25:31 GMT"
  },
  "folha-mercado": {
   "etag": "W/\"fb7ae0-1cce8-6612e9d8e4300\"",
   "last_modified": "Thu, 26 Nov 2026 14:18:20 GMT"
  },
  "g1-principal": {
-  "etag": "W/\"b4afc76fa1523e7c65404389c65f596e55608bbe\"",
+  "etag": "W/\"9d454e6eb00511c7a3152f642c3dcf323f2c73b2\"",
   "last_modified": null
  },
  "g1-tecnologia": {
-  "etag": "W/\"c1adb21d3247fe623681a54acfcaf2187408f2e7\"",
+  "etag": "W/\"4ab86369f3daee62327ca6ee49f7cd1cfcc1d7ca\"",
   "last_modified": null
  },
  "folha-tec": {
-  "etag": "W/\"fb65ec-1d00a-6612c53675480\"",
-  "last_modified": "Thu, 26 Nov 2026 11:34:26 GMT"
+  "etag": "W/\"daed33-1d151-661306bca2bc0\"",
+  "last_modified": "Thu, 26 Nov 2026 16:27:35 GMT"
  },
  "estadao-economia": {
   "etag": "W/\"1cb1b-P5Mj+EFmIzeIBCT2knBxarR+Wzw\"",
@@ -268,8 +268,8 @@
   "last_modified": "Thu, 26 Nov 2026 14:30:53 GMT"
  },
  "estadao-brasil": {
-  "etag": "W/\"163ec-XoT8gW7+5qG8p6aFuVWhHwTrbfM\"",
-  "last_modified": "Thu, 26 Nov 2026 14:19:02 GMT"
+  "etag": "W/\"17820-J3zOF9R/MdrYOSvZBeXqQeYSU3A\"",
+  "last_modified": "Thu, 26 Nov 2026 18:27:17 GMT"
  },
  "bbc-technology": {
   "etag": null,

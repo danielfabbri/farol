@@ -1315,5 +1315,30 @@
    "calls_today": 0
   },
   "retention_removed": 0
+ },
+ {
+  "started_at": "2026-11-26T18:28:14+00:00",
+  "finished_at": "2026-11-26T18:32:41+00:00",
+  "status": "ok",
+  "trigger": "schedule",
+  "edition_id": "2026-11-26-1828",
+  "sources_ok": 65,
+  "sources_failed": 0,
+  "failed_sources": {},
+  "new_articles": 229,
+  "highlights": 8,
+  "events": 223,
+  "ai": {
+   "state": "idle",
+   "processed": 0,
+   "failed": 0,
+   "calls": 0,
+   "digested": 143,
+   "translated": 6,
+   "briefs": 0,
+   "errors": [],
+   "calls_today": 0
+  },
+  "retention_removed": 0
  }
 ]
