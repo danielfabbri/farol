@@ -1,8 +1,8 @@
 {
- "day": "2026-11-26",
+ "day": "2026-11-27",
  "calls": 0,
  "quota_exhausted": false,
- "digest_calls": 120,
- "translation_calls": 6,
+ "digest_calls": 12,
+ "translation_calls": 1,
  "exhausted_models": []
 }
