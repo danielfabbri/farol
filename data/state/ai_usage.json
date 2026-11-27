@@ -2,7 +2,7 @@
  "day": "2026-11-26",
  "calls": 0,
  "quota_exhausted": false,
- "digest_calls": 108,
- "translation_calls": 5,
+ "digest_calls": 120,
+ "translation_calls": 6,
  "exhausted_models": []
 }
