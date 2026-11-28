@@ -1,31 +1,5 @@
 [
  {
-  "started_at": "2026-11-23T15:53:09+00:00",
-  "finished_at": "2026-11-23T15:55:38+00:00",
-  "status": "partial",
-  "trigger": "local",
-  "edition_id": "2026-11-23-1553",
-  "sources_ok": 16,
-  "sources_failed": 1,
-  "failed_sources": {
-   "hacker-news": "HTTP 419"
-  },
-  "new_articles": 10,
-  "highlights": 7,
-  "events": 33,
-  "ai": {
-   "state": "budget_reached",
-   "processed": 0,
-   "failed": 0,
-   "calls": 0,
-   "events_merged": 0,
-   "translated": 0,
-   "errors": [],
-   "calls_today": 3
-  },
-  "retention_removed": 0
- },
- {
   "started_at": "2026-11-23T15:56:30+00:00",
   "finished_at": "2026-11-23T15:59:59+00:00",
   "status": "partial",
@@ -1583,6 +1557,31 @@
    "calls": 0,
    "digested": 138,
    "translated": 1,
+   "briefs": 0,
+   "errors": [],
+   "calls_today": 0
+  },
+  "retention_removed": 0
+ },
+ {
+  "started_at": "2026-11-28T10:33:19+00:00",
+  "finished_at": "2026-11-28T10:37:20+00:00",
+  "status": "ok",
+  "trigger": "schedule",
+  "edition_id": "2026-11-28-1033",
+  "sources_ok": 65,
+  "sources_failed": 0,
+  "failed_sources": {},
+  "new_articles": 51,
+  "highlights": 8,
+  "events": 189,
+  "ai": {
+   "state": "idle",
+   "processed": 0,
+   "failed": 0,
+   "calls": 0,
+   "digested": 69,
+   "translated": 0,
    "briefs": 0,
    "errors": [],
    "calls_today": 0
