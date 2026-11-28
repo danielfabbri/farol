@@ -1,33 +1,5 @@
 [
  {
-  "started_at": "2026-11-23T15:45:26+00:00",
-  "finished_at": "2026-11-23T15:50:30+00:00",
-  "status": "partial",
-  "trigger": "local",
-  "edition_id": "2026-11-23-1545",
-  "sources_ok": 16,
-  "sources_failed": 1,
-  "failed_sources": {
-   "hacker-news": "HTTP 419"
-  },
-  "new_articles": 35,
-  "highlights": 7,
-  "events": 19,
-  "ai": {
-   "state": "unavailable",
-   "processed": 6,
-   "failed": 0,
-   "calls": 3,
-   "events_merged": 0,
-   "translated": 18,
-   "errors": [
-    "todos os modelos indisponíveis: gemini-flash-lite-latest: sobrecarregado após 3 tentativas (HTTP 503 UNAVAILABLE); gemini-3.5-flash: cota diária; gemini-3.5-flash-lite: sobrecarregado após 3 tentativas (HTTP 503 UNAVAILABLE)"
-   ],
-   "calls_today": 3
-  },
-  "retention_removed": 0
- },
- {
   "started_at": "2026-11-23T15:51:09+00:00",
   "finished_at": "2026-11-23T15:52:31+00:00",
   "status": "partial",
@@ -1586,6 +1558,31 @@
    "failed": 0,
    "calls": 0,
    "digested": 142,
+   "translated": 0,
+   "briefs": 0,
+   "errors": [],
+   "calls_today": 0
+  },
+  "retention_removed": 0
+ },
+ {
+  "started_at": "2026-11-28T01:30:20+00:00",
+  "finished_at": "2026-11-28T01:33:05+00:00",
+  "status": "ok",
+  "trigger": "schedule",
+  "edition_id": "2026-11-28-0130",
+  "sources_ok": 65,
+  "sources_failed": 0,
+  "failed_sources": {},
+  "new_articles": 81,
+  "highlights": 8,
+  "events": 185,
+  "ai": {
+   "state": "idle",
+   "processed": 0,
+   "failed": 0,
+   "calls": 0,
+   "digested": 118,
    "translated": 0,
    "briefs": 0,
    "errors": [],
