@@ -1,31 +1,5 @@
 [
  {
-  "started_at": "2026-11-23T15:51:09+00:00",
-  "finished_at": "2026-11-23T15:52:31+00:00",
-  "status": "partial",
-  "trigger": "local",
-  "edition_id": "2026-11-23-1551",
-  "sources_ok": 15,
-  "sources_failed": 2,
-  "failed_sources": {
-   "microsoft-research": "falhou após 3 tentativas: ReadTimeout",
-   "hacker-news": "HTTP 419"
-  },
-  "new_articles": 14,
-  "highlights": 7,
-  "events": 27,
-  "ai": {
-   "state": "disabled",
-   "processed": 0,
-   "failed": 0,
-   "calls": 0,
-   "translated": 0,
-   "errors": [],
-   "calls_today": 3
-  },
-  "retention_removed": 0
- },
- {
   "started_at": "2026-11-23T15:53:09+00:00",
   "finished_at": "2026-11-23T15:55:38+00:00",
   "status": "partial",
@@ -1584,6 +1558,31 @@
    "calls": 0,
    "digested": 118,
    "translated": 0,
+   "briefs": 0,
+   "errors": [],
+   "calls_today": 0
+  },
+  "retention_removed": 0
+ },
+ {
+  "started_at": "2026-11-28T09:50:14+00:00",
+  "finished_at": "2026-11-28T09:54:17+00:00",
+  "status": "ok",
+  "trigger": "workflow_dispatch",
+  "edition_id": "2026-11-28-0950",
+  "sources_ok": 65,
+  "sources_failed": 0,
+  "failed_sources": {},
+  "new_articles": 142,
+  "highlights": 8,
+  "events": 187,
+  "ai": {
+   "state": "idle",
+   "processed": 0,
+   "failed": 0,
+   "calls": 0,
+   "digested": 138,
+   "translated": 1,
    "briefs": 0,
    "errors": [],
    "calls_today": 0
